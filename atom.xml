@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>MIKA的博客</title>
+  
+  <subtitle>看世界，看自己</subtitle>
+  <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://erinmi4.github.io/"/>
+  <updated>2025-02-15T14:25:49.256Z</updated>
+  <id>https://erinmi4.github.io/</id>
+  
+  <author>
+    <name>MIKA</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://erinmi4.github.io/2025/02/15/hello-world/"/>
+    <id>https://erinmi4.github.io/2025/02/15/hello-world/</id>
+    <published>2025-02-15T14:25:49.256Z</published>
+    <updated>2025-02-15T14:25:49.256Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>测试中文链接</title>
+    <link href="https://erinmi4.github.io/2024/02/15/ce-shi-zhong-wen-lian-jie/"/>
+    <id>https://erinmi4.github.io/2024/02/15/ce-shi-zhong-wen-lian-jie/</id>
+    <published>2024-02-15T15:00:00.000Z</published>
+    <updated>2025-02-15T14:46:24.719Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是一篇测试中文链接的文章。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="测试" scheme="https://erinmi4.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="测试" scheme="https://erinmi4.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="中文" scheme="https://erinmi4.github.io/tags/%E4%B8%AD%E6%96%87/"/>
+    
+  </entry>
+  
+</feed>
