@@ -17,6 +17,33 @@
     
     
     <entry>
+      <title>测试字数统计功能</title>
+      <link href="/2024/02/15/test-wordcount/"/>
+      <url>/2024/02/15/test-wordcount/</url>
+      
+        <content type="html"><![CDATA[<p>这是一篇测试文章，用来测试字数统计功能是否正常工作。<br>这里需要写一些内容来测试字数统计。<br>让我们随便写一些文字来看看效果如何。</p><h2 id="测试标题"><a href="#测试标题" class="headerlink" title="测试标题"></a>测试标题</h2><ul><li>测试列表项1</li><li>测试列表项2</li><li>测试列表项3</li></ul><p>这样应该能看到字数统计和阅读时间的显示了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+            <tag> 字数统计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>测试中文链接</title>
       <link href="/2024/02/15/ce-shi-zhong-wen-lian-jie/"/>
       <url>/2024/02/15/ce-shi-zhong-wen-lian-jie/</url>
