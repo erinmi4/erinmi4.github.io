@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -478,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -554,7 +554,29 @@
 <blockquote>
 <p>应用程序不能直接调用内核函数。CPU 提供了一种特殊的指令，可以将 CPU 从用户模式切换到<br>管理模式，并在内核指定的入口点进入内核。（RISC-V 提供 ecall 指令用于此目的。）一旦 CPU 切换到管理模式，内核就可以验证系统调用的参数（例如，检查传递给系统调用的<br>地址是否是应用程序内存的一部分），决定应用程序是否允许执行请求的操作（例如，检<br>查应用程序是否允许写入指定的文件），然后拒绝或执行它。内核控制转换到管理模式的<br>入口点非常重要；例如，如果应用程序可以决定内核入口点，则恶意应用程序可以在跳过<br>参数验证的点进入内核。</p>
 </blockquote>
-<img src="/2024/02/16/cao-zuo-xi-tong-lec2/%E5%B8%A6%E6%9C%89%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%BE%AE%E5%86%85%E6%A0%B8.png" class="" title="带有文件系统服务器的微内核">
+<p><img src="/./%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Flec2/%E5%B8%A6%E6%9C%89%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%BE%AE%E5%86%85%E6%A0%B8.png" alt="带有文件系统服务器的微内核"></p>
+<h3 id="2-3-内核组织"><a href="#2-3-内核组织" class="headerlink" title="2.3 内核组织"></a>2.3 内核组织</h3><ul>
+<li>一个关键的设计问题：<strong>操作系统的那一部分放到内核之中</strong></li>
+</ul>
+<h4 id="monolithic-kernel整体内核"><a href="#monolithic-kernel整体内核" class="headerlink" title="monolithic kernel整体内核"></a>monolithic kernel整体内核</h4><ul>
+<li>将整个整个操作系统驻留在内核中，以便所有系统调用的实现都在管理程序模式下运行。</li>
+</ul>
+<p>优点：有一个<strong>大家长</strong>负责包办所有的事情，不必要区分什么是要做的，什么是不要做的。</p>
+<p>缺点：内部接口复杂，把复杂性全部集中到了内核上，遇到问题，更容易树倒猢狲散。</p>
+<h4 id="microkernel微内核"><a href="#microkernel微内核" class="headerlink" title="microkernel微内核"></a>microkernel微内核</h4><blockquote>
+<p>为了降低内核出错的风险，操作系统设计者可以最大限度地减少在管理模式下运行的操作系统代码量，并<strong>在用户模式下执行操作系统的大部分</strong>代码。这个内核组织称为<br>microkernel 。</p>
+</blockquote>
+<p>两种内核并不存在哪一个种<strong>更好</strong>的结论</p>
+<p>整体内核速度更快，微内核更加稳定。</p>
+<h3 id="2-5-流程概览"><a href="#2-5-流程概览" class="headerlink" title="2.5 流程概览"></a>2.5 流程概览</h3><h4 id="进程抽象"><a href="#进程抽象" class="headerlink" title="进程抽象"></a>进程抽象</h4><blockquote>
+<p>xv6 中的隔离单位（与其他 Unix 操作系统一样）是 process 。进程抽象可以防止一个进程破坏或监视另一个进程的内存、CPU、文件描述符等。</p>
+<p>它还可以防止进程破坏内核本身，<br>因此进程无法破坏内核的隔离机制。内核必须小心地实现进程抽象，因为有错误或恶意的应用程序可能会欺骗内核或硬件做一些坏事（例如，规避隔离）。</p>
+<p>内核用来实现进程的机制包括用户/管理程序模式标志、地址空间和线程的时间分片。</p>
+</blockquote>
+<h5 id="为什么需要进程"><a href="#为什么需要进程" class="headerlink" title="为什么需要进程"></a>为什么需要进程</h5><p>进程抽象就像是一个魔术师，让每个进程都产生了一种幻觉。</p>
+<p>在这台机器上，只有自己一个程序在运行。</p>
+<p>自己占有了所有的硬件资源。</p>
+<p>但实际上是有多个程序在并行运行的，这种服务的提供和隔离的形成，都来自于操作系统的隔离。</p>
 
                 
             </div>
@@ -971,7 +993,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">2.4k</span>&nbsp;字
             
             
             
