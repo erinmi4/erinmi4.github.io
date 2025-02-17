@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="Lab3 page tables, MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于 | MIKA的博客</title>
+    <title>Lab3 page tables | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于</h1>
+                    <h1 class="description center-align post-title">Lab3 page tables</h1>
                 </div>
             </div>
         </div>
@@ -433,12 +433,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
+                            </a>
+                        
+                            <a href="/tags/MIT6-s081/">
+                                <span class="chip bg-color">MIT6.s081</span>
+                            </a>
+                        
+                            <a href="/tags/lab/">
+                                <span class="chip bg-color">lab</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -447,21 +468,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-02-15
+                    2024-02-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-15
+                    2025-02-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10
+                    353
                 </div>
                 
 
@@ -488,7 +509,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这里是关于页面的内容…</p>
+                <h2 id="Speed-up-system-calls-easy"><a href="#Speed-up-system-calls-easy" class="headerlink" title="Speed up system calls (easy)"></a>Speed up system calls (<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.S081/2021/labs/guidance.html">easy</a>)</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>一些操作系统（例如 Linux）通过在用户空间和内核之间共享一个只读区域的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映射插入页表，你的第一个任务是在 xv6 中为 <code>getpid()</code> 系统调用实现这种优化。</p>
+<p>当每个进程被创建时，在 USYSCALL（在 memlayout.h 中定义的一个虚拟地址）处映射一个只读页面。在该页面的起始位置存储一个 struct usyscall（也在 memlayout.h 中定义），并将其初始化为存储当前进程的 PID。在本实验中，用户空间一侧已经提供了 ugetpid()，它将自动使用 USYSCALL 映射。如果在运行 pgtbltest 时 ugetpid 测试用例通过，你将获得这部分实验的全部分数。</p>
+<p>以下是一些提示：</p>
+<ul>
+<li>你可以在 <code>proc_pagetable()</code>（位于 kernel/proc.c）中执行映射。</li>
+<li>选择权限位，只允许用户空间读取该页面。</li>
+<li>你可能会发现 <code>mappages()</code> 是一个有用的工具。</li>
+<li>不要忘记在 <code>allocproc()</code> 中分配和初始化该页面。</li>
+<li>确保在 <code>freeproc()</code> 中释放该页面。</li>
+</ul>
+<p><strong>思考问题：</strong><br>xv6 中还有哪些其他系统调用可以通过这种共享页面的方式加速？解释如何实现。</p>
 
                 
             </div>
@@ -515,7 +546,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/about/index.html">https://erinmi4.github.io/about/index.html</a>
+                    <a href="https://erinmi4.github.io/2024/02/17/untitled/">https://erinmi4.github.io/2024/02/17/untitled/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,7 +583,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
+                                </a>
+                            
+                                <a href="/tags/MIT6-s081/">
+                                    <span class="chip bg-color">MIT6.s081</span>
+                                </a>
+                            
+                                <a href="/tags/lab/">
+                                    <span class="chip bg-color">lab</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -594,18 +637,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/about/index.html">
+                <a href="/2025/02/15/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="关于">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">关于</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -615,9 +657,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -626,7 +668,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -634,16 +675,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/about/index.html">
+                <a href="/2024/02/17/cao-zuo-xi-tong-lec3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="关于">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Chapter 3 页表与内存管理">
                         
-                        <span class="card-title">关于</span>
+                        <span class="card-title">Chapter 3 页表与内存管理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,17 +695,32 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            MIKA
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                    <a href="/tags/MIT6-s081/">
+                        <span class="chip bg-color">MIT6.s081</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
