@@ -704,6 +704,7 @@
 <li>用户页表具有相同的映射。</li>
 <li>物理页（保存 trampoline 代码）在内核的虚拟地址空间中映射两次：一次在虚拟地址空间的顶部，一次是直接映射。</li>
 </ul>
+<p>==在<strong>用户空间和内核之间共享一个只读区域</strong>的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。==</p>
 </li>
 <li><p><strong>内核堆栈页</strong></p>
 <ul>
@@ -978,7 +979,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/02/17/untitled/">
+                <a href="/2024/02/17/lab3-page-tables/">
                     <div class="card-image">
                         
                         
@@ -1281,7 +1282,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.9k</span>&nbsp;字
+                class="white-color">12.4k</span>&nbsp;字
             
             
             

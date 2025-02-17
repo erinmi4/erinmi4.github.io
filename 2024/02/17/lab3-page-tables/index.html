@@ -482,14 +482,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    353
+                    816
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -509,8 +509,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Speed-up-system-calls-easy"><a href="#Speed-up-system-calls-easy" class="headerlink" title="Speed up system calls (easy)"></a>Speed up system calls (<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.S081/2021/labs/guidance.html">easy</a>)</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>一些操作系统（例如 Linux）通过在用户空间和内核之间共享一个只读区域的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映射插入页表，你的第一个任务是在 xv6 中为 <code>getpid()</code> 系统调用实现这种优化。</p>
-<p>当每个进程被创建时，在 USYSCALL（在 memlayout.h 中定义的一个虚拟地址）处映射一个只读页面。在该页面的起始位置存储一个 struct usyscall（也在 memlayout.h 中定义），并将其初始化为存储当前进程的 PID。在本实验中，用户空间一侧已经提供了 ugetpid()，它将自动使用 USYSCALL 映射。如果在运行 pgtbltest 时 ugetpid 测试用例通过，你将获得这部分实验的全部分数。</p>
+                <h2 id="Speed-up-system-calls-easy"><a href="#Speed-up-system-calls-easy" class="headerlink" title="Speed up system calls (easy)"></a>Speed up system calls (<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.S081/2021/labs/guidance.html">easy</a>)</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>一些操作系统（例如 Linux）通过在<strong>用户空间和内核之间共享一个只读区域</strong>的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映射插入页表，你的第一个任务是在 xv6 中为 <code>getpid()</code> 系统调用实现这种优化。</p>
+<p>当每个进程被创建时，在 <strong>USYSCALL（在 memlayout.h 中定义的一个虚拟地址）处映射一个只读页面</strong>。在该页面的<strong>起始位置</strong>存储一个 struct usyscall（也在 memlayout.h 中定义），并将其初始化为存储当前进程的 PID。在本实验中，用户空间一侧已经提供了 ugetpid()，它将自动使用 USYSCALL 映射。如果在运行 pgtbltest 时 ugetpid 测试用例通过，你将获得这部分实验的全部分数。</p>
 <p>以下是一些提示：</p>
 <ul>
 <li>你可以在 <code>proc_pagetable()</code>（位于 kernel/proc.c）中执行映射。</li>
@@ -520,6 +520,18 @@
 <li>确保在 <code>freeproc()</code> 中释放该页面。</li>
 </ul>
 <p><strong>思考问题：</strong><br>xv6 中还有哪些其他系统调用可以通过这种共享页面的方式加速？解释如何实现。</p>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ul>
+<li>页表是一种数据结构，用来操控页面</li>
+<li>每次我们在分配页表的时候，我们都要初始化几个固定的页表(<strong>trampline,tampframe</strong>),这些页表出于固定的物理位置（出于内核空间与用户空间之中，所以能够很好地访问其中的内容）<ul>
+<li>并且还会有独立的<strong>陷阱帧</strong></li>
+</ul>
+</li>
+</ul>
+<p>==一定是先创建页表，然后创建页面==</p>
+<p><strong>特别地，我们要思考一个问题， <code>allocproc</code> 函数中，并不是“先创建页面，再创建页表”，而是“先分配陷阱帧页面，再创建页表”</strong>。</p>
+<h4 id="2-为什么先分配陷阱帧页面？"><a href="#2-为什么先分配陷阱帧页面？" class="headerlink" title="2. 为什么先分配陷阱帧页面？"></a>2. <strong>为什么先分配陷阱帧页面？</strong></h4><p>陷阱帧页面的分配并不是“先于页表创建页面”，而是为了初始化进程的内核状态。陷阱帧是进程在内核中运行时必须具备的数据结构，它与页表的创建是两个独立的步骤。具体原因如下：</p>
+<h5 id="（1）陷阱帧是内核态的上下文保存区"><a href="#（1）陷阱帧是内核态的上下文保存区" class="headerlink" title="（1）陷阱帧是内核态的上下文保存区"></a>（1）<strong>陷阱帧是内核态的上下文保存区</strong></h5><p>陷阱帧页面是为内核态准备的，用于保存进程进入内核时的用户态上下文。它与虚拟内存映射无关，而是与进程的内核态执行逻辑紧密相关。因此，它需要在页表创建之前分配，以便在进程初始化时能够正确设置内核态的上下文。</p>
+<h5 id="（2）页表是虚拟内存映射的基础"><a href="#（2）页表是虚拟内存映射的基础" class="headerlink" title="（2）页表是虚拟内存映射的基础"></a>（2）<strong>页表是虚拟内存映射的基础</strong></h5><p>页表的创建是为了定义进程的虚拟内存空间，将虚拟地址映射到物理地址。它是一个独立的步骤，用于初始化进程的用户态虚拟内存环境。页表的创建依赖于内核态的基础设施（如陷阱帧），因为内核需要通过陷阱帧来管理进程的上下文切换。</p>
 
                 
             </div>
@@ -546,7 +558,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/2024/02/17/untitled/">https://erinmi4.github.io/2024/02/17/untitled/</a>
+                    <a href="https://erinmi4.github.io/2024/02/17/lab3-page-tables/">https://erinmi4.github.io/2024/02/17/lab3-page-tables/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -641,13 +653,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/02/15/hello-world/">
+                <a href="/2024/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Calling Convention">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Calling Convention</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -658,15 +670,31 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-17
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            MIKA
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                    <a href="/tags/MIT6-s081/">
+                        <span class="chip bg-color">MIT6.s081</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -920,7 +948,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.9k</span>&nbsp;字
+                class="white-color">12.4k</span>&nbsp;字
             
             
             

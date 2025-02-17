@@ -38,11 +38,30 @@
   </entry>
   
   <entry>
+    <title>Calling Convention</title>
+    <link href="https://erinmi4.github.io/2024/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/"/>
+    <id>https://erinmi4.github.io/2024/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/</id>
+    <published>2024-02-17T11:00:00.000Z</published>
+    <updated>2025-02-17T08:44:43.377Z</updated>
+    
+    
+    
+    
+    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="MIT6.s081" scheme="https://erinmi4.github.io/tags/MIT6-s081/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Lab3 page tables</title>
-    <link href="https://erinmi4.github.io/2024/02/17/untitled/"/>
-    <id>https://erinmi4.github.io/2024/02/17/untitled/</id>
+    <link href="https://erinmi4.github.io/2024/02/17/lab3-page-tables/"/>
+    <id>https://erinmi4.github.io/2024/02/17/lab3-page-tables/</id>
     <published>2024-02-17T09:00:00.000Z</published>
-    <updated>2025-02-17T08:41:33.195Z</updated>
+    <updated>2025-02-17T09:42:27.536Z</updated>
     
     
       
@@ -71,7 +90,7 @@
     <link href="https://erinmi4.github.io/2024/02/17/cao-zuo-xi-tong-lec3/"/>
     <id>https://erinmi4.github.io/2024/02/17/cao-zuo-xi-tong-lec3/</id>
     <published>2024-02-17T04:00:00.000Z</published>
-    <updated>2025-02-17T08:37:21.444Z</updated>
+    <updated>2025-02-17T08:49:55.356Z</updated>
     
     
       
