@@ -475,21 +475,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-16
+                    2025-02-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -546,6 +546,25 @@
 <li><p>从用户空间检索系统调用参数的函数在 <code>kernel/syscall.c</code> 中<strong>从用户空间转到内核空间，需要通过特殊的函数来传递参数</strong></p>
 </li>
 </ul>
+<h2 id="系统信息（中等难度）"><a href="#系统信息（中等难度）" class="headerlink" title="系统信息（中等难度）"></a>系统信息（中等难度）</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>在这个任务中，你需要添加一个系统调用 <code>sysinfo</code>，用于收集运行系统的相关信息。该系统<strong>调用接受一个参数</strong>：一个指向 <code>struct sysinfo</code> 的指针（请参见 <code>kernel/sysinfo.h</code>）。<strong>内核需要填充这个结构体的字段</strong>：<code>freemem</code> 字段应设置为可用内存的字节数，<code>nproc</code> 字段应设置为状态不是 <code>UNUSED</code> 的进程数量。我们提供了一个测试程序 <code>sysinfotest</code>；如果它打印出“<code>sysinfotest: OK</code>”，则表示你通过了这个任务。</p>
+<p>一些提示：</p>
+<ol>
+<li><p>在 <code>Makefile</code> 中将 <code>$U/_sysinfotest</code> 添加到 <code>UPROGS</code> 中。</p>
+</li>
+<li><p>运行 <code>make qemu</code>；<code>user/sysinfotest.c</code> 将无法编译。按照上一个任务中的相同步骤添加系统调用 <code>sysinfo</code>。为了在 <code>user/user.h</code> 中声明 <code>sysinfo()</code> 的原型，你需要<strong>预先声明</strong> <code>struct sysinfo</code> 的存在：</p>
+<p>c复制</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sysinfo</span>;</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">sysinfo</span><span class="params">(<span class="keyword">struct</span> sysinfo *)</span>;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>修复编译问题后，运行 <code>sysinfotest</code>；它会失败，因为你尚未在内核中实现该系统调用。</p>
+</li>
+<li><p><code>sysinfo</code> 需要将一个 <code>struct sysinfo</code> 结构体拷贝回用户空间；可以参考 <code>sys_fstat()</code>（位于 <code>kernel/sysfile.c</code>）和 <code>filestat()</code>（位于 <code>kernel/file.c</code>），了解如何使用 <code>copyout()</code> 来实现这一点。</p>
+</li>
+<li><p>为了收集可用内存的数量，需要在 <code>kernel/kalloc.c</code> 中添加一个函数。</p>
+</li>
+<li><p>为了收集进程的数量，需要在 <code>kernel/proc.c</code> 中添加一个函数。</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250217112148863.png" alt="sysinfo分析"></p>
 
                 
             </div>
@@ -946,7 +965,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.6k</span>&nbsp;字
+                class="white-color">4k</span>&nbsp;字
             
             
             
