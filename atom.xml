@@ -42,8 +42,17 @@
     <link href="https://erinmi4.github.io/2024/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/"/>
     <id>https://erinmi4.github.io/2024/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/</id>
     <published>2024-02-17T11:00:00.000Z</published>
-    <updated>2025-02-17T08:44:43.377Z</updated>
+    <updated>2025-02-18T13:15:15.253Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本章介绍了RV32和RV64程序的C编译器标准以及两种调用约定：一种是针对基础ISA加上标准通用扩展（RV32G/RV64G）的调用约定，另一种是针对缺少浮点单元的实现（例如RV32I/RV64I）的软浮点调用约定。具有ISA扩展的实现可能需要扩展的调用约定。&lt;/p&gt;
+&lt;h</summary>
+        
+      
     
     
     

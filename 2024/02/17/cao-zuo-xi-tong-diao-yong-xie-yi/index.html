@@ -471,21 +471,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-17
+                    2025-02-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    10 分
                 </div>
                 
 
@@ -505,7 +505,227 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>本章介绍了RV32和RV64程序的C编译器标准以及两种调用约定：一种是针对基础ISA加上标准通用扩展（RV32G/RV64G）的调用约定，另一种是针对缺少浮点单元的实现（例如RV32I/RV64I）的软浮点调用约定。具有ISA扩展的实现可能需要扩展的调用约定。</p>
+<h3 id="重要要点"><a href="#重要要点" class="headerlink" title="重要要点"></a><strong>重要要点</strong></h3><ol>
+<li><strong>C数据类型和对齐（18.1）</strong>：<ul>
+<li><code>int</code> 在RV32和RV64下都是32位宽。</li>
+<li><code>long</code> 和指针在RV32下是32位，在RV64下是64位。</li>
+<li><code>long long</code> 是64位，<code>float</code> 是32位，<code>double</code>是64位，<code>long double</code>是128位。</li>
+<li>所有数据类型在内存中保持自然对齐。</li>
+</ul>
+</li>
+<li><strong>RVG调用约定（18.2）</strong>：<ul>
+<li>使用寄存器<code>a0-a7</code>传递最多8个整数参数，<code>fa0-fa7</code>传递最多8个浮点参数。</li>
+<li>较小的参数放在参数寄存器的低位，并在栈上是字节对齐的。</li>
+<li>大于指针宽度两倍的参数按引用传递。</li>
+<li>返回值通过<code>a0/hp0</code>、<code>a1/hp1</code>返回，浮点值用<code>fa0/fa1</code>。</li>
+<li>栈向下增长，<code>sp</code>总是保持16字节对齐。</li>
+</ul>
+</li>
+<li><strong>软浮点调用约定（18.3）</strong>：<ul>
+<li>用于无浮点硬件的实现，浮点参数和返回值通过整数寄存器传递。</li>
+<li>在RV32下，<code>double</code>参数传递在<code>a2-a3</code>中，<code>long double</code>通过引用传递。</li>
+</ul>
+</li>
+</ol>
+<h3 id="关键概念和名词"><a href="#关键概念和名词" class="headerlink" title="关键概念和名词"></a><strong>关键概念和名词</strong></h3><ul>
+<li><strong>RVG调用约定</strong>：用于标准ISA扩展（RV32G/RV64G）的参数和返回值传递规则。</li>
+<li><strong>软浮点调用约定</strong>：用于无浮点硬件实现的调用规则，避免使用浮点指令。</li>
+<li><strong>参数传递规则</strong>：参数通过寄存器（整数和浮点）或栈传递，取决于参数数目和类型。</li>
+<li><strong>返回值传递</strong>：简单类型在寄存器返回，复杂结构返回指针。</li>
+<li><strong>寄存器角色</strong>：指明哪些寄存器由调用者保存，哪些由被调用者保存。</li>
+<li><strong>ISA</strong>:（Instruction Set Architecture，指令集架构）是指计算机硬件与软件之间的接口规范，定义了处理器能够理解和执行的指令集。它主要包括以下几个关键方面：<ul>
+<li><strong>指令集</strong>：定义了处理器能够执行的所有指令，包括操作码（指示操作类型）和操作数（操作对象）。</li>
+<li><strong>寻址模式</strong>：定义了如何访问操作数，例如立即寻址、寄存器寻址、直接寻址等。</li>
+<li><strong>数据类型</strong>：定义了处理器支持的数据类型，如整数、浮点数等。</li>
+<li><strong>寄存器</strong>：定义了处理器的寄存器数量、类型和用途。</li>
+<li><strong>中断和异常处理</strong>：定义了处理器如何处理中断和异常。</li>
+<li><strong>特权指令</strong>：定义了只有操作系统才能执行的指令，用于保护系统资源。</li>
+</ul>
+</li>
+</ul>
+<h3 id="需要了解的背景知识"><a href="#需要了解的背景知识" class="headerlink" title="需要了解的背景知识"></a><strong>需要了解的背景知识</strong></h3><ul>
+<li><strong>寄存器和内存布局</strong>：理解整数和浮点寄存器的分配和使用。</li>
+<li><strong>调用堆栈机制</strong>：清楚栈增长方向和栈帧结构。</li>
+<li><strong>RISC-V架构基础</strong>：了解RISC-V基本指令集和ISA扩展。</li>
+<li><strong>C语言数据类型</strong>：熟悉C中数据类型（如<code>int</code>, <code>long</code>等）的大小和对齐。</li>
+</ul>
+<h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a><strong>学习目标</strong></h3><ul>
+<li><strong>理解参数和返回值传递规则</strong>：掌握参数如何在寄存器或栈上传递，以及返回值的传递方式。</li>
+<li><strong>掌握寄存器使用和保存规则</strong>：明确哪个寄存器是调用者保存，哪个是被调用者保存。</li>
+<li><strong>熟悉栈的使用</strong>：了解栈如何存储未在寄存器传递的参数和局部变量。</li>
+<li><strong>比较RVG和软浮点调用约定</strong>：知道两种调用约定的不同适用场景和差异。</li>
+</ul>
+<h3 id="重要代码和函数"><a href="#重要代码和函数" class="headerlink" title="重要代码和函数"></a><strong>重要代码和函数</strong></h3><ul>
+<li><strong>参数传递逻辑</strong>：在编译器或汇编代码中，函数调用时参数的入栈或寄存器分配部分。</li>
+<li><strong>函数返回值处理</strong>：如何从寄存器或内存读取函数返回值的代码部分。</li>
+<li><strong>栈帧管理</strong>：函数调用时，栈指针调整、局部变量分配等代码片段。</li>
+</ul>
+<h3 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a><strong>学习建议</strong></h3><ul>
+<li><strong>阅读《RISC-V ISA手册》</strong>：特别是有关用户级ISA的部分，理解寄存器和指令。</li>
+<li><strong>研究编译器生成的汇编代码</strong>：查看C代码编译后如何应用调用约定。</li>
+<li><strong>动手实验</strong>：在支持RISC-V的环境中编写代码，观察参数传递和返回值的处理。</li>
+<li><strong>强化基础</strong>：充分理解寄存器、栈、C数据类型等基础知识，以便更好地掌握调用约定。</li>
+</ul>
+<h3 id="18-1-C数据类型和对齐"><a href="#18-1-C数据类型和对齐" class="headerlink" title="18.1 C数据类型和对齐"></a>18.1 C数据类型和对齐</h3><h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><ul>
+<li><strong>整数类型</strong>：<ul>
+<li><code>int</code>：32位宽。</li>
+<li><code>long</code> 和 <strong>指针</strong>：<ul>
+<li>RV32：32位宽（ILP32模型）。</li>
+<li>RV64：64位宽（LP64模型）。</li>
+</ul>
+</li>
+<li><code>long long</code>：64位宽。</li>
+<li><code>char</code> 和 <code>unsigned char</code>：8位宽，存储时零扩展。</li>
+<li><code>unsigned short</code>：16位宽，存储时零扩展。</li>
+<li><code>signed char</code> 和 <code>short</code>：分别8位和16位宽，存储时符号扩展。</li>
+</ul>
+</li>
+<li><strong>浮点类型</strong>：<ul>
+<li><code>float</code>：32位IEEE 754-2008浮点数。</li>
+<li><code>double</code>：64位IEEE 754-2008浮点数。</li>
+<li><code>long double</code>：128位IEEE浮点数。</li>
+</ul>
+</li>
+<li><strong>特殊规则</strong>：<ul>
+<li>在RV64中，32位类型（如<code>int</code>）存储在寄存器中时，会以符号扩展形式存储其32位值（即使是无符号类型）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据对齐"><a href="#数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h5><ul>
+<li>RV32和RV64的C编译器以及兼容软件在将数据类型存储到内存时会保持<strong>自然对齐</strong>。这意味着数据类型会按照其大小对齐到相应的内存地址，以提高访问效率。<ul>
+<li>*<em>数据对齐会实现访问效率的提升，这是我们在page table一节也提到过的内容。不太正确地来将，我们所使用指针加减动作，其实每次都是实现的一个某一个量上的变化，是固定的，比如int <em>a,则 a + 1,实际上是移动了4个字节，因为a的类型是4个字节，这是一种统一性</em></em></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250218210026952.png" alt="RISC-V C程序所支持的本地数据类型"></p>
+<h3 id="18-2-RVG调用约定"><a href="#18-2-RVG调用约定" class="headerlink" title="18.2 RVG调用约定"></a>18.2 RVG调用约定</h3><p><code>在这里，我们先要思考要给问题，calling convention为什么被设计出来。在汇编语言中，如果一个函数需要调用另一个函数，是需要保留上下文和现场的，方便后面的现场恢复。这也就引生出来了保存寄存器(save register)和一般寄存器。我们一般认为保存寄存器中的内容，是绝对可信的，因为在calle或者caller，二者必有一人会保存信息在其中，并且在某个阶段恢复它们（根据协议来看）。但是一般寄存器是绝对不能相信的。</code></p>
+<p>所以我们可以得出结论：</p>
+<ul>
+<li>calling convention是通过使用寄存器实现数据传递的。</li>
+<li>协议定义的是栈的使用和寄存器的保存规则</li>
+</ul>
+<hr>
+<h4 id="1-参数传递规则"><a href="#1-参数传递规则" class="headerlink" title="1. 参数传递规则"></a><strong>1. 参数传递规则</strong></h4><ol>
+<li><p><strong>寄存器传递</strong>：</p>
+<ul>
+<li>最多使用8个整数寄存器（<code>a0–a7</code>）和8个浮点寄存器（<code>fa0–fa7</code>）来传递参数。</li>
+<li>参数被视为结构体字段，前八个指针大小的字段通过寄存器传递。</li>
+<li>浮点参数通过浮点寄存器传递，除非它们是联合体或结构体数组字段的一部分，此时通过整数寄存器传递。</li>
+<li>可变参数函数中的浮点参数也通过整数寄存器传递。</li>
+</ul>
+</li>
+<li><h4 id="小端字节序和对齐："><a href="#小端字节序和对齐：" class="headerlink" title="小端字节序和对齐："></a><strong>小端字节序和对齐</strong>：</h4><ul>
+<li>小于指针大小的参数通过寄存器的最低有效位传递。</li>
+<li>子指针大小的参数通过栈传递时，存储在指针大小字段的低地址部分。</li>
+<li>参数大小为指针大小的两倍时：<ul>
+<li>通过栈传递时自然对齐。</li>
+<li>通过寄存器传递时，存储在对齐的偶-奇寄存器对中，偶数寄存器存储最低有效位（例如，<code>long long</code>在RV32中通过<code>a2</code>和<code>a3</code>传递）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>大参数传递</strong>：</p>
+<ul>
+<li>大于指针大小两倍的参数通过引用传递。</li>
+<li>结构体中未通过寄存器传递的部分通过栈传递，栈指针<code>sp</code>指向第一个未通过寄存器传递的参数。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="2-返回值传递规则"><a href="#2-返回值传递规则" class="headerlink" title="2. 返回值传递规则"></a><strong>2. 返回值传递规则</strong></h4><ol>
+<li>返回值通过以下寄存器传递：<ul>
+<li>整数返回值：<code>a0</code>和<code>a1</code>。</li>
+<li>浮点返回值：<ul>
+<li>如果是原始类型或仅包含一到两个浮点值的结构体成员，通过<code>fa0</code>和<code>fa1</code>返回。</li>
+<li>其他能够放入两个指针大小的返回值通过<code>a0</code>和<code>a1</code>返回。</li>
+</ul>
+</li>
+<li>更大的返回值通过内存传递，调用者分配内存区域，并将其指针作为隐式第一个参数传递给被调用者。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="3-栈和寄存器的使用规则"><a href="#3-栈和寄存器的使用规则" class="headerlink" title="3. 栈和寄存器的使用规则"></a><strong>3. 栈和寄存器的使用规则</strong></h4><ol>
+<li><strong>栈</strong>：<ul>
+<li>栈向下增长，栈指针<code>sp</code>始终保持16字节对齐。</li>
+</ul>
+</li>
+<li><strong>寄存器分类</strong>：<ul>
+<li><strong>参数寄存器</strong>：<ul>
+<li>整数寄存器：<code>a0–a7</code>。</li>
+<li>浮点寄存器：<code>fa0–fa7</code>。</li>
+</ul>
+</li>
+<li><strong>临时寄存器（易失性）</strong>：<ul>
+<li>整数寄存器：<code>t0–t6</code>。</li>
+<li>浮点寄存器：<code>ft0–ft11</code>。</li>
+<li>如果后续需要使用，必须由调用者保存。</li>
+</ul>
+</li>
+<li><strong>保留寄存器（非易失性）</strong>：<ul>
+<li>整数寄存器：<code>s0–s11</code>。</li>
+<li>浮点寄存器：<code>fs0–fs11</code>。</li>
+<li>如果使用了这些寄存器，必须由被调用者保存。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h4><p>RVG调用约定通过寄存器高效地传递参数和返回值，同时定义了栈的使用和寄存器的保存规则。这种调用约定旨在优化函数调用的性能，同时保持代码的可移植性和一致性。</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250218210649562.png" alt="RISC-V calling convention register usage."></p>
+<h3 id="18-3-软浮点调用约定"><a href="#18-3-软浮点调用约定" class="headerlink" title="18.3 软浮点调用约定"></a>18.3 软浮点调用约定</h3><h5 id="核心内容总结"><a href="#核心内容总结" class="headerlink" title="核心内容总结"></a><strong>核心内容总结</strong></h5><p>软浮点调用约定是<strong>针对缺乏浮点硬件</strong>的RISC-V实现（如RV32I或RV64I）设计的调用约定。它完全避免使用浮点寄存器和浮点指令，而是通过整数寄存器来传递和处理浮点参数。以下是关键要点的总结：</p>
+<hr>
+<h5 id="1-浮点参数的处理"><a href="#1-浮点参数的处理" class="headerlink" title="1. 浮点参数的处理"></a><strong>1. 浮点参数的处理</strong></h5><ol>
+<li><strong>浮点参数传递</strong>：<ul>
+<li>浮点参数通过<strong>整数寄存器</strong>传递，遵循与相同大小的整数参数相同的规则。</li>
+<li><strong>RV32</strong>：<ul>
+<li>单精度浮点（<code>float</code>）：通过单个整数寄存器传递。</li>
+<li>双精度浮点（<code>double</code>）：通过两个连续的整数寄存器传递（例如，<code>a2</code>和<code>a3</code>）。</li>
+<li>扩展精度浮点（<code>long double</code>）：通过引用传递（存储在内存中，传递指针）。</li>
+</ul>
+</li>
+<li><strong>RV64</strong>：<ul>
+<li>单精度浮点（<code>float</code>）和双精度浮点（<code>double</code>）：通过单个整数寄存器传递。</li>
+<li>扩展精度浮点（<code>long double</code>）：通过引用传递。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：<ul>
+<li>浮点返回值通过整数寄存器返回。</li>
+<li><strong>RV32</strong>：<ul>
+<li>单精度浮点：通过<code>a0</code>返回。</li>
+<li>双精度浮点：通过<code>a0</code>和<code>a1</code>返回。</li>
+</ul>
+</li>
+<li><strong>RV64</strong>：<ul>
+<li>单精度浮点和双精度浮点：通过<code>a0</code>返回。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>示例</strong>：<ul>
+<li>在RV32中，函数<code>double foo(int, double, long double)</code>：<ul>
+<li>第一个参数（<code>int</code>）通过<code>a0</code>传递。</li>
+<li>第二个参数（<code>double</code>）通过<code>a2</code>和<code>a3</code>传递。</li>
+<li>第三个参数（<code>long double</code>）通过<code>a4</code>以引用方式传递。</li>
+<li>返回值（<code>double</code>）通过<code>a0</code>和<code>a1</code>返回。</li>
+</ul>
+</li>
+<li>在RV64中，参数通过<code>a0</code>、<code>a1</code>和<code>a2</code>-<code>a3</code>对传递，返回值通过<code>a0</code>返回。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h5 id="2-动态舍入模式和异常处理"><a href="#2-动态舍入模式和异常处理" class="headerlink" title="2. 动态舍入模式和异常处理"></a><strong>2. 动态舍入模式和异常处理</strong></h5><ul>
+<li>动态舍入模式和累积异常标志可以通过C99标准头文件<code>&lt;fenv.h&gt;</code>提供的例程访问。</li>
+<li>这些功能在软浮点实现中通过软件模拟完成，因为硬件不支持浮点操作。</li>
+</ul>
+<hr>
+<h5 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a><strong>3. 总结</strong></h5><p>软浮点调用约定是为缺乏浮点硬件的RISC-V实现设计的，通过整数寄存器传递和处理浮点参数。这种调用约定确保了即使在没有浮点单元的情况下，浮点运算也能通过软件模拟完成，同时保持与RVG调用约定的兼容性。</p>
+
                 
             </div>
             <hr/>
@@ -905,7 +1125,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.4k</span>&nbsp;字
+                class="white-color">15.3k</span>&nbsp;字
             
             
             
