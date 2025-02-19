@@ -475,21 +475,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-17
+                    2025-02-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    816
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -520,18 +520,71 @@
 <li>确保在 <code>freeproc()</code> 中释放该页面。</li>
 </ul>
 <p><strong>思考问题：</strong><br>xv6 中还有哪些其他系统调用可以通过这种共享页面的方式加速？解释如何实现。</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250219155648287.png" alt="syscall在"></p>
 <h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ul>
-<li>页表是一种数据结构，用来操控页面</li>
-<li>每次我们在分配页表的时候，我们都要初始化几个固定的页表(<strong>trampline,tampframe</strong>),这些页表出于固定的物理位置（出于内核空间与用户空间之中，所以能够很好地访问其中的内容）<ul>
-<li>并且还会有独立的<strong>陷阱帧</strong></li>
+<li>因为每个进程都需要存储一个usyscall，所以我们应该在<code>proc.h</code>，在结构体上加入。</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Per-process state</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc</span> {</span></span><br><span class="line">  <span class="type">pagetable_t</span> pagetable;       <span class="comment">// User page table</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">trapframe</span> *<span class="title">trapframe</span>;</span> <span class="comment">// data page for trampoline.S</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">usyscall</span> *<span class="title">usyscall</span>;</span>   <span class="comment">// 指向用户态系统调用页面的指针</span></span><br><span class="line">};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>使用mappages来实现页面映射</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// map 一个只读页面USYSCALL</span></span><br><span class="line">  <span class="keyword">if</span>(mappages(pagetable, USYSCALL, PGSIZE,</span><br><span class="line">              (uint64)(p-&gt;usyscall), PTE_R | PTE_U) &lt; <span class="number">0</span>){</span><br><span class="line">    uvmunmap(pagetable, TRAMPOLINE, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    uvmunmap(pagetable, TRAPFRAME, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    uvmfree(pagetable, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">mappages(<span class="type">pagetable_t</span> pagetable, uint64 va, uint64 size, uint64 pa, <span class="type">int</span> perm)</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>特别注意：VA虚拟地址是定义一个位置。而pa，物理地址实际上是proc.h中定义的。</strong></p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// static struct proc* allocproc(void)</span></span><br><span class="line"><span class="keyword">if</span>((p-&gt;usyscall = (<span class="keyword">struct</span> usyscall *)kalloc()) == <span class="number">0</span>){</span><br><span class="line">  freeproc(p);</span><br><span class="line">  release(&amp;p-&gt;lock);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line">p-&gt;usyscall-&gt;pid = p-&gt;pid; <span class="comment">//store pid</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p-&gt;usyscall)</span><br><span class="line">  kfree((<span class="type">void</span>*)p-&gt;usyscall);</span><br><span class="line">p-&gt;usyscall = <span class="number">0</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h3 id="打印页表（简单）"><a href="#打印页表（简单）" class="headerlink" title="打印页表（简单）"></a>打印页表（简单）</h3><p>为了帮助你可视化RISC-V页表，并可能为未来的调试提供帮助，你的第二个任务是编写一个打印页表内容的函数。</p>
+<p>定义一个名为<code>vmprint()</code>的函数。它应该接受一个<code>pagetable_t</code>类型的参数，并按照下面描述的格式打印该页表。在<code>exec.c</code>中，在<code>return argc</code>之前插入<code>if (p-&gt;pid == 1) vmprint(p-&gt;pagetable)</code>，以打印第一个进程的页表。如果你通过了<code>make grade</code>中的<code>pte</code>打印测试，你将获得这部分实验的全部分数。</p>
+<p>现在，当你启动Xv6时，它应该会打印类似以下内容，描述第一个进程在完成<code>exec()</code>初始化时的页表：</p>
+<p>复制</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">page table <span class="number">0x0000000087f6e000</span></span><br><span class="line"> ..<span class="number">0</span>: pte <span class="number">0x0000000021fda801</span> pa <span class="number">0x0000000087f6a000</span></span><br><span class="line"> .. ..<span class="number">0</span>: pte <span class="number">0x0000000021fda401</span> pa <span class="number">0x0000000087f69000</span></span><br><span class="line"> .. .. ..<span class="number">0</span>: pte <span class="number">0x0000000021fdac1f</span> pa <span class="number">0x0000000087f6b000</span></span><br><span class="line"> .. .. ..<span class="number">1</span>: pte <span class="number">0x0000000021fda00f</span> pa <span class="number">0x0000000087f68000</span></span><br><span class="line"> .. .. ..<span class="number">2</span>: pte <span class="number">0x0000000021fd9c1f</span> pa <span class="number">0x0000000087f67000</span></span><br><span class="line"> ..<span class="number">255</span>: pte <span class="number">0x0000000021fdb401</span> pa <span class="number">0x0000000087f6d000</span></span><br><span class="line"> .. ..<span class="number">511</span>: pte <span class="number">0x0000000021fdb001</span> pa <span class="number">0x0000000087f6c000</span></span><br><span class="line"> .. .. ..<span class="number">509</span>: pte <span class="number">0x0000000021fdd813</span> pa <span class="number">0x0000000087f76000</span></span><br><span class="line"> .. .. ..<span class="number">510</span>: pte <span class="number">0x0000000021fddc07</span> pa <span class="number">0x0000000087f77000</span></span><br><span class="line"> .. .. ..<span class="number">511</span>: pte <span class="number">0x0000000020001c0b</span> pa <span class="number">0x0000000080007000</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>第一行显示传递给<code>vmprint</code>的参数。之后，每一行对应一个PTE（页表条目），包括引用树中更深层次的页表页面的PTE。每个PTE行通过缩进的“..”数量表示其在树中的深度。每个PTE行显示其在页表页面中的索引、PTE的位以及从PTE中提取的物理地址。不要打印无效的PTE。在上面的例子中，顶级页表页面有条目0和255的映射。条目0的下一层只有索引0被映射，而该索引0的底层有条目0、1和2被映射。</p>
+<p>你的代码可能会输出与上面不同的物理地址。条目数量和虚拟地址应该是相同的。</p>
+<h4 id="一些建议："><a href="#一些建议：" class="headerlink" title="一些建议："></a>一些建议：</h4><ul>
+<li>你可以将<code>vmprint()</code>放在<code>kernel/vm.c</code>中。</li>
+<li>使用<code>kernel/riscv.h</code>文件末尾的宏。</li>
+<li><code>freewalk</code>函数可能会给你一些启发。</li>
+<li>在<code>kernel/defs.h</code>中定义<code>vmprint</code>的原型，以便从<code>exec.c</code>中调用它。</li>
+<li>在<code>printf</code>调用中使用<code>%p</code>打印完整的64位十六进制PTE和地址，如示例所示。</li>
+</ul>
+<h4 id="解释vmprint的输出"><a href="#解释vmprint的输出" class="headerlink" title="解释vmprint的输出"></a>解释<code>vmprint</code>的输出</h4><p>根据文本中的图3-4解释<code>vmprint</code>的输出。页0中包含什么？页2中有什么？在用户模式下运行时，进程能否读写页1映射的内存？倒数第三页包含什么？</p>
+<hr>
+<h4 id="解释示例输出"><a href="#解释示例输出" class="headerlink" title="解释示例输出"></a>解释示例输出</h4><ol>
+<li><strong>页表的结构</strong>：<ul>
+<li>页表是一个多级结构，每一级由页表条目（PTE）组成。</li>
+<li>每个PTE可以指向一个物理页面或下一级页表。</li>
 </ul>
 </li>
+<li><strong>页0的内容</strong>：<ul>
+<li>页0通常包含内核代码或数据。在Xv6中，页0可能映射了内核的某些部分。</li>
 </ul>
-<p>==一定是先创建页表，然后创建页面==</p>
-<p><strong>特别地，我们要思考一个问题， <code>allocproc</code> 函数中，并不是“先创建页面，再创建页表”，而是“先分配陷阱帧页面，再创建页表”</strong>。</p>
-<h4 id="2-为什么先分配陷阱帧页面？"><a href="#2-为什么先分配陷阱帧页面？" class="headerlink" title="2. 为什么先分配陷阱帧页面？"></a>2. <strong>为什么先分配陷阱帧页面？</strong></h4><p>陷阱帧页面的分配并不是“先于页表创建页面”，而是为了初始化进程的内核状态。陷阱帧是进程在内核中运行时必须具备的数据结构，它与页表的创建是两个独立的步骤。具体原因如下：</p>
-<h5 id="（1）陷阱帧是内核态的上下文保存区"><a href="#（1）陷阱帧是内核态的上下文保存区" class="headerlink" title="（1）陷阱帧是内核态的上下文保存区"></a>（1）<strong>陷阱帧是内核态的上下文保存区</strong></h5><p>陷阱帧页面是为内核态准备的，用于保存进程进入内核时的用户态上下文。它与虚拟内存映射无关，而是与进程的内核态执行逻辑紧密相关。因此，它需要在页表创建之前分配，以便在进程初始化时能够正确设置内核态的上下文。</p>
-<h5 id="（2）页表是虚拟内存映射的基础"><a href="#（2）页表是虚拟内存映射的基础" class="headerlink" title="（2）页表是虚拟内存映射的基础"></a>（2）<strong>页表是虚拟内存映射的基础</strong></h5><p>页表的创建是为了定义进程的虚拟内存空间，将虚拟地址映射到物理地址。它是一个独立的步骤，用于初始化进程的用户态虚拟内存环境。页表的创建依赖于内核态的基础设施（如陷阱帧），因为内核需要通过陷阱帧来管理进程的上下文切换。</p>
+</li>
+<li><strong>页2的内容</strong>：<ul>
+<li>页2可能包含用户空间的堆或栈。具体取决于进程的内存布局。</li>
+</ul>
+</li>
+<li><strong>页1的访问权限</strong>：<ul>
+<li>在用户模式下，进程是否可以读写页1映射的内存取决于PTE的权限位（如<code>PTE_U</code>和<code>PTE_W</code>）。</li>
+<li>如果PTE的<code>PTE_U</code>位被设置，则用户模式可以访问该页面；如果<code>PTE_W</code>位被设置，则可以写入。</li>
+</ul>
+</li>
+<li><strong>倒数第三页的内容</strong>：<ul>
+<li>倒数第三页可能是一个用户空间的页面，用于存储进程的代码、数据或栈。</li>
+<li>具体内容取决于进程的内存布局和页表的映射。</li>
+</ul>
+</li>
+</ol>
+<p>通过<code>vmprint</code>的输出，你可以清晰地看到进程的内存布局以及每个页面的映射情况。</p>
 
                 
             </div>
@@ -948,7 +1001,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">22.9k</span>&nbsp;字
+                class="white-color">23.5k</span>&nbsp;字
             
             
             
