@@ -439,8 +439,8 @@
                                 <span class="chip bg-color">操作系统</span>
                             </a>
                         
-                            <a href="/tags/MIT6-s08/">
-                                <span class="chip bg-color">MIT6.s08</span>
+                            <a href="/tags/MIT6-s081/">
+                                <span class="chip bg-color">MIT6.s081</span>
                             </a>
                         
                     </div>
@@ -515,7 +515,7 @@
 <p>有三种事件会导致CPU中断普通指令的执行</p>
 <ol>
 <li>系统调用ecall，会使得将权限转为内核，执行内核指令</li>
-<li>异常Extension，一条指令（无论是用户态还是内核态）执行了非法操作<ol>
+<li>异常Exception，一条指令（无论是用户态还是内核态）执行了非法操作<ol>
 <li>例如除以零或使用无效的虚拟地址。</li>
 </ol>
 </li>
@@ -536,7 +536,7 @@
 <p>我们要先回答一个问题，为什么陷阱要在内核中执行。</p>
 <ol>
 <li>对于ecall，这本身就需要提高权限才能执行内核操作。</li>
-<li>对于Extension，我们一般执行panic，将异常的进程直接kill</li>
+<li>对于Exception，我们一般执行panic，将异常的进程直接kill</li>
 <li>对于设备中断，一般诸如读写操作等，使用内核空间相较于user space的反应更快</li>
 </ol>
 <blockquote>
@@ -595,13 +595,17 @@
 </ol>
 <p>注意，CPU不会切换到内核页表，不会切换到内核栈，也不会保存任何寄存器，除了PC。这些任务必须由内核软件完成。</p>
 <h3 id="4-2-来自用户空间的陷阱"><a href="#4-2-来自用户空间的陷阱" class="headerlink" title="4.2 来自用户空间的陷阱"></a>4.2 来自用户空间的陷阱</h3><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20230923151811134.png" alt="high-level picture of the procedure of switching from user mode to supervisor mode"></p>
-<p>来自用户空间的陷阱的高层路径是：</p>
-<ul>
-<li><code>uservec</code>（<code>kernel/trampoline.S:16</code>），</li>
-<li>然后是<code>usertrap</code>（<code>kernel/trap.c:37</code>）；</li>
-<li>在返回时，路径是<code>usertrapret</code>（<code>kernel/trap.c:90</code>），</li>
-<li>然后是<code>userret</code>（<code>kernel/trampoline.S:88</code>）。</li>
-</ul>
+<p>用户态通过<code>syscall</code>切换到内核态，并执行系统调用的完整过程：</p>
+<ol>
+<li>用户态程序执行<code>ecall</code>指令。</li>
+<li>触发软件中断，CPU保存当前寄存器状态到跳板页。</li>
+<li>CPU跳转到<code>uservec</code>处理向量。</li>
+<li><code>uservec</code>设置寄存器，跳转到<code>usertrap</code>。</li>
+<li><code>usertrap</code>保存更多上下文信息，并调用<code>syscall</code>。</li>
+<li><code>syscall</code>根据<code>a7</code>中的系统调用号，决定执行哪个系统调用处理函数。</li>
+<li>执行相应的系统调用处理函数。</li>
+<li>完成后，<code>syscall</code>返回，<code>usertrap</code>恢复上下文，跳回用户态继续执行。</li>
+</ol>
 <h4 id="“跳板页”（trampoline-page）"><a href="#“跳板页”（trampoline-page）" class="headerlink" title="“跳板页”（trampoline page）"></a>“跳板页”（trampoline page）</h4><p>Xv6陷阱处理设计的一个主要限制是：**RISC-V硬件在强制执行陷阱时不会切换页表。**这意味着<code>stvec</code>中的陷阱处理程序地址必须在用户页表中有有效的映射，因为当陷阱处理代码开始执行时，生效的是用户页表。此外，Xv6的陷阱处理代码需要切换到内核页表；为了在切换后能够继续执行，内核页表也必须对<code>stvec</code>指向的处理程序有映射。（<strong>这是一个在内存上，user space和kernel space拥有共同物理地址的地方</strong>）</p>
 <p>Xv6通过一个“跳板页”（trampoline page）来满足这些要求。跳板页包含<code>uservec</code>，这是<code>stvec</code>指向的Xv6陷阱处理代码。跳板页在每个进程的页表中都映射到地址<code>TRAMPOLINE</code>，该地址位于虚拟地址空间的末尾，以便它位于程序为自己使用的内存之上。跳板页也在内核页表中映射到地址<code>TRAMPOLINE</code>。<strong>因此可以在监督模式下从那里开始执行陷阱处理。由于跳板页在内核地址空间中映射到相同的地址，因此在切换到内核页表后，陷阱处理程序可以继续执行。</strong></p>
 <h4 id="uservec的执行"><a href="#uservec的执行" class="headerlink" title="uservec的执行"></a>uservec的执行</h4><blockquote>
@@ -867,8 +871,8 @@
                                     <span class="chip bg-color">操作系统</span>
                                 </a>
                             
-                                <a href="/tags/MIT6-s08/">
-                                    <span class="chip bg-color">MIT6.s08</span>
+                                <a href="/tags/MIT6-s081/">
+                                    <span class="chip bg-color">MIT6.s081</span>
                                 </a>
                             
                         </div>
@@ -1215,7 +1219,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.5k</span>&nbsp;字
+                class="white-color">24.2k</span>&nbsp;字
             
             
             
