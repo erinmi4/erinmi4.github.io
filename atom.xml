@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-02-23T02:44:08.195Z</updated>
+  <updated>2025-02-23T12:40:43.491Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一部分——虚拟化——进程调度</title>
+    <title>内存虚拟化</title>
+    <link href="https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/"/>
+    <id>https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/</id>
+    <published>2025-02-23T12:07:00.000Z</published>
+    <updated>2025-02-23T12:40:43.491Z</updated>
+    
+    
+    
+    
+    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="《操作系统导论》" scheme="https://erinmi4.github.io/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>lec2矩阵消元</title>
+    <link href="https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec2/"/>
+    <id>https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec2/</id>
+    <published>2025-02-23T09:10:00.000Z</published>
+    <updated>2025-02-23T09:13:45.872Z</updated>
+    
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="MIT18.06SC 2011fall" scheme="https://erinmi4.github.io/tags/MIT18-06SC-2011fall/"/>
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CPU虚拟化——进程调度(2)</title>
     <link href="https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/"/>
     <id>https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/</id>
     <published>2025-02-23T01:07:00.000Z</published>
-    <updated>2025-02-23T02:44:08.195Z</updated>
+    <updated>2025-02-23T12:37:38.425Z</updated>
     
     
       
@@ -44,11 +84,11 @@
   </entry>
   
   <entry>
-    <title>第一部分——虚拟化——进程创建与虚拟化实现</title>
+    <title>CPU虚拟化——进程创建与虚拟化实现(1)</title>
     <link href="https://erinmi4.github.io/2025/02/22/cao-zuo-xi-tong-dao-lun-xu-ni-hua-1/"/>
     <id>https://erinmi4.github.io/2025/02/22/cao-zuo-xi-tong-dao-lun-xu-ni-hua-1/</id>
     <published>2025-02-22T08:47:00.000Z</published>
-    <updated>2025-02-23T01:52:26.538Z</updated>
+    <updated>2025-02-23T09:35:35.282Z</updated>
     
     
       
@@ -76,27 +116,6 @@
     <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     <category term="《操作系统导论》" scheme="https://erinmi4.github.io/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>方程组的几何解释</title>
-    <link href="https://erinmi4.github.io/2025/02/20/xian-xing-dai-shu-lec1/"/>
-    <id>https://erinmi4.github.io/2025/02/20/xian-xing-dai-shu-lec1/</id>
-    <published>2025-02-20T04:47:00.000Z</published>
-    <updated>2025-02-22T07:43:09.738Z</updated>
-    
-    
-    
-    
-    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-    <category term="MIT18.06SC 2011fall" scheme="https://erinmi4.github.io/tags/MIT18-06SC-2011fall/"/>
-    
-    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
-    
-    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
     
   </entry>
   

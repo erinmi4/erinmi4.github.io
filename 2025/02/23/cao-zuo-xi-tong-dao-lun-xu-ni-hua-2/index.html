@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="第一部分——虚拟化——进程调度, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="CPU虚拟化——进程调度(2), MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>第一部分——虚拟化——进程调度 | MIKA的博客</title>
+    <title>CPU虚拟化——进程调度(2) | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -318,12 +318,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">第一部分——虚拟化——进程调度</h1>
+                    <h1 class="description center-align post-title">CPU虚拟化——进程调度(2)</h1>
                 </div>
             </div>
         </div>
@@ -482,14 +482,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    5.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    18 分
                 </div>
                 
 
@@ -635,11 +635,85 @@
 <p>可能有一些问题，执行时间很长，但是同时又会设置I/O</p>
 <p>所以需要同时判断两个指标</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223103608843.png" alt="image-20250223103608843"></p>
-<h3 id="第9章-调度：比例份额"><a href="#第9章-调度：比例份额" class="headerlink" title="第9章　调度：比例份额"></a>第9章　调度：比例份额</h3><blockquote>
+<h3 id="第9章-调度：比例份额"><a href="#第9章-调度：比例份额" class="headerlink" title="第9章　调度：比例份额"></a>第9章　调度：比例份额</h3><p>本章介绍了比例份额调度的概念，并简单讨论了两种实现：彩票调度和步长调度。</p>
+<p>彩票调度通过随机值，聪明地做到了按比例分配。</p>
+<p>步长调度算法能够确定的获得需要的比例。</p>
+<p>虽然两者都很有趣，但由于一些原因，并没有作为CPU调度程序被广泛使用。一个原因是这两种方式都不能很好地适合I/O[AC97]；另一个原因是其中最难的票数分配问题并没有确定的解决方式，例如，如何知道浏览器进程应该拥有多少票数？通用调度程序（像前面讨论的MLFQ及其他类似的Linux调度程序）做得更好，因此得到了广泛的应用。</p>
+<blockquote>
 <p>比例份额算法基于一个简单的想法：调度程序的最终目标，是确保每个工作获得一定比例的CPU时间，而不是优化周转时间和响应时间。</p>
 <p>比例份额调度程序有一个非常优秀的现代例子，由Waldspurger和Weihl发现，名为彩票调度（lottery scheduling） [WW94]。但这个想法其实出现得更早[KL88]。基本思想很简单：每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。很简单吧？现在，谈谈细节！但还是先看看下面的关键问题。</p>
 </blockquote>
-<h4 id="9-1-基本概念：彩票数表示份额"><a href="#9-1-基本概念：彩票数表示份额" class="headerlink" title="9.1　基本概念：彩票数表示份额"></a>9.1　基本概念：彩票数表示份额</h4>
+<p><strong>为什么我们需要彩票机制</strong><br>我们希望可以通过一种随机性来执行某个进程，并且这种随机性会受到进程调用的次数影响。也就是更为频繁调用的进程会得到更多的彩票。</p>
+<p><strong>为什么我们需要随机性</strong></p>
+<ul>
+<li><p>没有特殊情况，比如哪个程序更为重要执行哪一个，一切都是随机性。</p>
+</li>
+<li><p>不需要通过过往的历史（不需要记录状态）来判断将来要如何分配资源（这样会占用资源）</p>
+</li>
+</ul>
+<h4 id="彩票调度"><a href="#彩票调度" class="headerlink" title="彩票调度"></a>彩票调度</h4><p>基本思想很简单：每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。</p>
+<h5 id="彩票机制"><a href="#彩票机制" class="headerlink" title="彩票机制"></a>彩票机制</h5><ol>
+<li>彩票货币：可以让用户自己设定，虽然资源是100，但是用户可以设定一共有500张彩票（或者更多）然后分配，只是计算占比而已</li>
+<li>彩票转让：比如客户端希望服务器能够更快返回结果，就转让彩票</li>
+<li>彩票通胀：如果进程认为自己相当重要（或者不重要）可以直接加减自身的彩票</li>
+</ol>
+<h5 id="彩票调度如何实现"><a href="#彩票调度如何实现" class="headerlink" title="彩票调度如何实现"></a>彩票调度如何实现</h5><p>出人意料地简单。通过一个链表就可以。</p>
+<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250223183219993.png" alt="彩票调度"></p>
+<p>首先要从彩票总数400中选择一个随机数（中奖号码）。假设选择了300。然后，遍历链表，用一个简单的计数器帮助我们找到中奖者将每张票的值加到counter上，直到值超过winner。这时，当前的列表元素所对应的进程就是中奖者。在我们的例子中，中奖彩票是300。首先，计A的票后，counter增加到100。因为100小于300，继续遍历。然后counter会增加到150（B的彩票），仍然小于300，继续遍历。最后，counter增加到400（显然大于300），因此退出遍历，current指向C（中奖者）。</p>
+<p><strong>但是彩票机制存在一个非常重要的问题，对于绝大多数的进程，我们并不知道它的执行时间，更不用说该如何分配彩票了</strong></p>
+<h4 id="步长调度"><a href="#步长调度" class="headerlink" title="步长调度"></a>步长调度</h4><blockquote>
+<p>步长调度也很简单。系统中的每个工作都有自己的步长，这个值与票数值成反比。在上面的例子中，A、B、C这3个工作的票数分别是100、50和250，我们通过用一个大数分别除以他们的票数来获得每个进程的步长。比如用10000除以这些票数值，得到了3个进程的步长分别为100、200和40。我们称这个值为每个进程的步长（stride）。每次进程运行后，我们会让它的计数器 [称为行程（pass）值] 增加它的步长，记录它的总体进展。之后，调度程序使用进程的步长及行程值来确定调度哪个进程。基本思路很简单：当需要进行调度时，选择目前拥有最小行程值的进程，并且在运行之后将该进程的行程值增加一个步长。</p>
+</blockquote>
+<p>每次运行行程最短的。</p>
+<p>这样可以维持一定的<strong>公平性</strong></p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223183524042.png" alt="步长调度"></p>
+<h3 id="第10章：多处理器调度"><a href="#第10章：多处理器调度" class="headerlink" title="第10章：多处理器调度"></a>第10章：多处理器调度</h3><h4 id="多核处理器和单核处理器"><a href="#多核处理器和单核处理器" class="headerlink" title="多核处理器和单核处理器"></a>多核处理器和单核处理器</h4><p><strong>为什么我们需要多核（CPU）处理器</strong></p>
+<p>因为当我们提升单核处理器的速度的同时，能耗也在不断上升。甚至已经称为了一个不得不考虑的问题。</p>
+<p>采用多核是解决矛盾的一种方式。</p>
+<p><strong>多核处理器的问题</strong></p>
+<ul>
+<li>正如我们的进程一样，一个进程只能在一个CPU上运行。如果我们有两个进程，和两个CPU，一个快，一个慢。那么会造成一块CPU的资源浪费<ul>
+<li>所以，我们引入<strong>线程</strong></li>
+</ul>
+</li>
+<li>缓存一致性问题：如果多个CPU不是共用缓存，他们在修改内存的时候，对方CPU是不知道的。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223185018813.png" alt="缓存一致性问题"></p>
+<p><strong>单核与多核在架构上有什么区别</strong></p>
+<p>除了CPU个数，最为本质的区别是缓存</p>
+<blockquote>
+<p>缓存本质上是一个小的内存，是内存与CPU之间的桥梁。</p>
+<p>利用了时间局部性和空间局部性的结果。</p>
+</blockquote>
+<h4 id="多核处理器的数据访问"><a href="#多核处理器的数据访问" class="headerlink" title="多核处理器的数据访问"></a>多核处理器的数据访问</h4><p><strong>如何实现跨CPU访问</strong></p>
+<ol>
+<li>使用总线监控数据，如果存在变动，会通知</li>
+<li>使用<strong>互斥锁</strong>来实现原子操作</li>
+</ol>
+<p>在之前，我们就提到了进程是一系列指令，准确地来说，进程是指令和一系列静态数据，有栈，有地址空间。</p>
+<p>但是这些数据在上下文切换的时候，都是保存在一个CPU上的。</p>
+<p>如果我们使用多线程，下一个线程是在另一个CPU上，怎么办</p>
+<p>所以我们尽可能分配在同一个CPU上，也就是<strong>缓存亲和性</strong></p>
+<h4 id="多核处理器的任务调度"><a href="#多核处理器的任务调度" class="headerlink" title="多核处理器的任务调度"></a>多核处理器的任务调度</h4><h4 id="单读列调度"><a href="#单读列调度" class="headerlink" title="单读列调度"></a>单读列调度</h4><p>对于多个（可能是4个）CPU，只有一个队列，每次将任务添加进来，然后随机地（或者有规律）地将任务分配给每个CPU</p>
+<p>问题</p>
+<p>因为是一个队列分配给多个CPU，也就是，统一任务在不同时间可能会在不同CPU上执行。</p>
+<ol>
+<li>锁：总是要去判断锁，开关锁</li>
+<li>缓存亲和问题.<ol>
+<li>为了解决这个问题，大多数SQMS调度程序都引入了一些亲和度机制，尽可能让进程在同一个CPU上运行。保持一些工作的亲和度的同时，可能需要牺牲其他工作的亲和度来实现负载均衡。例如，针对同样的5个工作的调度如下：</li>
+<li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223203628170.png" alt="亲和度机制"></li>
+<li>这种调度中，A、B、C、D 这4个工作都保持在同一个CPU上，只有工作E不断地来回迁移（migrating），从而尽可能多地获得缓存亲和度。为了公平起见，之后我们可以选择不同的工作来迁移。但实现这种策略可能很复杂。</li>
+</ol>
+</li>
+</ol>
+<h4 id="多队列调度"><a href="#多队列调度" class="headerlink" title="多队列调度"></a>多队列调度</h4><p>每个CPU都有独立的队列和调度策略。</p>
+<p>问题：</p>
+<p>即<strong>负载不均</strong>（load imbalance）。假定和上面设定一样（4个工作，2个CPU），但假设一个工作（如C）这时执行完毕。现在调度队列如下：</p>
+<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250223203520133.png" alt="负载不均"></p>
+<p>解决办法：</p>
+<p>不断地迁移一个或多个工作。一种可能的解决方案是不断切换工作，如下面的时间线所示。可以看到，开始的时候A独享CPU 0，B和D在CPU 1。一些时间片后，B迁移到CPU 0与A竞争，D则独享CPU 1一段时间。这样就实现了负载均衡。</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223203732328.png" alt="迁移任务"></p>
+
                 
             </div>
             <hr/>
@@ -752,18 +826,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/">
+                <a href="/2025/02/23/xian-xing-dai-shu-lec2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="第一部分——虚拟化——进程调度">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="lec2矩阵消元">
                         
-                        <span class="card-title">第一部分——虚拟化——进程调度</span>
+                        <span class="card-title">lec2矩阵消元</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -773,31 +846,34 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                    数学
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
+                    <a href="/tags/MIT18-06SC-2011fall/">
+                        <span class="chip bg-color">MIT18.06SC 2011fall</span>
                     </a>
                     
-                    <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
-                        <span class="chip bg-color">《操作系统导论》</span>
+                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+                        <span class="chip bg-color">线性代数</span>
+                    </a>
+                    
+                    <a href="/tags/problem-sets/">
+                        <span class="chip bg-color">problem-sets</span>
                     </a>
                     
                 </div>
@@ -815,9 +891,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="第一部分——虚拟化——进程创建与虚拟化实现">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="CPU虚拟化——进程创建与虚拟化实现(1)">
                         
-                        <span class="card-title">第一部分——虚拟化——进程创建与虚拟化实现</span>
+                        <span class="card-title">CPU虚拟化——进程创建与虚拟化实现(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1053,7 +1129,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">32.1k</span>&nbsp;字
+                class="white-color">34k</span>&nbsp;字
             
             
             
