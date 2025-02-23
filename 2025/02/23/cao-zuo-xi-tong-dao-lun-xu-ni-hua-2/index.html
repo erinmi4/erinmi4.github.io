@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CS144 checkpoint 1, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="第一部分——虚拟化——进程调度, MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CS144 checkpoint 1 | MIKA的博客</title>
+    <title>第一部分——虚拟化——进程调度 | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -318,12 +318,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CS144 checkpoint 1</h1>
+                    <h1 class="description center-align post-title">第一部分——虚拟化——进程调度</h1>
                 </div>
             </div>
         </div>
@@ -439,16 +439,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/lab/">
-                                <span class="chip bg-color">lab</span>
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
                             </a>
                         
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                <span class="chip bg-color">计算机网络</span>
-                            </a>
-                        
-                            <a href="/tags/Stanford-CS144/">
-                                <span class="chip bg-color">Stanford CS144</span>
+                            <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
+                                <span class="chip bg-color">《操作系统导论》</span>
                             </a>
                         
                     </div>
@@ -459,8 +455,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                计算机网络
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
                             </a>
                         
                     </div>
@@ -472,28 +468,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-02-19
+                    2025-02-23
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-19
+                    2025-02-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    3.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    11 分
                 </div>
                 
 
@@ -513,7 +509,137 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="第7章-进程调度：介绍"><a href="#第7章-进程调度：介绍" class="headerlink" title="第7章　进程调度：介绍"></a>第7章　进程调度：介绍</h3><p>我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I/O结合到场景中，但仍未解决操作系统根本无法看到未来的问题。</p>
+<h4 id="7-1-工作负载假设"><a href="#7-1-工作负载假设" class="headerlink" title="7.1　工作负载假设"></a>7.1　工作负载假设</h4><p>或许，在一开始，我们可以认为我们的内核是无所不知的，那当然它可以采用最优化的方法来对工作进行分配。</p>
+<blockquote>
+<p>我们对操作系统中运行的进程（有时也叫工作任务）做出如下的假设：</p>
+<p>1．每一个工作运行相同的时间。</p>
+<p>2．所有的工作同时到达。</p>
+<p>3．一旦开始，每个工作保持运行直到完成。</p>
+<p>4．所有的工作只是用CPU（即它们不执行IO操作）。</p>
+<p>5．每个工作的运行时间是已知的。</p>
+</blockquote>
+<h4 id="7-2-调度指标"><a href="#7-2-调度指标" class="headerlink" title="7.2　调度指标"></a>7.2　调度指标</h4><p>如果我们已经能够对工作无所不知，那么我们应该制定一个指标来确保我们优先运行什么。</p>
+<p>不妨定义： T周转时间= T完成时间−T到达时间</p>
+<ul>
+<li><p>性能指标</p>
+<ul>
+<li>如果我们期待快速得到某个程序的结果，那最好的办法就是一直运行这个程序</li>
+</ul>
+</li>
+<li><p>公平指标</p>
+<ul>
+<li>如果我们期待所有的程序都有同样的机会被运行，那么最好的办法就是每个都只执行固定的时间</li>
+</ul>
+<p>两种指标是矛盾的</p>
+<p><strong>我们开发了两种调度程序。第一种类型（SJF、STCF）优化周转时间，但对响应时间不利。第二种类型（RR）优化响应时间，但对周转时间不利。</strong></p>
+</li>
+</ul>
+<h4 id="7-3-先进先出（FIFO）"><a href="#7-3-先进先出（FIFO）" class="headerlink" title="7.3　先进先出（FIFO）"></a>7.3　先进先出（FIFO）</h4><p>我们可以实现的最基本的算法，被称为先进先出（First In First Out或FIFO）调度，有时候也称为先到先服务（First Come First Served 或FCFS）。</p>
+<p>在假设中我们认为</p>
+<p>1．每一个工作运行相同的时间。</p>
+<p>如果现在有3个10s的程序同时到来，那么平均的周转时间就是 = (10 + 20 + 30) / 3 = 20s</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223094744285.png" alt="3个10s的程序同时到来"></p>
+<p>但是如果我们推翻这个假设，具体来说，我们再次假设3个任务（A、B和C），但这次A运行100s，而B和C运行10s。如图7.2所示，A先运行100s，B或C才有机会运行。因此，系统的平均周转时间是比较高的：令人不快的110s（（100 + 110 + 120）/ 3 = 110）。</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223094925855.png" alt="FIFO的失败之处"></p>
+<p>如果所有程序的优先级都是相同的，那么将时间最长的放在前面，会导致总体的平均周转时长变长</p>
+<blockquote>
+<p>这个问题通常被称为护航效应（convoy effect）[B+79]，一些耗时较少的潜在资源消费者被排在重量级的资源消费者之后。这个调度方案可能让你想起在杂货店只有一个排队队伍的时候，如果看到前面的人装满 3 辆购物车食品并且掏出了支票本，你感觉如何？这会等很长时间[2]。提示：SJF原则最短任务优先代表一个总体调度原则，可以应用于所有系统，只要其中平均客户（或在我们案例中的任务）周转时间很重要。想想你等待的任何队伍：如果有关的机构关心客户满意度，他们可能会考虑到SJF。例如，大超市通常都有一个“零散购物”的通道，以确保仅购买几件东西的购物者，不会堵在为即将到来的冬天而大量购物以做准备的家庭后面。</p>
+</blockquote>
+<h4 id="7-4-最短任务优先（SJF）"><a href="#7-4-最短任务优先（SJF）" class="headerlink" title="7.4　最短任务优先（SJF）"></a>7.4　最短任务优先（SJF）</h4><p>先运行最短的任务，然后是次短的任务，如此下去。</p>
+<h4 id="7-5-最短完成时间优先（STCF）"><a href="#7-5-最短完成时间优先（STCF）" class="headerlink" title="7.5　最短完成时间优先（STCF）"></a>7.5　最短完成时间优先（STCF）</h4><p>现在我们要推翻假设2，如果所有程序不是同时到来，而是随机来到呢</p>
+<p>如果现在执行时间最长的任务最先来，执行最短的任务最后来。</p>
+<p>不就又形成了护航效应吗？</p>
+<p>我们通过抢占式操作来优化这个问题。</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223095648771.png" alt="护航效应"></p>
+<p>现在我们的调度程序，任然具有超能力，能够知道所有程序的执行时间</p>
+<ul>
+<li>当每个程序被加入，判断完成该任务的时间是否为最短</li>
+<li>将最短时间任务抢占执行</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223095834536.png" alt="STCF抢占执行"></p>
+<h4 id="7-6-新度量指标：响应时间"><a href="#7-6-新度量指标：响应时间" class="headerlink" title="7.6　新度量指标：响应时间"></a>7.6　新度量指标：响应时间</h4><blockquote>
+<p>因此，如果我们知道任务长度，而且任务只使用CPU，而我们唯一的衡量是周转时间，STCF将是一个很好的策略。事实上，对于许多早期批处理系统，这些类型的调度算法有一定的意义。然而，引入分时系统改变了这一切。现在，用户将会坐在终端前面，同时也要求系统的交互性好。因此，一个新的度量标准诞生了：响应时间（response time）。响应时间定义为从任务到达系统到首次运行的时间。更正式的定义是：</p>
+<p>T响应时间= T首次运行−T到达时间　　　　（7.2）</p>
+</blockquote>
+<p>例如，如果我们有上面的调度（A在时间0到达，B和C在时间10达到），每个作业的响应时间如下：作业A为0，B为0，C为10（平均：3.33）。</p>
+<p><strong>如何构建对响应时间敏感的调度程序？</strong></p>
+<h4 id="7-7轮转RR"><a href="#7-7轮转RR" class="headerlink" title="7.7轮转RR"></a>7.7轮转RR</h4><blockquote>
+<p>RR在一个时间片（time slice，有时称为调度量子，scheduling quantum）内运行一个工作，然后切换到运行队列中的下一个任务，而不是运行一个任务直到结束。它反复执行，直到所有任务完成。因此，RR有时被称为时间切片（time-slicing）。请注意，时间片长度必须是时钟中断周期的倍数。因此，如果时钟中断是每10ms中断一次，则时间片可以是10ms、20ms或10ms的任何其他倍数。</p>
+</blockquote>
+<p>这是一种极为公平的策略。同时每一项的响应时间都是比较快的。<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223100451678.png" alt="轮转RR"></p>
+<p>时间片越小，效应时间越快。</p>
+<p>但是时间片越小，上下文切换的成本就越大。</p>
+<p>要衡量这一对矛盾</p>
+<h4 id="7-8-结合I-O"><a href="#7-8-结合I-O" class="headerlink" title="7.8　结合I/O"></a>7.8　结合I/O</h4><p>和我们前面学习的<strong>进程状态</strong>一样。</p>
+<p>当程序申请I/O时候，该程序会被阻塞，也就不会使用CPU。</p>
+<p>如果这时候CPU不执行任何程序，也就会造成资源的浪费。</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223101007186.png" alt="I/O期间不执行程序"></p>
+<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250223101031755.png" alt="使用重叠执行程序"></p>
+<h3 id="第8章-调度：多级反馈队列"><a href="#第8章-调度：多级反馈队列" class="headerlink" title="第8章　调度：多级反馈队列"></a>第8章　调度：多级反馈队列</h3><p>本章介绍了一种调度方式，名为多级反馈队列（MLFQ）。你应该已经知道它为什么叫这个名字——它有多级队列，并利用反馈信息决定某个工作的优先级。以史为鉴：关注进程的一贯表现，然后区别对待</p>
+<p>本章包含了一组优化的MLFQ规则。为了方便查阅，我们重新列在这里。</p>
+<p>● 规则1：如果A的优先级 &gt; B的优先级，运行A（不运行B）。</p>
+<p>● 规则2：如果A的优先级 = B的优先级，轮转运行A和B。</p>
+<p>● 规则3：工作进入系统时，放在最高优先级（最上层队列）。</p>
+<p>● 规则 4：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次CPU），就降低其优先级（移入低一级队列）。</p>
+<p>● 规则5：经过一段时间S，就将系统中所有工作重新加入最高优先级队列。</p>
+<p>通过这种方式，MLFQ可以同时满足各种工作的需求：对于短时间运行的交互型工作，获得类似于SJF/STCF的很好的全局性能，同时对长时间运行的CPU密集型负载也可以公平地、不断地稳步向前。</p>
+<p>总的来说只有两点</p>
+<ol>
+<li>识别程序时间</li>
+<li>改变优先级</li>
+</ol>
+<blockquote>
+<p>多级反馈队列是<strong>用历史经验预测未来</strong>的一个典型的例子，操作系统中有很多地方采用了这种技术（同样存在于计算机科学领域的很多其他地方，比如硬件的分支预测及缓存算法）。如果工作有明显的阶段性行为，因此可以预测，那么这种方式会很有效。当然，必须十分小心地使用这种技术，因为它可能出错，让系统做出比一无所知的时候更糟的决定。</p>
+</blockquote>
+<h4 id="8-1-MLFQ：基本规则"><a href="#8-1-MLFQ：基本规则" class="headerlink" title="8.1　MLFQ：基本规则"></a>8.1　MLFQ：基本规则</h4><p>我们知道SJF的优势在于周转时间，因为它存在优先级抢占</p>
+<p>而RR的优势在于响应时间，因为它最为平等。</p>
+<p>我们通过引入队列来将二者的优点结合起来</p>
+<p>MLFQ中有许多独立的队列（queue），每个队列有不同的优先级（priority level）。任何时刻，一个工作只能存在于一个队列中。MLFQ总是优先执行较高优先级的工作（即在较高级队列中的工作）。</p>
+<ul>
+<li>规则1：如果A的优先级 &gt; B的优先级，运行A（不运行B）</li>
+<li>规则2：如果A的优先级 = B的优先级，轮转运行A和B。</li>
+</ul>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223101825161.png" alt="MLFQ的例子" style="zoom:50%;">
+
+<h4 id="8-2-尝试1：如何改变优先级"><a href="#8-2-尝试1：如何改变优先级" class="headerlink" title="8.2　尝试1：如何改变优先级"></a>8.2　尝试1：如何改变优先级</h4><p>总的来说，对于策略调度，我们有两个大的方向</p>
+<ol>
+<li>将运行时间长的长任务放到低优先级</li>
+<li>将运行时间短，特别是经常I/O操作的交互型任务（读取键盘输入）放到优先级高</li>
+</ol>
+<p>也即是我们要判断任务的长短。</p>
+<blockquote>
+<p>我们必须决定，在一个工作的生命周期中，MLFQ如何改变其优先级（在哪个队列中）。要做到这一点，我们必须记得工作负载：既有运行时间很短、频繁放弃CPU的交互型工作，也有需要很多CPU时间、响应时间却不重要的长时间计算密集型工作。下面是我们第一次尝试优先级调整算法。</p>
+<p>● 规则3：工作进入系统时，放在最高优先级（最上层队列）。</p>
+<p>● 规则4a：工作用完整个时间片后，降低其优先级（移入下一个队列）。</p>
+<p>● 规则4b：如果工作在其时间片以内主动释放CPU，则优先级不变。</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223102410970.png" alt="image-20250223102410970" style="zoom:50%;">
+
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223102427146.png" alt="image-20250223102427146" style="zoom:50%;">
+
+<h4 id="8-3-尝试2：提升优先级"><a href="#8-3-尝试2：提升优先级" class="headerlink" title="8.3　尝试2：提升优先级"></a>8.3　尝试2：提升优先级</h4><p><strong>饥饿问题</strong>：如果现在最高优先级内全部都是交互型任务，按照MLFQ，会一直被卡在优先级高处，而优先级低的任务一直无法运行。</p>
+<p>● 规则5：经过一段时间S，就将系统中所有工作重新加入最高优先级队列</p>
+<blockquote>
+<p>首先，进程不会饿死——在最高优先级队列中，它会以轮转的方式，与其他高优先级工作分享CPU，从而最终获得执行。其次，如果一个CPU密集型工作变成了交互型，当它优先级提升时，调度程序会正确对待它。</p>
+</blockquote>
+<p>这样才会让长时间程序得到执行机会</p>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223102944438.png" alt="image-20250223102944438" style="zoom:50%;">
+
+<p>但是这个优先级提升的时间要设置得较为合理</p>
+<h4 id="8-4-尝试3：更好的计时方式"><a href="#8-4-尝试3：更好的计时方式" class="headerlink" title="8.4　尝试3：更好的计时方式"></a>8.4　尝试3：更好的计时方式</h4><blockquote>
+<p>现在还有一个问题要解决：如何阻止调度程序被愚弄？可以看出，这里的元凶是规则4a和4b，导致工作在时间片以内释放CPU，就保留它的优先级。那么应该怎么做？这里的解决方案，是为MLFQ的每层队列提供更完善的CPU计时方式（accounting）。调度程序应该记录一个进程在某一层中消耗的总时间，而不是在调度时重新计时。只要进程用完了自己的配额，就将它降到低一优先级的队列中去。不论它是一次用完的，还是拆成很多次用完。</p>
+<p>因此，我们重写规则4a和4b。</p>
+<p>● 规则4：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次CPU），就降低其优先级（移入低一级队列）。</p>
+</blockquote>
+<p>可能有一些问题，执行时间很长，但是同时又会设置I/O</p>
+<p>所以需要同时判断两个指标</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223103608843.png" alt="image-20250223103608843"></p>
+<h3 id="第9章-调度：比例份额"><a href="#第9章-调度：比例份额" class="headerlink" title="第9章　调度：比例份额"></a>第9章　调度：比例份额</h3><blockquote>
+<p>比例份额算法基于一个简单的想法：调度程序的最终目标，是确保每个工作获得一定比例的CPU时间，而不是优化周转时间和响应时间。</p>
+<p>比例份额调度程序有一个非常优秀的现代例子，由Waldspurger和Weihl发现，名为彩票调度（lottery scheduling） [WW94]。但这个想法其实出现得更早[KL88]。基本思想很简单：每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。很简单吧？现在，谈谈细节！但还是先看看下面的关键问题。</p>
+</blockquote>
+<h4 id="9-1-基本概念：彩票数表示份额"><a href="#9-1-基本概念：彩票数表示份额" class="headerlink" title="9.1　基本概念：彩票数表示份额"></a>9.1　基本概念：彩票数表示份额</h4>
                 
             </div>
             <hr/>
@@ -539,7 +665,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/2025/02/19/ji-suan-ji-wang-luo-cs144-checkpoint1/">https://erinmi4.github.io/2025/02/19/ji-suan-ji-wang-luo-cs144-checkpoint1/</a>
+                    <a href="https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/">https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -577,16 +703,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/lab/">
-                                    <span class="chip bg-color">lab</span>
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
                                 </a>
                             
-                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                    <span class="chip bg-color">计算机网络</span>
-                                </a>
-                            
-                                <a href="/tags/Stanford-CS144/">
-                                    <span class="chip bg-color">Stanford CS144</span>
+                                <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
+                                    <span class="chip bg-color">《操作系统导论》</span>
                                 </a>
                             
                         </div>
@@ -630,17 +752,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/02/20/xian-xing-dai-shu-lec1/">
+                <a href="/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="方程组的几何解释">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="第一部分——虚拟化——进程调度">
                         
-                        <span class="card-title">方程组的几何解释</span>
+                        <span class="card-title">第一部分——虚拟化——进程调度</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -650,34 +773,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MIT18-06SC-2011fall/">
-                        <span class="chip bg-color">MIT18.06SC 2011fall</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
-                    </a>
-                    
-                    <a href="/tags/problem-sets/">
-                        <span class="chip bg-color">problem-sets</span>
+                    <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
+                        <span class="chip bg-color">《操作系统导论》</span>
                     </a>
                     
                 </div>
@@ -691,13 +811,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/02/19/freertos-lec8/">
+                <a href="/2025/02/22/cao-zuo-xi-tong-dao-lun-xu-ni-hua-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="FreeRtos lec8 队列集">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="第一部分——虚拟化——进程创建与虚拟化实现">
                         
-                        <span class="card-title">FreeRtos lec8 队列集</span>
+                        <span class="card-title">第一部分——虚拟化——进程创建与虚拟化实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -708,14 +828,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/FREERTOS/" class="post-category">
-                                    FREERTOS
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -725,16 +845,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                        <span class="chip bg-color">嵌入式</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
-                    <a href="/tags/%E9%9F%A6%E4%B8%9C%E5%B1%B1FREERTOS/">
-                        <span class="chip bg-color">韦东山FREERTOS</span>
-                    </a>
-                    
-                    <a href="/tags/lab/">
-                        <span class="chip bg-color">lab</span>
+                    <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
+                        <span class="chip bg-color">《操作系统导论》</span>
                     </a>
                     
                 </div>
