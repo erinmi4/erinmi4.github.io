@@ -475,7 +475,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-23
+                    2025-02-25
                 </div>
                 
 
@@ -575,7 +575,7 @@
 <p>当程序申请I/O时候，该程序会被阻塞，也就不会使用CPU。</p>
 <p>如果这时候CPU不执行任何程序，也就会造成资源的浪费。</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223101007186.png" alt="I/O期间不执行程序"></p>
-<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250223101031755.png" alt="使用重叠执行程序"></p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225232115586.png" alt="image-20250225232115586"></p>
 <h3 id="第8章-调度：多级反馈队列"><a href="#第8章-调度：多级反馈队列" class="headerlink" title="第8章　调度：多级反馈队列"></a>第8章　调度：多级反馈队列</h3><p>本章介绍了一种调度方式，名为多级反馈队列（MLFQ）。你应该已经知道它为什么叫这个名字——它有多级队列，并利用反馈信息决定某个工作的优先级。以史为鉴：关注进程的一贯表现，然后区别对待</p>
 <p>本章包含了一组优化的MLFQ规则。为了方便查阅，我们重新列在这里。</p>
 <p>● 规则1：如果A的优先级 &gt; B的优先级，运行A（不运行B）。</p>
@@ -658,7 +658,7 @@
 <li>彩票通胀：如果进程认为自己相当重要（或者不重要）可以直接加减自身的彩票</li>
 </ol>
 <h5 id="彩票调度如何实现"><a href="#彩票调度如何实现" class="headerlink" title="彩票调度如何实现"></a>彩票调度如何实现</h5><p>出人意料地简单。通过一个链表就可以。</p>
-<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250223183219993.png" alt="彩票调度"></p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225232142747.png" alt="image-20250225232142747"></p>
 <p>首先要从彩票总数400中选择一个随机数（中奖号码）。假设选择了300。然后，遍历链表，用一个简单的计数器帮助我们找到中奖者将每张票的值加到counter上，直到值超过winner。这时，当前的列表元素所对应的进程就是中奖者。在我们的例子中，中奖彩票是300。首先，计A的票后，counter增加到100。因为100小于300，继续遍历。然后counter会增加到150（B的彩票），仍然小于300，继续遍历。最后，counter增加到400（显然大于300），因此退出遍历，current指向C（中奖者）。</p>
 <p><strong>但是彩票机制存在一个非常重要的问题，对于绝大多数的进程，我们并不知道它的执行时间，更不用说该如何分配彩票了</strong></p>
 <h4 id="步长调度"><a href="#步长调度" class="headerlink" title="步长调度"></a>步长调度</h4><blockquote>
@@ -709,7 +709,7 @@
 <h4 id="多队列调度"><a href="#多队列调度" class="headerlink" title="多队列调度"></a>多队列调度</h4><p>每个CPU都有独立的队列和调度策略。</p>
 <p>问题：</p>
 <p>即<strong>负载不均</strong>（load imbalance）。假定和上面设定一样（4个工作，2个CPU），但假设一个工作（如C）这时执行完毕。现在调度队列如下：</p>
-<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250223203520133.png" alt="负载不均"></p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225232211193.png" alt="image-20250225232211193"></p>
 <p>解决办法：</p>
 <p>不断地迁移一个或多个工作。一种可能的解决方案是不断切换工作，如下面的时间线所示。可以看到，开始的时候A独享CPU 0，B和D在CPU 1。一些时间片后，B迁移到CPU 0与A竞争，D则独享CPU 1一段时间。这样就实现了负载均衡。</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223203732328.png" alt="迁移任务"></p>
