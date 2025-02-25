@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-02-23T12:40:43.491Z</updated>
+  <updated>2025-02-24T09:53:22.468Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -17,12 +17,21 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>内存虚拟化</title>
+    <title>内存虚拟化-隔离和保护</title>
     <link href="https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/"/>
     <id>https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/</id>
     <published>2025-02-23T12:07:00.000Z</published>
-    <updated>2025-02-23T12:40:43.491Z</updated>
+    <updated>2025-02-24T09:53:22.468Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;hr&gt;
+&lt;h3 id=&quot;12-关于虚拟内存的对话&quot;&gt;&lt;a href=&quot;#12-关于虚拟内存的对话&quot; class=&quot;headerlink&quot; title=&quot;12</summary>
+        
+      
     
     
     
@@ -36,12 +45,20 @@
   </entry>
   
   <entry>
-    <title>lec2矩阵消元</title>
-    <link href="https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec2/"/>
-    <id>https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec2/</id>
+    <title>lec3逆矩阵</title>
+    <link href="https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec3/"/>
+    <id>https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec3/</id>
     <published>2025-02-23T09:10:00.000Z</published>
-    <updated>2025-02-23T09:13:45.872Z</updated>
+    <updated>2025-02-24T05:33:38.230Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;2-5-逆矩阵&quot;&gt;&lt;a href=&quot;#2-5-逆矩阵&quot; class=&quot;headerlink&quot; title=&quot;2.5 逆矩阵&quot;&gt;&lt;/a&gt;2.5 逆矩阵&lt;/h3&gt;&lt;h4 id=&quot;什么是逆矩阵&quot;&gt;&lt;a href=&quot;#什么是逆矩阵&quot; class=&quot;headerlink&quot;</summary>
+        
+      
     
     
     
