@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="内存虚拟化-隔离和保护, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="内存虚拟化-隔离和保护(1), MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>内存虚拟化-隔离和保护 | MIKA的博客</title>
+    <title>内存虚拟化-隔离和保护(1) | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -33,9 +33,9 @@
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -318,12 +318,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">内存虚拟化-隔离和保护</h1>
+                    <h1 class="description center-align post-title">内存虚拟化-隔离和保护(1)</h1>
                 </div>
             </div>
         </div>
@@ -475,21 +475,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-24
+                    2025-02-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -509,7 +509,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id=""><a href="#" class="headerlink" title=""></a></h3><hr>
+                <hr>
 <h3 id="12-关于虚拟内存的对话"><a href="#12-关于虚拟内存的对话" class="headerlink" title="12 关于虚拟内存的对话"></a>12 关于虚拟内存的对话</h3><p><strong>虚拟内存是什么</strong></p>
 <p>是和虚拟CPU一样的一种幻想，让进程认为自己拥有整个内存。拥有大量的连续内存。</p>
 <h3 id="第13章-抽象：地址空间"><a href="#第13章-抽象：地址空间" class="headerlink" title="第13章　抽象：地址空间"></a>第13章　抽象：地址空间</h3><blockquote>
@@ -562,13 +562,41 @@
 <p>第三，在上下文切换时，操作系统也必须执行一些额外的操作。每个CPU毕竟只有一个基址寄存器和一个界限寄存器，但对于每个运行的程序，它们的值都不同，因为每个程序被加载到内存中不同的物理地址。因此，在切换进程时，操作系统必须保存和恢复基础和界限寄存器。具体来说，当操作系统决定中止当前的运行进程时，它必须将当前基址和界限寄存器中的内容保存在内存中，放在某种每个进程都有的结构中，如进程结构（process structure）或进程控制块（Process Control Block，PCB）中。类似地，当操作系统恢复执行某个进程时（或第一次执行），也必须给基址和界限寄存器设置正确的值。</p>
 <p>第四，操作系统必须提供异常处理程序（exception handler），或要一些调用的函数，像上面提到的那样。操作系统在启动时加载这些处理程序（通过特权命令）。例如，当一个进程试图越界访问内存时，CPU会触发异常。在这种异常产生时，操作系统必须准备采取行动。通常操作系统会做出充满敌意的反应：终止错误进程。操作系统应该尽力保护它运行的机器，因此它不会对那些企图访问非法地址或执行非法指令的进程客气。再见了，行为不端的进程，很高兴认识你。</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174702310.png" alt="受限直接执行协议（动态重定位）"></p>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174721058.png" alt="image-20250224174721058"></p>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174702310.png" alt="受限直接执行协议（动态重定位）" style="zoom: 50%;">
+
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174721058.png" alt="image-20250224174721058" style="zoom:50%;">
+
 <h3 id="第16章：分段"><a href="#第16章：分段" class="headerlink" title="第16章：分段"></a>第16章：分段</h3><p>动态重定位存在的问题：</p>
 <ol>
 <li>基址和界限寄存器限定的空间不适合大程序扩展</li>
 <li>对于小程序堆栈之间的大部分空间被浪费</li>
 </ol>
+<p>虽然有如上问题，但是动态重定位满足了我们对于进程内存的一系列要求。或许我们只需要稍加改进。</p>
+<h4 id="分段基址：基址-界限管理的泛化"><a href="#分段基址：基址-界限管理的泛化" class="headerlink" title="分段基址：基址/界限管理的泛化"></a>分段基址：基址/界限管理的泛化</h4><p>在MMU中引入不止一个基址和界限寄存器对，而是给地址空间内的每个逻辑段（segment）一对。一个段只是地址空间里的一个连续定长的区域，在典型的地址空间里有 3 个逻辑不同的段：代码、栈和堆。<strong>分段的机制使得操作系统能够将不同的段放到不同的物理内存区域</strong>，从而避免了虚拟地址空间中的未使用部分占用物理内存。</p>
+<p><strong>本质上是将基址的任务给固定下来了。原本是一个进程需要一个基址寄存器来保存，现在整个地址空间被分为多个段，基址也被固定下来了。</strong></p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225225535616.png" alt="两种不同的虚拟地址方式"></p>
+<h4 id="引用哪一个段"><a href="#引用哪一个段" class="headerlink" title="引用哪一个段"></a>引用哪一个段</h4><p><strong>硬件是如何知道地址引用了哪一个段，如何知道段内的偏移量</strong></p>
+<ul>
+<li>显式方式<ul>
+<li>通过设定前几位固定，比如00为代码段。</li>
+<li>后面为偏移量，与界限比较即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="支持共享"><a href="#支持共享" class="headerlink" title="支持共享"></a>支持共享</h4><p>我们要知道，操作系统的两大核心思路是隔离和通信。</p>
+<p>隔离在前面的各种虚拟化已经得到了很好地实现。</p>
+<p>但是这是一对矛盾的存在。</p>
+<p>所以我们决定设计一部分区域为共享区。在后面我们称之为Trampline（跳板页）</p>
+<p>在这里内核空间与用户空间可以实现通信，但是不会让恶意程序将恶意内容放入内核空间。</p>
+<p>进程之间可以通信，相互交换标志位和各种信息。</p>
+<h4 id="细粒度的划分"><a href="#细粒度的划分" class="headerlink" title="细粒度的划分"></a>细粒度的划分</h4><blockquote>
+<p>物理内存很快充满了许多空闲空间的小洞，因而很难分配给新的段，或扩大已有的段。这种问题被称为外部碎片（external fragmentation）[R69]，如图16.3（左边）所示。</p>
+</blockquote>
+<p>分段的使用，任然是一种资源的浪费。</p>
+<p>通过将一个连续区域，拆分为多个中间不连续的空间，会造成<strong>外部碎片</strong>问题。</p>
+<p>这种问题在后续的内存分配中，即使有充足的空间，也难以分配出连续的足额空间来满足使用。</p>
+<p>所以在后面我们会使用<strong>页表</strong>来实现，通过固定的段长度，同时将段不局限于一个位置来实现。</p>
+<p><img src="C:/Users/25115/AppData/Roaming/Typora/typora-user-images/image-20250225231025979.png" alt="外部碎片问题"></p>
 
                 
             </div>
@@ -682,18 +710,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/">
+                <a href="/2025/02/25/cao-zuo-xi-tong-xu-ni-hua-4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="内存虚拟化-隔离和保护">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="内存虚拟化——分页思想的实现(2)">
                         
-                        <span class="card-title">内存虚拟化-隔离和保护</span>
+                        <span class="card-title">内存虚拟化——分页思想的实现(2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -703,9 +730,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -718,7 +745,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -987,7 +1013,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.1k</span>&nbsp;字
+                class="white-color">36.7k</span>&nbsp;字
             
             
             
