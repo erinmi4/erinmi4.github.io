@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>嵌入思维导图测试</title>
+      <link href="/2025/02/27/si-wei-dao-tu-shi-li/"/>
+      <url>/2025/02/27/si-wei-dao-tu-shi-li/</url>
+      
+        <content type="html"><![CDATA[<blockquote class="pullquote mindmap mindmap-md"><ul><li><a href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html">Hexo 的思维导图插件</a><ul><li>前言</li><li>使用方法<ul><li>一</li><li>二</li><li>三</li></ul></li><li>太长不看</li><li>参考资料</li></ul></li></ul></blockquote><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>内存虚拟化——分页思想的实现(2)</title>
       <link href="/2025/02/25/cao-zuo-xi-tong-xu-ni-hua-4/"/>
       <url>/2025/02/25/cao-zuo-xi-tong-xu-ni-hua-4/</url>
