@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="计组ch1计算机概要与技术, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="第一章 计算机概要与技术（上）, MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>计组ch1计算机概要与技术 | MIKA的博客</title>
+    <title>第一章 计算机概要与技术（上） | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">计组ch1计算机概要与技术</h1>
+                    <h1 class="description center-align post-title">第一章 计算机概要与技术（上）</h1>
                 </div>
             </div>
         </div>
@@ -490,14 +490,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    25
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -517,23 +517,113 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/CH1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%A6%81%E4%B8%8E%E6%8A%80%E6%9C%AF%20%E5%AF%BC%E5%9B%BE.png" alt="CH1 计算机概要与技术 导图.png"></p>
-<blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><a target="_blank" rel="noopener" href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html">Hexo 的思维导图插件</a><ul>
-<li>前言</li>
-<li>使用方法<ul>
-<li>一</li>
-<li>二</li>
-<li>三</li>
+                <h3 id="本章问题"><a href="#本章问题" class="headerlink" title="本章问题"></a>本章问题</h3><p>1、传统上计算机分为哪三类？后PC时代有哪两类计算机？<br>2、KB MB GB之上有哪些存储容量单位？<br>*3、计算机设计的八个伟大思想是？<br>4、Amdahl定律的公式为？<br>5、高级语言经过什么过程变成汇编语言？汇编语言又经过什么变成机器语言？<br>6、冯·诺依曼结构由哪五大基本部件组成？CPU主要有哪两大部件？还有少量的哪个部件？<br>7、存储器层次中，最快贵小的、其次的、最慢廉大的是什么？分别采用什么技术？<br>8、Intel和苹果的处理器架构不同，是什么东西不同？<br>9、成品率、芯片面积、产量如何影响集成电路（IC）的制造成本？</p>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/CH1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%A6%81%E4%B8%8E%E6%8A%80%E6%9C%AF%20%E5%AF%BC%E5%9B%BE.png" alt="CH1 计算机概要与技术 导图.png|1200"></p>
+<h3 id="计算机的分类"><a href="#计算机的分类" class="headerlink" title="计算机的分类"></a>计算机的分类</h3><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503041627101.png" alt="image.png"></p>
+<h4 id="计算机的分类-1"><a href="#计算机的分类-1" class="headerlink" title="计算机的分类"></a>计算机的分类</h4><ul>
+<li>前pc时代：PC，超级计算机，嵌入式计算机</li>
+<li>后PC时代：个人移动设备（P M D），仓库规模计算机（W S C）</li>
+</ul>
+<p>一开始的计算机，强调计算的本质功能，<br>但是随着发展，设备向着便携越做越小和规模化越做越大两个极端来发展。</p>
+<h4 id="常见存储容量"><a href="#常见存储容量" class="headerlink" title="常见存储容量"></a>常见存储容量</h4><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E5%B8%B8%E8%A7%81%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F.png" alt="image.png"></p>
+<ul>
+<li>两种存储单位	<strong>一个字节相当于8位 B = 8b</strong><ul>
+<li>bit(b)</li>
+<li>byte(B)</li>
 </ul>
 </li>
-<li>太长不看</li>
-<li>参考资料</li>
+</ul>
+<p>存储一般使用B<br>网速一般使用b</p>
+<ul>
+<li><strong>100M宽带也就是12.5MB的实际速度。</strong><br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E4%B8%A4%E7%A7%8D%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F.png" alt="image.png"></li>
+</ul>
+<h3 id="计算机结构中的伟大思想"><a href="#计算机结构中的伟大思想" class="headerlink" title="计算机结构中的伟大思想"></a>计算机结构中的伟大思想</h3><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503041627477.png" alt="image.png|800"></p>
+<h4 id="两个设计原则"><a href="#两个设计原则" class="headerlink" title="两个设计原则"></a>两个设计原则</h4><h5 id="摩尔定律"><a href="#摩尔定律" class="headerlink" title="摩尔定律"></a>摩尔定律</h5><p>单芯片上的集成度（单位面积硅片能容纳的晶体管数量）每18个月翻一番<br>提出于1965</p>
+<p>芯片设计要依据<strong>完成时</strong>的工艺水平</p>
+<p>这告诉我们，在设计一款芯片的时候，要能够考虑到在将来芯片的集成度会上升，<br>要提前设计。</p>
+<h5 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h5><p><strong>省略低层次的细节，提供简化的模型</strong><br>本质上是一种分层的思想，我们通过接口控制整个系统。<br>比如驾驶员开车，车提供的抽象是轮盘、踏板和换挡工具。<br>你并不需要想一个汽修师一样完全了解发动机的构成。你也能将车开起来。</p>
+<h4 id="4个提高性能的方法"><a href="#4个提高性能的方法" class="headerlink" title="4个提高性能的方法"></a>4个提高性能的方法</h4><h5 id="加速大概率事件"><a href="#加速大概率事件" class="headerlink" title="加速大概率事件"></a>加速大概率事件</h5><ul>
+<li>一台计算机绝大部分时间用来打游戏，改进游戏性能还是其他性能更能提高整体性能？</li>
+</ul>
+<p>在后面我们也提到了，通过使用<strong>空间局限性和时间局限性。</strong><br>利用缓存加载大概率将来会使用的数据，能够提升读取数据的速度。</p>
+<p>定量分析：Amdahl定律<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/Amdahl%E5%AE%9A%E5%BE%8B" alt="image.png"></p>
+<h5 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h5><ul>
+<li>同时发生，典型例子是多核处理器<ul>
+<li>多个CPU上同时运行多个进程</li>
 </ul>
 </li>
 </ul>
-</blockquote>
-
+<h5 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h5><p>类比工业中的流水线。<br>这是CPU提升指令的使用效率的重要方法。</p>
+<h5 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h5><p>如果<br>1）预测失误后恢复的代价不高；<br>2）预测有相当的准确率<br>则可以猜测哪些操作会发生，并提前开始执行</p>
+<p>在if-else中，如果我们执行了99次都是if操作，<br>那么我们自然有理由认为下一次也是if操作，我们就会预测下一步是if操作。</p>
+<p>但是就好像是跑步一样，一直往前跑，如果有个弯道就需要即时减速修正方向。<br>这样会减慢我们的速度。<br>所以需要有相当的准确率才执行。</p>
+<h4 id="存储器层次与冗余"><a href="#存储器层次与冗余" class="headerlink" title="存储器层次与冗余"></a>存储器层次与冗余</h4><h5 id="存储器层次"><a href="#存储器层次" class="headerlink" title="存储器层次"></a>存储器层次</h5><p>（见第三部分 软硬件接口）</p>
+<h5 id="冗余提高可靠性"><a href="#冗余提高可靠性" class="headerlink" title="冗余提高可靠性"></a>冗余提高可靠性</h5><p>物理器件的“备胎”，失效了就换上</p>
+<h3 id="软硬件基础"><a href="#软硬件基础" class="headerlink" title="软硬件基础"></a>软硬件基础</h3><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80" alt="image.png"></p>
+<h4 id="编程语言分类"><a href="#编程语言分类" class="headerlink" title="编程语言分类"></a>编程语言分类</h4><ul>
+<li>机器语言<ul>
+<li>计算机真正能<strong>听懂</strong>的语言，是一串01组合的数字</li>
+</ul>
+</li>
+<li>汇编语言<ul>
+<li>为了提升可读性，从而将特性的01组合作为汇编标签来使用</li>
+</ul>
+</li>
+<li>高级语言<ul>
+<li>语义更加明确</li>
+</ul>
+</li>
+</ul>
+<p>人类输入的高级语言通过编译为汇编语言，然后汇编为机器语言，最后通过下载器让计算机执行</p>
+<h4 id="冯诺依曼结构"><a href="#冯诺依曼结构" class="headerlink" title="冯诺依曼结构"></a>冯诺依曼结构</h4><p>五大部件</p>
+<ol>
+<li>输入设备：键盘，鼠标</li>
+<li>输出设备：显示器，打印机</li>
+<li>存储器<ol>
+<li>cache~SRAM<ol>
+<li>快但是贵，容量很小（3MB）</li>
+</ol>
+</li>
+<li>内存~DRAM<ol>
+<li>只有放入内存的程序才能执行</li>
+<li>比较快也比较贵，容量中等（8~16GB）</li>
+</ol>
+</li>
+<li>外存<ol>
+<li>慢但便宜，容量大（基本都是512GB起步）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>运算器（数据通路Data path)</li>
+<li>控制器</li>
+</ol>
+<ul>
+<li>通过IO设备实现货物（信息）的输入输出，并且需要通过存储器来实现信息的存储</li>
+<li>通过控制器来读取（列表PC）上的指令，并交割处理器来执行<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503041646240.png" alt="image.png|750"></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503041646898.png" alt="image.png|500"></p>
+<h4 id="存储器存储结构"><a href="#存储器存储结构" class="headerlink" title="存储器存储结构"></a>存储器存储结构</h4><p>问题：CPU的主频在3.5GHz，内存条的主频2666MHz，通常是谁等待谁？<br>为了解决CPU和内存条之间速度不对等的情况，提升硬件的利用效率。<br>我们通过设立<strong>缓存</strong>这一快，但是容量小的存储结构。<br>弥补内存与CPU之间的<strong>速度鸿沟</strong></p>
+<p>解决方法：存储器层次（思想7）<br>顶端：快贵小 → 底端：慢廉大</p>
+<ul>
+<li>第一级：cache（和cash同音），采用SRAM技术</li>
+<li>第二级：主存/内存，采用DRAM技术<ul>
+<li>SRAM、DRAM断电后数据很快消失，为易失性存储器</li>
+</ul>
+</li>
+<li>第三级：辅存，过去常用磁盘，现逐渐被闪存代替<ul>
+<li>磁盘、闪存断电后不丢失数据，为非易失性存储器</li>
+</ul>
+</li>
+</ul>
+<p>*cache位于CPU中<br>在CPU中塞入cache，好处是：<br>1）物理距离近，和两大部件通信迅速<br>2）只要cache能把CPU即将要用的程序、数据，从内存中复制过来，就能缓解速度矛盾</p>
+<p><strong>CPU中只有控制器和运算器吗？</strong><br>还有cache<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E5%AD%98%E5%82%A8%E9%87%91%E5%AD%97%E5%A1%94" alt="image.png"></p>
+<h4 id="指令集体系结构"><a href="#指令集体系结构" class="headerlink" title="指令集体系结构"></a>指令集体系结构</h4><p>苹果的M1系列芯片为什么性能高且续航持久？<br>	<strong>CPU的指令集体系结构（架构，ISA）根本上不一样</strong> 即，可以执行的指令集合大不相同<br>	- 一个x86，为了和二三十年前的软件保持兼容，指令只增不减，越来越庞大繁杂<br>	- 一个ARM，设计思想主张精简，能效出色</p>
+<p>教材介绍一个和ARM设计思路相近的架构：MIPS<br>MIPS和ARM都属于RISC架构（Reduced Instruction Set Computer，精简指令集计算机）<br>x86是典型的CISC架构（Complex……，复杂……）<br>两位作者都是RICS技术的重要奠基人，对x86架构非常唾弃</p>
+<h4 id="集成电路制造"><a href="#集成电路制造" class="headerlink" title="集成电路制造"></a>集成电路制造</h4><ul>
+<li>晶体管：受电信号控制的简单开关</li>
+<li>集成电路（Integrated Circuit，IC）：由许多个晶体管组成的芯片<br>成品率越高、产量越高、芯片面积越小，芯片的制造成本越低</li>
+</ul>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -560,7 +650,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/2025/03/04/ji-zu-ch1-ji-suan-ji-gai-yao-yu-ji-zhu/">https://erinmi4.github.io/2025/03/04/ji-zu-ch1-ji-suan-ji-gai-yao-yu-ji-zhu/</a>
+                    <a href="https://erinmi4.github.io/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/">https://erinmi4.github.io/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -656,13 +746,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2025/03/04/ji-zu-ch1-ji-suan-ji-gai-yao-yu-ji-zhu/">
+                <a href="/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="计组ch1计算机概要与技术">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="第一章 计算机概要与技术（上）">
                         
-                        <span class="card-title">计组ch1计算机概要与技术</span>
+                        <span class="card-title">第一章 计算机概要与技术（上）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -940,7 +1030,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.8k</span>&nbsp;字
+                class="white-color">38.4k</span>&nbsp;字
             
             
             
@@ -1160,6 +1250,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
