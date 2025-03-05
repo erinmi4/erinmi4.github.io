@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-04T09:15:29.699Z</updated>
+  <updated>2025-03-05T09:48:35.778Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -17,11 +17,70 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第二章 指令：计算机的语言</title>
+    <link href="https://erinmi4.github.io/2025/03/05/di-er-zhang-zhi-ling-ji-suan-ji-de-yu-yan/"/>
+    <id>https://erinmi4.github.io/2025/03/05/di-er-zhang-zhi-ling-ji-suan-ji-de-yu-yan/</id>
+    <published>2025-03-05T09:33:00.000Z</published>
+    <updated>2025-03-05T09:48:35.778Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;script type=&quot;text&amp;#x2F;javascript&quot; src=&quot;https://unpkg.com/kity@2.0.4/dist/kity.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text&amp;#x2F;javascript&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机组成原理" scheme="https://erinmi4.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="计算机组成原理" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="计算机组成与设计硬件软件接口" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
+    
+    <category term="cs61C" scheme="https://erinmi4.github.io/tags/cs61C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一章 计算机概要与技术（下）</title>
+    <link href="https://erinmi4.github.io/2025/03/05/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xia/"/>
+    <id>https://erinmi4.github.io/2025/03/05/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xia/</id>
+    <published>2025-03-05T09:15:00.000Z</published>
+    <updated>2025-03-05T09:44:11.012Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503051718148.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;复习题&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="计算机组成原理" scheme="https://erinmi4.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="计算机组成原理" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="计算机组成与设计硬件软件接口" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
+    
+    <category term="cs61C" scheme="https://erinmi4.github.io/tags/cs61C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第一章 计算机概要与技术（上）</title>
     <link href="https://erinmi4.github.io/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/"/>
     <id>https://erinmi4.github.io/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/</id>
     <published>2025-03-04T05:33:00.000Z</published>
-    <updated>2025-03-04T09:15:29.699Z</updated>
+    <updated>2025-03-05T09:18:28.104Z</updated>
     
     
       
