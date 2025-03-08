@@ -37,9 +37,9 @@
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
-
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -479,7 +479,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-19
+                    2025-03-06
                 </div>
                 
 
@@ -811,7 +811,7 @@
 <p>解决方案之所以可能，是因为RISC-V提供了内核可以在进入用户空间之前存储信息的受保护位置：<code>sscratch</code>寄存器以及指向内核内存但因缺少<code>PTE_U</code>而受到保护的用户页表条目。Xv6的跳板和陷阱帧利用了这些RISC-V特性。</p>
 <p>如果内核内存被映射到每个进程的用户页表中（并设置适当的PTE权限标志），那么就可以消除对特殊跳板页的需求。这也将消除从用户空间进入内核时的页表切换需求。这反过来又允许内核中的系统调用实现利用当前进程的用户内存被映射的事实，从而允许内核代码直接解引用用户指针。许多操作系统已经使用这些想法来提高效率。Xv6避免采用这些方法，以减少由于意外使用用户指针而导致内核中安全漏洞的可能性，并减少一些必要的复杂性，以确保用户和内核虚拟地址不重叠。</p>
 <p>生产级操作系统实现了写时复制<code>fork</code>、懒惰分配、按需分页、磁盘分页、内存映射文件等功能。此外，生产级操作系统会尽量使用所有的物理内存，无论是用于应用程序还是缓存（例如文件系统的缓冲区缓存，我们将在第8.2节中讨论）。在这方面，Xv6显得非常天真：你希望你的操作系统能够使用你购买的物理内存，但Xv6并没有做到。此外，如果Xv6耗尽了内存，它会向正在运行的应用程序返回错误或将其杀死，而不是例如驱逐另一个应用程序的页面。</p>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -1227,7 +1227,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39.6k</span>&nbsp;字
+                class="white-color">40.8k</span>&nbsp;字
             
             
             
