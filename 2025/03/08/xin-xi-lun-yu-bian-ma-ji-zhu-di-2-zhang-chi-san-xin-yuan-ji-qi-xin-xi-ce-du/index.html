@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Calling Convention, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="【信息论与编码技术】【第2章】 离散信源及其信息测度, MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Calling Convention | MIKA的博客</title>
+    <title>【信息论与编码技术】【第2章】 离散信源及其信息测度 | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081353413.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Calling Convention</h1>
+                    <h1 class="description center-align post-title">【信息论与编码技术】【第2章】 离散信源及其信息测度</h1>
                 </div>
             </div>
         </div>
@@ -443,12 +443,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
-                            </a>
-                        
-                            <a href="/tags/MIT6-s081/">
-                                <span class="chip bg-color">MIT6.s081</span>
+                            <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+                                <span class="chip bg-color">信息论</span>
                             </a>
                         
                     </div>
@@ -459,8 +455,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
+                            <a href="/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="post-category">
+                                信息论
                             </a>
                         
                     </div>
@@ -472,28 +468,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-02-17
+                    2025-03-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-04
+                    2025-03-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    14 分
                 </div>
                 
 
@@ -513,226 +509,184 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本章介绍了RV32和RV64程序的C编译器标准以及两种调用约定：一种是针对基础ISA加上标准通用扩展（RV32G/RV64G）的调用约定，另一种是针对缺少浮点单元的实现（例如RV32I/RV64I）的软浮点调用约定。具有ISA扩展的实现可能需要扩展的调用约定。</p>
-<h3 id="重要要点"><a href="#重要要点" class="headerlink" title="重要要点"></a><strong>重要要点</strong></h3><ol>
-<li><strong>C数据类型和对齐（18.1）</strong>：<ul>
-<li><code>int</code> 在RV32和RV64下都是32位宽。</li>
-<li><code>long</code> 和指针在RV32下是32位，在RV64下是64位。</li>
-<li><code>long long</code> 是64位，<code>float</code> 是32位，<code>double</code>是64位，<code>long double</code>是128位。</li>
-<li>所有数据类型在内存中保持自然对齐。</li>
-</ul>
-</li>
-<li><strong>RVG调用约定（18.2）</strong>：<ul>
-<li>使用寄存器<code>a0-a7</code>传递最多8个整数参数，<code>fa0-fa7</code>传递最多8个浮点参数。</li>
-<li>较小的参数放在参数寄存器的低位，并在栈上是字节对齐的。</li>
-<li>大于指针宽度两倍的参数按引用传递。</li>
-<li>返回值通过<code>a0/hp0</code>、<code>a1/hp1</code>返回，浮点值用<code>fa0/fa1</code>。</li>
-<li>栈向下增长，<code>sp</code>总是保持16字节对齐。</li>
-</ul>
-</li>
-<li><strong>软浮点调用约定（18.3）</strong>：<ul>
-<li>用于无浮点硬件的实现，浮点参数和返回值通过整数寄存器传递。</li>
-<li>在RV32下，<code>double</code>参数传递在<code>a2-a3</code>中，<code>long double</code>通过引用传递。</li>
-</ul>
-</li>
+                <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081353413.png" alt="image.png"></p>
+<h1 id="信息论与编码理论笔记"><a href="#信息论与编码理论笔记" class="headerlink" title="信息论与编码理论笔记"></a>信息论与编码理论笔记</h1><h2 id="第二章-离散信源及其信息测度"><a href="#第二章-离散信源及其信息测度" class="headerlink" title="第二章 离散信源及其信息测度"></a>第二章 离散信源及其信息测度</h2><h3 id="2-1-信源的数学模型及分类"><a href="#2-1-信源的数学模型及分类" class="headerlink" title="2.1 信源的数学模型及分类"></a>2.1 信源的数学模型及分类</h3><blockquote>
+<p>无记忆：随机变量之间没有相互依赖<br>平稳：各随机变量概率分布相同</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503091053522.png" alt="信源分类图"><br>信源是信息的来源，是产生消息或消息序列的源泉。根据信源输出消息的随机性质，可以对信源进行分类。<br><strong>我们并不关注信源的内部，将其视为一个黑箱，我们只关注信源的输出</strong></p>
+<h4 id="2-1-1-随机变量描述信源消息"><a href="#2-1-1-随机变量描述信源消息" class="headerlink" title="2.1.1 随机变量描述信源消息"></a>2.1.1 随机变量描述信源消息</h4><p>一维连续信源和一维离散信源<br>适用于信源可能<strong>输出的消息数是有限或可数的</strong>，且<strong>每次只输出一个消息</strong>的情况。<br>例如，扔一颗质地均匀的骰子，研究下落后朝上一面的点数。</p>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>每次实验只出现一个点数（消息）。</li>
+<li>每个点数的出现是随机的。</li>
+<li>点数必定为1,2,3,4,5,6中的某一个。</li>
 </ol>
-<h3 id="关键概念和名词"><a href="#关键概念和名词" class="headerlink" title="关键概念和名词"></a><strong>关键概念和名词</strong></h3><ul>
-<li><strong>RVG调用约定</strong>：用于标准ISA扩展（RV32G/RV64G）的参数和返回值传递规则。</li>
-<li><strong>软浮点调用约定</strong>：用于无浮点硬件实现的调用规则，避免使用浮点指令。</li>
-<li><strong>参数传递规则</strong>：参数通过寄存器（整数和浮点）或栈传递，取决于参数数目和类型。</li>
-<li><strong>返回值传递</strong>：简单类型在寄存器返回，复杂结构返回指针。</li>
-<li><strong>寄存器角色</strong>：指明哪些寄存器由调用者保存，哪些由被调用者保存。</li>
-<li><strong>ISA</strong>:（Instruction Set Architecture，指令集架构）是指计算机硬件与软件之间的接口规范，定义了处理器能够理解和执行的指令集。它主要包括以下几个关键方面：<ul>
-<li><strong>指令集</strong>：定义了处理器能够执行的所有指令，包括操作码（指示操作类型）和操作数（操作对象）。</li>
-<li><strong>寻址模式</strong>：定义了如何访问操作数，例如立即寻址、寄存器寻址、直接寻址等。</li>
-<li><strong>数据类型</strong>：定义了处理器支持的数据类型，如整数、浮点数等。</li>
-<li><strong>寄存器</strong>：定义了处理器的寄存器数量、类型和用途。</li>
-<li><strong>中断和异常处理</strong>：定义了处理器如何处理中断和异常。</li>
-<li><strong>特权指令</strong>：定义了只有操作系统才能执行的指令，用于保护系统资源。</li>
-</ul>
-</li>
-</ul>
-<h3 id="需要了解的背景知识"><a href="#需要了解的背景知识" class="headerlink" title="需要了解的背景知识"></a><strong>需要了解的背景知识</strong></h3><ul>
-<li><strong>寄存器和内存布局</strong>：理解整数和浮点寄存器的分配和使用。</li>
-<li><strong>调用堆栈机制</strong>：清楚栈增长方向和栈帧结构。</li>
-<li><strong>RISC-V架构基础</strong>：了解RISC-V基本指令集和ISA扩展。</li>
-<li><strong>C语言数据类型</strong>：熟悉C中数据类型（如<code>int</code>, <code>long</code>等）的大小和对齐。</li>
-</ul>
-<h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a><strong>学习目标</strong></h3><ul>
-<li><strong>理解参数和返回值传递规则</strong>：掌握参数如何在寄存器或栈上传递，以及返回值的传递方式。</li>
-<li><strong>掌握寄存器使用和保存规则</strong>：明确哪个寄存器是调用者保存，哪个是被调用者保存。</li>
-<li><strong>熟悉栈的使用</strong>：了解栈如何存储未在寄存器传递的参数和局部变量。</li>
-<li><strong>比较RVG和软浮点调用约定</strong>：知道两种调用约定的不同适用场景和差异。</li>
-</ul>
-<h3 id="重要代码和函数"><a href="#重要代码和函数" class="headerlink" title="重要代码和函数"></a><strong>重要代码和函数</strong></h3><ul>
-<li><strong>参数传递逻辑</strong>：在编译器或汇编代码中，函数调用时参数的入栈或寄存器分配部分。</li>
-<li><strong>函数返回值处理</strong>：如何从寄存器或内存读取函数返回值的代码部分。</li>
-<li><strong>栈帧管理</strong>：函数调用时，栈指针调整、局部变量分配等代码片段。</li>
-</ul>
-<h3 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a><strong>学习建议</strong></h3><ul>
-<li><strong>阅读《RISC-V ISA手册》</strong>：特别是有关用户级ISA的部分，理解寄存器和指令。</li>
-<li><strong>研究编译器生成的汇编代码</strong>：查看C代码编译后如何应用调用约定。</li>
-<li><strong>动手实验</strong>：在支持RISC-V的环境中编写代码，观察参数传递和返回值的处理。</li>
-<li><strong>强化基础</strong>：充分理解寄存器、栈、C数据类型等基础知识，以便更好地掌握调用约定。</li>
-</ul>
-<h3 id="18-1-C数据类型和对齐"><a href="#18-1-C数据类型和对齐" class="headerlink" title="18.1 C数据类型和对齐"></a>18.1 C数据类型和对齐</h3><h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><ul>
-<li><strong>整数类型</strong>：<ul>
-<li><code>int</code>：32位宽。</li>
-<li><code>long</code> 和 <strong>指针</strong>：<ul>
-<li>RV32：32位宽（ILP32模型）。</li>
-<li>RV64：64位宽（LP64模型）。</li>
-</ul>
-</li>
-<li><code>long long</code>：64位宽。</li>
-<li><code>char</code> 和 <code>unsigned char</code>：8位宽，存储时零扩展。</li>
-<li><code>unsigned short</code>：16位宽，存储时零扩展。</li>
-<li><code>signed char</code> 和 <code>short</code>：分别8位和16位宽，存储时符号扩展。</li>
-</ul>
-</li>
-<li><strong>浮点类型</strong>：<ul>
-<li><code>float</code>：32位IEEE 754-2008浮点数。</li>
-<li><code>double</code>：64位IEEE 754-2008浮点数。</li>
-<li><code>long double</code>：128位IEEE浮点数。</li>
-</ul>
-</li>
-<li><strong>特殊规则</strong>：<ul>
-<li>在RV64中，32位类型（如<code>int</code>）存储在寄存器中时，会以符号扩展形式存储其32位值（即使是无符号类型）。</li>
-</ul>
-</li>
-</ul>
-<h5 id="数据对齐"><a href="#数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h5><ul>
-<li>RV32和RV64的C编译器以及兼容软件在将数据类型存储到内存时会保持<strong>自然对齐</strong>。这意味着数据类型会按照其大小对齐到相应的内存地址，以提高访问效率。<ul>
-<li>*<em>数据对齐会实现访问效率的提升，这是我们在page table一节也提到过的内容。不太正确地来将，我们所使用指针加减动作，其实每次都是实现的一个某一个量上的变化，是固定的，比如int <em>a,则 a + 1,实际上是移动了4个字节，因为a的类型是4个字节，这是一种统一性</em></em></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250218210026952.png" alt="RISC-V C程序所支持的本地数据类型"></p>
-<h3 id="18-2-RVG调用约定"><a href="#18-2-RVG调用约定" class="headerlink" title="18.2 RVG调用约定"></a>18.2 RVG调用约定</h3><p><code>在这里，我们先要思考要给问题，calling convention为什么被设计出来。在汇编语言中，如果一个函数需要调用另一个函数，是需要保留上下文和现场的，方便后面的现场恢复。这也就引生出来了保存寄存器(save register)和一般寄存器。我们一般认为保存寄存器中的内容，是绝对可信的，因为在calle或者caller，二者必有一人会保存信息在其中，并且在某个阶段恢复它们（根据协议来看）。但是一般寄存器是绝对不能相信的。</code></p>
-<p>所以我们可以得出结论：</p>
+<p><strong>表示</strong>：</p>
 <ul>
-<li>calling convention是通过使用寄存器实现数据传递的。</li>
-<li>协议定义的是栈的使用和寄存器的保存规则</li>
+<li>符号集 $A = {a_1, a_2, a_3, a_4, a_5, a_6}$ 表示基本消息集合。</li>
+<li>离散型随机变量 $X$ 描述信源输出的消息，其样本空间为 $A$。</li>
+<li>$X$ 的概率分布即为各消息出现的先验概率，例如 $P(X = a_i) = \frac{1}{6}$。</li>
 </ul>
-<hr>
-<h4 id="1-参数传递规则"><a href="#1-参数传递规则" class="headerlink" title="1. 参数传递规则"></a><strong>1. 参数传递规则</strong></h4><ol>
-<li><p><strong>寄存器传递</strong>：</p>
+<h4 id="2-1-2-随机矢量描述信源消息"><a href="#2-1-2-随机矢量描述信源消息" class="headerlink" title="2.1.2 随机矢量描述信源消息"></a>2.1.2 随机矢量描述信源消息</h4><p>适用于信源输出的消息由<strong>一系列符号序列</strong>组成，其中每个符号的出现是不确定的、随机的。</p>
+<p><strong>适用场景</strong>：</p>
 <ul>
-<li>最多使用8个整数寄存器（<code>a0–a7</code>）和8个浮点寄存器（<code>fa0–fa7</code>）来传递参数。</li>
-<li>参数被视为结构体字段，前八个指针大小的字段通过寄存器传递。</li>
-<li>浮点参数通过浮点寄存器传递，除非它们是联合体或结构体数组字段的一部分，此时通过整数寄存器传递。</li>
-<li>可变参数函数中的浮点参数也通过整数寄存器传递。</li>
+<li>中文自然语言作为信源：样本空间 $A$ 为所有汉字和标点符号的集合，汉字和标点符号构成的序列即为中文句子和文章（即消息）。</li>
+<li>离散化平面灰度图像信源：从 XY 平面空间上来看，每幅黑白灰度画面是一系列空间离散的灰度值符号，空间每一点的符号（灰度值）又是随机的。</li>
 </ul>
-</li>
-<li><h4 id="小端字节序和对齐："><a href="#小端字节序和对齐：" class="headerlink" title="小端字节序和对齐："></a><strong>小端字节序和对齐</strong>：</h4><ul>
-<li>小于指针大小的参数通过寄存器的最低有效位传递。</li>
-<li>子指针大小的参数通过栈传递时，存储在指针大小字段的低地址部分。</li>
-<li>参数大小为指针大小的两倍时：<ul>
-<li>通过栈传递时自然对齐。</li>
-<li>通过寄存器传递时，存储在对齐的偶-奇寄存器对中，偶数寄存器存储最低有效位（例如，<code>long long</code>在RV32中通过<code>a2</code>和<code>a3</code>传递）。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>大参数传递</strong>：</p>
+<p><strong>特点</strong>：</p>
 <ul>
-<li>大于指针大小两倍的参数通过引用传递。</li>
-<li>结构体中未通过寄存器传递的部分通过栈传递，栈指针<code>sp</code>指向第一个未通过寄存器传递的参数。</li>
+<li>信源输出的消息为按一定概率选取的符号序列。</li>
+<li>时间或空间上离散的一系列随机变量（随机矢量）。</li>
+</ul>
+<h4 id="2-1-3-随机过程描述信源消息"><a href="#2-1-3-随机过程描述信源消息" class="headerlink" title="2.1.3 随机过程描述信源消息"></a>2.1.3 随机过程描述信源消息</h4><p>适用于信源输出的消息是时间和取值都是连续的情况，例如语音信号、热噪声信号。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>信源输出的消息是时间（或空间）上和取值上都是连续的。</li>
+<li>用随机过程 ${x(t)}$ 描述，更一般地说，实际信源输出的消息常常是时间和取值都是连续的。</li>
+</ul>
+<h3 id="2-2-离散信源的信息熵"><a href="#2-2-离散信源的信息熵" class="headerlink" title="2.2 离散信源的信息熵"></a>2.2 离散信源的信息熵</h3><h4 id="2-2-1-自信息"><a href="#2-2-1-自信息" class="headerlink" title="2.2.1 自信息"></a>2.2.1 自信息</h4><p>单符号离散信源中，<strong>信息量与不确定性相关</strong>。事件发生的不确定性越大，一旦它发生并被接收者收到，消除的不确定性就越大，获得的信息量也就越大。</p>
+<p><strong>定义</strong>：<br>$$I(x_i) = \log \frac{1}{P(x_i)} = -\log P(x_i)$$</p>
+<p><strong>单位</strong>：</p>
+<ul>
+<li>1 奈特 = $\log_2 e$ 比特 $\approx 1.443$ 比特</li>
+<li>1 哈特 = $\log_2 10$ 比特 $\approx 3.322$ 比特<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503091056021.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503091056195.png" alt="image.png"></li>
+</ul>
+<h5 id="不确定性与发生概率"><a href="#不确定性与发生概率" class="headerlink" title="不确定性与发生概率"></a>不确定性与发生概率</h5><p>两个独立事件的联合信息量应等于它们分别的信息量之和。即统计独立信源的信息量等于它们分别的信息量之和。</p>
+<h5 id="2-2-1-1-自信息"><a href="#2-2-1-1-自信息" class="headerlink" title="2.2.1.1 自信息"></a>2.2.1.1 自信息</h5><ul>
+<li>自信息含义：<ul>
+<li>当事件 xi 发生以前：表示事件 xi 发生的不确定性。</li>
+<li>当事件 xi 发生以后：表示事件 xi 所含有（或所提供）的信息量。在无噪信道中，事件 xi 发生后，能正确无误地传输到收信者，所以 I(xi) 可代表接收到消息 xi 后所获得的信息量。这是因为消除了 I(xi) 大小的不确定性，才获得这么大小的信息量。</li>
 </ul>
 </li>
+<li>联合自信息<ul>
+<li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503091100776.png" alt="image.png"></li>
+<li>两个随机事件相互独立时，同时发生得到的信息量，等于各自自信息量之和。<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503091100955.png" alt="image.png"></li>
+</ul>
+</li>
+<li>条件自信息<ul>
+<li>设 $y_j$ 条件下，发生 $x_i$ 的条件概率为 $p(x_i / y_j)$，那么它的条件自信息量 $I(x_i / y_j)$ 定义为：</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>I(x_i / y_j) = \log_2 \frac{1}{p(x_i / y_j)}<br>$$</p>
+<p>  表示在特定条件下（$y_j$ 已定）随机事件 $x_i$ 所带来的信息量。<br>	- 同理，$x_i$ 已知时发生 $y_j$ 的条件自信息量为：<br>$$<br>I(y_j / x_i) = \log_2 \frac{1}{p(y_j / x_i)}<br>$$</p>
+<h4 id="自信息量、条件自信息量和联合自信息量之间的关系"><a href="#自信息量、条件自信息量和联合自信息量之间的关系" class="headerlink" title="自信息量、条件自信息量和联合自信息量之间的关系"></a>自信息量、条件自信息量和联合自信息量之间的关系</h4><ul>
+<li>联合自信息量 $I(x_i, y_j)$ 可以表示为：<ul>
+<li><strong>联合自信息量可以分解为自信息量和条件自信息量之和。</strong></li>
+</ul>
+</li>
+</ul>
+<p>$$<br>I(x_i, y_j) = \log_2 \frac{1}{p(x_i) p(y_j / x_i)} = I(x_i) + I(y_j / x_i)<br>$$</p>
+<p>$$<br>= \log_2 \frac{1}{p(y_j) p(x_i / y_j)} = I(y_j) + I(x_i / y_j)<br>$$</p>
+<p>这些公式展示了条件自信息量、自信息量和联合自信息量之间的关系。</p>
+<h5 id="习题-2-4（重点）"><a href="#习题-2-4（重点）" class="headerlink" title="习题 2.4（重点）"></a>习题 2.4（重点）</h5><p><strong>问题</strong>：设有 12 枚同值硬币，其中有一枚为假币。只知道假币的重量与真币的重量不同，但不知究竟是重还是轻。现采用比较天平左右两边轻重的方法来测量（因无砝码）。为了在天平上称出哪一枚是假币，试问至少必须称多少次？</p>
+<p>在信息论的角度下，考虑以下事件：</p>
+<ol>
+<li>“12枚硬币中，某一枚为假币”该事件发生的概率为 $P = \frac{1}{12}$。</li>
+<li>“假币的重量比真的轻，或重”该事件发生的概率为 $P = \frac{1}{2}$。</li>
 </ol>
-<hr>
-<h4 id="2-返回值传递规则"><a href="#2-返回值传递规则" class="headerlink" title="2. 返回值传递规则"></a><strong>2. 返回值传递规则</strong></h4><ol>
-<li>返回值通过以下寄存器传递：<ul>
-<li>整数返回值：<code>a0</code>和<code>a1</code>。</li>
-<li>浮点返回值：<ul>
-<li>如果是原始类型或仅包含一到两个浮点值的结构体成员，通过<code>fa0</code>和<code>fa1</code>返回。</li>
-<li>其他能够放入两个指针大小的返回值通过<code>a0</code>和<code>a1</code>返回。</li>
+<p>为确定哪一枚是假币，需要消除上述两事件的联合不确定性。由于二者是独立的，因此有：</p>
+<p>$$<br>I = \log 12 + \log 2 = \log 24 \text{ 比特}<br>$$</p>
+<p>而用天平称时，有三种可能性：重、轻、相等，三者是等概率的，均为 $P = \frac{1}{3}$，因此天平每一次消除的不确定性为 $I = \log 3 \text{ 比特}$。<br>因此，必须称的次数为：</p>
+<p>$$<br>\frac{I_1}{I_2} = \frac{\log 24}{\log 3} \approx 2.9 \text{ 次}<br>$$</p>
+<p>因此，至少需称 3 次。</p>
+<h5 id="习题2-5"><a href="#习题2-5" class="headerlink" title="习题2.5"></a>习题2.5</h5><p>居住在某地区的女孩中有 25% 是大学生，在女大学生中有 75% 是身高 1.6 米以上的，而女孩中身高 1.6 米以上的占总数一半。假如我们得知“身高 1.6 米以上的某女孩是大学生”的消息，问获得多少信息量？</p>
+<p><strong>解答</strong>：<br>设：</p>
+<ul>
+<li>$A$ 表示“是大学生”</li>
+<li>$B$ 表示“身高 1.6 米以上”</li>
+</ul>
+<p>已知：</p>
+<ul>
+<li>$P(A) = 0.25$</li>
+<li>$P(B|A) = 0.75$</li>
+<li>$P(B) = 0.5$</li>
+</ul>
+<p>要求的信息量是 $I(B \to A)$，即已知 $B$ 发生后，关于 $A$ 的不确定性减少量。</p>
+<p>根据贝叶斯公式：<br>$$P(A|B) = \frac{P(B|A) P(A)}{P(B)} = \frac{0.75 \times 0.25}{0.5} = 0.375$$</p>
+<p>信息量：<br>$$I(B \to A) = \log \frac{1}{P(A|B)} = \log \frac{1}{0.375} \approx 1.415 \text{ 比特}$$</p>
+<h4 id="2-2-2-信息熵"><a href="#2-2-2-信息熵" class="headerlink" title="2.2.2 信息熵"></a>2.2.2 信息熵</h4><p>信息量是一个随机变量<br>信息熵是信源的平均信息量，是自信息的数学期望。</p>
+<p><strong>定义</strong>：<br>$$H(X) = E[I(X)] = -\sum_{i=1}^{n} p(x_i) \log p(x_i)$$</p>
+<p><strong>单位</strong>：<strong>比特/符号（以 2 为底）</strong></p>
+<p><strong>意义</strong>：</p>
+<ul>
+<li>表示信源输出后每个消息（符号）所提供的平均信息量。</li>
+<li>表示信源输出前，信源的平均不确定性。</li>
+<li>表征信源的随机性。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503091106162.png" alt="image.png"></li>
+</ul>
+<h5 id="信息熵与平均获得的信息量"><a href="#信息熵与平均获得的信息量" class="headerlink" title="信息熵与平均获得的信息量"></a>信息熵与平均获得的信息量</h5><p>信息熵是信源的平均不确定性的描述。在一般情况下它并不等于平均获得的信息量。</p>
+<ul>
+<li>只有在无噪情况下，接收者才能正确无误地接收到信源所发出的消息，消除 $H(X)$ 大小的平均不确定性，所以获得的平均信息量就等于 $H(X)$。</li>
+<li>在一般情况下获得的信息量是两熵之差，并不是信源熵本身。</li>
+</ul>
+<h5 id="联合熵"><a href="#联合熵" class="headerlink" title="联合熵"></a>联合熵</h5><p>联合熵 $H(XY)$ 表示输入随机变量 $X$，经信道传输到达信宿，输出随机变量 $Y$。即收、发双方通信后，整个系统仍然存在的不确定度。</p>
+<ul>
+<li>两个随机变量 $X, Y$：</li>
+</ul>
+<p>$$<br>H(XY) = \sum_{x_i \in X} \sum_{y_j \in Y} p(x_i y_j) \log \frac{1}{p(x_i y_j)}<br>$$</p>
+<h5 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a>条件熵</h5><p>条件熵定义：条件熵是在联合符号集合 $XY$ 上的条件自信息的数学期望。</p>
+<ul>
+<li>在已知 $Y$ 时，$X$ 的条件熵为：</li>
+</ul>
+<p>$$<br>H(X / Y) = \sum_{j=1}^{m} \sum_{i=1}^{n} p(x_i y_j) I(x_i / y_j) = \sum_{j=1}^{m} \sum_{i=1}^{n} p(x_i y_j) \log_2 \frac{1}{p(x_i / y_j)}<br>$$</p>
+<ul>
+<li>已知 $X$ 时，$Y$ 的条件熵为：</li>
+</ul>
+<p>$$<br>H(Y / X) = E[I(y_j / x_i)] = \sum_{i=1}^{n} \sum_{j=1}^{m} p(x_i y_j) \log_2 \frac{1}{p(y_j / x_i)}<br>$$</p>
+<p>条件熵是一个确定的值。</p>
+<h3 id="2-3-信息熵的基本性质和定理"><a href="#2-3-信息熵的基本性质和定理" class="headerlink" title="2.3 信息熵的基本性质和定理"></a>2.3 信息熵的基本性质和定理</h3><h4 id="2-3-1-非负性"><a href="#2-3-1-非负性" class="headerlink" title="2.3.1 非负性"></a>2.3.1 非负性</h4><p>$$H(X) \geq 0$$</p>
+<p>因为 $0 \leq p(x_i) \leq 1$，所以 $\log p(x_i) \leq 0$，从而 $-p(x_i) \log p(x_i) \geq 0$，所以熵 $H(X) \geq 0$。</p>
+<h4 id="2-3-2-对称性"><a href="#2-3-2-对称性" class="headerlink" title="2.3.2 对称性"></a>2.3.2 对称性</h4><p>黑箱<br>当变量 $p(x_1), p(x_2), \ldots, p(x_n)$ 的顺序任意互换时，熵函数的值不变。</p>
+<h4 id="2-3-3-扩展性"><a href="#2-3-3-扩展性" class="headerlink" title="2.3.3 扩展性"></a>2.3.3 扩展性</h4><p>含义：信源的取值增多时，若这些取值对应的概率很小（接近于零），则信源的熵不变。<br>$$\lim_{p \to 0} H(p, 1-p) = H(1-p)$$</p>
+<h4 id="2-3-4-确定性"><a href="#2-3-4-确定性" class="headerlink" title="2.3.4 确定性"></a>2.3.4 确定性</h4><p>$$H(1,0) = H(1,0,0) = \ldots = 0$$</p>
+<p>当某分量 $p(x_i) = 1$ 时，熵 $H(X) = 0$。</p>
+<h4 id="2-3-5-可加性（联合熵-信息熵-条件熵）"><a href="#2-3-5-可加性（联合熵-信息熵-条件熵）" class="headerlink" title="2.3.5 可加性（联合熵 = 信息熵 + 条件熵）"></a>2.3.5 可加性（联合熵 = 信息熵 + 条件熵）</h4><p>$$H(XY) = H(X) + H(Y|X)$$</p>
+<h4 id="2-3-6-上凸性"><a href="#2-3-6-上凸性" class="headerlink" title="2.3.6 上凸性"></a>2.3.6 上凸性</h4><p>$$H[\alpha P_1 + (1-\alpha) P_2] &gt; \alpha H(P_1) + (1-\alpha) H(P_2)$$</p>
+<h4 id="2-3-7-极值性"><a href="#2-3-7-极值性" class="headerlink" title="2.3.7 极值性"></a>2.3.7 极值性</h4><p>离散无记忆信源输出 n 个不同的信息符号，当且仅当各个符号出现<strong>概率相等</strong>时（即 $p(x_i) = \frac{1}{n}$），熵最大。</p>
+<h4 id="2-3-8-最大离散熵定理"><a href="#2-3-8-最大离散熵定理" class="headerlink" title="2.3.8 最大离散熵定理"></a>2.3.8 最大离散熵定理</h4><p>定理：离散无记忆信源输出 n 个不同的信息符号，当且仅当各个符号出现概率相等时（即 $p(x_i) = \frac{1}{n}$），熵最大。</p>
+<h3 id="2-4-扩展信源"><a href="#2-4-扩展信源" class="headerlink" title="2.4 扩展信源"></a>2.4 扩展信源</h3><p><strong>扩展信源</strong><br>举例：电报系统，发出的是一串有(表示为0)无脉冲(表示为1)的信号系列，表示为010..01.</p>
+<p>实际的信源输出的消息是时间或空间上离散的一系列随机变量。这类信源每次输出的不是一个单个的符号，而是一个符号序列。在信源输出的序列中，每一位出现哪个符号都是随机的，而且一般前后符号的出现是有统计依赖关系的。这种信源称为扩展信源/多符号离散信源</p>
+<h4 id="2-4-1-离散无记忆信源的扩展"><a href="#2-4-1-离散无记忆信源的扩展" class="headerlink" title="2.4.1 离散无记忆信源的扩展"></a>2.4.1 离散无记忆信源的扩展</h4><ul>
+<li>把信源输出的序列看成是一组一组发出的。<ul>
+<li>例1：电报系统中，认为每二个二进制数字组成一组。信源输出由 2 个二进制数字组成的一组组符号。这时可以将它们等效看成一个新的信源，由 4 个符号 00，01，10，11 组成，该信源称为二进制无记忆信源的二次扩展。</li>
+<li>例2：把每 3 个二进制数字组成一组，这样长度为 3 的二进制序列就有 8 种不同的序列，等效成一个具有 8 个符号的信源，称为二进制无记忆信源的三次扩展信源。<br> 二进制无记忆信源的 N 次扩展：<strong>把每 N 个二进制数字组成一组</strong>，则信源等效成一个具有 2N 个符号的新信源，称为二进制无记忆信源的 N 次扩展信源。</li>
 </ul>
 </li>
-<li>更大的返回值通过内存传递，调用者分配内存区域，并将其指针作为隐式第一个参数传递给被调用者。</li>
 </ul>
-</li>
+<h5 id="2-4-1-离散无记忆信源的熵"><a href="#2-4-1-离散无记忆信源的熵" class="headerlink" title="2.4.1 离散无记忆信源的熵"></a>2.4.1 离散无记忆信源的熵</h5><p>离散无记忆信源的 N 次扩展信源的熵等于离散信源熵的 N 倍，即：<br>$$H(X^N) = N H(X)$$</p>
+<h4 id="2-4-2-离散平稳信源"><a href="#2-4-2-离散平稳信源" class="headerlink" title="2.4.2 离散平稳信源"></a>2.4.2 离散平稳信源</h4><p>离散平稳信源的输出随机序列的统计特性与时间的推移无关。</p>
+<p><strong>联合熵</strong>：<br>$$H(X_1 X_2 \ldots X_N)$$</p>
+<ol>
+<li>二维离散平稳信源的联合熵 $H(X_1X_2)$ 与单符号熵 $H(X)$ 的关系是：</li>
 </ol>
-<hr>
-<h4 id="3-栈和寄存器的使用规则"><a href="#3-栈和寄存器的使用规则" class="headerlink" title="3. 栈和寄存器的使用规则"></a><strong>3. 栈和寄存器的使用规则</strong></h4><ol>
-<li><strong>栈</strong>：<ul>
-<li>栈向下增长，栈指针<code>sp</code>始终保持16字节对齐。</li>
+<ul>
+<li><strong>答案</strong>：B. $H(X_1X_2) \leq 2H(X)$</li>
+<li><strong>解析</strong>：对于二维离散平稳信源，符号之间可能存在依赖关系，因此联合熵 $H(X_1X_2)$ 通常小于或等于两倍的单符号熵 $2H(X)$。<strong>只有当两个符号完全独立时，联合熵才等于两倍单符号熵。</strong></li>
 </ul>
-</li>
-<li><strong>寄存器分类</strong>：<ul>
-<li><strong>参数寄存器</strong>：<ul>
-<li>整数寄存器：<code>a0–a7</code>。</li>
-<li>浮点寄存器：<code>fa0–fa7</code>。</li>
-</ul>
-</li>
-<li><strong>临时寄存器（易失性）</strong>：<ul>
-<li>整数寄存器：<code>t0–t6</code>。</li>
-<li>浮点寄存器：<code>ft0–ft11</code>。</li>
-<li>如果后续需要使用，必须由调用者保存。</li>
-</ul>
-</li>
-<li><strong>保留寄存器（非易失性）</strong>：<ul>
-<li>整数寄存器：<code>s0–s11</code>。</li>
-<li>浮点寄存器：<code>fs0–fs11</code>。</li>
-<li>如果使用了这些寄存器，必须由被调用者保存。</li>
-</ul>
-</li>
-</ul>
-</li>
+<p><strong>条件熵</strong>：<br>$$H(X_{N} | X_1 X_2 \ldots X_{N-1})$$</p>
+<p><strong>极限熵</strong>：<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081928195.png" alt="image.png"></p>
+<p>$$H_\infty = \lim_{N \to \infty} H_N(X) = \lim_{N \to \infty} H(X_N | X_1 X_2 \ldots X_{N-1})$$</p>
+<h3 id="2-5-马尔可夫信源"><a href="#2-5-马尔可夫信源" class="headerlink" title="2.5 马尔可夫信源"></a>2.5 马尔可夫信源</h3><h4 id="2-5-1-马尔可夫信源的定义"><a href="#2-5-1-马尔可夫信源的定义" class="headerlink" title="2.5.1 马尔可夫信源的定义"></a>2.5.1 马尔可夫信源的定义</h4><p>马尔可夫信源的输出符号和所处的状态满足以下条件：</p>
+<ol>
+<li>某一时刻信源符号的输出只与此刻信源所处的状态有关，与以前的状态和以前的输出符号都无关。</li>
+<li>信源处于某一状态时，再发出一个符号后所处的状态将发生改变。</li>
 </ol>
-<hr>
-<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h4><p>RVG调用约定通过寄存器高效地传递参数和返回值，同时定义了栈的使用和寄存器的保存规则。这种调用约定旨在优化函数调用的性能，同时保持代码的可移植性和一致性。</p>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250218210649562.png" alt="RISC-V calling convention register usage."></p>
-<h3 id="18-3-软浮点调用约定"><a href="#18-3-软浮点调用约定" class="headerlink" title="18.3 软浮点调用约定"></a>18.3 软浮点调用约定</h3><h5 id="核心内容总结"><a href="#核心内容总结" class="headerlink" title="核心内容总结"></a><strong>核心内容总结</strong></h5><p>软浮点调用约定是<strong>针对缺乏浮点硬件</strong>的RISC-V实现（如RV32I或RV64I）设计的调用约定。它完全避免使用浮点寄存器和浮点指令，而是通过整数寄存器来传递和处理浮点参数。以下是关键要点的总结：</p>
-<hr>
-<h5 id="1-浮点参数的处理"><a href="#1-浮点参数的处理" class="headerlink" title="1. 浮点参数的处理"></a><strong>1. 浮点参数的处理</strong></h5><ol>
-<li><strong>浮点参数传递</strong>：<ul>
-<li>浮点参数通过<strong>整数寄存器</strong>传递，遵循与相同大小的整数参数相同的规则。</li>
-<li><strong>RV32</strong>：<ul>
-<li>单精度浮点（<code>float</code>）：通过单个整数寄存器传递。</li>
-<li>双精度浮点（<code>double</code>）：通过两个连续的整数寄存器传递（例如，<code>a2</code>和<code>a3</code>）。</li>
-<li>扩展精度浮点（<code>long double</code>）：通过引用传递（存储在内存中，传递指针）。</li>
-</ul>
-</li>
-<li><strong>RV64</strong>：<ul>
-<li>单精度浮点（<code>float</code>）和双精度浮点（<code>double</code>）：通过单个整数寄存器传递。</li>
-<li>扩展精度浮点（<code>long double</code>）：通过引用传递。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>返回值</strong>：<ul>
-<li>浮点返回值通过整数寄存器返回。</li>
-<li><strong>RV32</strong>：<ul>
-<li>单精度浮点：通过<code>a0</code>返回。</li>
-<li>双精度浮点：通过<code>a0</code>和<code>a1</code>返回。</li>
-</ul>
-</li>
-<li><strong>RV64</strong>：<ul>
-<li>单精度浮点和双精度浮点：通过<code>a0</code>返回。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>示例</strong>：<ul>
-<li>在RV32中，函数<code>double foo(int, double, long double)</code>：<ul>
-<li>第一个参数（<code>int</code>）通过<code>a0</code>传递。</li>
-<li>第二个参数（<code>double</code>）通过<code>a2</code>和<code>a3</code>传递。</li>
-<li>第三个参数（<code>long double</code>）通过<code>a4</code>以引用方式传递。</li>
-<li>返回值（<code>double</code>）通过<code>a0</code>和<code>a1</code>返回。</li>
-</ul>
-</li>
-<li>在RV64中，参数通过<code>a0</code>、<code>a1</code>和<code>a2</code>-<code>a3</code>对传递，返回值通过<code>a0</code>返回。</li>
-</ul>
-</li>
+<h4 id="2-5-2-m-阶马尔可夫信源"><a href="#2-5-2-m-阶马尔可夫信源" class="headerlink" title="2.5.2 m 阶马尔可夫信源"></a>2.5.2 m 阶马尔可夫信源</h4><p>m 阶马尔可夫信源的数学模型可由一组信源符号集和一组条件概率确定。当前发出的符号只与前 m 个符号有关，与更前面的符号无关。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081842810.png" alt="image.png|425"></p>
+<h5 id="马尔可夫信源的输出符号和所处的状态满足以下两个条件："><a href="#马尔可夫信源的输出符号和所处的状态满足以下两个条件：" class="headerlink" title="马尔可夫信源的输出符号和所处的状态满足以下两个条件："></a>马尔可夫信源的输出符号和所处的状态满足以下两个条件：</h5><ol>
+<li><strong>无记忆性</strong>：<br>某一时刻信源符号的输出只与此刻信源所处的状态有关，与以前的状态和以前的输出符号都无关。数学表达式为：</li>
 </ol>
-<hr>
-<h5 id="2-动态舍入模式和异常处理"><a href="#2-动态舍入模式和异常处理" class="headerlink" title="2. 动态舍入模式和异常处理"></a><strong>2. 动态舍入模式和异常处理</strong></h5><ul>
-<li>动态舍入模式和累积异常标志可以通过C99标准头文件<code>&lt;fenv.h&gt;</code>提供的例程访问。</li>
-<li>这些功能在软浮点实现中通过软件模拟完成，因为硬件不支持浮点操作。</li>
-</ul>
-<hr>
-<h5 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a><strong>3. 总结</strong></h5><p>软浮点调用约定是为缺乏浮点硬件的RISC-V实现设计的，通过整数寄存器传递和处理浮点参数。这种调用约定确保了即使在没有浮点单元的情况下，浮点运算也能通过软件模拟完成，同时保持与RVG调用约定的兼容性。</p>
+<p>$$<br>P(X_l = x_k \mid S_l = e_i, X_{l-1} = x_{k1}, S_{l-1} = e_j, \ldots) = P(x_k \mid e_i)<br>$$</p>
+<p>   当具有时齐性时有：</p>
+<p>$$<br>P(x_k \mid e_i) = p(x_k \mid e_i)<br>$$</p>
+<ol start="2">
+<li><strong>状态转移</strong>：<br>信源在 $l$ 时刻所处的状态由当前的输出符号和前一时刻 $(l-1)$ 信源的状态唯一确定。数学表达式为：</li>
+</ol>
+<p>$$<br>P(S_l = e_j \mid X_l = x_m, S_{l-1} = e_i) =<br>   \begin{cases}<br>   0 &amp; \text{if } x_m \neq f(e_i, e_j) \<br>   1 &amp; \text{if } x_m = f(e_i, e_j)<br>   \end{cases}<br>$$</p>
+<p>   其中 $f(e_i, e_j)$ 是状态转移函数，表示从状态 $e_i$ 转移到状态 $e_j$ 时输出的符号。</p>
+<p>这些条件定义了马尔可夫信源的基本特性，即当前状态只依赖于前一个状态，这种特性使得马尔可夫模型在许多领域中非常有用，尤其是在时间序列分析和自然语言处理中。</p>
+<h3 id="2-6-信源剩余度与自然语言的熵"><a href="#2-6-信源剩余度与自然语言的熵" class="headerlink" title="2.6 信源剩余度与自然语言的熵"></a>2.6 信源剩余度与自然语言的熵</h3><h4 id="2-6-1-信源剩余度"><a href="#2-6-1-信源剩余度" class="headerlink" title="2.6.1 信源剩余度"></a>2.6.1 信源剩余度</h4><p>信源剩余度反映了信源输出符号序列中符号之间的依赖程度，计算公式为：<br>$$\xi = 1 - \frac{H_\infty}{H_0}$$<br>其中，$H_\infty$ 是信源的实际熵，$H_0 = \log |A|$ 是最大熵。</p>
+<h4 id="2-6-2-自然语言的熵"><a href="#2-6-2-自然语言的熵" class="headerlink" title="2.6.2 自然语言的熵"></a>2.6.2 自然语言的熵</h4><p>自然语言如英语、汉语等具有较高的剩余度，意味着符号之间存在较强的依赖关系，信息熵较低。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本章详细介绍了信源的分类、数学模型，以及信息熵的定义、性质和计算方法。通过习题加深了对信息熵和自信息的理解，掌握了如何计算信息量和确定称量次数等实际问题。</p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -759,7 +713,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/2025/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/">https://erinmi4.github.io/2025/02/17/cao-zuo-xi-tong-diao-yong-xie-yi/</a>
+                    <a href="https://erinmi4.github.io/2025/03/08/xin-xi-lun-yu-bian-ma-ji-zhu-di-2-zhang-chi-san-xin-yuan-ji-qi-xin-xi-ce-du/">https://erinmi4.github.io/2025/03/08/xin-xi-lun-yu-bian-ma-ji-zhu-di-2-zhang-chi-san-xin-yuan-ji-qi-xin-xi-ce-du/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -797,12 +751,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
-                                </a>
-                            
-                                <a href="/tags/MIT6-s081/">
-                                    <span class="chip bg-color">MIT6.s081</span>
+                                <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+                                    <span class="chip bg-color">信息论</span>
                                 </a>
                             
                         </div>
@@ -850,13 +800,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/02/18/cao-zuo-xi-tong-lec4/">
+                <a href="/2025/03/08/wei-ming-ming/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Chapter 4 陷阱————系统调用，异常和硬件中断">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Chapter 4 陷阱————系统调用，异常和硬件中断</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -867,31 +817,15 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-08
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            MIKA
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
-                    </a>
-                    
-                    <a href="/tags/MIT6-s081/">
-                        <span class="chip bg-color">MIT6.s081</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -903,13 +837,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/02/17/lab3-page-tables/">
+                <a href="/2025/03/08/cs191-lec1-intro-to-deep-learning/">
                     <div class="card-image">
                         
+                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081023724.png" class="responsive-img" alt="【CS191】【lec1】Intro to Deep Learning">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Lab3 page tables">
-                        
-                        <span class="card-title">Lab3 page tables</span>
+                        <span class="card-title">【CS191】【lec1】Intro to Deep Learning</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -920,14 +853,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
@@ -937,16 +870,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/lab/">
-                        <span class="chip bg-color">lab</span>
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
-                    </a>
-                    
-                    <a href="/tags/MIT6-s081/">
-                        <span class="chip bg-color">MIT6.s081</span>
+                    <a href="/tags/MIT6S191/">
+                        <span class="chip bg-color">MIT6S191</span>
                     </a>
                     
                 </div>
