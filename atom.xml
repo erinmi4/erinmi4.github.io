@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-11T12:52:00.411Z</updated>
+  <updated>2025-03-11T14:24:35.390Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -17,11 +17,381 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【MIT线性代数】【lec2】消元法与矩阵运算</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec2-xiao-yuan-fa-yu-ju-zhen-yun-suan/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec2-xiao-yuan-fa-yu-ju-zhen-yun-suan/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:24:35.390Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数第二讲：消元法与矩阵运算&quot;&gt;&lt;a href=&quot;#线性代数第二讲：消元法与矩阵运算&quot; class=&quot;headerlink&quot; title=&quot;线性代数第二讲：消元法与矩阵运算&quot;&gt;&lt;/a&gt;线性代数第二讲：消元法与矩阵运算&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec1】 线性方程组的几何与代数视角</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec1-xian-xing-fang-cheng-zu-de-ji-he-yu-dai-shu-shi-jiao/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec1-xian-xing-fang-cheng-zu-de-ji-he-yu-dai-shu-shi-jiao/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:28:29.889Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数第一讲：线性方程组的几何与代数视角&quot;&gt;&lt;a href=&quot;#线性代数第一讲：线性方程组的几何与代数视角&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec11】 向量空间、矩阵秩与图</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec11-xiang-liang-kong-jian-ju-zhen-zhi-yu-tu/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec11-xiang-liang-kong-jian-ju-zhen-zhi-yu-tu/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T13:52:42.807Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数第十一讲：矩阵空间、子空间与秩&quot;&gt;&lt;a href=&quot;#线性代数第十一讲：矩阵空间、子空间与秩&quot; class=&quot;headerlink&quot; title=&quot;线性代数第十一讲：矩阵空间、子空间与秩&quot;&gt;&lt;/a&gt;线性代数第十一讲：矩阵空间、子空间与秩&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec3】矩阵乘法与逆矩阵</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec3-ju-zhen-cheng-fa-yu-ni-ju-zhen/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec3-ju-zhen-cheng-fa-yu-ni-ju-zhen/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:28:19.631Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数第三讲：矩阵乘法与逆矩阵&quot;&gt;&lt;a href=&quot;#线性代数第三讲：矩阵乘法与逆矩阵&quot; class=&quot;headerlink&quot; title=&quot;线性代数第三讲：矩阵乘法与逆矩阵&quot;&gt;&lt;/a&gt;线性代数第三讲：矩阵乘法与逆矩阵&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec4】分解为a = lu</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:29:41.944Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数第四讲：矩阵乘法与逆矩阵&quot;&gt;&lt;a href=&quot;#线性代数第四讲：矩阵乘法与逆矩阵&quot; class=&quot;headerlink&quot; title=&quot;线性代数第四讲：矩阵乘法与逆矩阵&quot;&gt;&lt;/a&gt;线性代数第四讲：矩阵乘法与逆矩阵&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec7】求解ax=0以及子空间</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec7-qiu-jie-ax-0-yi-ji-zi-kong-jian/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec7-qiu-jie-ax-0-yi-ji-zi-kong-jian/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:41:28.490Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数笔记-第七讲&quot;&gt;&lt;a href=&quot;#线性代数笔记-第七讲&quot; class=&quot;headerlink&quot; title=&quot;线性代数笔记 - 第七讲&quot;&gt;&lt;/a&gt;线性代数笔记 - 第七讲&lt;/h1&gt;&lt;h2 id=&quot;一、课程主题&quot;&gt;&lt;a href=&quot;#一、课程主题&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec6】列空间与零空间</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec6-lie-kong-jian-yu-ling-kong-jian/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec6-lie-kong-jian-yu-ling-kong-jian/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:40:26.307Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数笔记：第六讲-向量空间与子空间&quot;&gt;&lt;a href=&quot;#线性代数笔记：第六讲-向量空间与子空间&quot; class=&quot;headerlink&quot; title=&quot;线性代数笔记：第六讲 - 向量空间与子空间&quot;&gt;&lt;/a&gt;线性代数笔记：第六讲 -</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec5】置换矩阵、转置矩阵与向量空间</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec5-zhi-huan-ju-zhen-zhuan-zhi-ju-zhen-yu-xiang-liang-kong-jian/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec5-zhi-huan-ju-zhen-zhuan-zhi-ju-zhen-yu-xiang-liang-kong-jian/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:33:24.875Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数第五讲：置换矩阵、转置矩阵与向量空间&quot;&gt;&lt;a href=&quot;#线性代数第五讲：置换矩阵、转置矩阵与向量空间&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec9】线性独立性、基和维度</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec9-xian-xing-du-li-xing-ji-he-wei-du/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec9-xian-xing-du-li-xing-ji-he-wei-du/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:45:47.957Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数笔记-第九讲：线性独立性、基和维度&quot;&gt;&lt;a href=&quot;#线性代数笔记-第九讲：线性独立性、基和维度&quot; class=&quot;headerlink&quot; title=&quot;线性代数笔记 - 第九讲：线性独立性、基和维度&quot;&gt;&lt;/a&gt;线性代数笔记 -</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【lec8】求解ax=b以及行化简</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec8-qiu-jie-ax-b-yi-ji-xing-hua-jian/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec8-qiu-jie-ax-b-yi-ji-xing-hua-jian/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:43:29.388Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数笔记-第八讲：解线性方程组-Ax-b&quot;&gt;&lt;a href=&quot;#线性代数笔记-第八讲：解线性方程组-Ax-b&quot; class=&quot;headerlink&quot; title=&quot;线性代数笔记 - 第八讲：解线性方程组 Ax=b&quot;&gt;&lt;/a&gt;线性代数笔记 -</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT线性代数】【番外review】向量、矩阵与子空间</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-fan-wai-review-xiang-liang-ju-zhen-yu-zi-kong-jian/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-fan-wai-review-xiang-liang-ju-zhen-yu-zi-kong-jian/</id>
+    <published>2025-03-12T14:10:00.000Z</published>
+    <updated>2025-03-11T14:17:55.350Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;线性代数复习：向量、矩阵与子空间&quot;&gt;&lt;a href=&quot;#线性代数复习：向量、矩阵与子空间&quot; class=&quot;headerlink&quot; title=&quot;线性代数复习：向量、矩阵与子空间&quot;&gt;&lt;/a&gt;线性代数复习：向量、矩阵与子空间&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MIT6.006】【lec3】 集合与排序</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/</id>
+    <published>2025-03-12T14:07:00.000Z</published>
+    <updated>2025-03-11T13:53:46.808Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;算法导论-第三讲：集合与排序&quot;&gt;&lt;a href=&quot;#算法导论-第三讲：集合与排序&quot; class=&quot;headerlink&quot; title=&quot;算法导论 - 第三讲：集合与排序&quot;&gt;&lt;/a&gt;算法导论 - 第三讲：集合与排序&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数据结构与算法" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数据结构与算法" scheme="https://erinmi4.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="算法导论" scheme="https://erinmi4.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    
+    <category term="MIT6006" scheme="https://erinmi4.github.io/tags/MIT6006/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【MIT线性代数】【lec10】 矩阵的四个基本子空间</title>
     <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/"/>
     <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/</id>
     <published>2025-03-12T13:10:00.000Z</published>
-    <updated>2025-03-11T12:52:00.411Z</updated>
+    <updated>2025-03-11T14:06:45.133Z</updated>
     
     
       
@@ -108,14 +478,14 @@
     <link href="https://erinmi4.github.io/2025/03/09/mit6.006-lec2-shu-ju-jie-gou-he-dong-tai-shu-zu/"/>
     <id>https://erinmi4.github.io/2025/03/09/mit6.006-lec2-shu-ju-jie-gou-he-dong-tai-shu-zu/</id>
     <published>2025-03-09T07:07:00.000Z</published>
-    <updated>2025-03-09T07:46:25.465Z</updated>
+    <updated>2025-03-11T13:55:31.727Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;算法与数据结构笔记&quot;&gt;&lt;a href=&quot;#算法与数据结构笔记&quot; class=&quot;headerlink&quot; title=&quot;算法与数据结构笔记&quot;&gt;&lt;/a&gt;算法与数据结构笔记&lt;/h1&gt;&lt;h2 id=&quot;一、算法基础&quot;&gt;&lt;a href=&quot;#一、算法基础&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;算法导论-第二讲：数据结构与动态数组&quot;&gt;&lt;a href=&quot;#算法导论-第二讲：数据结构与动态数组&quot; class=&quot;headerlink&quot; title=&quot;算法导论 - 第二讲：数据结构与动态数组&quot;&gt;&lt;/a&gt;算法导论 - 第二讲：数据结构与动态数组&lt;/h1&gt;&lt;h2</summary>
         
       
     
@@ -137,14 +507,14 @@
     <link href="https://erinmi4.github.io/2025/03/09/mit6.006-lec1-dao-lun/"/>
     <id>https://erinmi4.github.io/2025/03/09/mit6.006-lec1-dao-lun/</id>
     <published>2025-03-09T07:07:00.000Z</published>
-    <updated>2025-03-10T01:28:27.273Z</updated>
+    <updated>2025-03-11T13:57:00.784Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;算法与计算笔记&quot;&gt;&lt;a href=&quot;#算法与计算笔记&quot; class=&quot;headerlink&quot; title=&quot;算法与计算笔记&quot;&gt;&lt;/a&gt;算法与计算笔记&lt;/h1&gt;&lt;h2 id=&quot;一、算法基础&quot;&gt;&lt;a href=&quot;#一、算法基础&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;算法导论-第一讲：算法与计算&quot;&gt;&lt;a href=&quot;#算法导论-第一讲：算法与计算&quot; class=&quot;headerlink&quot; title=&quot;算法导论 - 第一讲：算法与计算&quot;&gt;&lt;/a&gt;算法导论 - 第一讲：算法与计算&lt;/h1&gt;&lt;h2 id=&quot;一、课程介绍&quot;&gt;&lt;a</summary>
         
       
     
@@ -241,353 +611,6 @@
     <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="MIT6S191" scheme="https://erinmi4.github.io/tags/MIT6S191/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【CS537】【lec4】CPU总结和地址空间</title>
-    <link href="https://erinmi4.github.io/2025/03/06/cs537-lec4-cpu-zong-jie-he-di-zhi-kong-jian/"/>
-    <id>https://erinmi4.github.io/2025/03/06/cs537-lec4-cpu-zong-jie-he-di-zhi-kong-jian/</id>
-    <published>2025-03-06T14:07:00.000Z</published>
-    <updated>2025-03-06T14:48:14.276Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;CPU-虚拟化相关笔记&quot;&gt;&lt;a href=&quot;#CPU-虚拟化相关笔记&quot; class=&quot;headerlink&quot; title=&quot;CPU 虚拟化相关笔记&quot;&gt;&lt;/a&gt;CPU 虚拟化相关笔记&lt;/h1&gt;&lt;h2 id=&quot;CPU-虚拟化概述&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="《操作系统导论》" scheme="https://erinmi4.github.io/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
-    
-    <category term="CS537" scheme="https://erinmi4.github.io/tags/CS537/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一章 计算机概要与技术（下）</title>
-    <link href="https://erinmi4.github.io/2025/03/05/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xia/"/>
-    <id>https://erinmi4.github.io/2025/03/05/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xia/</id>
-    <published>2025-03-05T09:15:00.000Z</published>
-    <updated>2025-03-09T07:05:24.221Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;hr&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503051718148.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;复习题&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="计算机组成原理" scheme="https://erinmi4.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-    <category term="计算机组成原理" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="计算机组成与设计硬件软件接口" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
-    
-    <category term="cs61C" scheme="https://erinmi4.github.io/tags/cs61C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一章 计算机概要与技术（上）</title>
-    <link href="https://erinmi4.github.io/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/"/>
-    <id>https://erinmi4.github.io/2025/03/04/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-shang/</id>
-    <published>2025-03-04T05:33:00.000Z</published>
-    <updated>2025-03-09T07:02:00.654Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;本章问题&quot;&gt;&lt;a href=&quot;#本章问题&quot; class=&quot;headerlink&quot; title=&quot;本章问题&quot;&gt;&lt;/a&gt;本章问题&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;传统上计算机分为哪三类？后PC时代有哪两类计算机？&lt;/li&gt;
-&lt;li&gt;KB MB</summary>
-        
-      
-    
-    
-    
-    <category term="计算机组成原理" scheme="https://erinmi4.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-    <category term="计算机组成原理" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="计算机组成与设计硬件软件接口" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
-    
-    <category term="cs61C" scheme="https://erinmi4.github.io/tags/cs61C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>嵌入思维导图测试</title>
-    <link href="https://erinmi4.github.io/2025/02/27/si-wei-dao-tu-shi-li/"/>
-    <id>https://erinmi4.github.io/2025/02/27/si-wei-dao-tu-shi-li/</id>
-    <published>2025-02-27T04:27:00.000Z</published>
-    <updated>2025-03-04T05:34:46.516Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote class=&quot;pullquote mindmap mindmap-md&quot;&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html&quot;&gt;Hexo</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>内存虚拟化-隔离和保护(1)</title>
-    <link href="https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/"/>
-    <id>https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-3/</id>
-    <published>2025-02-23T12:07:00.000Z</published>
-    <updated>2025-03-06T14:21:00.567Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;hr&gt;
-&lt;h3 id=&quot;12-关于虚拟内存的对话&quot;&gt;&lt;a href=&quot;#12-关于虚拟内存的对话&quot; class=&quot;headerlink&quot; title=&quot;12 关于虚拟内存的对话&quot;&gt;&lt;/a&gt;12</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="《操作系统导论》" scheme="https://erinmi4.github.io/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>lec3逆矩阵</title>
-    <link href="https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec3/"/>
-    <id>https://erinmi4.github.io/2025/02/23/xian-xing-dai-shu-lec3/</id>
-    <published>2025-02-23T09:10:00.000Z</published>
-    <updated>2025-03-04T05:30:22.714Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;2-5-逆矩阵&quot;&gt;&lt;a href=&quot;#2-5-逆矩阵&quot; class=&quot;headerlink&quot; title=&quot;2.5 逆矩阵&quot;&gt;&lt;/a&gt;2.5 逆矩阵&lt;/h3&gt;&lt;h4 id=&quot;什么是逆矩阵&quot;&gt;&lt;a href=&quot;#什么是逆矩阵&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-    <category term="MIT18.06SC 2011fall" scheme="https://erinmi4.github.io/tags/MIT18-06SC-2011fall/"/>
-    
-    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
-    
-    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CPU虚拟化——进程调度(2)</title>
-    <link href="https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/"/>
-    <id>https://erinmi4.github.io/2025/02/23/cao-zuo-xi-tong-dao-lun-xu-ni-hua-2/</id>
-    <published>2025-02-23T01:07:00.000Z</published>
-    <updated>2025-03-06T14:21:01.727Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;第7章-进程调度：介绍&quot;&gt;&lt;a href=&quot;#第7章-进程调度：介绍&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="《操作系统导论》" scheme="https://erinmi4.github.io/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CPU虚拟化——进程创建与虚拟化实现(1)</title>
-    <link href="https://erinmi4.github.io/2025/02/22/cao-zuo-xi-tong-dao-lun-xu-ni-hua-1/"/>
-    <id>https://erinmi4.github.io/2025/02/22/cao-zuo-xi-tong-dao-lun-xu-ni-hua-1/</id>
-    <published>2025-02-22T08:47:00.000Z</published>
-    <updated>2025-03-06T14:21:02.145Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;进程是什么，进程如何创建&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;虚拟化如何实现——时分共享&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如何实现时分共享——上下文切换&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如何在不增加系统开销的情况下实现虚拟化？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="《操作系统导论》" scheme="https://erinmi4.github.io/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS144 checkpoint 1</title>
-    <link href="https://erinmi4.github.io/2025/02/19/ji-suan-ji-wang-luo-cs144-checkpoint1/"/>
-    <id>https://erinmi4.github.io/2025/02/19/ji-suan-ji-wang-luo-cs144-checkpoint1/</id>
-    <published>2025-02-19T09:27:00.000Z</published>
-    <updated>2025-03-04T05:33:01.547Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;script type=&quot;text&amp;#x2F;javascript&quot; src=&quot;https://unpkg.com/kity@2.0.4/dist/kity.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text&amp;#x2F;javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机网络" scheme="https://erinmi4.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="lab" scheme="https://erinmi4.github.io/tags/lab/"/>
-    
-    <category term="计算机网络" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    <category term="Stanford CS144" scheme="https://erinmi4.github.io/tags/Stanford-CS144/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FreeRtos lec8 队列集</title>
-    <link href="https://erinmi4.github.io/2025/02/19/freertos-lec8/"/>
-    <id>https://erinmi4.github.io/2025/02/19/freertos-lec8/</id>
-    <published>2025-02-19T09:21:00.000Z</published>
-    <updated>2025-02-19T10:20:00.227Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;script type=&quot;text&amp;#x2F;javascript&quot; src=&quot;https://unpkg.com/kity@2.0.4/dist/kity.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text&amp;#x2F;javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="FREERTOS" scheme="https://erinmi4.github.io/categories/FREERTOS/"/>
-    
-    
-    <category term="嵌入式" scheme="https://erinmi4.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
-    
-    <category term="韦东山FREERTOS" scheme="https://erinmi4.github.io/tags/%E9%9F%A6%E4%B8%9C%E5%B1%B1FREERTOS/"/>
-    
-    <category term="lab" scheme="https://erinmi4.github.io/tags/lab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lab4 traps</title>
-    <link href="https://erinmi4.github.io/2025/02/18/lab4-traps/"/>
-    <id>https://erinmi4.github.io/2025/02/18/lab4-traps/</id>
-    <published>2025-02-18T13:30:00.000Z</published>
-    <updated>2025-03-04T05:30:25.883Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;script type=&quot;text&amp;#x2F;javascript&quot; src=&quot;https://unpkg.com/kity@2.0.4/dist/kity.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text&amp;#x2F;javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="lab" scheme="https://erinmi4.github.io/tags/lab/"/>
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="MIT6.s081" scheme="https://erinmi4.github.io/tags/MIT6-s081/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Chapter 4 陷阱————系统调用，异常和硬件中断</title>
-    <link href="https://erinmi4.github.io/2025/02/18/cao-zuo-xi-tong-lec4/"/>
-    <id>https://erinmi4.github.io/2025/02/18/cao-zuo-xi-tong-lec4/</id>
-    <published>2025-02-18T13:20:00.000Z</published>
-    <updated>2025-03-06T14:20:55.902Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250219153823338.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统" scheme="https://erinmi4.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="MIT6.s081" scheme="https://erinmi4.github.io/tags/MIT6-s081/"/>
     
   </entry>
   

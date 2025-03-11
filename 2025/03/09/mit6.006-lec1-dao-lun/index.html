@@ -500,21 +500,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-10
+                    2025-03-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    971
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -534,76 +534,103 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="算法与计算笔记"><a href="#算法与计算笔记" class="headerlink" title="算法与计算笔记"></a>算法与计算笔记</h1><h2 id="一、算法基础"><a href="#一、算法基础" class="headerlink" title="一、算法基础"></a>一、算法基础</h2><p>算法的目的</p>
-<ol>
-<li>解决问题</li>
-<li>交流</li>
-<li>证明正确性</li>
-<li>效率</li>
-</ol>
-<h3 id="（一）算法的定义"><a href="#（一）算法的定义" class="headerlink" title="（一）算法的定义"></a>（一）算法的定义</h3><p>算法是指一组有穷的指令集，它接收输入并产生输出。<br>算法的执行过程是确定的，且在有限步骤内结束。<br><strong>算法的目标是解决计算问题，并能够证明其解决方案的正确性和效率。</strong><br>算法的本质是输入与输出之间的映射关系。一个输入只会有一个输出</p>
-<h3 id="（二）问题的定义"><a href="#（二）问题的定义" class="headerlink" title="（二）问题的定义"></a>（二）问题的定义</h3><p>在计算问题中，<strong>问题被定义为输入和输出之间的二元关系。</strong><br>通常，我们不会为所有输入指定正确的输出，而是提供一个可验证的谓词，正确的输出必须满足该谓词。在6.006课程中，我们研究的是具有任意大小输入空间的问题。</p>
-<h3 id="（三）算法的正确性"><a href="#（三）算法的正确性" class="headerlink" title="（三）算法的正确性"></a>（三）算法的正确性</h3><p>证明算法正确性的方法包括：</p>
-<ol>
-<li><strong>小输入情况</strong>：使用案例分析。</li>
-<li><strong>大输入情况</strong>：算法必须包含递归或循环结构，使用数学归纳法来证明。<ol>
-<li>因为我们的程序是有限长的，但是处理的输入可能是无限长的。</li>
+                <h1 id="算法导论-第一讲：算法与计算"><a href="#算法导论-第一讲：算法与计算" class="headerlink" title="算法导论 - 第一讲：算法与计算"></a>算法导论 - 第一讲：算法与计算</h1><h2 id="一、课程介绍"><a href="#一、课程介绍" class="headerlink" title="一、课程介绍"></a>一、课程介绍</h2><ul>
+<li><strong>课程名称</strong>：算法导论（Introduction to Algorithms）</li>
+<li><strong>授课教师</strong>：Jason Ku（主讲），Eric Demaine 和 Justin Solomon（共同授课）</li>
+<li><strong>课程目标</strong>：<ol>
+<li>解决计算问题。</li>
+<li>证明算法的正确性。</li>
+<li>论证算法的效率。</li>
+<li>与他人沟通算法思想。</li>
 </ol>
 </li>
+</ul>
+<h2 id="二、计算问题与算法"><a href="#二、计算问题与算法" class="headerlink" title="二、计算问题与算法"></a>二、计算问题与算法</h2><h3 id="1-什么是计算问题？"><a href="#1-什么是计算问题？" class="headerlink" title="1. 什么是计算问题？"></a>1. 什么是计算问题？</h3><ul>
+<li><strong>定义</strong>：计算问题可以被看作是一组输入与一组输出之间的二元关系。对于每个输入，指定哪些输出是正确的。</li>
+<li><strong>示例</strong>：<ul>
+<li>在数组中查找值为 5 的索引。可能有多个索引满足条件，因此输出不唯一。</li>
+<li>在一个班级中查找是否有两个学生生日相同。如果人数超过 365，根据鸽巢原理，答案是肯定的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-什么是算法？"><a href="#2-什么是算法？" class="headerlink" title="2. 什么是算法？"></a>2. 什么是算法？</h3><ul>
+<li><strong>定义</strong>：算法是一个固定大小的程序或过程，它将输入映射到输出，并且输出必须是正确的。</li>
+<li><strong>示例</strong>：<ul>
+<li><strong>生日问题</strong>：检查一个班级中是否有两个学生具有相同的出生时间。<ul>
+<li><strong>算法描述</strong>：<ol>
+<li>维护一个记录（存储已检查的学生生日）。</li>
+<li>按顺序采访每个学生，询问其生日。</li>
+<li>检查生日是否在记录中：<ul>
+<li>如果在记录中，返回匹配的一对。</li>
+<li>如果不在记录中，将该学生生日加入记录。</li>
+</ul>
+</li>
+<li>如果检查完所有学生仍未找到匹配，返回“无匹配”。</li>
 </ol>
-<h3 id="（四）算法的效率"><a href="#（四）算法的效率" class="headerlink" title="（四）算法的效率"></a>（四）算法的效率</h3><p>效率衡量的是算法产生正确输出的速度。为了使效率分析与机器无关，我们通常计算算法执行固定时间操作的次数。效率通常依赖于输入的大小（<strong>我们希望处理时间与输入的大小呈线性关系</strong>），我们使用渐近符号来忽略常数因子和低阶项：</p>
-<ul>
-<li><strong>上界（O）</strong>：表示算法运行时间的上界。</li>
-<li><strong>下界（Ω）</strong>：表示算法运行时间的下界。</li>
-<li><strong>紧界（Θ）</strong>：表示算法运行时间的上界和下界相同。</li>
+</li>
 </ul>
-<h2 id="二、计算模型"><a href="#二、计算模型" class="headerlink" title="二、计算模型"></a>二、计算模型</h2><h3 id="（一）Word-RAM模型"><a href="#（一）Word-RAM模型" class="headerlink" title="（一）Word-RAM模型"></a>（一）Word-RAM模型</h3><p>在本课程中，我们使用Word-RAM模型来定义计算模型。该模型规定了机器可以执行的操作及其时间复杂度：</p>
-<ul>
-<li><strong>机器字</strong>：由w位组成，w是w位Word-RAM的字长。</li>
-<li><strong>内存</strong>：可寻址的机器字序列。</li>
-<li><strong>处理器支持的操作</strong>：包括整数算术、逻辑运算、位运算等，这些操作在O(1)时间内完成。</li>
+</li>
 </ul>
-<h3 id="（二）内存与寻址"><a href="#（二）内存与寻址" class="headerlink" title="（二）内存与寻址"></a>（二）内存与寻址</h3><p>内存本质上是一连串的0和1。通过使用32位寄存器来操作数据，寻址范围为2^32=4GB，因此32位机器的寻址范围为4GB。现在使用64位寄存器，寻址范围更大，足以满足现代计算需求。</p>
-<h2 id="三、如何解决算法问题"><a href="#三、如何解决算法问题" class="headerlink" title="三、如何解决算法问题"></a>三、如何解决算法问题</h2><ol>
-<li><strong>简化为已知问题</strong>：使用已知的数据结构或算法来解决问题。</li>
-<li><strong>设计自己的算法</strong>：采用递归设计范式，如暴力法、减而治之、分而治之、动态规划、贪心算法等。</li>
+</li>
+</ul>
+<h2 id="三、算法的正确性与效率"><a href="#三、算法的正确性与效率" class="headerlink" title="三、算法的正确性与效率"></a>三、算法的正确性与效率</h2><h3 id="1-证明算法的正确性"><a href="#1-证明算法的正确性" class="headerlink" title="1. 证明算法的正确性"></a>1. 证明算法的正确性</h3><ul>
+<li><strong>方法</strong>：使用数学归纳法（Induction）。</li>
+<li><strong>示例</strong>（生日问题算法的正确性）：<ul>
+<li><strong>归纳假设</strong>：如果前 K 个学生中有匹配，算法会在采访第 K+1 个学生之前返回匹配。</li>
+<li><strong>基础情况（Base Case）</strong>：K = 0。显然，0 个学生中不可能有匹配，假设成立。</li>
+<li><strong>归纳步骤（Inductive Step）</strong>：<ul>
+<li>如果前 K 个学生中已有匹配，则根据归纳假设，算法已返回正确结果。</li>
+<li>如果前 K 个学生中无匹配，检查第 K+1 个学生：<ul>
+<li>如果第 K+1 个学生与前 K 个学生中的某个学生匹配，则算法会返回匹配。</li>
+<li>如果不匹配，则将该学生加入记录，继续检查。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-算法的效率"><a href="#2-算法的效率" class="headerlink" title="2. 算法的效率"></a>2. 算法的效率</h3><ul>
+<li><strong>定义</strong>：效率不仅指算法运行的速度，还指与其他可能的解决方案相比的性能。</li>
+<li><strong>衡量方法</strong>：使用渐进分析（Asymptotic Analysis），而不是直接测量运行时间。<ul>
+<li><strong>常见时间复杂度</strong>：<ul>
+<li>常数时间（O(1)）：与输入大小无关。</li>
+<li>对数时间（O(log n)）：接近常数时间。</li>
+<li>线性时间（O(n)）：与输入大小成正比。</li>
+<li>线性对数时间（O(n log n)）：接近线性时间。</li>
+<li>多项式时间（O(n^c)，c 为常数）：通常认为是高效的。</li>
+<li>指数时间（O(2^n)）：通常认为是低效的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、计算模型"><a href="#四、计算模型" class="headerlink" title="四、计算模型"></a>四、计算模型</h2><ul>
+<li><strong>模型</strong>：使用“字随机访问存储器”（Word RAM）模型。<ul>
+<li><strong>特性</strong>：<ul>
+<li>内存由字（word）组成，每个字包含固定数量的比特（如 64 位）。</li>
+<li>CPU 可以在常数时间内随机访问内存中的任意字。</li>
+<li>支持基本操作：整数运算、逻辑运算、内存读写等。</li>
+</ul>
+</li>
+<li><strong>限制</strong>：CPU 每次只能处理固定数量的信息，因此处理大量数据需要更多时间。</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、课程结构"><a href="#五、课程结构" class="headerlink" title="五、课程结构"></a>五、课程结构</h2><ul>
+<li><strong>第一部分（前 8 讲）</strong>：数据结构与排序。</li>
+<li><strong>第二部分</strong>：最短路径算法与图。</li>
+<li><strong>第三部分</strong>：动态规划。</li>
+</ul>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><ul>
+<li><strong>算法设计策略</strong>：<ol>
+<li><strong>问题归约</strong>：将问题转化为已知问题的解决方案。</li>
+<li><strong>递归设计</strong>：设计递归算法解决新问题。</li>
 </ol>
-<h2 id="四、效率分析"><a href="#四、效率分析" class="headerlink" title="四、效率分析"></a>四、效率分析</h2><h3 id="（一）时间估计"><a href="#（一）时间估计" class="headerlink" title="（一）时间估计"></a>（一）时间估计</h3><p>基于1GHz单核机器每周期执行一次操作的时间估计：</p>
-<table>
-<thead>
-<tr>
-<th>输入规模</th>
-<th>常数</th>
-<th>对数</th>
-<th>线性</th>
-<th>线性对数</th>
-<th>平方</th>
-<th>多项式</th>
-<th>指数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1000</td>
-<td>1ns</td>
-<td>10ns</td>
-<td>1µs</td>
-<td>10µs</td>
-<td>1ms</td>
-<td>10^{3c−9} s</td>
-<td>10^{281} 千年</td>
-</tr>
-</tbody></table>
-<h3 id="（二）渐近符号"><a href="#（二）渐近符号" class="headerlink" title="（二）渐近符号"></a>（二）渐近符号</h3><p>渐近符号用于描述算法运行时间的增长趋势，忽略常数因子和低阶项：</p>
-<ul>
-<li><strong>上界（O）</strong>：表示算法运行时间不超过某个函数的常数倍。</li>
-<li><strong>下界（Ω）</strong>：表示算法运行时间不低于某个函数的常数倍。</li>
-<li><strong>紧界（Θ）</strong>：表示算法运行时间在某个函数的上下界之间。</li>
+</li>
+<li><strong>数据结构</strong>：用于存储大量数据并支持高效操作。</li>
+<li><strong>沟通与证明</strong>：能够证明算法的正确性和效率，并与他人沟通。</li>
 </ul>
-<h2 id="五、数据结构"><a href="#五、数据结构" class="headerlink" title="五、数据结构"></a>五、数据结构</h2><p>数据结构是一种存储非恒定数据的方式，支持一组操作。不同的数据结构实现相同的接口时，性能可能不同。例如，静态数组具有固定长度和宽度，支持在Θ(1)时间内获取和设置元素。</p>
-<h2 id="六、生日匹配算法示例"><a href="#六、生日匹配算法示例" class="headerlink" title="六、生日匹配算法示例"></a>六、生日匹配算法示例</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">birthday_match</span>(<span class="params">students</span>):</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Find a pair of students with the same birthday</span></span><br><span class="line"><span class="string">    Input: tuple of student (name, bday) tuples</span></span><br><span class="line"><span class="string">    Output: tuple of student names or None</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    n = <span class="built_in">len</span>(students) <span class="comment"># O(1)</span></span><br><span class="line">    record = StaticArray(n) <span class="comment"># O(n)</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(n): <span class="comment"># n</span></span><br><span class="line">        (name1, bday1) = students[k] <span class="comment"># O(1)</span></span><br><span class="line">        <span class="comment"># Return pair if bday1 in record</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k): <span class="comment"># k</span></span><br><span class="line">            (name2, bday2) = record.get_at(i) <span class="comment"># O(1)</span></span><br><span class="line">            <span class="keyword">if</span> bday1 == bday2: <span class="comment"># O(1)</span></span><br><span class="line">                <span class="keyword">return</span> (name1, name2) <span class="comment"># O(1)</span></span><br><span class="line">        record.set_at(k, (name1, bday1)) <span class="comment"># O(1)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span> <span class="comment"># O(1)</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>该算法的时间复杂度为O(n^2)，因为包含两层循环。对于较大的n，这种时间复杂度可能不够高效，可以考虑使用不同的数据结构来优化记录的存储和查找过程。</p>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>本课程的目标是教会学生解决计算问题，并能够证明解决方案的正确性和效率。通过学习算法和数据结构，学生将能够设计出高效、正确的算法，并在实际问题中应用这些知识。同时，课程强调了算法的正确性证明和效率分析的重要性，以及如何使用数学工具和计算模型来评估算法的性能。</p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -1033,7 +1060,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">54k</span>&nbsp;字
+                class="white-color">65.5k</span>&nbsp;字
             
             
             

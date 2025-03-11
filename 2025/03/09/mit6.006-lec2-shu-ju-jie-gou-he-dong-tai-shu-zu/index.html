@@ -500,21 +500,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-09
+                    2025-03-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    668
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -534,34 +534,113 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="算法与数据结构笔记"><a href="#算法与数据结构笔记" class="headerlink" title="算法与数据结构笔记"></a>算法与数据结构笔记</h1><h2 id="一、算法基础"><a href="#一、算法基础" class="headerlink" title="一、算法基础"></a>一、算法基础</h2><h3 id="（一）算法的定义"><a href="#（一）算法的定义" class="headerlink" title="（一）算法的定义"></a>（一）算法的定义</h3><p>算法是一组有穷的指令集，接收输入并产生输出，执行过程确定且在有限步骤内结束。其目标是解决计算问题，并能证明解决方案的正确性和效率。</p>
-<h3 id="（二）问题的定义"><a href="#（二）问题的定义" class="headerlink" title="（二）问题的定义"></a>（二）问题的定义</h3><p>计算问题被定义为输入和输出之间的二元关系，通常通过谓词来指定正确的输出。在6.006课程中，研究的是具有任意大小输入空间的问题。</p>
-<h3 id="（三）算法的正确性"><a href="#（三）算法的正确性" class="headerlink" title="（三）算法的正确性"></a>（三）算法的正确性</h3><p>证明算法正确性的方法包括小输入情况的案例分析和大输入情况的数学归纳法。</p>
-<h3 id="（四）算法的效率"><a href="#（四）算法的效率" class="headerlink" title="（四）算法的效率"></a>（四）算法的效率</h3><p>效率衡量算法产生正确输出的速度，使用渐近符号来忽略常数因子和低阶项：</p>
-<ul>
-<li><strong>上界（O）</strong>：表示算法运行时间的上界。</li>
-<li><strong>下界（Ω）</strong>：表示算法运行时间的下界。</li>
-<li><strong>紧界（Θ）</strong>：表示算法运行时间的上界和下界相同。</li>
+                <h1 id="算法导论-第二讲：数据结构与动态数组"><a href="#算法导论-第二讲：数据结构与动态数组" class="headerlink" title="算法导论 - 第二讲：数据结构与动态数组"></a>算法导论 - 第二讲：数据结构与动态数组</h1><h2 id="一、课程介绍"><a href="#一、课程介绍" class="headerlink" title="一、课程介绍"></a>一、课程介绍</h2><ul>
+<li><strong>课程名称</strong>：6.006 算法导论</li>
+<li><strong>讲师</strong>：Erik Demaine</li>
+<li><strong>主题</strong>：数据结构与动态数组</li>
 </ul>
-<h2 id="二、计算模型"><a href="#二、计算模型" class="headerlink" title="二、计算模型"></a>二、计算模型</h2><h3 id="（一）Word-RAM模型"><a href="#（一）Word-RAM模型" class="headerlink" title="（一）Word-RAM模型"></a>（一）Word-RAM模型</h3><p>在该模型中，内存是一连串的0和1，通过使用32位寄存器来操作数据，寻址范围为2^32=4GB。现在使用64位寄存器，寻址范围更大。该模型规定了机器可以执行的操作及其时间复杂度。</p>
-<h3 id="（二）内存与寻址"><a href="#（二）内存与寻址" class="headerlink" title="（二）内存与寻址"></a>（二）内存与寻址</h3><p>内存本质上是一连串的0和1。通过使用32位寄存器来操作数据，寻址范围为2^32=4GB，因此32位机器的寻址范围为4GB。现在使用64位寄存器，寻址范围更大，足以满足现代计算需求。</p>
-<h2 id="三、如何解决算法问题"><a href="#三、如何解决算法问题" class="headerlink" title="三、如何解决算法问题"></a>三、如何解决算法问题</h2><ol>
-<li><strong>简化为已知问题</strong>：使用已知的数据结构或算法来解决问题。</li>
-<li><strong>设计自己的算法</strong>：采用递归设计范式，如暴力法、减而治之、分而治之、动态规划、贪心算法等。</li>
-</ol>
-<h2 id="四、数据结构"><a href="#四、数据结构" class="headerlink" title="四、数据结构"></a>四、数据结构</h2><h3 id="（一）数据结构的定义"><a href="#（一）数据结构的定义" class="headerlink" title="（一）数据结构的定义"></a>（一）数据结构的定义</h3><p>数据结构是一种存储数据的方式，支持一组操作。不同的数据结构实现相同的接口时，性能可能不同。</p>
-<h3 id="（二）接口与数据结构"><a href="#（二）接口与数据结构" class="headerlink" title="（二）接口与数据结构"></a>（二）接口与数据结构</h3><p>接口定义了数据结构支持的操作，而数据结构定义了如何支持这些操作。在本课程中，主要关注序列和集合两种接口。</p>
-<h3 id="（三）序列接口"><a href="#（三）序列接口" class="headerlink" title="（三）序列接口"></a>（三）序列接口</h3><p>序列接口关注元素的外在顺序，支持构建、长度、迭代、获取、设置、插入和删除等操作。</p>
-<h3 id="（四）集合接口"><a href="#（四）集合接口" class="headerlink" title="（四）集合接口"></a>（四）集合接口</h3><p>集合接口关注元素的内在顺序，维护具有唯一键的元素集合，支持查找、插入、删除等操作。</p>
-<h3 id="（五）静态数组"><a href="#（五）静态数组" class="headerlink" title="（五）静态数组"></a>（五）静态数组</h3><p>静态数组在Word-RAM模型中，通过连续内存块实现，支持在Θ(1)时间内完成获取和设置操作，但在动态操作方面表现不佳。</p>
-<h3 id="（六）链表"><a href="#（六）链表" class="headerlink" title="（六）链表"></a>（六）链表</h3><p>链表通过节点和指针实现，支持在Θ(1)时间内完成从头部插入和删除操作，但在随机访问方面表现不佳。</p>
-<h3 id="（七）动态数组"><a href="#（七）动态数组" class="headerlink" title="（七）动态数组"></a>（七）动态数组</h3><p>动态数组通过分配额外空间来减少重新分配的频率，支持在Θ(1)平均时间内完成插入和删除操作，同时保持随机访问的高效性。</p>
-<h2 id="五、效率分析"><a href="#五、效率分析" class="headerlink" title="五、效率分析"></a>五、效率分析</h2><h3 id="（一）时间估计"><a href="#（一）时间估计" class="headerlink" title="（一）时间估计"></a>（一）时间估计</h3><p>基于1GHz单核机器每周期执行一次操作的时间估计，不同规模的输入对应不同的运行时间。</p>
-<h3 id="（二）渐近符号"><a href="#（二）渐近符号" class="headerlink" title="（二）渐近符号"></a>（二）渐近符号</h3><p>渐近符号用于描述算法运行时间的增长趋势，忽略常数因子和低阶项。</p>
-<h2 id="六、生日匹配算法示例"><a href="#六、生日匹配算法示例" class="headerlink" title="六、生日匹配算法示例"></a>六、生日匹配算法示例</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">birthday_match</span>(<span class="params">students</span>):</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Find a pair of students with the same birthday</span></span><br><span class="line"><span class="string">    Input: tuple of student (name, bday) tuples</span></span><br><span class="line"><span class="string">    Output: tuple of student names or None</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    n = <span class="built_in">len</span>(students) <span class="comment"># O(1)</span></span><br><span class="line">    record = StaticArray(n) <span class="comment"># O(n)</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(n): <span class="comment"># n</span></span><br><span class="line">        (name1, bday1) = students[k] <span class="comment"># O(1)</span></span><br><span class="line">        <span class="comment"># Return pair if bday1 in record</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k): <span class="comment"># k</span></span><br><span class="line">            (name2, bday2) = record.get_at(i) <span class="comment"># O(1)</span></span><br><span class="line">            <span class="keyword">if</span> bday1 == bday2: <span class="comment"># O(1)</span></span><br><span class="line">                <span class="keyword">return</span> (name1, name2) <span class="comment"># O(1)</span></span><br><span class="line">        record.set_at(k, (name1, bday1)) <span class="comment"># O(1)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span> <span class="comment"># O(1)</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>该算法的时间复杂度为O(n^2)，因为包含两层循环。对于较大的n，这种时间复杂度可能不够高效，可以考虑使用不同的数据结构来优化记录的存储和查找过程。</p>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>本课程的目标是教会学生解决计算问题，并能够证明解决方案的正确性和效率。通过学习算法和数据结构，学生将能够设计出高效、正确的算法，并在实际问题中应用这些知识。同时，课程强调了算法的正确性证明和效率分析的重要性，以及如何使用数学工具和计算模型来评估算法的性能。</p>
+<h2 id="二、接口与数据结构"><a href="#二、接口与数据结构" class="headerlink" title="二、接口与数据结构"></a>二、接口与数据结构</h2><ul>
+<li><strong>接口（Interface）</strong>：<ul>
+<li>定义了可以执行的操作。</li>
+<li>不涉及具体实现。</li>
+</ul>
+</li>
+<li><strong>数据结构（Data Structure）</strong>：<ul>
+<li>提供了接口的具体实现。</li>
+<li>包含数据的存储方式和操作算法。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、序列（Sequence）接口"><a href="#三、序列（Sequence）接口" class="headerlink" title="三、序列（Sequence）接口"></a>三、序列（Sequence）接口</h2><h3 id="1-静态序列（Static-Sequence）"><a href="#1-静态序列（Static-Sequence）" class="headerlink" title="1. 静态序列（Static Sequence）"></a>1. 静态序列（Static Sequence）</h3><ul>
+<li><strong>操作</strong>：<ul>
+<li><strong>build</strong>：构建序列。</li>
+<li><strong>length</strong>：返回序列长度。</li>
+<li><strong>iteration</strong>：遍历序列。</li>
+<li><strong>get_at</strong>：获取指定位置的元素。</li>
+<li><strong>set_at</strong>：修改指定位置的元素。</li>
+</ul>
+</li>
+<li><strong>实现</strong>：<ul>
+<li>使用静态数组（Static Array）。</li>
+<li>时间复杂度：<ul>
+<li><strong>get_at/set_at</strong>：$O(1)$。</li>
+<li><strong>build</strong>：$O(n)$。</li>
+<li><strong>iteration</strong>：$O(n)$。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-动态序列（Dynamic-Sequence）"><a href="#2-动态序列（Dynamic-Sequence）" class="headerlink" title="2. 动态序列（Dynamic Sequence）"></a>2. 动态序列（Dynamic Sequence）</h3><ul>
+<li><strong>新增操作</strong>：<ul>
+<li><strong>insert_at</strong>：在指定位置插入元素。</li>
+<li><strong>delete_at</strong>：删除指定位置的元素。</li>
+<li><strong>insert_first/insert_last</strong>：在序列开头或末尾插入元素。</li>
+<li><strong>delete_first/delete_last</strong>：删除序列开头或末尾的元素。</li>
+</ul>
+</li>
+<li><strong>实现</strong>：<ul>
+<li>使用动态数组（Dynamic Array）或链表（Linked List）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、数据结构实现"><a href="#四、数据结构实现" class="headerlink" title="四、数据结构实现"></a>四、数据结构实现</h2><h3 id="1-静态数组（Static-Array）"><a href="#1-静态数组（Static-Array）" class="headerlink" title="1. 静态数组（Static Array）"></a>1. 静态数组（Static Array）</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>存储在连续内存中。</li>
+<li>支持快速随机访问。</li>
+</ul>
+</li>
+<li><strong>时间复杂度</strong>：<ul>
+<li><strong>get_at/set_at</strong>：$O(1)$。</li>
+<li><strong>insert/delete</strong>：$O(n)$（需要移动元素）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-链表（Linked-List）"><a href="#2-链表（Linked-List）" class="headerlink" title="2. 链表（Linked List）"></a>2. 链表（Linked List）</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>每个节点包含一个元素和一个指向下一个节点的指针。</li>
+<li>动态存储，不连续。</li>
+</ul>
+</li>
+<li><strong>时间复杂度</strong>：<ul>
+<li><strong>insert_first/delete_first</strong>：$O(1)$。</li>
+<li><strong>get_at/set_at</strong>：$O(n)$（需要遍历）。</li>
+<li><strong>insert_last/delete_last</strong>：$O(1)$（需要维护尾指针）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-动态数组（Dynamic-Array）"><a href="#3-动态数组（Dynamic-Array）" class="headerlink" title="3. 动态数组（Dynamic Array）"></a>3. 动态数组（Dynamic Array）</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>结合了静态数组和链表的优点。</li>
+<li>数组大小动态调整。</li>
+</ul>
+</li>
+<li><strong>实现</strong>：<ul>
+<li>维护一个数组 <code>A</code> 和两个变量：<code>length</code>（当前元素数量）和 <code>size</code>（数组大小）。</li>
+<li>当数组满时，分配一个更大的数组（通常是当前大小的两倍），并将元素复制过去。</li>
+</ul>
+</li>
+<li><strong>时间复杂度</strong>：<ul>
+<li><strong>get_at/set_at</strong>：$O(1)$。</li>
+<li><strong>insert_last/delete_last</strong>：$O(1)$（摊还时间）。</li>
+<li><strong>insert_at/delete_at</strong>：$O(n)$（可能需要移动元素）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、摊还分析（Amortized-Analysis）"><a href="#五、摊还分析（Amortized-Analysis）" class="headerlink" title="五、摊还分析（Amortized Analysis）"></a>五、摊还分析（Amortized Analysis）</h2><ul>
+<li><strong>定义</strong>：通过平均操作序列的时间复杂度来评估操作的效率。</li>
+<li><strong>动态数组的摊还时间</strong>：<ul>
+<li>插入操作的总时间是线性的，因此每次插入的摊还时间是 $O(1)$。</li>
+<li>即使某些操作（如数组扩容）需要线性时间，但大部分操作是常数时间，因此整体效率接近常数时间。</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><ul>
+<li><strong>静态数组</strong>：适合随机访问，但动态操作效率低。</li>
+<li><strong>链表</strong>：适合动态操作，但随机访问效率低。</li>
+<li><strong>动态数组</strong>：结合了两者的优点，适合大多数场景。</li>
+<li><strong>Python 中的列表</strong>：实际上就是动态数组的实现。</li>
+</ul>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -991,7 +1070,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">54k</span>&nbsp;字
+                class="white-color">65.5k</span>&nbsp;字
             
             
             

@@ -339,7 +339,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112100479.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -511,7 +511,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
@@ -542,24 +542,33 @@
 <li><strong>回顾</strong>：上一讲中，我们讨论了矩阵的列空间和零空间。</li>
 <li><strong>修正</strong>：在上一讲中，我犯了一个错误。我选择了向量 <code>[1, 1, 2]</code> 和 <code>[2, 2, 5]</code> 作为基，并试图加入 <code>[3, 3, 8]</code> 作为第三个向量。但一位学生指出，这个矩阵的行是线性相关的（有两行相同），因此列向量不可能线性独立。这导致矩阵不可逆，秩为 2，而不是 3。</li>
 </ul>
-<h2 id="二、矩阵的四个基本子空间"><a href="#二、矩阵的四个基本子空间" class="headerlink" title="二、矩阵的四个基本子空间"></a>二、矩阵的四个基本子空间</h2><p>矩阵 $A$ 的四个基本子空间是线性代数的核心内容，它们分别是：</p>
+<h2 id="二、矩阵的四个基本子空间"><a href="#二、矩阵的四个基本子空间" class="headerlink" title="二、矩阵的四个基本子空间"></a>二、矩阵的四个基本子空间</h2><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112100479.png" alt="image.png"><br>矩阵 $A$ 的四个基本子空间是线性代数的核心内容，它们分别是：</p>
 <ol>
 <li><strong>列空间</strong> $C(A)$：由矩阵 $A$ 的列向量的所有线性组合构成。</li>
 <li><strong>零空间</strong> $N(A)$：满足 $A\mathbf{x} = \mathbf{0}$ 的所有向量 $\mathbf{x}$ 构成。</li>
 <li><strong>行空间</strong>：由矩阵 $A$ 的行向量的所有线性组合构成。可以通过转置矩阵 $A^T$ 的列空间来表示。</li>
 <li><strong>左零空间</strong> $N(A^T)$：满足 $A^T\mathbf{y} = \mathbf{0}$ 的所有向量 $\mathbf{y}$ 构成，也称为 $A$ 的左零空间。</li>
 </ol>
+<blockquote>
+<p>如何获得空间的全部信息<br>1.空间的一组基<br>2.空间的维数</p>
+</blockquote>
 <h3 id="子空间的维度"><a href="#子空间的维度" class="headerlink" title="子空间的维度"></a>子空间的维度</h3><ul>
 <li><strong>列空间</strong> $C(A)$ 的维度：矩阵 $A$ 的秩 $r$。</li>
-<li><strong>行空间</strong> 的维度：同样为秩 $r$。行空间和列空间的维度相同。</li>
-<li><strong>零空间</strong> $N(A)$ 的维度：$n - r$，其中 $n$ 是矩阵 $A$ 的列数。</li>
+<li><strong>行空间</strong> 的维度：同样为秩 $r$。<strong>行空间和列空间的维度相同。</strong></li>
+<li><strong>零空间</strong> $N(A)$ 的维度：$n - r$，其中 $n$ 是矩阵 $A$ 的列数。<ul>
+<li>因为秩与主元的个数相同。n-r是自由变量的个数</li>
+</ul>
+</li>
 <li><strong>左零空间</strong> $N(A^T)$ 的维度：$m - r$，其中 $m$ 是矩阵 $A$ 的行数。</li>
 </ul>
 <h3 id="子空间的关系"><a href="#子空间的关系" class="headerlink" title="子空间的关系"></a>子空间的关系</h3><ul>
 <li>列空间和零空间位于 $\mathbb{R}^n$ 中，它们的维度之和为 $n$。</li>
 <li>行空间和左零空间位于 $\mathbb{R}^m$ 中，它们的维度之和为 $m$。</li>
 </ul>
-<h2 id="三、子空间的基"><a href="#三、子空间的基" class="headerlink" title="三、子空间的基"></a>三、子空间的基</h2><h3 id="1-列空间的基"><a href="#1-列空间的基" class="headerlink" title="1. 列空间的基"></a>1. 列空间的基</h3><ul>
+<h2 id="三、子空间的基"><a href="#三、子空间的基" class="headerlink" title="三、子空间的基"></a>三、子空间的基</h2><ul>
+<li>行变换不会改变行空间，但会改变列空间</li>
+</ul>
+<h3 id="1-列空间的基"><a href="#1-列空间的基" class="headerlink" title="1. 列空间的基"></a>1. 列空间的基</h3><ul>
 <li>通过行简化（高斯消元法），找到主元列（pivot columns）。</li>
 <li>主元列构成列空间的基，其数量即为矩阵的秩 $r$。</li>
 </ul>
@@ -573,9 +582,21 @@
 <li>对于矩阵 $A$，其行空间的基是简化行阶梯形式 $R$ 的前 $r$ 行。</li>
 </ul>
 <h3 id="4-左零空间的基"><a href="#4-左零空间的基" class="headerlink" title="4. 左零空间的基"></a>4. 左零空间的基</h3><ul>
-<li>通过高斯-若尔当消元法，将矩阵 $[A | I]$ 化为简化行阶梯形式 $[R | E]$。</li>
-<li>矩阵 $E$ 记录了将 $A$ 化为 $R$ 的所有行操作。</li>
-<li>左零空间的基可以通过 $E$ 的最后一行得到，其维度为 $m - r$。</li>
+<li><p>通过高斯-若尔当消元法，将矩阵 $[A | I]$ 化为简化行阶梯形式 $[R | E]$。</p>
+<ul>
+<li>这种消元法一般用来求解逆矩阵</li>
+</ul>
+</li>
+<li><p>矩阵 $E$ 记录了将 $A$ 化为 $R$ 的所有行操作。</p>
+<ul>
+<li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112201911.png" alt="image.png"></li>
+</ul>
+</li>
+<li><p>左零空间的基可以通过 $E$ 的最后一行得到，其维度为 $m - r$。</p>
+<ul>
+<li>写出EA = R，寻找R中的<strong>零行</strong>，对应找到E中的线性组合方式，就得到了左零空间的基。</li>
+</ul>
+</li>
 </ul>
 <h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><p>考虑矩阵 $A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \ 2 &amp; 1 &amp; 2 \ 3 &amp; 2 &amp; 3 \ 1 &amp; 1 &amp; 1 \end{bmatrix}$：</p>
 <ol>
@@ -584,7 +605,7 @@
 最终得到简化行阶梯形式 $R$：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1 0 1]</span><br><span class="line">[0 1 0]</span><br><span class="line">[0 0 0]</span><br><span class="line">[0 0 0]</span><br></pre></td></tr></tbody></table></figure></li>
 <li><strong>行空间的基</strong>：$R$ 的前两行 <code>[1, 0, 1]</code> 和 <code>[0, 1, 0]</code>。</li>
 <li><strong>左零空间的基</strong>：通过高斯-若尔当消元法，得到 $E$：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1 0 0]</span><br><span class="line">[2 1 0]</span><br><span class="line">[3 0 1]</span><br><span class="line">[1 0 0]</span><br></pre></td></tr></tbody></table></figure>
-左零空间的基为 $E$ 的最后一行 <code>[1, 0, -1]</code>。</li>
+左零空间的基为 $E$ 的最后一行 <code>[1, 0, -1]</code>。因为这一行对应的结果为0</li>
 </ol>
 <h2 id="五、新的向量空间"><a href="#五、新的向量空间" class="headerlink" title="五、新的向量空间"></a>五、新的向量空间</h2><ul>
 <li><strong>矩阵空间</strong> $M$：将所有 $3 \times 3$ 矩阵视为向量空间。</li>
@@ -723,18 +744,16 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/">
+                <a href="/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/">
                     <div class="card-image">
                         
+                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081353413.png" class="responsive-img" alt="【MIT6.006】【lec3】 集合与排序">
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="【MIT线性代数】【lec10】 矩阵的四个基本子空间">
-                        
-                        <span class="card-title">【MIT线性代数】【lec10】 矩阵的四个基本子空间</span>
+                        <span class="card-title">【MIT6.006】【lec3】 集合与排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -744,39 +763,34 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构与算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">数据结构与算法</span>
                     </a>
                     
-                    <a href="/tags/problem-sets/">
-                        <span class="chip bg-color">problem-sets</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/">
+                        <span class="chip bg-color">算法导论</span>
                     </a>
                     
-                    <a href="/tags/MIT18-06SC/">
-                        <span class="chip bg-color">MIT18.06SC</span>
-                    </a>
-                    
-                    <a href="/tags/2011fall/">
-                        <span class="chip bg-color">2011fall</span>
+                    <a href="/tags/MIT6006/">
+                        <span class="chip bg-color">MIT6006</span>
                     </a>
                     
                 </div>
@@ -1038,7 +1052,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">54k</span>&nbsp;字
+                class="white-color">65.5k</span>&nbsp;字
             
             
             
