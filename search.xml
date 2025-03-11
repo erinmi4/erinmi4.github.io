@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>【MIT线性代数】【lec10】 矩阵的四个基本子空间</title>
+      <link href="/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/"/>
+      <url>/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="线性代数第十讲：矩阵的四个基本子空间"><a href="#线性代数第十讲：矩阵的四个基本子空间" class="headerlink" title="线性代数第十讲：矩阵的四个基本子空间"></a>线性代数第十讲：矩阵的四个基本子空间</h1><h2 id="一、课程回顾与修正"><a href="#一、课程回顾与修正" class="headerlink" title="一、课程回顾与修正"></a>一、课程回顾与修正</h2><ul><li><strong>回顾</strong>：上一讲中，我们讨论了矩阵的列空间和零空间。</li><li><strong>修正</strong>：在上一讲中，我犯了一个错误。我选择了向量 <code>[1, 1, 2]</code> 和 <code>[2, 2, 5]</code> 作为基，并试图加入 <code>[3, 3, 8]</code> 作为第三个向量。但一位学生指出，这个矩阵的行是线性相关的（有两行相同），因此列向量不可能线性独立。这导致矩阵不可逆，秩为 2，而不是 3。</li></ul><h2 id="二、矩阵的四个基本子空间"><a href="#二、矩阵的四个基本子空间" class="headerlink" title="二、矩阵的四个基本子空间"></a>二、矩阵的四个基本子空间</h2><p>矩阵 $A$ 的四个基本子空间是线性代数的核心内容，它们分别是：</p><ol><li><strong>列空间</strong> $C(A)$：由矩阵 $A$ 的列向量的所有线性组合构成。</li><li><strong>零空间</strong> $N(A)$：满足 $A\mathbf{x} = \mathbf{0}$ 的所有向量 $\mathbf{x}$ 构成。</li><li><strong>行空间</strong>：由矩阵 $A$ 的行向量的所有线性组合构成。可以通过转置矩阵 $A^T$ 的列空间来表示。</li><li><strong>左零空间</strong> $N(A^T)$：满足 $A^T\mathbf{y} = \mathbf{0}$ 的所有向量 $\mathbf{y}$ 构成，也称为 $A$ 的左零空间。</li></ol><h3 id="子空间的维度"><a href="#子空间的维度" class="headerlink" title="子空间的维度"></a>子空间的维度</h3><ul><li><strong>列空间</strong> $C(A)$ 的维度：矩阵 $A$ 的秩 $r$。</li><li><strong>行空间</strong> 的维度：同样为秩 $r$。行空间和列空间的维度相同。</li><li><strong>零空间</strong> $N(A)$ 的维度：$n - r$，其中 $n$ 是矩阵 $A$ 的列数。</li><li><strong>左零空间</strong> $N(A^T)$ 的维度：$m - r$，其中 $m$ 是矩阵 $A$ 的行数。</li></ul><h3 id="子空间的关系"><a href="#子空间的关系" class="headerlink" title="子空间的关系"></a>子空间的关系</h3><ul><li>列空间和零空间位于 $\mathbb{R}^n$ 中，它们的维度之和为 $n$。</li><li>行空间和左零空间位于 $\mathbb{R}^m$ 中，它们的维度之和为 $m$。</li></ul><h2 id="三、子空间的基"><a href="#三、子空间的基" class="headerlink" title="三、子空间的基"></a>三、子空间的基</h2><h3 id="1-列空间的基"><a href="#1-列空间的基" class="headerlink" title="1. 列空间的基"></a>1. 列空间的基</h3><ul><li>通过行简化（高斯消元法），找到主元列（pivot columns）。</li><li>主元列构成列空间的基，其数量即为矩阵的秩 $r$。</li></ul><h3 id="2-零空间的基"><a href="#2-零空间的基" class="headerlink" title="2. 零空间的基"></a>2. 零空间的基</h3><ul><li>通过行简化将矩阵 $A$ 化为简化行阶梯形式 $R$。</li><li>从 $R$ 中读取特殊解（special solutions），这些解构成零空间的基。</li><li>零空间的维度为 $n - r$，即自由变量的数量。</li></ul><h3 id="3-行空间的基"><a href="#3-行空间的基" class="headerlink" title="3. 行空间的基"></a>3. 行空间的基</h3><ul><li>行空间的基可以通过转置矩阵 $A^T$ 的主元列得到。</li><li>对于矩阵 $A$，其行空间的基是简化行阶梯形式 $R$ 的前 $r$ 行。</li></ul><h3 id="4-左零空间的基"><a href="#4-左零空间的基" class="headerlink" title="4. 左零空间的基"></a>4. 左零空间的基</h3><ul><li>通过高斯-若尔当消元法，将矩阵 $[A | I]$ 化为简化行阶梯形式 $[R | E]$。</li><li>矩阵 $E$ 记录了将 $A$ 化为 $R$ 的所有行操作。</li><li>左零空间的基可以通过 $E$ 的最后一行得到，其维度为 $m - r$。</li></ul><h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><p>考虑矩阵 $A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \ 2 &amp; 1 &amp; 2 \ 3 &amp; 2 &amp; 3 \ 1 &amp; 1 &amp; 1 \end{bmatrix}$：</p><ol><li><strong>行简化</strong>：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1 1 1]</span><br><span class="line">[2 1 2] -&gt; [0 -1 0] (R2 = R2 - 2R1)</span><br><span class="line">[3 2 3] -&gt; [0 -1 0] (R3 = R3 - 3R1)</span><br><span class="line">[1 1 1] -&gt; [0 0 0] (R4 = R4 - R1)</span><br></pre></td></tr></tbody></table></figure>继续化简：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1 1 1]</span><br><span class="line">[0 1 0] (R2 = -R2)</span><br><span class="line">[0 -1 0] -&gt; [0 0 0] (R3 = R3 + R2)</span><br><span class="line">[0 0 0]</span><br></pre></td></tr></tbody></table></figure>最终得到简化行阶梯形式 $R$：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1 0 1]</span><br><span class="line">[0 1 0]</span><br><span class="line">[0 0 0]</span><br><span class="line">[0 0 0]</span><br></pre></td></tr></tbody></table></figure></li><li><strong>行空间的基</strong>：$R$ 的前两行 <code>[1, 0, 1]</code> 和 <code>[0, 1, 0]</code>。</li><li><strong>左零空间的基</strong>：通过高斯-若尔当消元法，得到 $E$：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1 0 0]</span><br><span class="line">[2 1 0]</span><br><span class="line">[3 0 1]</span><br><span class="line">[1 0 0]</span><br></pre></td></tr></tbody></table></figure>左零空间的基为 $E$ 的最后一行 <code>[1, 0, -1]</code>。</li></ol><h2 id="五、新的向量空间"><a href="#五、新的向量空间" class="headerlink" title="五、新的向量空间"></a>五、新的向量空间</h2><ul><li><strong>矩阵空间</strong> $M$：将所有 $3 \times 3$ 矩阵视为向量空间。</li><li><strong>子空间</strong>：<ul><li>上三角矩阵</li><li>对称矩阵</li><li>对角矩阵（上三角矩阵与对称矩阵的交集）</li></ul></li><li><strong>维度计算</strong>：<ul><li>对角矩阵的维度为 3，基为：</li></ul></li></ul><p>$$<br>\begin{bmatrix} 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{bmatrix},<br>    \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{bmatrix},<br>    \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 \end{bmatrix}<br>$$</p><hr><p>以上是本讲的详细笔记，涵盖了矩阵的四个基本子空间及其基和维度的计算方法。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+            <tag> problem-sets </tag>
+            
+            <tag> MIT18.06SC </tag>
+            
+            <tag> 2011fall </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【CS191】【lec2】循环神经网络、Transformer 和注意力机制</title>
       <link href="/2025/03/11/cs191-lec2-xun-huan-shen-jing-wang-luo-transformer-he-zhu-yi-li-ji-zhi/"/>
       <url>/2025/03/11/cs191-lec2-xun-huan-shen-jing-wang-luo-transformer-he-zhu-yi-li-ji-zhi/</url>
