@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-11T14:24:35.390Z</updated>
+  <updated>2025-03-15T16:41:50.957Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【托福】【口语】 task1高分秘诀-话题展开_笔记</title>
+    <link href="https://erinmi4.github.io/2025/03/15/tuo-fu-kou-yu-task1-gao-fen-mi-jue-hua-ti-zhan-kai-bi-ji/"/>
+    <id>https://erinmi4.github.io/2025/03/15/tuo-fu-kou-yu-task1-gao-fen-mi-jue-hua-ti-zhan-kai-bi-ji/</id>
+    <published>2025-03-15T09:07:00.000Z</published>
+    <updated>2025-03-15T16:41:50.957Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;托福口语答题技巧与策略&quot;&gt;&lt;a href=&quot;#托福口语答题技巧与策略&quot; class=&quot;headerlink&quot; title=&quot;托福口语答题技巧与策略&quot;&gt;&lt;/a&gt;托福口语答题技巧与策略&lt;/h1&gt;&lt;h2 id=&quot;一、答题结构&quot;&gt;&lt;a href=&quot;#一、答题结构&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="英语" scheme="https://erinmi4.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="托福" scheme="https://erinmi4.github.io/tags/%E6%89%98%E7%A6%8F/"/>
+    
+    <category term="口语" scheme="https://erinmi4.github.io/tags/%E5%8F%A3%E8%AF%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>【MIT线性代数】【lec2】消元法与矩阵运算</title>
@@ -418,11 +445,61 @@
   </entry>
   
   <entry>
+    <title>【托福】【阅读】</title>
+    <link href="https://erinmi4.github.io/2025/03/12/tuo-fu-yue-du/"/>
+    <id>https://erinmi4.github.io/2025/03/12/tuo-fu-yue-du/</id>
+    <published>2025-03-12T09:07:00.000Z</published>
+    <updated>2025-03-15T05:55:01.885Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;是否在答题前通读文章&lt;/strong&gt;&lt;br&gt;通读可以建立一个完整框架，适合advanced的学生&lt;br&gt;但是随着题目顺序做题适合绝大多数人&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;先看题还是先看段落&lt;/strong&gt;&lt;br&gt;先看段落可以构建框架性的认知&lt;br&gt;适合解</summary>
+        
+      
+    
+    
+    
+    <category term="英语" scheme="https://erinmi4.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="托福" scheme="https://erinmi4.github.io/tags/%E6%89%98%E7%A6%8F/"/>
+    
+    <category term="阅读" scheme="https://erinmi4.github.io/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://erinmi4.github.io/2025/03/12/shen-jing-wang-luo-zhong-de-zhang-liang-qing-xi-jie-shi/"/>
+    <id>https://erinmi4.github.io/2025/03/12/shen-jing-wang-luo-zhong-de-zhang-liang-qing-xi-jie-shi/</id>
+    <published>2025-03-12T07:43:10.790Z</published>
+    <updated>2025-03-12T07:43:43.532Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;#深度学习 &lt;/p&gt;
+&lt;h2 id=&quot;视频来源&quot;&gt;&lt;a href=&quot;#视频来源&quot; class=&quot;headerlink&quot; title=&quot;视频来源&quot;&gt;&lt;/a&gt;视频来源&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>【CS191】【lec2】循环神经网络、Transformer 和注意力机制</title>
     <link href="https://erinmi4.github.io/2025/03/11/cs191-lec2-xun-huan-shen-jing-wang-luo-transformer-he-zhu-yi-li-ji-zhi/"/>
     <id>https://erinmi4.github.io/2025/03/11/cs191-lec2-xun-huan-shen-jing-wang-luo-transformer-he-zhu-yi-li-ji-zhi/</id>
     <published>2025-03-11T02:07:00.000Z</published>
-    <updated>2025-03-11T08:49:32.144Z</updated>
+    <updated>2025-03-12T06:45:05.443Z</updated>
     
     
       
@@ -437,6 +514,64 @@
     
     <category term="深度学习" scheme="https://erinmi4.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
+    
+    <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="MIT6S191" scheme="https://erinmi4.github.io/tags/MIT6S191/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【CS191】【lab1】part1</title>
+    <link href="https://erinmi4.github.io/2025/03/11/cs191-lab1-part1/"/>
+    <id>https://erinmi4.github.io/2025/03/11/cs191-lab1-part1/</id>
+    <published>2025-03-11T02:07:00.000Z</published>
+    <updated>2025-03-15T05:49:07.568Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;PyTorch-入门与音乐生成实验笔记&quot;&gt;&lt;a href=&quot;#PyTorch-入门与音乐生成实验笔记&quot; class=&quot;headerlink&quot; title=&quot;PyTorch 入门与音乐生成实验笔记&quot;&gt;&lt;/a&gt;PyTorch 入门与音乐生成实验笔记&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="深度学习" scheme="https://erinmi4.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="lab" scheme="https://erinmi4.github.io/tags/lab/"/>
+    
+    <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="MIT6S191" scheme="https://erinmi4.github.io/tags/MIT6S191/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【CS191】【lab1】part2</title>
+    <link href="https://erinmi4.github.io/2025/03/11/cs191-lab1-part2/"/>
+    <id>https://erinmi4.github.io/2025/03/11/cs191-lab1-part2/</id>
+    <published>2025-03-11T02:07:00.000Z</published>
+    <updated>2025-03-15T05:49:03.149Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基于PyTorch和RNN的音乐生成实验笔记&quot;&gt;&lt;a href=&quot;#基于PyTorch和RNN的音乐生成实验笔记&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="深度学习" scheme="https://erinmi4.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="lab" scheme="https://erinmi4.github.io/tags/lab/"/>
     
     <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
@@ -470,147 +605,6 @@
     <category term="计算机组成与设计硬件软件接口" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
     
     <category term="cs61C" scheme="https://erinmi4.github.io/tags/cs61C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MIT6.006】lec2 数据结构和动态数组</title>
-    <link href="https://erinmi4.github.io/2025/03/09/mit6.006-lec2-shu-ju-jie-gou-he-dong-tai-shu-zu/"/>
-    <id>https://erinmi4.github.io/2025/03/09/mit6.006-lec2-shu-ju-jie-gou-he-dong-tai-shu-zu/</id>
-    <published>2025-03-09T07:07:00.000Z</published>
-    <updated>2025-03-11T13:55:31.727Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;算法导论-第二讲：数据结构与动态数组&quot;&gt;&lt;a href=&quot;#算法导论-第二讲：数据结构与动态数组&quot; class=&quot;headerlink&quot; title=&quot;算法导论 - 第二讲：数据结构与动态数组&quot;&gt;&lt;/a&gt;算法导论 - 第二讲：数据结构与动态数组&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构与算法" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="数据结构与算法" scheme="https://erinmi4.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="算法导论" scheme="https://erinmi4.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
-    
-    <category term="MIT6006" scheme="https://erinmi4.github.io/tags/MIT6006/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MIT6.006】lec1导论</title>
-    <link href="https://erinmi4.github.io/2025/03/09/mit6.006-lec1-dao-lun/"/>
-    <id>https://erinmi4.github.io/2025/03/09/mit6.006-lec1-dao-lun/</id>
-    <published>2025-03-09T07:07:00.000Z</published>
-    <updated>2025-03-11T13:57:00.784Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;算法导论-第一讲：算法与计算&quot;&gt;&lt;a href=&quot;#算法导论-第一讲：算法与计算&quot; class=&quot;headerlink&quot; title=&quot;算法导论 - 第一讲：算法与计算&quot;&gt;&lt;/a&gt;算法导论 - 第一讲：算法与计算&lt;/h1&gt;&lt;h2 id=&quot;一、课程介绍&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构与算法" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="数据结构与算法" scheme="https://erinmi4.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="算法导论" scheme="https://erinmi4.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
-    
-    <category term="MIT6006" scheme="https://erinmi4.github.io/tags/MIT6006/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一章 计算机概要与技术(习题课）</title>
-    <link href="https://erinmi4.github.io/2025/03/09/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xi-ti-ke/"/>
-    <id>https://erinmi4.github.io/2025/03/09/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xi-ti-ke/</id>
-    <published>2025-03-09T06:15:00.000Z</published>
-    <updated>2025-03-09T06:44:02.388Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;script type=&quot;text&amp;#x2F;javascript&quot; src=&quot;https://unpkg.com/kity@2.0.4/dist/kity.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text&amp;#x2F;javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机组成原理" scheme="https://erinmi4.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-    <category term="计算机组成原理" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="计算机组成与设计硬件软件接口" scheme="https://erinmi4.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
-    
-    <category term="cs61C" scheme="https://erinmi4.github.io/tags/cs61C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【信息论与编码技术】【第2章】 离散信源及其信息测度</title>
-    <link href="https://erinmi4.github.io/2025/03/08/xin-xi-lun-yu-bian-ma-ji-zhu-di-2-zhang-chi-san-xin-yuan-ji-qi-xin-xi-ce-du/"/>
-    <id>https://erinmi4.github.io/2025/03/08/xin-xi-lun-yu-bian-ma-ji-zhu-di-2-zhang-chi-san-xin-yuan-ji-qi-xin-xi-ce-du/</id>
-    <published>2025-03-08T05:07:00.000Z</published>
-    <updated>2025-03-09T07:25:03.814Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081353413.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;信息论与编码理论笔记&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="信息论" scheme="https://erinmi4.github.io/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-    
-    <category term="信息论" scheme="https://erinmi4.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【CS191】【lec1】Intro to Deep Learning</title>
-    <link href="https://erinmi4.github.io/2025/03/08/cs191-lec1-intro-to-deep-learning/"/>
-    <id>https://erinmi4.github.io/2025/03/08/cs191-lec1-intro-to-deep-learning/</id>
-    <published>2025-03-08T02:07:00.000Z</published>
-    <updated>2025-03-08T03:53:03.656Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081151351.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、课程介绍&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="深度学习" scheme="https://erinmi4.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="MIT6S191" scheme="https://erinmi4.github.io/tags/MIT6S191/"/>
     
   </entry>
   
