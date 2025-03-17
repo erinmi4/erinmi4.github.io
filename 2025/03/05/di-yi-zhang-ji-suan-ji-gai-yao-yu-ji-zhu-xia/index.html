@@ -483,21 +483,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-09
+                    2025-03-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -517,8 +517,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503051718148.png" alt="image.png"></p>
+                <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503051718148.png" alt="image.png"></p>
 <h3 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h3><ol>
 <li>PC和服务器分别更看重哪项性能评价指标？</li>
 <li>CPU经典性能公式计算的是什么指标？公式是什么（注意有两个联系密切的版本）？</li>
@@ -526,17 +525,15 @@
 <li>哪四个东西会通过影响性能公式中的某些项，从而影响性能？</li>
 <li>MIPS怎么计算？这个性能指标为什么不靠谱？</li>
 </ol>
-<h3 id="性能与功耗"><a href="#性能与功耗" class="headerlink" title="性能与功耗"></a>性能与功耗</h3><h4 id="评价性能的指标"><a href="#评价性能的指标" class="headerlink" title="评价性能的指标"></a>评价性能的指标</h4><ul>
-<li><p>个人计算机：看重<strong>响应时间</strong>（又称执行时间）：任务从开始到完成的时间</p>
+<h3 id="性能与功耗"><a href="#性能与功耗" class="headerlink" title="性能与功耗"></a>性能与功耗</h3><h4 id="评价性能的指标"><a href="#评价性能的指标" class="headerlink" title="评价性能的指标"></a>评价性能的指标</h4><p>PC和服务器分别更看重哪项性能评价指标？ #card </p>
 <ul>
+<li>个人计算机：看重<strong>响应时间</strong>（又称执行时间）：任务从开始到完成的时间<ul>
 <li>响应时间：在操作系统中作为进程的执行的时间度量单位</li>
 <li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4.png" alt="image.png"></li>
 </ul>
 </li>
-<li><p>服务器：看重<strong>吞吐率</strong>：单位时间内完成的任务数量</p>
-</li>
+<li>服务器：看重<strong>吞吐率</strong>：单位时间内完成的任务数量<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E6%80%A7%E8%83%BD%E5%AE%9A%E4%B9%89.png" alt="image.png"></li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E6%80%A7%E8%83%BD%E5%AE%9A%E4%B9%89.png" alt="image.png"></p>
 <p>例题：<br>计算机A的性能是计算机B的几倍？→计算机A的执行时间是B的几分之一？<br>e.g. 运行同一个程序，计算机A用15秒，计算机B用10秒，谁的性能更高？它的性能比另<br>外一台高多少？ #card<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503051737388.png" alt="image.png"></p>
 <h4 id="CPU经典性能公式"><a href="#CPU经典性能公式" class="headerlink" title="CPU经典性能公式"></a>CPU经典性能公式</h4><p>如果我们要测量一个地球有多长，我们应该规定1m有多长（单位）<br>地球有多少个单位（数量）</p>
 <h5 id="时钟周期长"><a href="#时钟周期长" class="headerlink" title="时钟周期长"></a>时钟周期长</h5><ul>
@@ -552,20 +549,27 @@
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/CPU%E6%80%A7%E8%83%BD%E5%85%AC%E5%BC%8F.png" alt="image.png"></p>
 <h5 id="时钟周期数"><a href="#时钟周期数" class="headerlink" title="时钟周期数"></a>时钟周期数</h5><p>任何程序都要以机器语言指令的形式，才能被计算机看懂<br>所以，执行程序本质上就是执行机器指令！</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E7%BB%8F%E5%85%B8%E6%80%A7%E8%83%BD%E5%85%AC%E5%BC%8F.png" alt="image.png"></p>
-<p>*不同机器指令需要的周期数不尽相同<br>我们使用一个<strong>统计平均值</strong>来作为平均周期数CPI</p>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E6%80%A7%E8%83%BD%E5%85%AC%E5%BC%8F.png" alt="image.png"></p>
-<p>例题：<br>e.g. 主频为4GHz的CPU，每个时钟周期的长度是多少秒？<br>某程序共有3亿条指令，其中1亿条的CPI为3，2亿条的CPI为6，整个程序的CPI是多少？<br>该CPU执行这个程序需要多长时间？</p>
+<p>不同机器指令需要的周期数不尽相同<br>我们使用一个<strong>统计平均值</strong>来作为平均周期数CPI</p>
+<p>CPU执行时间公式 #card<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E6%80%A7%E8%83%BD%E5%85%AC%E5%BC%8F.png" alt="image.png"></p>
+<p>例题：<br>e.g. 主频为4GHz的CPU，每个时钟周期的长度是多少秒？<br>某程序共有3亿条指令，其中1亿条的CPI为3，2亿条的CPI为6，整个程序的CPI是多少？<br>该CPU执行这个程序需要多长时间？ #card </p>
+<ol>
+<li><p><strong>计算每个时钟周期的长度：</strong><br>主频为 4GHz，即每秒有 40 亿个时钟周期。因此，每个时钟周期的长度为：<br>$$<br>\text{时钟周期长度} = \frac{1}{\text{主频}} = \frac{1}{4 \text{ GHz}} = \frac{1}{4 \times 10^9 \text{ Hz}} = 0.25 \times 10^{-9} \text{ 秒} = 0.25 \text{ 纳秒}<br>$$</p>
+</li>
+<li><p><strong>计算整个程序的 CPI：</strong><br>程序共有 3 亿条指令，其中 1 亿条的 CPI 为 3，2 亿条的 CPI 为 6。整个程序的 CPI 可以通过加权平均来计算：<br>$$<br>\text{整个程序的 CPI} = \frac{(1 \text{ 亿条} \times 3) + (2 \text{ 亿条} \times 6)}{3 \text{ 亿条}} = \frac{3 \text{ 亿} + 12 \text{ 亿}}{3 \text{ 亿}} = \frac{15 \text{ 亿}}{3 \text{ 亿}} = 5<br>$$</p>
+</li>
+<li><p><strong>计算执行程序所需的时间：</strong><br>该 CPU 执行这个程序需要的时间可以通过以下公式计算：<br>$$<br>\text{执行时间} = \text{指令数} \times \text{CPI} \times \text{时钟周期长度}<br>$$<br>代入已知值：<br>$$<br>\text{执行时间} = 3 \times 10^8 \text{ 条} \times 5 \times 0.25 \times 10^{-9} \text{ 秒} = 3 \times 10^8 \times 1.25 \times 10^{-9} \text{ 秒} = 0.375 \text{ 秒}<br>$$<br>因此，该 CPU 执行这个程序需要 $\boxed{0.375}$ 秒。</p>
+</li>
+</ol>
 <h5 id="CPU经典性能公式为什么靠谱"><a href="#CPU经典性能公式为什么靠谱" class="headerlink" title="CPU经典性能公式为什么靠谱"></a>CPU经典性能公式为什么靠谱</h5><ul>
 <li>经典性能公式考虑了指令数IC、平均每条指令需要周期数CPI、时钟周期长度T（也就是主频f的倒数）全部三个因素</li>
 <li>使用CPU执行时间这个靠谱的指标来衡量性能</li>
 <li>使用什么<strong>编程语言</strong>和<strong>编译程序</strong>、采取什么<strong>算法</strong>，影响指令数和CPI两个因素；采用什么<strong>指令集体系结构</strong>，影响指令数、CPI、主频全部三个因素。它们都会影响CPU性能。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/MIPS.png" alt="image.png"></p>
-<h4 id="功耗"><a href="#功耗" class="headerlink" title="功耗"></a>功耗</h4><p>在移动设备和WSC中，电能是关键资源<br>但随着CPU集成度越来越高，晶体管的数量剧增，功耗越来越大、散热越来越难<br>CMOS（互补型金属氧化半导体）是当前占统治地位的集成电路技术<br>其中，晶体管的能耗主要来自动态能耗，即晶体管打开/关闭的短暂动态过程<br>即0→1或1→0的过程<br>一个晶体管经历一次0 → 1 → 0或1 → 0 → 1的开关过程（<strong>在开关过程中使用了最多的能量</strong>）<br>能耗 = 负载电容 x电压²<br>开关频率与CPU主频相关<br>所以，功耗公式为</p>
-<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E5%8A%9F%E8%80%97%E5%85%AC%E5%BC%8F.png" alt="image.png"></p>
-<h4 id="并行化-基准测试程序"><a href="#并行化-基准测试程序" class="headerlink" title="并行化 基准测试程序"></a>并行化 基准测试程序</h4><p>CPU设计面临功耗墙问题<br>从2002年起，单核处理器性能增长速度从每年约52%下降到22%，功耗问题“功不可没”<br>因此，<strong>从单处理器向多核处理器转变成为近年计算机提升性能的主要手段</strong><br>同时，硬件变成了多处理器<br>要求程序员重写代码去支持CPU的并行（同时执行）特性<br>显式并行编程应运而生，但仍有很多需要克服的问题<br><strong>设有一个单核处理器A，还有一个每个核心都和A相同的四核处理器B，</strong><br><strong>它们运行同一个程序，B的CPU时间能减少到A的1/4吗？</strong>  </p>
-<p>这是不可以的。</p>
-<hr>
+<h4 id="功耗"><a href="#功耗" class="headerlink" title="功耗"></a>功耗</h4><p>在移动设备和WSC中，电能是关键资源<br>但随着CPU集成度越来越高，晶体管的数量剧增，功耗越来越大、散热越来越难<br>CMOS（互补型金属氧化半导体）是当前占统治地位的集成电路技术<br>其中，晶体管的能耗主要来自动态能耗，即晶体管打开/关闭的短暂动态过程<br>即0→1或1→0的过程<br>一个晶体管经历一次0 → 1 → 0或1 → 0 → 1的开关过程（<strong>在开关过程中使用了最多的能量</strong>）<br>能耗 = 负载电容 x电压²<br>开关频率与CPU主频相关  </p>
+<p>所以，功耗公式为 #card<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E5%8A%9F%E8%80%97%E5%85%AC%E5%BC%8F.png" alt="image.png"></p>
+<h4 id="并行化-基准测试程序"><a href="#并行化-基准测试程序" class="headerlink" title="并行化 基准测试程序"></a>并行化 基准测试程序</h4><p>CPU设计面临功耗墙问题<br>从2002年起，单核处理器性能增长速度从每年约52%下降到22%，功耗问题“功不可没”<br>因此，<strong>从单处理器向多核处理器转变成为近年计算机提升性能的主要手段</strong><br>同时，硬件变成了多处理器<br>要求程序员重写代码去支持CPU的并行（同时执行）特性<br>显式并行编程应运而生，但仍有很多需要克服的问题  </p>
+<p><strong>设有一个单核处理器A，还有一个每个核心都和A相同的四核处理器B，</strong><br><strong>它们运行同一个程序，B的CPU时间能减少到A的1/4吗？</strong>  </p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -989,7 +993,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">69.7k</span>&nbsp;字
+                class="white-color">76.6k</span>&nbsp;字
             
             
             
@@ -1209,21 +1213,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -483,21 +483,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-09
+                    2025-03-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    12 分
                 </div>
                 
 
@@ -517,7 +517,180 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+                <h1 id="CH1-习题课"><a href="#CH1-习题课" class="headerlink" title="CH1 习题课"></a>CH1 习题课</h1><h2 id="教材习题"><a href="#教材习题" class="headerlink" title="教材习题"></a>教材习题</h2><h3 id="1-3-简述程序执行过程"><a href="#1-3-简述程序执行过程" class="headerlink" title="1.3 简述程序执行过程"></a>1.3 简述程序执行过程</h3><p><strong>问题：</strong><br>讲述C等高级语言转化为计算机能够执行的指令的步骤。<br>#card<br><strong>解答：</strong><br>程序从高级语言（如C）到计算机可执行指令的转换过程主要包括以下几个步骤：</p>
+<ol>
+<li><strong>编译</strong>：高级语言代码被<strong>编译</strong>器转换为汇编语言代码。  </li>
+<li><strong>汇编</strong>：汇编语言代码被<strong>汇编</strong>器转换为机器语言代码（目标文件）。  </li>
+<li><strong>链接</strong>：目标文件与所需的库文件（如动态链接库或静态链接库）被链接器合并成一个可执行文件。  </li>
+<li><strong>加载与执行</strong>：可执行文件被加载器加载到内存中，由CPU执行。</li>
+</ol>
+<h3 id="1-6-性能公式"><a href="#1-6-性能公式" class="headerlink" title="1.6 性能公式"></a>1.6 性能公式</h3><p><strong>问题：</strong><br>一个指令集体系结构由两种不同实现。共有A、B、C、D四类指令，对实现P1（2.5GHz）来说，CPI分别为1、2、3、3；对实现P2（3GHz）来说，CPI分别为2、2、2、2。<br>一程序有1x10^6条指令，四类指令比例分别为10%，20%，50%，20%。  </p>
+<ul>
+<li><strong>(1)</strong> 每种实现的总CPI分别是？  </li>
+<li><strong>(2)</strong> 每种实现的时钟周期数为？</li>
+</ul>
+<p>#card<br><strong>解答：</strong></p>
+<h4 id="1-每种实现的总CPI"><a href="#1-每种实现的总CPI" class="headerlink" title="(1) 每种实现的总CPI"></a>(1) 每种实现的总CPI</h4><p>计算加权平均CPI：</p>
+<ul>
+<li><strong>P1的总CPI</strong>：</li>
+</ul>
+<p>$$<br>\text{CPI}_{P1} = (0.1 \times 1) + (0.2 \times 2) + (0.5 \times 3) + (0.2 \times 3) = 0.1 + 0.4 + 1.5 + 0.6 = 2.6<br>$$</p>
+<ul>
+<li><strong>P2的总CPI</strong>：</li>
+</ul>
+<p>$$<br>\text{CPI}_{P2} = (0.1 \times 2) + (0.2 \times 2) + (0.5 \times 2) + (0.2 \times 2) = 0.2 + 0.4 + 1.0 + 0.4 = 2.0<br>$$</p>
+<h4 id="2-每种实现的时钟周期数"><a href="#2-每种实现的时钟周期数" class="headerlink" title="(2) 每种实现的时钟周期数"></a>(2) 每种实现的时钟周期数</h4><ul>
+<li><strong>P1的时钟周期数</strong>：<br>$$<br>\text{时钟周期数}<em>{P1} = \text{指令数} \times \text{CPI}</em>{P1} = 1 \times 10^6 \times 2.6 = 2.6 \times 10^6 \text{ 周期}<br>$$</li>
+<li><strong>P2的时钟周期数</strong>：</li>
+</ul>
+<p>$$<br>\text{时钟周期数}<em>{P2} = \text{指令数} \times \text{CPI}</em>{P2} = 1 \times 10^6 \times 2.0 = 2.0 \times 10^6 \text{ 周期}<br>$$</p>
+<hr>
+<h3 id="1-7-性能公式与加速比"><a href="#1-7-性能公式与加速比" class="headerlink" title="1.7 性能公式与加速比"></a>1.7 性能公式与加速比</h3><p><strong>问题：</strong><br>对同一个程序，编译器A产生1x10^9条指令，执行时间为1.1s；编译器B产生1.2x10^9条指令，执行时间为1.5s。 </p>
+<ul>
+<li><strong>(1)</strong> 若处理器时钟周期长度为1ns，求两个编译器产生程序的CPI。  </li>
+<li><strong>(2)</strong> 假设两个程序在不同处理器上运行，且执行时间相同，求：运行编译器A的处理器比运行B的快多少？  </li>
+<li><strong>(3)</strong> 有种新的编译器，只产生6x10^8条指令，CPI平均为1.1，求：这种新编译器相对于编译器A、B的加速比各是多少？</li>
+</ul>
+<p>#card<br><strong>解答：</strong></p>
+<h4 id="1-求两个编译器产生程序的CPI"><a href="#1-求两个编译器产生程序的CPI" class="headerlink" title="(1) 求两个编译器产生程序的CPI"></a>(1) 求两个编译器产生程序的CPI</h4><ul>
+<li><strong>编译器A的CPI</strong>：</li>
+</ul>
+<p>$$<br>\text{CPI}_A = \frac{\text{执行时间} \times \text{时钟频率}}{\text{指令数}} = \frac{1.1 \times 10^9 \text{ ns}}{1 \times 10^9 \text{ 条}} = 1.1<br>$$</p>
+<ul>
+<li><strong>编译器B的CPI</strong>：<br>$$<br>\text{CPI}_B = \frac{\text{执行时间} \times \text{时钟频率}}{\text{指令数}} = \frac{1.5 \times 10^9 \text{ ns}}{1.2 \times 10^9 \text{ 条}} = 1.25<br>$$</li>
+</ul>
+<h4 id="2-假设两个程序在不同处理器上运行，且执行时间相同，求：运行编译器A的处理器比运行B的快多少？"><a href="#2-假设两个程序在不同处理器上运行，且执行时间相同，求：运行编译器A的处理器比运行B的快多少？" class="headerlink" title="(2) 假设两个程序在不同处理器上运行，且执行时间相同，求：运行编译器A的处理器比运行B的快多少？"></a>(2) 假设两个程序在不同处理器上运行，且执行时间相同，求：运行编译器A的处理器比运行B的快多少？</h4><p>假设两个程序的执行时间相同为 $T$ 秒，那么：</p>
+<ul>
+<li><strong>编译器A的时钟频率</strong>：</li>
+</ul>
+<p>$$<br>f_A = \frac{\text{指令数} \times \text{CPI}_A}{T}<br>$$</p>
+<ul>
+<li><strong>编译器B的时钟频率</strong>：<br>$$<br>f_B = \frac{\text{指令数} \times \text{CPI}_B}{T}<br>$$<br>因此，运行编译器A的处理器比运行B的快：</li>
+</ul>
+<p>$$<br>\frac{f_A}{f_B} = \frac{\text{指令数}_A \times \text{CPI}_A}{\text{指令数}_B \times \text{CPI}_B} = \frac{1 \times 1.1}{1.2 \times 1.25} = \frac{1.1}{1.5} = 0.733<br>$$<br>即运行编译器A的处理器比运行B的处理器慢约26.7%。</p>
+<h4 id="3-新编译器的加速比"><a href="#3-新编译器的加速比" class="headerlink" title="(3) 新编译器的加速比"></a>(3) 新编译器的加速比</h4><ul>
+<li><strong>新编译器的执行时间</strong>：</li>
+</ul>
+<p>$$<br>T_{\text{新}} = \frac{\text{指令数} \times \text{CPI}_{\text{新}}}{f} = \frac{6 \times 10^8 \times 1.1}{1 \times 10^9} = 0.66 \text{ 秒}<br>$$</p>
+<ul>
+<li><strong>相对于编译器A的加速比</strong>：</li>
+</ul>
+<p>$$<br>\text{加速比}<em>A = \frac{T_A}{T</em>{\text{新}}} = \frac{1.1}{0.66} \approx 1.67<br>$$</p>
+<ul>
+<li><strong>相对于编译器B的加速比</strong>：</li>
+</ul>
+<p>$$<br>\text{加速比}<em>B = \frac{T_B}{T</em>{\text{新}}} = \frac{1.5}{0.66} \approx 2.27<br>$$</p>
+<hr>
+<h3 id="1-11-4-性能公式的方程思想"><a href="#1-11-4-性能公式的方程思想" class="headerlink" title="1.11.4 性能公式的方程思想"></a>1.11.4 性能公式的方程思想</h3><p><strong>问题：</strong><br>一台计算机运行SPEC基准测试程序用时750秒。  </p>
+<ul>
+<li><strong>(1)</strong> 如果SPEC指令数增加10%，CPI增加5%，则执行时间变为原来的多少倍？  </li>
+<li><strong>(2)</strong> 指令数不变，如果要在CPI降低15%的情况下，让CPU时间减少20%，时钟频率应该变为原来的多少倍？</li>
+</ul>
+<p>#card<br><strong>解答：</strong></p>
+<h4 id="1-执行时间变为原来的多少倍？"><a href="#1-执行时间变为原来的多少倍？" class="headerlink" title="(1) 执行时间变为原来的多少倍？"></a>(1) 执行时间变为原来的多少倍？</h4><p>假设原来的指令数为 $I$，CPI为 $c$，时钟频率为 $f$。原来的执行时间为：<br>$$<br>T = \frac{I \times c}{f} = 750 \text{ 秒}<br>$$</p>
+<ul>
+<li><strong>指令数增加10%</strong>：新的指令数为 $I’ = 1.1I$  </li>
+<li><strong>CPI增加5%</strong>：新的CPI为 $c’ = 1.05c$<br>新的执行时间为：</li>
+</ul>
+<p>$$<br>T’ = \frac{I’ \times c’}{f} = \frac{1.1I \times 1.05c}{f} = 1.155 \times \frac{I \times c}{f} = 1.155 \times 750 = 866.25 \text{ 秒}<br>$$<br>因此，执行时间变为原来的：<br>$$<br>\frac{T’}{T} = \frac{866.25}{750} = 1.155 \text{ 倍}<br>$$</p>
+<h4 id="2-时钟频率应该变为原来的多少倍？"><a href="#2-时钟频率应该变为原来的多少倍？" class="headerlink" title="(2) 时钟频率应该变为原来的多少倍？"></a>(2) 时钟频率应该变为原来的多少倍？</h4><p>假设原来的CPI为 $c$，新的CPI为 $c’ = 0.85c$。<br>假设原来的执行时间为 $T = 750$ 秒，新的执行时间为 $T’ = 0.8T = 600$ 秒。<br>原来的执行时间为：<br>$$<br>T = \frac{I \times c}{f} = 750 \text{ 秒}<br>$$<br>新的执行时间为：<br>$$<br>T’ = \frac{I \times c’}{f’} = 600 \text{ 秒}<br>$$<br>将 $c’ = 0.85c$ 代入：<br>$$<br>600 = \frac{I \times 0.85c}{f’}<br>$$<br>解得：<br>$$<br>f’ = \frac{I \times 0.85c}{600}<br>$$<br>原来的时钟频率为：<br>$$<br>f = \frac{I \times c}{750}<br>$$<br>因此，新的时钟频率应该是原来的：<br>$$<br>\frac{f’}{f} = \frac{\frac{I \times 0.85c}{600}}{\frac{I \times c}{750}} = \frac{0.85 \times 750}{600} = 1.0625<br>$$<br>即时钟频率应该变为原来的 <strong>1.0625 倍</strong>。</p>
+<hr>
+<h3 id="1-14-Amdahl定律"><a href="#1-14-Amdahl定律" class="headerlink" title="1.14 Amdahl定律"></a>1.14 Amdahl定律</h3><p><strong>问题：</strong><br>一个程序有50x10^6条浮点指令、110x10^6条整数指令、80x10^6条L/S指令和16x10^6条分支指令，4种指令的CPI分别是1、1、4、2，CPU时钟频率为2GHz。  </p>
+<ul>
+<li><strong>(1)</strong> 要让程序运行速度提高到两倍，浮点指令的CPI应该变为多少？  </li>
+<li><strong>(2)</strong> L/S指令的CPI应该变为多少？  </li>
+<li><strong>(3)</strong> 如果整数、浮点指令的CPI降低40％，L/S指令和分支指令的CPI减少30％，程序的执行时间改进多少？</li>
+</ul>
+<p><strong>解答：</strong></p>
+<h4 id="1-浮点指令的CPI应该变为多少？"><a href="#1-浮点指令的CPI应该变为多少？" class="headerlink" title="(1) 浮点指令的CPI应该变为多少？"></a>(1) 浮点指令的CPI应该变为多少？</h4><p>首先计算原始的总CPI：</p>
+<p>$$<br>\text{总CPI} = \frac{(50 \times 1) + (110 \times 1) + (80 \times 4) + (16 \times 2)}{50 + 110 + 80 + 16} = \frac{50 + 110 + 320 + 32}{256} = \frac{512}{256} = 2<br>$$</p>
+<p>假设浮点指令的CPI变为 $x$，总CPI变为1：</p>
+<p>$$<br>\frac{(50 \times x) + (110 \times 1) + (80 \times 4) + (16 \times 2)}{256} = 1<br>$$</p>
+<p>解得：</p>
+<p>$$<br>50x + 110 + 320 + 32 = 256<br>$$</p>
+<p>$$<br>50x + 462 = 256<br>$$</p>
+<p>$$<br>50x = -206<br>$$</p>
+<p>$$<br>x = -4.12<br>$$</p>
+<p>这显然是不可能的，因为CPI不能为负。因此，仅通过改变浮点指令的CPI无法将程序运行速度提高到两倍  。</p>
+<h4 id="2-L-S指令的CPI应该变为多少？"><a href="#2-L-S指令的CPI应该变为多少？" class="headerlink" title="(2) L/S指令的CPI应该变为多少？"></a>(2) L/S指令的CPI应该变为多少？</h4><p>假设L/S指令的CPI变为 $y$，总CPI变为1：</p>
+<p>$$<br>\frac{(50 \times 1) + (110 \times 1) + (80 \times y) + (16 \times 2)}{256} = 1<br>$$</p>
+<p>解得：</p>
+<p>$$<br>50 + 110 + 80y + 32 = 256<br>$$</p>
+<p>$$<br>80y + 192 = 256<br>$$</p>
+<p>$$<br>80y = 64<br>$$</p>
+<p>$$<br>y = 0.8<br>$$</p>
+<p>因此，L/S指令的CPI应该变为 <strong>0.8</strong>。</p>
+<h4 id="3-程序的执行时间改进多少？"><a href="#3-程序的执行时间改进多少？" class="headerlink" title="(3) 程序的执行时间改进多少？"></a>(3) 程序的执行时间改进多少？</h4><p>新的CPI：</p>
+<ul>
+<li><strong>整数指令CPI</strong>：$1 \times 0.6 = 0.6$  </li>
+<li><strong>浮点指令CPI</strong>：$1 \times 0.6 = 0.6$  </li>
+<li><strong>L/S指令CPI</strong>：$4 \times 0.7 = 2.8$  </li>
+<li><strong>分支指令CPI</strong>：$2 \times 0.7 = 1.4$</li>
+</ul>
+<p>新的总CPI：</p>
+<p>$$<br>\text{总CPI}_{\text{新}} = \frac{(50 \times 0.6) + (110 \times 0.6) + (80 \times 2.8) + (16 \times 1.4)}{256} = \frac{30 + 66 + 224 + 22.4}{256} = \frac{342.4}{256} = 1.3375<br>$$</p>
+<p>原来的总CPI为2，新的总CPI为1.3375。因此，执行时间改进为：</p>
+<p>$$<br>\frac{2}{1.3375} \approx 1.495<br>$$</p>
+<p>即执行时间减少了约 <strong>49.5%</strong>。</p>
+<hr>
+<h3 id="1-8-功耗"><a href="#1-8-功耗" class="headerlink" title="1.8 功耗"></a>1.8 功耗</h3><p><strong>问题：</strong><br>奔腾4主频为3.6GHz，工作电压为1.25V，平均静态功耗为10W，动态功耗90W；酷睿i5主频为3.4GHz，工作电压为0.9V，平均静态功耗为30W，动态功耗40W。  </p>
+<ul>
+<li><strong>(1)</strong> 两个处理器的平均负载电容分别是？</li>
+</ul>
+<p><strong>解答：</strong></p>
+<p>根据公式：</p>
+<p>$$<br>\text{动态功耗} = \frac{1}2\times C \times V^2 \times f<br>$$</p>
+<h4 id="奔腾4的平均负载电容-C-text-P4-："><a href="#奔腾4的平均负载电容-C-text-P4-：" class="headerlink" title="奔腾4的平均负载电容 $C_{\text{P4}}$："></a>奔腾4的平均负载电容 $C_{\text{P4}}$：</h4><p>$$<br>C_{\text{P4}} = 2\times\frac{\text{动态功耗}}{V^2 \times f} =2\times \frac{90}{(1.25)^2 \times 3.6 \times 10^9} = 2\times\frac{90}{1.5625 \times 3.6 \times 10^9} \approx 15.55 \times 10^{-9} \text{ F} = 32 \text{ pF}<br>$$</p>
+<h4 id="酷睿i5的平均负载电容-C-text-i5-："><a href="#酷睿i5的平均负载电容-C-text-i5-：" class="headerlink" title="酷睿i5的平均负载电容 $C_{\text{i5}}$："></a>酷睿i5的平均负载电容 $C_{\text{i5}}$：</h4><p>$$<br>C_{\text{i5}} = 2\times\frac{\text{动态功耗}}{V^2 \times f} =2\times \frac{40}{(0.9)^2 \times 3.4 \times 10^9} =2\times \frac{40}{0.81 \times 3.4 \times 10^9} \approx 14.43 \times 10^{-9} \text{ F} = 29\text{ pF}<br>$$</p>
+<hr>
+<h2 id="川大期末真题"><a href="#川大期末真题" class="headerlink" title="川大期末真题"></a>川大期末真题</h2><h3 id="1-下面哪种处理器不是采用RISC指令系统？"><a href="#1-下面哪种处理器不是采用RISC指令系统？" class="headerlink" title="1. 下面哪种处理器不是采用RISC指令系统？"></a>1. 下面哪种处理器不是采用RISC指令系统？</h3><ul>
+<li>A. 华为麒麟处理器  </li>
+<li>B. 高通845处理器  </li>
+<li>C. mips处理器  </li>
+<li>D. Intel酷睿I7处理器</li>
+</ul>
+<p>#card<br><strong>答案：</strong><br>CISC指令集主要是x86,以AMD和Intel为主<br>D. Intel酷睿I7处理器（采用CISC指令集）</p>
+<h3 id="2-八位四选一多路选择器控制线位数是？"><a href="#2-八位四选一多路选择器控制线位数是？" class="headerlink" title="2. 八位四选一多路选择器控制线位数是？"></a>2. 八位四选一多路选择器控制线位数是？</h3><ul>
+<li>A. 1  </li>
+<li>B. 2  </li>
+<li>C. 3  </li>
+<li>D. 8</li>
+</ul>
+<p><strong>答案：</strong><br>B. 2（因为 $2^2 = 4$，表示4个选择）</p>
+<h3 id="3-下面关于CPI的说法，错误的是？"><a href="#3-下面关于CPI的说法，错误的是？" class="headerlink" title="3. 下面关于CPI的说法，错误的是？"></a>3. 下面关于CPI的说法，错误的是？</h3><ul>
+<li>A. 多周期CPU比单周期CPU的CPI大，因此单周期CPU更快  </li>
+<li>B. 同一台机器中运行不同的程序CPI不一定相同  </li>
+<li>C. mips单周期CPU各种指令的CPI是相同的  </li>
+<li>D. mips多周期CPU访存指令CPI比R-type型指令CPI大</li>
+</ul>
+<p>#card<br><strong>答案：</strong><br>A. 多周期CPU比单周期CPU的CPI大，因此单周期CPU更快（CPI大不一定意味着CPU更快，还需要考虑时钟频率等因素）</p>
+<h3 id="4-下列哪一项和CPU的运算速度关系不大？"><a href="#4-下列哪一项和CPU的运算速度关系不大？" class="headerlink" title="4. 下列哪一项和CPU的运算速度关系不大？"></a>4. 下列哪一项和CPU的运算速度关系不大？</h3><ul>
+<li>A. CPU主频  </li>
+<li>B. MIPS  </li>
+<li>C. CPI  </li>
+<li>D. 主存频率</li>
+</ul>
+<p>#card<br><strong>答案：</strong><br>MIPS只考虑IC和CPI<br>D. 主存频率（主存频率主要影响数据传输速度，而不是CPU的运算速度）</p>
+<h3 id="5-将指令从符号码翻译成二进制码的程序？"><a href="#5-将指令从符号码翻译成二进制码的程序？" class="headerlink" title="5. 将指令从符号码翻译成二进制码的程序？"></a>5. 将指令从符号码翻译成二进制码的程序？</h3><ul>
+<li>A. 汇编器  </li>
+<li>B. 编译器  </li>
+<li>C. 链接器  </li>
+<li>D. 加载器</li>
+</ul>
+<p>#card<br><strong>答案：</strong><br>符号码就是汇编语言<br>A. 汇编器</p>
+<h3 id="6-同一个程序，在同一台计算机的CPU超频前和超频后运行，假设内存的访问速度不变，超频前和超频后CPI对比应该是？"><a href="#6-同一个程序，在同一台计算机的CPU超频前和超频后运行，假设内存的访问速度不变，超频前和超频后CPI对比应该是？" class="headerlink" title="6. 同一个程序，在同一台计算机的CPU超频前和超频后运行，假设内存的访问速度不变，超频前和超频后CPI对比应该是？"></a>6. 同一个程序，在同一台计算机的CPU超频前和超频后运行，假设内存的访问速度不变，超频前和超频后CPI对比应该是？</h3><p>注：CPU超频是指增大CPU的时钟频率</p>
+<ul>
+<li>A. 超频前的CPI大  </li>
+<li>B. 超频后的CPI大</li>
+</ul>
+<p>#card<br><strong>答案：</strong><br>B<br>CPU的速度远远快于内存，所以CPU有很长的时间都是在等待内存的操作。<br>现在我们增大时钟频率f,但是我们所需要执行的程序操作数cycle是不会改变的。<br>同时等待的时间也不会变化，但是f降低，等待的时钟周期变长了<br>总的时钟周期变长了。CPI = cycles/IC会变得更大</p>
+<h3 id="7-某处理器执行某一段程序，该程序包含三类指令，其中运算指令120条，访存指令60条，分支指令20条，各类指令的CPI分别为5、10和2。请计算执行这段程序的平均CPI。"><a href="#7-某处理器执行某一段程序，该程序包含三类指令，其中运算指令120条，访存指令60条，分支指令20条，各类指令的CPI分别为5、10和2。请计算执行这段程序的平均CPI。" class="headerlink" title="7. 某处理器执行某一段程序，该程序包含三类指令，其中运算指令120条，访存指令60条，分支指令20条，各类指令的CPI分别为5、10和2。请计算执行这段程序的平均CPI。"></a>7. 某处理器执行某一段程序，该程序包含三类指令，其中运算指令120条，访存指令60条，分支指令20条，各类指令的CPI分别为5、10和2。请计算执行这段程序的平均CPI。</h3><p>#card<br><strong>解答：</strong></p>
+<p>$$<br>\text{总CPI} = \frac{(120 \times 5) + (60 \times 10) + (20 \times 2)}{120 + 60 + 20} = \frac{600 + 600 + 40}{200} = \frac{1240}{200} = 6.2<br>$$</p>
+<p>平均CPI为 <strong>6.2</strong>。</p>
+<h3 id="8-编译程序对一个应用在给定的处理器上的性能有极深的影响。假定一个程序，如果采用编译程序A，则动态指令数为1-0×10-9，执行时间为1-5s；如果采用编译程序B，则动态指令数为1-5×10-9，执行时间为2-1s。若该处理器的时钟周期为1ns，请分别求出每种编译程序下的平均CPI。"><a href="#8-编译程序对一个应用在给定的处理器上的性能有极深的影响。假定一个程序，如果采用编译程序A，则动态指令数为1-0×10-9，执行时间为1-5s；如果采用编译程序B，则动态指令数为1-5×10-9，执行时间为2-1s。若该处理器的时钟周期为1ns，请分别求出每种编译程序下的平均CPI。" class="headerlink" title="8. 编译程序对一个应用在给定的处理器上的性能有极深的影响。假定一个程序，如果采用编译程序A，则动态指令数为1.0×10^9，执行时间为1.5s；如果采用编译程序B，则动态指令数为1.5×10^9，执行时间为2.1s。若该处理器的时钟周期为1ns，请分别求出每种编译程序下的平均CPI。"></a>8. 编译程序对一个应用在给定的处理器上的性能有极深的影响。假定一个程序，如果采用编译程序A，则动态指令数为1.0×10^9，执行时间为1.5s；如果采用编译程序B，则动态指令数为1.5×10^9，执行时间为2.1s。若该处理器的时钟周期为1ns，请分别求出每种编译程序下的平均CPI。</h3><p>#card<br><strong>解答：</strong></p>
+<h4 id="编译器A的CPI："><a href="#编译器A的CPI：" class="headerlink" title="编译器A的CPI："></a>编译器A的CPI：</h4><p>$$<br>\text{CPI}_A = \frac{\text{执行时间} \times \text{时钟频率}}{\text{指令数}} = \frac{1.5 \times 10^9 \text{ ns}}{1.0 \times 10^9 \text{ 条}} = 1.5<br>$$</p>
+<h4 id="编译器B的CPI："><a href="#编译器B的CPI：" class="headerlink" title="编译器B的CPI："></a>编译器B的CPI：</h4><p>$$<br>\text{CPI}_B = \frac{\text{执行时间} \times \text{时钟频率}}{\text{指令数}} = \frac{2.1 \times 10^9 \text{ ns}}{1.5 \times 10^9 \text{ 条}} = 1.4<br>$$</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -931,7 +1104,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">69.7k</span>&nbsp;字
+                class="white-color">76.6k</span>&nbsp;字
             
             
             
@@ -1151,21 +1324,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
