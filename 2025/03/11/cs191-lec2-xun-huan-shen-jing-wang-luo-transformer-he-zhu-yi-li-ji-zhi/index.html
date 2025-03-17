@@ -479,7 +479,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-12
+                    2025-03-17
                 </div>
                 
 
@@ -530,7 +530,7 @@
 <li><strong>单输入到序列输出</strong>：如图像字幕生成，根据图像生成描述性文本。</li>
 <li><strong>序列输入到序列输出</strong>：如机器翻译，将一种语言的句子序列翻译为另一种语言的句子序列。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503111634854.png" alt="image.png"></li>
 </ul>
-<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>RNN 是一种能够处理序列数据的神经网络架构，通过在神经元之间引入<strong>循环结构</strong>，使得网络能够保留关于过去输入的信息，从而对序列中的时间依赖关系进行建模。<br><strong>既有当前观测到的数据，也保留了历史数据，通过这些数据来预测未来。</strong><br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503111637161.png" alt="image.png"></p>
+<h2 id="循环神经网络（-RNN-）"><a href="#循环神经网络（-RNN-）" class="headerlink" title="循环神经网络（[[RNN]]）"></a>循环神经网络（[[RNN]]）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>RNN 是一种能够处理序列数据的神经网络架构，通过在神经元之间引入<strong>循环结构</strong>，使得网络能够保留关于过去输入的信息，从而对序列中的时间依赖关系进行建模。<br><strong>既有当前观测到的数据，也保留了历史数据，通过这些数据来预测未来。</strong><br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503111637161.png" alt="image.png"></p>
 <h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>RNN 的核心是隐藏状态（Hidden State），它<strong>在每个时间步上不仅依赖于当前输入，还依赖于前一个时间步的隐藏状态</strong>。数学上，隐藏状态的更新可以表示为：</p>
 <blockquote>
 <p>可以将RNN（循环神经网络）理解为一个按顺序处理信息的“窗口”。假设我们有一段文本：“我是mika”，RNN会将这段文本逐个字符或逐个词语依次输入网络。例如，它会先处理“我”，然后是“是”，接着是“mika”……通过这种方式，RNN会在每个时间步上更新其内部状态，从而记住之前的信息。<br>当后续再次提到“我”时，RNN可以根据之前的状态“回忆”起“我”与“mika”之间的关联。然而，RNN在处理长序列数据时有一个显著的局限性：当序列过长或数据量过大时，很容易出现梯度消失或梯度爆炸的问题。梯度消失会导致网络难以学习到长距离依赖关系，而梯度爆炸则会使训练过程不稳定。这些问题限制了RNN在处理复杂任务时的性能。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503111635614.png" alt="image.png"></p>
@@ -542,7 +542,7 @@
 <li><strong>音乐生成</strong>：通过训练 RNN 模型，可以根据过去的音符序列预测下一个音符，从而生成新的音乐。例如，有公司曾使用神经网络完成舒伯特未完成的交响曲。</li>
 <li><strong>文本生成</strong>：RNN 可以根据给定的文本序列生成下一个单词，实现自动写作等功能。</li>
 </ul>
-<h2 id="长短期记忆网络（LSTM）"><a href="#长短期记忆网络（LSTM）" class="headerlink" title="长短期记忆网络（LSTM）"></a>长短期记忆网络（LSTM）</h2><p>LSTM 是 RNN 的一种变体，通过引入<strong>门控机制</strong>（输入门、遗忘门和输出门）来控制信息的流动，能够更好地处理长序列中的长期依赖问题。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503111643158.png" alt="image.png"></p>
+<h2 id="长短期记忆网络（-LSTM-）"><a href="#长短期记忆网络（-LSTM-）" class="headerlink" title="长短期记忆网络（[[LSTM]]）"></a>长短期记忆网络（[[LSTM]]）</h2><p><strong>LSTM 是 RNN 的一种变体</strong>，通过引入<strong>门控机制</strong>（输入门、遗忘门和输出门）来控制信息的流动，能够更好地处理长序列中的长期依赖问题。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503111643158.png" alt="image.png"></p>
 <h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p>LSTM 的隐藏状态更新涉及细胞状态（Cell State）的维护，细胞状态通过遗忘门、输入门和输出门进行调节：</p>
 <p>$$<br>f_t = \sigma(W_{xf}x_t + W_{hf}h_{t-1} + b_f)<br>$$</p>
 <p>$$<br>i_t = \sigma(W_{xi}x_t + W_{hi}h_{t-1} + b_i)<br>$$</p>
@@ -1208,6 +1208,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
