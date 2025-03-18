@@ -339,7 +339,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/erinmi4/images/master/hexo/%E7%AC%AC%E4%BA%8C%E7%AB%A0')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/erinmi4/images/master/hexo/CH2%20%E6%8C%87%E4%BB%A4%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E8%AF%AD%E8%A8%80%20%E5%AF%BC%E5%9B%BE.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -500,14 +500,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-17
+                    2025-03-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.7k
+                    6.6k
                 </div>
                 
 
@@ -534,25 +534,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="CH2-指令：计算机的语言"><a href="#CH2-指令：计算机的语言" class="headerlink" title="CH2 指令：计算机的语言"></a>CH2 指令：计算机的语言</h1><p>课程基于<br>《计算机组成与设计：硬件/软件接口》5e<br>Patterson &amp; Hennessey 著</p>
-<h1 id="章节导图"><a href="#章节导图" class="headerlink" title="章节导图"></a>章节导图</h1><p><img src="/images/img-0.jpeg.png" alt="img-0.jpeg"></p>
+                <h1 id="章节导图"><a href="#章节导图" class="headerlink" title="章节导图"></a>章节导图</h1><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/CH2%20%E6%8C%87%E4%BB%A4%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E8%AF%AD%E8%A8%80%20%E5%AF%BC%E5%9B%BE.png" alt="CH2 指令：计算机的语言 导图.png"></p>
 <hr>
-<h1 id="第一部分：MIPS-32-概述"><a href="#第一部分：MIPS-32-概述" class="headerlink" title="第一部分：MIPS-32 概述"></a>第一部分：MIPS-32 概述</h1><h2 id="指令的组成与-MIPS-的设计思想"><a href="#指令的组成与-MIPS-的设计思想" class="headerlink" title="指令的组成与 MIPS 的设计思想"></a>指令的组成与 MIPS 的设计思想</h2><p>计算机执行任何程序，本质上都是在执行机器语言指令（instruction）。每条指令都是一条 0-1 串。<br>指令首先要指明执行什么操作，通常用 0-1 串中的前几位来表示，称为<strong>操作码（opcode）</strong>。<br>指令还要指出需要操作的数据来自哪里、操作后的结果数据放回哪里，通常用 0-1 串中的剩余位来表示，称为<strong>操作数（operand）<strong>或</strong>地址码（address code）</strong>。<br>大部分操作数都是一个地址编号，告诉 CPU 从哪里取得数据、向哪里放回数据，因此操作数通常也叫做<strong>地址码</strong>。</p>
+<h1 id="第一部分：MIPS-32-概述"><a href="#第一部分：MIPS-32-概述" class="headerlink" title="第一部分：MIPS-32 概述"></a>第一部分：MIPS-32 概述</h1><h2 id="指令的组成与-MIPS-的设计思想"><a href="#指令的组成与-MIPS-的设计思想" class="headerlink" title="指令的组成与 MIPS 的设计思想"></a>指令的组成与 MIPS 的设计思想</h2><p>计算机执行任何程序，本质上都是在执行机器语言指令（instruction）。每条指令都是一条 0-1 串。<br>指令首先要指明执行什么操作，通常用 0-1 串中的前几位来表示，称为<strong>操作码（opcode）</strong>。<br>指令还要指出需要操作的数据来自哪里、操作后的结果数据放回哪里，通常用 0-1 串中的剩余位来表示，称为<strong>操作数（operand）或</strong>地址码（address code）<strong>。<br>大部分操作数都是一个地址编号，告诉 CPU 从哪里取得数据、向哪里放回数据，因此操作数通常也叫做</strong>地址码。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503180000400.png" alt="image.png"></p>
 <p>MIPS 作为一种 RISC 指令集，设计力求保证硬件设备的简单性。在我们讲解的 32 位 MIPS 汇编语言（MIPS-32）中，所有指令都是 32 位长。</p>
 <hr>
-<h2 id="MIPS-32-中的通用寄存器"><a href="#MIPS-32-中的通用寄存器" class="headerlink" title="MIPS-32 中的通用寄存器"></a>MIPS-32 中的通用寄存器</h2><p>MIPS 中运算操作的操作数必须来自寄存器（register）或者指令本身。寄存器是一种位于 CPU 内部、比 cache 更小更快的存储器，用来暂时存放运算的源数据和结果。<br>一些寄存器是专用的，如存放执行中指令的地址的程序计数器（PC）。与此相对应，用于暂时存放运算数据的寄存器称为<strong>通用寄存器</strong>。  </p>
+<h2 id="MIPS-32-中的通用寄存器"><a href="#MIPS-32-中的通用寄存器" class="headerlink" title="MIPS-32 中的通用寄存器"></a>MIPS-32 中的通用寄存器</h2><p>===MIPS 中运算操作的操作数必须来自寄存器（register）或者指令本身。===<br>寄存器是一种位于 CPU 内部、比 cache 更小更快的存储器，用来暂时存放运算的源数据和结果。<br>一些寄存器是专用的，如存放执行中指令的地址的程序计数器（PC）。<br>与此相对应，用于暂时存放运算数据的寄存器称为<strong>通用寄存器</strong>。  </p>
 <p>MIPS 中一共有 32 个 32 位的寄存器，共 128B（大部分架构都采用 16 或 32 个寄存器）。我们约定：  </p>
 <ul>
-<li>程序中的变量存放在**保存寄存器（saved registers）**中：<code>$s0</code>~`$s7`，共 8 个。  </li>
-<li>运算的临时变量、中间变量存放在**临时寄存器（temporary registers）**中：<code>$t0</code>~`$t7`，共 8 个。  </li>
-<li>还有一个<strong>零寄存器</strong>，永远存放 32 位的 0，写作 <code>$zero</code>。</li>
+<li>程序中的变量存放在**保存寄存器（saved registers）中：<code>$s0</code>~`$s7`，共 8 个。  </li>
+<li>运算的临时变量、中间变量存放在**临时寄存器（temporary registers）中：<code>$t0</code>~`$t7`，共 8 个。  </li>
+<li>还有一个<strong>零寄存器</strong>，永远存放 32 位的 0，写作 <code>$zero</code>。（注意，已经被硬编码为0，无法被修改）</li>
 </ul>
 <hr>
-<h1 id="第二部分：三类汇编指令"><a href="#第二部分：三类汇编指令" class="headerlink" title="第二部分：三类汇编指令"></a>第二部分：三类汇编指令</h1><h2 id="算术运算：加法和减法"><a href="#算术运算：加法和减法" class="headerlink" title="算术运算：加法和减法"></a>算术运算：加法和减法</h2><p>C 赋值语句：<code>c = a + b;</code><br>加法指令：<code>add c, a, b</code>，将 a 和 b 中的数据相加，并将结果存放在 c 中。<br>再次强调：MIPS 中运算的操作数必须来自寄存器或者指令本身！<br>假设变量 a、b、c 分别存放在寄存器 <code>$s0</code>、<code>$s1</code>、<code>$s2</code> 中，这条指令就应当写为：<br><code>add $s2, $s0, $s1</code>  </p>
+<h1 id="第二部分：三类汇编指令"><a href="#第二部分：三类汇编指令" class="headerlink" title="第二部分：三类汇编指令"></a>第二部分：三类汇编指令</h1><h2 id="算术运算：加法和减法"><a href="#算术运算：加法和减法" class="headerlink" title="算术运算：加法和减法"></a>算术运算：加法和减法</h2><p>C 赋值语句：<code>c = a + b;</code><br>加法指令：<code>add c, a, b</code>，将 a 和 b 中的数据相加，并将结果存放在 c 中。<br>再次强调：</p>
+<p>MIPS 中运算的操作数必须来自 #card<br>寄存器或者指令本身！  </p>
+<p>假设变量 a、b、c 分别存放在寄存器 <code>$s0</code>、<code>$s1</code>、<code>$s2</code> 中，这条指令就应当写为：<br><code>add $s2, $s0, $s1</code>  </p>
 <p>加法中两个加数可以对换，但减法不行，因此 <code>c = a - b;</code> 必须写作：<br><code>sub $s2, $s0, $s1</code>  </p>
-<p>运算的“原材料”a 和 b 对应的寄存器 <code>$s0</code>、<code>$s1</code> 分别称为<strong>源操作数 1（src1）<strong>和</strong>源操作数 2（src2）</strong>，运算的结果 c 对应的寄存器 <code>$s2</code> 称为<strong>目的操作数（des）</strong>。<br>加减指令的通式：<code>add/sub des, src1, src2</code>。</p>
+<p>运算的“原材料”a 和 b 对应的寄存器 <code>$s0</code>、<code>$s1</code> 分别称为<strong>源操作数 1（src1）和</strong>源操作数 2（src2）<strong>，运算的结果 c 对应的寄存器 <code>$s2</code> 称为</strong>目的操作数（des）**。<br>加减指令的通式：<code>add/sub des, src1, src2</code>。</p>
 <hr>
-<h2 id="算术运算：加立即数"><a href="#算术运算：加立即数" class="headerlink" title="算术运算：加立即数"></a>算术运算：加立即数</h2><p>在 <code>i++</code> 即 <code>i = i + 1;</code> 这条赋值语句中，有个确定的常数 1。与其采取额外的步骤将 1 装入某个寄存器，不如让指令本身包含这个 1。<br>假设变量 i 位于寄存器 <code>$s0</code>，我们把加法指令的第二个源操作数改为常数 1：<br><code>addi $s0, $s0, 1</code>  </p>
+<h2 id="算术运算：加立即数"><a href="#算术运算：加立即数" class="headerlink" title="算术运算：加立即数"></a>算术运算：加立即数</h2><p>在 <code>i++</code> 即 <code>i = i + 1;</code> 这条赋值语句中，有个确定的常数 1。<br>与其采取额外的步骤将 1 装入某个寄存器，不如让指令本身包含这个 1。<br>假设变量 i 位于寄存器 <code>$s0</code>，我们把加法指令的第二个源操作数改为常数 1：<br><code>addi $s0, $s0, 1</code>  </p>
 <p>这就成了加立即数（add immediate）指令。因为 <code>addi</code> 指令中的立即数可以取负数（对立即数取负后相加），因此 MIPS 中没有 <code>subi</code> 指令。</p>
 <hr>
 <h2 id="逻辑按位运算：and、or、nor-指令"><a href="#逻辑按位运算：and、or、nor-指令" class="headerlink" title="逻辑按位运算：and、or、nor 指令"></a>逻辑按位运算：<code>and</code>、<code>or</code>、<code>nor</code> 指令</h2><ul>
@@ -570,17 +571,16 @@
 <hr>
 <h2 id="综合练习-1：变量运算与赋值"><a href="#综合练习-1：变量运算与赋值" class="headerlink" title="综合练习 1：变量运算与赋值"></a>综合练习 1：变量运算与赋值</h2><p>翻译以下 C 语句：<br><code>result = a - 10 + (b + c * 5);</code></p>
 <hr>
-<h2 id="寄存器—存储器数据传送：lw-指令"><a href="#寄存器—存储器数据传送：lw-指令" class="headerlink" title="寄存器—存储器数据传送：lw 指令"></a>寄存器—存储器数据传送：<code>lw</code> 指令</h2><p>运算指令的操作数必须来自于寄存器/指令本身，但通用寄存器一共只有 128B。数组元素却可以占据成千上万个字节，只能存放在内存中。<br>这时，我们把数组第一个元素（a[0]）的 32 位地址，称为数组的基址，放在寄存器中。基址加上要找的元素的下标，就组成了这个元素的地址。<br>如果源操作数在内存中，是数组 a 的 5 号元素（第六个元素），数组 a 的基址存放在 <code>$s1</code> 中，那么 a[5] 的地址就表示为 <code>5($s1)</code>。<br>计算机会自动计算 <code>$s1</code> 中的基址和偏移量 5 的和，找到 a[5] 的地址。<br>将 a[5] 从内存传送到寄存器 <code>$s0</code>，使用取字指令（load word）：<br><code>lw $s0, 5($s1)</code></p>
+<h2 id="寄存器—存储器数据传送：lw-指令"><a href="#寄存器—存储器数据传送：lw-指令" class="headerlink" title="寄存器—存储器数据传送：lw 指令"></a>寄存器—存储器数据传送：<code>lw</code> 指令</h2><p>运算指令的操作数必须来自于寄存器/指令本身，但通用寄存器一共只有 128B。<br>数组元素却可以占据成千上万个字节，只能存放在内存中。<br>这时，我们把数组第一个元素（a[0]）的 32 位地址，称为数组的基址，放在寄存器中。<br>基址加上要找的元素的下标，就组成了这个元素的地址。<br>如果源操作数在内存中，是数组 a 的 5 号元素（第六个元素），数组 a 的基址存放在 <code>$s1</code> 中，那么 a[5] 的地址就表示为 <code>5($s1)</code>。<br>计算机会自动计算 <code>$s1</code> 中的基址和偏移量 5 的和，找到 a[5] 的地址。<br>将 a[5] 从内存传送到寄存器 <code>$s0</code>，使用取字指令（load word）：<br><code>lw $s0, 5($s1)</code></p>
 <hr>
 <h2 id="寄存器—存储器数据传送：字与-sw-指令"><a href="#寄存器—存储器数据传送：字与-sw-指令" class="headerlink" title="寄存器—存储器数据传送：字与 sw 指令"></a>寄存器—存储器数据传送：字与 <code>sw</code> 指令</h2><p>MIPS 的通用寄存器都是 32 位长，这个长度就是 MIPS 体系结构的字长，通常代表了参与运算的数据的长度。因此我们约定：整门课程中，1 字 = 32b = 4B。<br>a[5] 相对于 a[0]，在内存中的距离是 5 个字，而不是 5 个字节。又因为内存按字节编址，即内存每个字节都有一个特定的编号，所以偏移量应该是 5x4 = 20 个字节。<br>a[5] 的地址应表示成 <code>20($s1)</code>。于是取数指令变为：<br><code>lw $s0, 20($s1)</code>  </p>
 <p>如果我们要把 <code>$t0</code> 中的运算结果送回内存中的 a[2]，需要用到存字指令（store word）：<br><code>sw $t0, 8($s1)</code></p>
 <hr>
 <h2 id="寄存器间数据传送：装载立即数到寄存器"><a href="#寄存器间数据传送：装载立即数到寄存器" class="headerlink" title="寄存器间数据传送：装载立即数到寄存器"></a>寄存器间数据传送：装载立即数到寄存器</h2><p>如果我们需要把数从 <code>$t0</code> 保存到存放某变量的 <code>$s1</code> 中，怎么实现？<br>MIPS 没有专门的寄存器间移动数据的指令，但可以通过把源寄存器中的数据加上 0 再保存到目标寄存器中，实现相同的功能：<br><code>addi $s1, $t0, 0</code> 或 <code>add $s1, $t0, $zero</code><br>这个功能可以用 <code>move</code> 伪指令来代替：<br><code>move $s1, $t0</code>  </p>
 <p>假如我们要把一个常数 10 装入寄存器 <code>$s2</code>，同样可以采用 <code>addi</code> 指令：<br><code>addi $s2, $zero, 10</code><br>或使用取立即数（load immediate）伪指令：<br><code>li $s2, 10</code>  </p>
-<p>程序设计题中能否使用伪指令，请咨询老师！</p>
 <hr>
 <h2 id="装载-32-位立即数到寄存器"><a href="#装载-32-位立即数到寄存器" class="headerlink" title="装载 32 位立即数到寄存器"></a>装载 32 位立即数到寄存器</h2><p>我们说可以用 <code>addi</code> 指令向寄存器装载立即数：<code>addi $s2, $zero, 10</code>，但 <code>addi</code> 指令中的立即数 10 只能占用 32 位指令中的一部分（16 位，稍后介绍指令格式）。<br>16 位只能表示 2^16 即六万多个数，寄存器却能容纳 2^32 即 40 多亿个数。  </p>
-<p>假设我们要向寄存器 <code>$s2</code> 装载一个 32 位的立即数：<code>10A2 7FFF</code>（16 进制）。<br>我们必须先用取高位立即数（load upper immediate）指令，把 <code>10A2</code> 放入 <code>$s2</code> 的高 16 位：<br><code>lui $s2, 4258</code>（十六进制的 <code>10A2</code> 等于十进制的 4258）<br>再让 <code>$s2</code> 与低 16 位的立即数 <code>7FFF</code> 进行或运算：<br><code>ori $s2, $s2, 32767</code>（<code>7FFF</code>(16)=32767<code>(10)</code>）  </p>
+<p>假设我们要向寄存器 <code>$s2</code> 装载一个 32 位的立即数：<code>10A2 7FFF</code>（16 进制）。  翻译为指令 #card<br>我们必须先用取高位立即数（load upper immediate）指令，把 <code>10A2</code> 放入 <code>$s2</code> 的高 16 位：<br><code>lui $s2, 4258</code>（十六进制的 <code>10A2</code> 等于十进制的 4258）<br>再让 <code>$s2</code> 与低 16 位的立即数 <code>7FFF</code> 进行或运算：<br><code>ori $s2, $s2, 32767</code>（<code>7FFF</code>(16)=32767<code>(10)</code>）  </p>
 <p>这样，就分两步把 32 位立即数装载到了 32 位的寄存器中。<br>不能使用 <code>addi</code> 替代 <code>ori</code> 指令，如果低 16 位的最高位是 1，<code>addi</code> 会把它理解为负数。</p>
 <hr>
 <h2 id="综合练习-2：数组元素运算与赋值"><a href="#综合练习-2：数组元素运算与赋值" class="headerlink" title="综合练习 2：数组元素运算与赋值"></a>综合练习 2：数组元素运算与赋值</h2><p><code>a[i] = a[0] + 100000;</code><br>假设数组 a 的基址位于 <code>$s0</code>，变量 i 位于 <code>$s1</code>。<br><code>100000</code>(10)=<code>186A0</code>(16)，<code>1</code>(16)=<code>1</code>(10)，<code>86A0</code>(16)=<code>34464</code>(10)。</p>
@@ -592,7 +592,7 @@
 </ul>
 <p>如果不发生分支，则继续执行内存中相邻的下一条指令。</p>
 <hr>
-<h2 id="综合练习-3：if-else-语句（无条件跳转-j-和条件分支）"><a href="#综合练习-3：if-else-语句（无条件跳转-j-和条件分支）" class="headerlink" title="综合练习 3：if-else 语句（无条件跳转 j 和条件分支）"></a>综合练习 3：<code>if-else</code> 语句（无条件跳转 <code>j</code> 和条件分支）</h2><p><code>if (i == j) f = g + h; else f = g - h;</code><br>假设 f、g、h、i、j 分别存放在 <code>$s0</code>~`$s4<code>中。   结论：判定相等</code>==<code>使用</code>bne<code>，判断不等 </code>!=<code>使用</code>beq`。</p>
+<h2 id="综合练习-3：if-else-语句（无条件跳转-j-和条件分支）"><a href="#综合练习-3：if-else-语句（无条件跳转-j-和条件分支）" class="headerlink" title="综合练习 3：if-else 语句（无条件跳转 j 和条件分支）"></a>综合练习 3：<code>if-else</code> 语句（无条件跳转 <code>j</code> 和条件分支）</h2><p><code>if (i == j) f = g + h; else f = g - h;</code><br>假设 f、g、h、i、j 分别存放在 <code>$s0</code>~`$s4<code>中。   结论：判定相等</code>==<code>使用</code>bne<code>，判断不等 </code>!=<code>使用</code>beq`。 #card </p>
 <hr>
 <h2 id="决策：小于则置位-slt"><a href="#决策：小于则置位-slt" class="headerlink" title="决策：小于则置位 slt"></a>决策：小于则置位 <code>slt</code></h2><p>除了相等、不等关系，我们还经常比较两个数的大小。MIPS 有一条**小于则置位（set on less than）**指令 <code>slt</code>。<br>置位：将一位设置为 1；复位：将一位设置为 0。<br>假设 <code>$s0 = 0</code>，<code>$s1 = 0</code>，<code>$s2 = 1</code>：<br><code>slt $t0, $s0, $s2</code><br>源操作数 1 &lt; 源操作数 2 吗？Yes！此时把目的操作数寄存器 <code>$t0</code> 置位为 1。<br><code>slt $t0, $s0, $s1</code><br>源操作数 1 &lt; 源操作数 2 吗？No！此时把目的操作数寄存器 <code>$t0</code> 复位为 0。</p>
 <hr>
@@ -1507,7 +1507,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.6k</span>&nbsp;字
+                class="white-color">78.3k</span>&nbsp;字
             
             
             
@@ -1727,21 +1727,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

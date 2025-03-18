@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【MIT6.006】【lec3】 集合与排序, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="【CS191】【lec3】卷积神经网络, MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【MIT6.006】【lec3】 集合与排序 | MIKA的博客</title>
+    <title>【CS191】【lec3】卷积神经网络 | MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -33,23 +33,6 @@
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
     
-        
-            <script>
-                MathJax = {
-                    tex: {
-                        inlineMath: [['$', '$'], ['\\(', '\\)']],
-                        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                        processEscapes: true,
-                        processEnvironments: true
-                    },
-                    options: {
-                        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                    }
-                };
-            </script>
-            <script type="text/javascript" async
-                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-            </script>
         
     
 <!-- hexo injector head_end start -->
@@ -339,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081353413.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181645793.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【MIT6.006】【lec3】 集合与排序</h1>
+                    <h1 class="description center-align post-title">【CS191】【lec3】卷积神经网络</h1>
                 </div>
             </div>
         </div>
@@ -460,16 +443,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">数据结构与算法</span>
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/">
-                                <span class="chip bg-color">算法导论</span>
-                            </a>
-                        
-                            <a href="/tags/MIT6006/">
-                                <span class="chip bg-color">MIT6006</span>
+                            <a href="/tags/MIT6S191/">
+                                <span class="chip bg-color">MIT6S191</span>
                             </a>
                         
                     </div>
@@ -480,8 +459,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                数据结构与算法
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
                             </a>
                         
                     </div>
@@ -493,28 +472,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-03-12
+                    2025-03-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-11
+                    2025-03-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    874
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -534,94 +513,142 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="算法导论-第三讲：集合与排序"><a href="#算法导论-第三讲：集合与排序" class="headerlink" title="算法导论 - 第三讲：集合与排序"></a>算法导论 - 第三讲：集合与排序</h1><h2 id="一、课程介绍与主题回顾"><a href="#一、课程介绍与主题回顾" class="headerlink" title="一、课程介绍与主题回顾"></a>一、课程介绍与主题回顾</h2><ul>
-<li><strong>讲师</strong>：Justin，6.006课程的第三位讲师。</li>
-<li><strong>课程主题</strong>：围绕算法设计与分析，重点关注接口（interface）与数据结构（data structure）的区别。<ul>
-<li><strong>接口</strong>：定义了一组操作，但不涉及具体实现。</li>
-<li><strong>数据结构</strong>：具体实现接口的存储方式，影响效率和性能。</li>
+                <h2 id="第一部分：深度学习与计算机视觉简介"><a href="#第一部分：深度学习与计算机视觉简介" class="headerlink" title="第一部分：深度学习与计算机视觉简介"></a>第一部分：深度学习与计算机视觉简介</h2><h3 id="1-1-课程简介"><a href="#1-1-课程简介" class="headerlink" title="1.1 课程简介"></a>1.1 课程简介</h3><ul>
+<li><strong>课程主题</strong>：MIT 6.S191《深度学习入门》课程的第二天，专注于计算机视觉。</li>
+<li><strong>课程目标</strong>：探讨如何让计算机拥有视觉能力，理解并感知物理世界。</li>
+</ul>
+<h3 id="1-2-视觉能力的重要性"><a href="#1-2-视觉能力的重要性" class="headerlink" title="1.2 视觉能力的重要性"></a>1.2 视觉能力的重要性</h3><ul>
+<li><strong>背景</strong>：视觉是人类最重要的感知能力之一，帮助我们识别情感、导航世界和操纵物体。</li>
+<li><strong>计算机视觉</strong>：让计算机通过视觉输入理解周围环境，不仅仅是静态的“看到”，还包括动态的“感知”。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181645793.png" alt="image.png"></li>
+</ul>
+<h3 id="1-3-深度学习在计算机视觉中的应用"><a href="#1-3-深度学习在计算机视觉中的应用" class="headerlink" title="1.3 深度学习在计算机视觉中的应用"></a>1.3 深度学习在计算机视觉中的应用</h3><ul>
+<li><strong>应用场景</strong>：从机器人技术到移动计算，从医学健康到自动驾驶。</li>
+<li><strong>重要性</strong>：深度学习正在彻底改变计算机视觉算法及其应用，使其更加智能化和自动化。</li>
+</ul>
+<hr>
+<h2 id="第二部分：计算机视觉的基础"><a href="#第二部分：计算机视觉的基础" class="headerlink" title="第二部分：计算机视觉的基础"></a>第二部分：计算机视觉的基础</h2><h3 id="2-1-图像的表示"><a href="#2-1-图像的表示" class="headerlink" title="2.1 图像的表示"></a>2.1 图像的表示</h3><ul>
+<li><strong>图像的本质</strong>：图像在计算机中被表示为一个像素值数组（矩阵）。<ul>
+<li>黑白图像：二维数组。</li>
+<li>彩色图像：三维数组（由RGB通道组成）。</li>
+</ul>
+</li>
+<li><strong>像素值范围</strong>：通常是 [0, 255]。<br>本质上是一个灰度图<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181646337.png" alt="image.png"></li>
+</ul>
+<h3 id="2-2-计算机视觉任务的分类"><a href="#2-2-计算机视觉任务的分类" class="headerlink" title="2.2 计算机视觉任务的分类"></a>2.2 计算机视觉任务的分类</h3><ul>
+<li><strong>[[回归任务]]</strong>：输出连续值。output variable takes continuous value</li>
+<li><strong>[[分类任务]]</strong>：输出类别标签。output variable takes class label. Can produce probability of belonging to a particular class</li>
+</ul>
+<h3 id="2-3-特征检测的重要性"><a href="#2-3-特征检测的重要性" class="headerlink" title="2.3 特征检测的重要性"></a>2.3 特征检测的重要性</h3><p>我们如何区分不同的物体，通过的就是高维度的特征，比如说门窗就是房子的特征<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181652027.png" alt="image.png"></p>
+<ul>
+<li><strong>手动特征提取</strong>：由人类定义特征（如眼睛、鼻子等），然后检测这些特征。</li>
+<li><strong>问题</strong>：特征提取需要专业知识，并且难以处理复杂的图像变化（如视角变化、尺度变化、遮挡等）。</li>
+</ul>
+<hr>
+<h2 id="第三部分：深度学习与卷积神经网络（CNN）"><a href="#第三部分：深度学习与卷积神经网络（CNN）" class="headerlink" title="第三部分：深度学习与卷积神经网络（CNN）"></a>第三部分：深度学习与卷积神经网络（CNN）</h2><h3 id="3-1-深度学习的优势"><a href="#3-1-深度学习的优势" class="headerlink" title="3.1 深度学习的优势"></a>3.1 深度学习的优势</h3><ul>
+<li><strong>自动特征学习</strong>：深度学习模型可以从数据中自动学习特征，避免手动定义特征。</li>
+<li><strong>层次化特征表示</strong>：模型可以通过多层网络学习低级特征（边缘、斑点）到高级特征（面部结构）。<ul>
+<li>通过定义一个滑动窗口，对窗口里面的东西进行特征识别<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181654437.png" alt="image.png"></li>
 </ul>
 </li>
 </ul>
-<h2 id="二、集合（Set）接口"><a href="#二、集合（Set）接口" class="headerlink" title="二、集合（Set）接口"></a>二、集合（Set）接口</h2><ul>
-<li><strong>定义</strong>：集合是一个存储元素的容器，支持插入、查找、删除等操作。</li>
-<li><strong>操作</strong>：<ul>
-<li><strong>插入（Insert）</strong>：将一个对象加入集合。</li>
-<li><strong>查找（Find）</strong>：检查某个键值是否存在于集合中。</li>
-<li><strong>删除（Delete）</strong>：从集合中移除一个对象。</li>
-<li><strong>查询（Query）</strong>：如查找最小值、最大值等。</li>
+<h3 id="3-2-卷积操作"><a href="#3-2-卷积操作" class="headerlink" title="3.2 卷积操作"></a>3.2 卷积操作</h3><ul>
+<li><strong>卷积定义</strong>：通过滤波器（filter）在图像上滑动，进行逐元素乘法和求和操作。</li>
+<li><strong>卷积的作用</strong>：提取局部特征，同时保留图像的空间结构。<ul>
+<li>通过将大图像转化为更多的小图像，然后在小图像中搜集信息，保留图像的空间特征</li>
 </ul>
 </li>
-<li><strong>示例</strong>：学生集合，以学生ID作为键值，其他信息（如姓名、电话等）作为附加数据。</li>
+<li><strong>卷积的例子</strong>：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入图像：</span><br><span class="line">1 1 0</span><br><span class="line">0 1 1</span><br><span class="line">0 1 1</span><br><span class="line"></span><br><span class="line">滤波器：</span><br><span class="line">1 0</span><br><span class="line">0 1</span><br><span class="line"></span><br><span class="line">卷积结果（特征图）：</span><br><span class="line">2 2</span><br><span class="line">1 2</span><br></pre></td></tr></tbody></table></figure>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181659255.png" alt="image.png"></li>
 </ul>
-<h2 id="三、实现集合的两种方法"><a href="#三、实现集合的两种方法" class="headerlink" title="三、实现集合的两种方法"></a>三、实现集合的两种方法</h2><h3 id="1-无序数组（Unsorted-Array）"><a href="#1-无序数组（Unsorted-Array）" class="headerlink" title="1. 无序数组（Unsorted Array）"></a>1. 无序数组（Unsorted Array）</h3><ul>
-<li><strong>实现</strong>：将所有元素存储在一个无序数组中。</li>
-<li><strong>效率分析</strong>：<ul>
-<li><strong>插入</strong>：$O(1)$，直接添加到数组末尾。</li>
-<li><strong>查找</strong>：$O(n)$，需要遍历整个数组。</li>
-<li><strong>删除</strong>：$O(n)$，需要查找并移动元素。</li>
-<li><strong>查询</strong>：如查找最小值，需要遍历整个数组，时间复杂度为 $O(n)$。</li>
-</ul>
-</li>
-<li><strong>总结</strong>：实现简单，但效率较低。</li>
-</ul>
-<h3 id="2-排序数组（Sorted-Array）"><a href="#2-排序数组（Sorted-Array）" class="headerlink" title="2. 排序数组（Sorted Array）"></a>2. 排序数组（Sorted Array）</h3><ul>
-<li><strong>实现</strong>：将元素按键值排序后存储。</li>
-<li><strong>效率分析</strong>：<ul>
-<li><strong>插入</strong>：$O(n)$，需要找到合适位置并移动元素。</li>
-<li><strong>查找</strong>：$O(\log n)$，使用二分查找。</li>
-<li><strong>删除</strong>：$O(n)$，需要移动元素。</li>
-<li><strong>查询</strong>：如查找最小值或最大值，时间复杂度为 $O(1)$。</li>
-</ul>
-</li>
-<li><strong>总结</strong>：查找效率高，但插入和删除操作较慢。</li>
-</ul>
-<h2 id="四、排序算法"><a href="#四、排序算法" class="headerlink" title="四、排序算法"></a>四、排序算法</h2><h3 id="1-排列排序（Permutation-Sort）"><a href="#1-排列排序（Permutation-Sort）" class="headerlink" title="1. 排列排序（Permutation Sort）"></a>1. 排列排序（Permutation Sort）</h3><ul>
-<li><strong>原理</strong>：生成所有可能的排列，检查哪一个是有序的。</li>
-<li><strong>时间复杂度</strong>：至少为 $O(n! \times n)$，因为有 $n!$ 种排列，每种排列需要 $O(n)$ 时间检查。</li>
-<li><strong>总结</strong>：理论上正确，但效率极低，不实用。</li>
-</ul>
-<h3 id="2-选择排序（Selection-Sort）"><a href="#2-选择排序（Selection-Sort）" class="headerlink" title="2. 选择排序（Selection Sort）"></a>2. 选择排序（Selection Sort）</h3><ul>
-<li><strong>原理</strong>：每次从未排序部分选择最大（或最小）元素，放到已排序部分的末尾。</li>
-<li><strong>实现</strong>：<ol>
-<li>找到数组中最大元素的索引。</li>
-<li>将最大元素与数组末尾的元素交换。</li>
-<li>对剩余部分递归排序。</li>
-</ol>
-</li>
-<li><strong>时间复杂度</strong>：$O(n^2)$，因为每轮需要 $O(n)$ 时间找到最大值，共 $n$ 轮。</li>
-<li><strong>证明</strong>：<ul>
-<li><strong>递归关系</strong>：$T(n) = T(n-1) + O(n)$。</li>
-<li><strong>解</strong>：通过代换法，假设 $T(n) = O(n^2)$，验证符合递归关系。</li>
+<h4 id="filter的选择"><a href="#filter的选择" class="headerlink" title="filter的选择"></a>filter的选择</h4><ul>
+<li>不同的filter有不同的效果，对于图像的卷积操作有不同的结果<ul>
+<li>可以通过不同的filter检测图像中的不同特征，包括直线，圆，三角形等内容<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181702366.png" alt="image.png"></li>
 </ul>
 </li>
 </ul>
-<h3 id="3-归并排序（Merge-Sort）"><a href="#3-归并排序（Merge-Sort）" class="headerlink" title="3. 归并排序（Merge Sort）"></a>3. 归并排序（Merge Sort）</h3><ul>
-<li><strong>原理</strong>：分治法，将数组分成两半，分别排序，然后合并。</li>
-<li><strong>实现</strong>：<ol>
-<li>将数组分成两半，分别递归排序。</li>
-<li>合并两个已排序的子数组。</li>
-</ol>
+<h3 id="3-3-CNN的构成"><a href="#3-3-CNN的构成" class="headerlink" title="3.3 CNN的构成"></a>3.3 CNN的构成</h3><p>CNN是为图像分类而设计的卷积神经网络</p>
+<ul>
+<li><p><strong>主要操作</strong>：卷积、非线性激活（ReLU）、池化（下采样）。</p>
 </li>
-<li><strong>合并步骤</strong>：<ul>
-<li>使用“双指针”技术，从两个子数组的末尾开始，逐个比较并合并。</li>
-<li>时间复杂度为 $O(n)$。</li>
+<li><p><strong>卷积层</strong>：通过多个滤波器提取不同特征。</p>
+<ul>
+<li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181735485.png" alt="image.png|650"></li>
 </ul>
 </li>
-<li><strong>时间复杂度</strong>：$O(n \log n)$。<ul>
-<li><strong>递归关系</strong>：$T(n) = 2T(n/2) + O(n)$。</li>
-<li><strong>解</strong>：通过代换法，假设 $T(n) = O(n \log n)$，验证符合递归关系。</li>
+<li><p><strong>ReLU激活函数</strong>：将所有负值置为零，增加非线性。从而强化我们所关注的要点</p>
+<ul>
+<li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181734716.png" alt="image.png|675"></li>
 </ul>
 </li>
-</ul>
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
-<li><strong>接口与数据结构</strong>：选择合适的数据结构来实现接口，是算法设计的关键。</li>
-<li><strong>排序算法</strong>：<ul>
-<li>排列排序：理论上正确，但效率极低。</li>
-<li>选择排序：简单易实现，但时间复杂度为 $O(n^2)$。</li>
-<li>归并排序：高效排序算法，时间复杂度为 $O(n \log n)$，适合大规模数据排序。</li>
+<li><p><strong>[[池化操作]]</strong>：减少特征图的维度，保留重要特征。</p>
+<ul>
+<li><p>最大池化操作，通过从每个池子内找出最大值<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181734441.png" alt="image.png|650"></p>
+</li>
+<li><p>其实也就是控制patchs的大小而已</p>
+<ul>
+<li>如果卷积的区域太大了，需要的计算量也会变大</li>
+<li>如果卷积的区域太小了，就太过细化了，计算次数变多。</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181706832.png" alt="image.png"></p>
+<h3 id="3-4-CNN架构"><a href="#3-4-CNN架构" class="headerlink" title="3.4 CNN架构"></a>3.4 CNN架构</h3><ul>
+<li><strong>输入层</strong>：原始图像。</li>
+<li><strong>隐藏层</strong>：卷积层 + 池化层 + ReLU激活。</li>
+<li><strong>输出层</strong>：全连接层 + Softmax分类器，输出类别概率分布。<ul>
+<li>Softmax是一个获取结果的函数，注意，所有的结果之和是1。</li>
+<li>既然是分类，对于该物体的结果也就是一个概率分布，比如可能有0.3的概率是猫，0.7的概率是狗<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181737585.png" alt="image.png"><blockquote>
+<p>我们通过卷积操作来辨别图像中的特征。<br>这也是和机器学习所不一样的地方，机器学习通过人为地设计filter实现对特征的提取。<br>而深度学习通过大量的数据，通过神经网络的自学习，以及人类对于结果的惩罚机制来实现filter</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第四部分：CNN的应用"><a href="#第四部分：CNN的应用" class="headerlink" title="第四部分：CNN的应用"></a>第四部分：CNN的应用</h2><h3 id="4-1-分类任务"><a href="#4-1-分类任务" class="headerlink" title="4.1 分类任务"></a>4.1 分类任务</h3><ul>
+<li><strong>案例</strong>：识别图像中的物体（如汽车、卡车、自行车等）。</li>
+<li><strong>实现方式</strong>：通过CNN提取特征，然后用全连接层进行分类。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181740833.png" alt="image.png"></li>
+</ul>
+<h3 id="4-2-目标检测"><a href="#4-2-目标检测" class="headerlink" title="4.2 目标检测"></a>4.2 目标检测</h3><ul>
+<li><strong>目标</strong>：不仅检测物体类别，还要定位物体的边界框（bounding box）。</li>
+<li><strong>方法</strong>：使用R-CNN（区域CNN）及其改进版（如Faster R-CNN）。</li>
+<li><strong>核心思路</strong>：<ul>
+<li>提取图像中可能包含物体的区域（region proposals）。</li>
+<li>使用CNN对每个区域进行分类和定位。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-语义分割"><a href="#4-3-语义分割" class="headerlink" title="4.3 语义分割"></a>4.3 语义分割</h3><ul>
+<li><strong>目标</strong>：对图像中的每个像素进行分类。</li>
+<li><strong>实现方式</strong>：<ul>
+<li>使用全卷积网络（FCN）。</li>
+<li>结合下采样和上采样操作，生成像素级分类结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-4-自主导航"><a href="#4-4-自主导航" class="headerlink" title="4.4 自主导航"></a>4.4 自主导航</h3><ul>
+<li><strong>案例</strong>：基于视觉输入（如摄像头数据）和地图信息预测驾驶控制信号。</li>
+<li><strong>模型设计</strong>：通过CNN提取特征，结合概率控制框架实现端到端的自主驾驶。</li>
+</ul>
+<hr>
+<h2 id="第五部分：总结与扩展"><a href="#第五部分：总结与扩展" class="headerlink" title="第五部分：总结与扩展"></a>第五部分：总结与扩展</h2><h3 id="5-1-CNN的核心优势"><a href="#5-1-CNN的核心优势" class="headerlink" title="5.1 CNN的核心优势"></a>5.1 CNN的核心优势</h3><ul>
+<li>自动特征学习：从数据中自动提取特征，避免人工定义。</li>
+<li>层次化特征表示：从低级到高级逐步提取特征。</li>
+<li>适用于多种任务：分类、目标检测、分割和控制。</li>
+</ul>
+<h3 id="5-2-深度学习的未来与挑战"><a href="#5-2-深度学习的未来与挑战" class="headerlink" title="5.2 深度学习的未来与挑战"></a>5.2 深度学习的未来与挑战</h3><ul>
+<li><strong>持续创新</strong>：深度学习在计算机视觉中的应用仍在不断扩展。</li>
+<li><strong>研究方向</strong>：如何提高模型的效率、可解释性和泛化能力。</li>
+</ul>
+<hr>
+<h2 id="附：代码示例"><a href="#附：代码示例" class="headerlink" title="附：代码示例"></a>附：代码示例</h2><h3 id="5-1-CNN模型的构建（TensorFlow）"><a href="#5-1-CNN模型的构建（TensorFlow）" class="headerlink" title="5.1 CNN模型的构建（TensorFlow）"></a>5.1 CNN模型的构建（TensorFlow）</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_model</span>():</span><br><span class="line">    model = tf.keras.Sequential([</span><br><span class="line">        <span class="comment"># 第一层卷积</span></span><br><span class="line">        tf.keras.layers.Conv2D(<span class="number">32</span>, kernel_size=<span class="number">3</span>, activation=<span class="string">'relu'</span>),</span><br><span class="line">        tf.keras.layers.MaxPool2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第二层卷积</span></span><br><span class="line">        tf.keras.layers.Conv2D(<span class="number">64</span>, kernel_size=<span class="number">3</span>, activation=<span class="string">'relu'</span>),</span><br><span class="line">        tf.keras.layers.MaxPool2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 全连接层</span></span><br><span class="line">        tf.keras.layers.Flatten(),</span><br><span class="line">        tf.keras.layers.Dense(<span class="number">1024</span>, activation=<span class="string">'relu'</span>),</span><br><span class="line">        tf.keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>)</span><br><span class="line">    ])</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-2-CNN模型的构建（PyTorch）"><a href="#5-2-CNN模型的构建（PyTorch）" class="headerlink" title="5.2 CNN模型的构建（PyTorch）"></a>5.2 CNN模型的构建（PyTorch）</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_model</span>():</span><br><span class="line">    model = nn.Sequential(</span><br><span class="line">        <span class="comment"># 第一层卷积</span></span><br><span class="line">        nn.Conv2d(in_channels=<span class="number">3</span>, out_channels=<span class="number">32</span>, kernel_size=<span class="number">3</span>),</span><br><span class="line">        nn.ReLU(),</span><br><span class="line">        nn.MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第二层卷积</span></span><br><span class="line">        nn.Conv2d(in_channels=<span class="number">32</span>, out_channels=<span class="number">64</span>, kernel_size=<span class="number">3</span>),</span><br><span class="line">        nn.ReLU(),</span><br><span class="line">        nn.MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 全连接层</span></span><br><span class="line">        nn.Flatten(),</span><br><span class="line">        nn.Linear(<span class="number">64</span> * <span class="number">6</span> * <span class="number">6</span>, <span class="number">1024</span>),</span><br><span class="line">        nn.ReLU(),</span><br><span class="line">        nn.Linear(<span class="number">1024</span>, <span class="number">10</span>)</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>以上是基于MIT 6.S191课程内容整理的深度学习笔记。如果你需要进一步补充或修改，请告诉我！</p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -648,7 +675,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/">https://erinmi4.github.io/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/</a>
+                    <a href="https://erinmi4.github.io/2025/03/18/cs191-lec3-juan-ji-shen-jing-wang-luo/">https://erinmi4.github.io/2025/03/18/cs191-lec3-juan-ji-shen-jing-wang-luo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -686,16 +713,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">数据结构与算法</span>
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/">
-                                    <span class="chip bg-color">算法导论</span>
-                                </a>
-                            
-                                <a href="/tags/MIT6006/">
-                                    <span class="chip bg-color">MIT6006</span>
+                                <a href="/tags/MIT6S191/">
+                                    <span class="chip bg-color">MIT6S191</span>
                                 </a>
                             
                         </div>
@@ -739,16 +762,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/03/12/mit-xian-xing-dai-shu-fan-wai-review-xiang-liang-ju-zhen-yu-zi-kong-jian/">
+                <a href="/2025/03/18/cs191-lec3-juan-ji-shen-jing-wang-luo/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112100479.png" class="responsive-img" alt="【MIT线性代数】【番外review】向量、矩阵与子空间">
+                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181645793.png" class="responsive-img" alt="【CS191】【lec3】卷积神经网络">
                         
-                        <span class="card-title">【MIT线性代数】【番外review】向量、矩阵与子空间</span>
+                        <span class="card-title">【CS191】【lec3】卷积神经网络</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,38 +782,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MIT18-06SC/">
-                        <span class="chip bg-color">MIT18.06SC</span>
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
-                    <a href="/tags/2011fall/">
-                        <span class="chip bg-color">2011fall</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
-                    </a>
-                    
-                    <a href="/tags/problem-sets/">
-                        <span class="chip bg-color">problem-sets</span>
+                    <a href="/tags/MIT6S191/">
+                        <span class="chip bg-color">MIT6S191</span>
                     </a>
                     
                 </div>
@@ -803,12 +820,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/">
+                <a href="/2025/03/15/tuo-fu-kou-yu-task1-lian-xi-1-jiao-yu-hua-ti/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112100479.png" class="responsive-img" alt="【MIT线性代数】【lec10】 矩阵的四个基本子空间">
+                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503151434152.png" class="responsive-img" alt="【托福】【口语】 task1 练习1">
                         
-                        <span class="card-title">【MIT线性代数】【lec10】 矩阵的四个基本子空间</span>
+                        <span class="card-title">【托福】【口语】 task1 练习1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -819,14 +836,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
+                            <a href="/categories/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
                                 </a>
                             
                             
@@ -836,20 +853,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MIT18-06SC/">
-                        <span class="chip bg-color">MIT18.06SC</span>
+                    <a href="/tags/lab/">
+                        <span class="chip bg-color">lab</span>
                     </a>
                     
-                    <a href="/tags/2011fall/">
-                        <span class="chip bg-color">2011fall</span>
+                    <a href="/tags/%E6%89%98%E7%A6%8F/">
+                        <span class="chip bg-color">托福</span>
                     </a>
                     
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
-                    </a>
-                    
-                    <a href="/tags/problem-sets/">
-                        <span class="chip bg-color">problem-sets</span>
+                    <a href="/tags/%E5%8F%A3%E8%AF%AD/">
+                        <span class="chip bg-color">口语</span>
                     </a>
                     
                 </div>
@@ -980,13 +993,6 @@
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 
