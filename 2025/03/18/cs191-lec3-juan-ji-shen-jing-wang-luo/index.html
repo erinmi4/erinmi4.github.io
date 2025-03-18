@@ -616,7 +616,7 @@
 <li><strong>方法</strong>：使用R-CNN（区域CNN）及其改进版（如Faster R-CNN）。</li>
 <li><strong>核心思路</strong>：<ul>
 <li>提取图像中可能包含物体的区域（region proposals）。</li>
-<li>使用CNN对每个区域进行分类和定位。</li>
+<li>使用CNN对每个区域进行分类和定位。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503182241218.png" alt="image.png"></li>
 </ul>
 </li>
 </ul>
@@ -624,7 +624,7 @@
 <li><strong>目标</strong>：对图像中的每个像素进行分类。</li>
 <li><strong>实现方式</strong>：<ul>
 <li>使用全卷积网络（FCN）。</li>
-<li>结合下采样和上采样操作，生成像素级分类结果。</li>
+<li>结合下采样和上采样操作，生成像素级分类结果。<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503182241613.png" alt="image.png"></li>
 </ul>
 </li>
 </ul>
@@ -647,8 +647,6 @@
 
 <h3 id="5-2-CNN模型的构建（PyTorch）"><a href="#5-2-CNN模型的构建（PyTorch）" class="headerlink" title="5.2 CNN模型的构建（PyTorch）"></a>5.2 CNN模型的构建（PyTorch）</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_model</span>():</span><br><span class="line">    model = nn.Sequential(</span><br><span class="line">        <span class="comment"># 第一层卷积</span></span><br><span class="line">        nn.Conv2d(in_channels=<span class="number">3</span>, out_channels=<span class="number">32</span>, kernel_size=<span class="number">3</span>),</span><br><span class="line">        nn.ReLU(),</span><br><span class="line">        nn.MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第二层卷积</span></span><br><span class="line">        nn.Conv2d(in_channels=<span class="number">32</span>, out_channels=<span class="number">64</span>, kernel_size=<span class="number">3</span>),</span><br><span class="line">        nn.ReLU(),</span><br><span class="line">        nn.MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 全连接层</span></span><br><span class="line">        nn.Flatten(),</span><br><span class="line">        nn.Linear(<span class="number">64</span> * <span class="number">6</span> * <span class="number">6</span>, <span class="number">1024</span>),</span><br><span class="line">        nn.ReLU(),</span><br><span class="line">        nn.Linear(<span class="number">1024</span>, <span class="number">10</span>)</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></tbody></table></figure>
 
-<hr>
-<p>以上是基于MIT 6.S191课程内容整理的深度学习笔记。如果你需要进一步补充或修改，请告诉我！</p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -762,17 +760,16 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/03/18/cs191-lec3-juan-ji-shen-jing-wang-luo/">
+                <a href="/2025/03/18/mit-xian-xing-dai-shu-lec12-tu-yu-ju-zhen/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181645793.png" class="responsive-img" alt="【CS191】【lec3】卷积神经网络">
+                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112100479.png" class="responsive-img" alt="【MIT线性代数】【lec11】 向量空间、矩阵秩与图">
                         
-                        <span class="card-title">【CS191】【lec3】卷积神经网络</span>
+                        <span class="card-title">【MIT线性代数】【lec11】 向量空间、矩阵秩与图</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -782,31 +779,38 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    深度学习
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                    数学
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
+                    <a href="/tags/MIT18-06SC/">
+                        <span class="chip bg-color">MIT18.06SC</span>
                     </a>
                     
-                    <a href="/tags/MIT6S191/">
-                        <span class="chip bg-color">MIT6S191</span>
+                    <a href="/tags/2011fall/">
+                        <span class="chip bg-color">2011fall</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+                        <span class="chip bg-color">线性代数</span>
+                    </a>
+                    
+                    <a href="/tags/problem-sets/">
+                        <span class="chip bg-color">problem-sets</span>
                     </a>
                     
                 </div>
@@ -1065,7 +1069,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">78.3k</span>&nbsp;字
+                class="white-color">79.5k</span>&nbsp;字
             
             
             
@@ -1285,6 +1289,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

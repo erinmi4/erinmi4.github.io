@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-18T09:41:48.584Z</updated>
+  <updated>2025-03-18T15:01:55.996Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【MIT线性代数】【lec11】 向量空间、矩阵秩与图</title>
+    <link href="https://erinmi4.github.io/2025/03/18/mit-xian-xing-dai-shu-lec12-tu-yu-ju-zhen/"/>
+    <id>https://erinmi4.github.io/2025/03/18/mit-xian-xing-dai-shu-lec12-tu-yu-ju-zhen/</id>
+    <published>2025-03-18T15:10:00.000Z</published>
+    <updated>2025-03-18T15:01:55.996Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
+    
+    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
+    
+    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【CS191】【lec3】卷积神经网络</title>
     <link href="https://erinmi4.github.io/2025/03/18/cs191-lec3-juan-ji-shen-jing-wang-luo/"/>
     <id>https://erinmi4.github.io/2025/03/18/cs191-lec3-juan-ji-shen-jing-wang-luo/</id>
     <published>2025-03-18T06:07:00.000Z</published>
-    <updated>2025-03-18T09:41:48.584Z</updated>
+    <updated>2025-03-18T14:42:17.488Z</updated>
     
     
       
@@ -104,7 +135,7 @@
     <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec11-xiang-liang-kong-jian-ju-zhen-zhi-yu-tu/"/>
     <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec11-xiang-liang-kong-jian-ju-zhen-zhi-yu-tu/</id>
     <published>2025-03-12T14:10:00.000Z</published>
-    <updated>2025-03-11T13:52:42.807Z</updated>
+    <updated>2025-03-18T15:05:13.047Z</updated>
     
     
       
@@ -554,35 +585,6 @@
     <id>https://erinmi4.github.io/2025/03/11/cs191-lab1-part1/</id>
     <published>2025-03-11T02:07:00.000Z</published>
     <updated>2025-03-15T05:49:07.568Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="深度学习" scheme="https://erinmi4.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="lab" scheme="https://erinmi4.github.io/tags/lab/"/>
-    
-    <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="MIT6S191" scheme="https://erinmi4.github.io/tags/MIT6S191/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【CS191】【lab1】part2</title>
-    <link href="https://erinmi4.github.io/2025/03/11/cs191-lab1-part2/"/>
-    <id>https://erinmi4.github.io/2025/03/11/cs191-lab1-part2/</id>
-    <published>2025-03-11T02:07:00.000Z</published>
-    <updated>2025-03-15T05:49:03.149Z</updated>
     
     
       
