@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2025/03/19/audio-test/"/>
-      <url>/2025/03/19/audio-test/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【托福】【口语】Task1练习1：教育和学习类(educationandlearning)</title>
       <link href="/2025/03/19/tuo-fu-kou-yu-task1-lian-xi-1-jiao-yu-he-xue-xi-lei-educationandlearning/"/>
       <url>/2025/03/19/tuo-fu-kou-yu-task1-lian-xi-1-jiao-yu-he-xue-xi-lei-educationandlearning/</url>
@@ -127,6 +114,25 @@
             <tag> 深度学习 </tag>
             
             <tag> MIT6S191 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音频测试</title>
+      <link href="/2025/03/16/audio-test/"/>
+      <url>/2025/03/16/audio-test/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="音频测试页面"><a href="#音频测试页面" class="headerlink" title="音频测试页面"></a>音频测试页面</h2><p>以下是一个音频测试：</p><p><audio src="/medias/task1/1.mp3" controls=""></audio></p><p>也可以尝试其他格式：</p><audio controls="">  <source src="/medias/task1/1.mp3" type="audio/mpeg">  您的浏览器不支持音频元素。</audio><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
             
         </tags>
       

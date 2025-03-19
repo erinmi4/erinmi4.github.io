@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-19T09:40:14.743Z</updated>
+  <updated>2025-03-19T09:34:57.207Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://erinmi4.github.io/2025/03/19/audio-test/"/>
-    <id>https://erinmi4.github.io/2025/03/19/audio-test/</id>
-    <published>2025-03-19T09:40:14.743Z</published>
-    <updated>2025-03-19T09:40:14.743Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>【托福】【口语】Task1练习1：教育和学习类(educationandlearning)</title>
@@ -152,6 +131,29 @@
     <category term="深度学习" scheme="https://erinmi4.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="MIT6S191" scheme="https://erinmi4.github.io/tags/MIT6S191/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>音频测试</title>
+    <link href="https://erinmi4.github.io/2025/03/16/audio-test/"/>
+    <id>https://erinmi4.github.io/2025/03/16/audio-test/</id>
+    <published>2025-03-16T01:55:46.000Z</published>
+    <updated>2025-03-19T09:42:26.542Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="test" scheme="https://erinmi4.github.io/tags/test/"/>
     
   </entry>
   
