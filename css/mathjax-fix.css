@@ -1,31 +1,44 @@
-/* 修复 MathJax 公式在 Hexo 中的显示问题 */
-.MathJax {
-  outline: 0;
-  display: inline-block !important;
-}
+/* 重新编写CSS修复MathJax渲染问题 */
 
-/* 行内公式样式 */
-.mjx-chtml.MJXc-display {
+/* 保证行内公式垂直对齐 */
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
   margin: 1em 0;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* 修复公式垂直对齐 */
-.mjx-math {
-  display: inline-block !important;
-  vertical-align: middle !important;
+mjx-container[jax="CHTML"][display="false"] {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* 修复行内公式错位问题 */
-.mjx-chtml[display="true"] {
-  display: block;
-  margin: 1em 0;
+/* 确保公式在移动设备上可滚动而不溢出 */
+.mjx-chtml {
+  max-width: 100%;
 }
 
-/* 适配不同屏幕宽度 */
+/* 修正行内公式的垂直对齐 */
+mjx-math {
+  line-height: normal !important;
+}
+
+/* 防止公式和文本行高度不一致 */
+p {
+  overflow: hidden;
+}
+
+/* 添加黑暗模式支持 */
+@media (prefers-color-scheme: dark) {
+  mjx-container[jax="CHTML"] {
+    color: #f0f0f0;
+  }
+}
+
+/* 改善移动设备上的显示 */
 @media screen and (max-width: 768px) {
-  .mjx-chtml.MJXc-display {
-    font-size: 90% !important;
+  mjx-container[jax="CHTML"] {
+    font-size: 100% !important;
   }
 }
