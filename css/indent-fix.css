@@ -1,0 +1,43 @@
+/* 修复缩进过多导致的代码块问题 */
+
+/* 覆盖过度缩进的格式化 */
+.article-content li {
+  display: list-item !important;
+  list-style-position: inside;
+  margin-left: 0;
+}
+
+/* 即使在多级缩进中也保持列表样式 */
+.article-content li li {
+  margin-left: 1em !important;
+  display: list-item !important;
+}
+
+/* 让Markdown渲染器识别过度缩进的内容不作为代码块 */
+.article-content li pre:not([class*="language-"]) {
+  background: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+  overflow: visible;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  white-space: normal;
+}
+
+/* 确保列表内的公式正确显示 */
+.article-content li .katex,
+.article-content li mjx-container {
+  display: inline-block !important;
+  vertical-align: middle;
+}
+
+/* 修复深层缩进的列表项 */
+.article-content ul ul ul,
+.article-content ul ul ul ul,
+.article-content ol ol ol,
+.article-content ol ol ol ol {
+  list-style-type: disc !important;
+  margin-left: 1em !important;
+}
