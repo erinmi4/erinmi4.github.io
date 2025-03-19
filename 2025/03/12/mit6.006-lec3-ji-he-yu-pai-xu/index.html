@@ -33,6 +33,19 @@
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
     
+        
+            <!-- 先加载MathJax配置 -->
+            <script src="/js/mathjax-config.js"></script>
+            
+            <!-- 使用defer属性确保MathJax在页面加载完成后执行 -->
+            <script type="text/javascript" id="MathJax-script" defer
+                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+            </script>
+            
+            <!-- MathJax CSS 修复 -->
+            <link rel="stylesheet" href="/css/mathjax-fix.css">
+        
+    
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
@@ -962,6 +975,13 @@
 </main>
 
 
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1033,7 +1053,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">85.3k</span>&nbsp;字
+                class="white-color">85.5k</span>&nbsp;字
             
             
             

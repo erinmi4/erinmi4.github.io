@@ -1,44 +1,69 @@
-/* 重新编写CSS修复MathJax渲染问题 */
+/* 完善的MathJax CSS修复方案 */
 
-/* 保证行内公式垂直对齐 */
+/* 确保行内公式垂直对齐 */
+mjx-container[jax="CHTML"][display="false"] {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 100% !important;
+  line-height: 0;
+  text-indent: 0;
+  text-align: center;
+  margin: 0 0.1em;
+}
+
+/* 行间公式样式 */
 mjx-container[jax="CHTML"][display="true"] {
   display: block;
   text-align: center;
-  margin: 1em 0;
+  margin: 1.5em 0;
+  padding: 0.5em 0;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-mjx-container[jax="CHTML"][display="false"] {
-  display: inline-block;
-  vertical-align: middle;
+/* 通用样式以确保与周围内容协调 */
+mjx-container {
+  break-inside: avoid;
+  min-width: auto !important;
 }
 
-/* 确保公式在移动设备上可滚动而不溢出 */
-.mjx-chtml {
+/* 防止公式溢出容器 */
+mjx-math {
+  display: inline-block !important;
+  border-collapse: collapse;
   max-width: 100%;
 }
 
-/* 修正行内公式的垂直对齐 */
-mjx-math {
-  line-height: normal !important;
+/* 数学公式块引用美化 */
+.theorem-like {
+  border-left: 4px solid #42b983;
+  padding-left: 15px;
+  color: #555;
 }
 
-/* 防止公式和文本行高度不一致 */
-p {
-  overflow: hidden;
+/* 长公式自动换行保证可见性 */
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
 }
 
-/* 添加黑暗模式支持 */
-@media (prefers-color-scheme: dark) {
+/* 移动设备适配 */
+@media screen and (max-width: 768px) {
   mjx-container[jax="CHTML"] {
-    color: #f0f0f0;
+    padding: 5px 0;
+    overflow-x: auto;
+  }
+  
+  mjx-container[jax="CHTML"][display="true"] {
+    font-size: 95% !important;
   }
 }
 
-/* 改善移动设备上的显示 */
-@media screen and (max-width: 768px) {
+/* 暗黑模式支持 */
+@media (prefers-color-scheme: dark) {
   mjx-container[jax="CHTML"] {
-    font-size: 100% !important;
+    color: #f0f0f0;
   }
 }
