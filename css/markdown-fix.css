@@ -1,0 +1,44 @@
+/* 修复无序列表中加粗文本导致块变黑的问题 */
+
+/* 确保列表项正常显示 */
+ul li, ol li {
+  color: inherit;
+  background-color: transparent !important;
+}
+
+/* 修复列表中的加粗元素 */
+ul li strong, 
+ol li strong {
+  font-weight: bold;
+  color: inherit;
+  background-color: transparent !important;
+}
+
+/* 确保在数学公式环境中正确显示列表 */
+ul li .katex,
+ol li .katex,
+ul li mjx-container,
+ol li mjx-container {
+  color: inherit;
+  background-color: transparent !important;
+}
+
+/* 确保列表样式不会被覆盖 */
+article ul li::before {
+  background-color: #42b983;
+}
+
+/* 确保代码块在列表中正常显示 */
+ul li code,
+ol li code {
+  background-color: #f8f8f8;
+  color: #e96900;
+}
+
+/* 修复嵌套列表样式 */
+ul ul li, 
+ol ol li,
+ul ol li,
+ol ul li {
+  background-color: transparent !important;
+}
