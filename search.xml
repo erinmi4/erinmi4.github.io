@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>矩阵与多行公式测试</title>
+      <link href="/2025/03/20/matrix-test/"/>
+      <url>/2025/03/20/matrix-test/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="矩阵与多行公式渲染测试"><a href="#矩阵与多行公式渲染测试" class="headerlink" title="矩阵与多行公式渲染测试"></a>矩阵与多行公式渲染测试</h2><h3 id="矩阵测试"><a href="#矩阵测试" class="headerlink" title="矩阵测试"></a>矩阵测试</h3><h4 id="基本矩阵-使用-bmatrix"><a href="#基本矩阵-使用-bmatrix" class="headerlink" title="基本矩阵 (使用 bmatrix)"></a>基本矩阵 (使用 bmatrix)</h4><p>$$<br>A = \begin{bmatrix}<br>a_{11} &amp; a_{12} &amp; a_{13} \<br>a_{21} &amp; a_{22} &amp; a_{23} \<br>a_{31} &amp; a_{32} &amp; a_{33}<br>\end{bmatrix}<br>$$</p><h4 id="带括号的矩阵-使用-pmatrix"><a href="#带括号的矩阵-使用-pmatrix" class="headerlink" title="带括号的矩阵 (使用 pmatrix)"></a>带括号的矩阵 (使用 pmatrix)</h4><p>$$<br>B = \begin{pmatrix}<br>x &amp; y &amp; z \<br>u &amp; v &amp; w<br>\end{pmatrix}<br>$$</p><h4 id="带方括号的矩阵-使用-vmatrix"><a href="#带方括号的矩阵-使用-vmatrix" class="headerlink" title="带方括号的矩阵 (使用 vmatrix)"></a>带方括号的矩阵 (使用 vmatrix)</h4><p>$$<br>\det(C) = \begin{vmatrix}<br>a &amp; b \<br>c &amp; d<br>\end{vmatrix} = ad - bc<br>$$</p><h4 id="带花括号的矩阵-使用-Bmatrix"><a href="#带花括号的矩阵-使用-Bmatrix" class="headerlink" title="带花括号的矩阵 (使用 Bmatrix)"></a>带花括号的矩阵 (使用 Bmatrix)</h4><p>$$<br>D = \begin{Bmatrix}<br>1 &amp; 2 &amp; 3 \<br>4 &amp; 5 &amp; 6 \<br>7 &amp; 8 &amp; 9<br>\end{Bmatrix}<br>$$</p><h4 id="宽矩阵-测试换行"><a href="#宽矩阵-测试换行" class="headerlink" title="宽矩阵 (测试换行)"></a>宽矩阵 (测试换行)</h4><p>$$<br>W = \begin{bmatrix}<br>w_{11} &amp; w_{12} &amp; w_{13} &amp; w_{14} &amp; w_{15} &amp; w_{16} &amp; w_{17} &amp; w_{18} \<br>w_{21} &amp; w_{22} &amp; w_{23} &amp; w_{24} &amp; w_{25} &amp; w_{26} &amp; w_{27} &amp; w_{28} \<br>\end{bmatrix}<br>$$</p><h3 id="多行公式测试"><a href="#多行公式测试" class="headerlink" title="多行公式测试"></a>多行公式测试</h3><h4 id="对齐的多行等式-使用-align"><a href="#对齐的多行等式-使用-align" class="headerlink" title="对齐的多行等式 (使用 align)"></a>对齐的多行等式 (使用 align)</h4><p>$$<br>\begin{align}<br>f(x) &amp;= (a+b)^2 \<br>&amp;= a^2 + 2ab + b^2 \<br>&amp;= \sum_{i=0}^{n} \binom{n}{i} a^{n-i} b^i<br>\end{align}<br>$$</p><h4 id="多行但不进行编号-使用-align"><a href="#多行但不进行编号-使用-align" class="headerlink" title="多行但不进行编号 (使用 align*)"></a>多行但不进行编号 (使用 align*)</h4><p>$$<br>\begin{align*}<br>\frac{\partial f}{\partial x} &amp;= 2x + y \<br>\frac{\partial f}{\partial y} &amp;= x + 2y + z \<br>\frac{\partial f}{\partial z} &amp;= y + 2z<br>\end{align*}<br>$$</p><h4 id="使用-cases-环境的分段函数"><a href="#使用-cases-环境的分段函数" class="headerlink" title="使用 cases 环境的分段函数"></a>使用 cases 环境的分段函数</h4><p>$$<br>f(x) =<br>\begin{cases}<br>x^2, &amp; \text{if } x \geq 0 \<br>-x^2, &amp; \text{if } x &lt; 0 \<br>\frac{x^3 + 2x^2 - 5x + 3}{x+1}, &amp; \text{otherwise}<br>\end{cases}<br>$$</p><h4 id="复杂表达式-换行测试"><a href="#复杂表达式-换行测试" class="headerlink" title="复杂表达式 (换行测试)"></a>复杂表达式 (换行测试)</h4><p>$$<br>\begin{aligned}<br>S &amp;= \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{k=1}^{n} \sum_{l=1}^{n} \sum_{m=1}^{n} a_{i,j,k,l,m} \cdot x_i \cdot y_j \cdot z_k \cdot w_l \cdot v_m \<br>&amp;= \int_{0}^{\infty} \int_{0}^{\infty} \int_{0}^{\infty} f(x,y,z) , dx , dy , dz<br>\end{aligned}<br>$$</p><h4 id="系统方程组"><a href="#系统方程组" class="headerlink" title="系统方程组"></a>系统方程组</h4><p>$$<br>\begin{cases}<br>3x + 5y + z = 0 \<br>7x - 2y + 4z = 0 \<br>-6x + 3y + 2z = 0<br>\end{cases}<br>$$</p><h4 id="带标号的公式"><a href="#带标号的公式" class="headerlink" title="带标号的公式"></a>带标号的公式</h4><p>$$<br>\begin{aligned}<br>E &amp;= mc^2 \tag{1} \<br>F &amp;= ma \tag{2} \<br>PV &amp;= nRT \tag{3}<br>\end{aligned}<br>$$</p><p>如果公式仍然存在渲染问题，建议检查渲染后页面的HTML结构，确认MathJax是否完全加载。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+            <tag> mathjax </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MathJax 测试</title>
       <link href="/2025/03/19/mathjax-test/"/>
       <url>/2025/03/19/mathjax-test/</url>

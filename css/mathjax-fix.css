@@ -19,6 +19,7 @@ mjx-container[jax="CHTML"][display="true"] {
   padding: 0.5em 0;
   overflow-x: auto;
   overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
 /* 通用样式以确保与周围内容协调 */
@@ -32,6 +33,7 @@ mjx-math {
   display: inline-block !important;
   border-collapse: collapse;
   max-width: 100%;
+  line-height: normal !important;
 }
 
 /* 数学公式块引用美化 */
@@ -49,6 +51,56 @@ mjx-container[jax="CHTML"][display="true"] mjx-math {
   padding: 0.5em 0;
 }
 
+/* 针对矩阵的特殊处理 */
+.mathjax-matrix {
+  min-width: 0 !important;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.5em auto !important;
+  padding: 0.2em 0 !important;
+}
+
+/* 矩阵单元格样式 */
+mjx-mtable mjx-table {
+  display: inline-table !important;
+  width: auto !important;
+  border-collapse: collapse;
+}
+
+mjx-mtable mjx-itable {
+  display: inline-table !important;
+  width: auto !important;
+  margin: 0 auto !important;
+}
+
+mjx-table > mjx-itable > mjx-row {
+  display: table-row !important;
+}
+
+mjx-table > mjx-itable > mjx-row > mjx-cell {
+  display: table-cell !important;
+  padding: 0.15em !important;
+}
+
+/* 针对多行公式的特殊处理 */
+.mathjax-multiline {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 0 !important;
+  margin: 0.8em auto !important;
+}
+
+/* 处理对齐等式 */
+mjx-container mjx-mtable[align="align"] {
+  min-width: auto !important;
+  width: auto !important;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0.5em auto !important;
+}
+
 /* 移动设备适配 */
 @media screen and (max-width: 768px) {
   mjx-container[jax="CHTML"] {
@@ -59,6 +111,17 @@ mjx-container[jax="CHTML"][display="true"] mjx-math {
   mjx-container[jax="CHTML"][display="true"] {
     font-size: 95% !important;
   }
+  
+  /* 在移动设备上保持矩阵可读性 */
+  mjx-container[jax="CHTML"][display="true"] mjx-mtable {
+    font-size: 90% !important;
+  }
+  
+  /* 确保公式可滚动而不会被截断 */
+  .mathjax-matrix, .mathjax-multiline {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* 暗黑模式支持 */
@@ -66,4 +129,29 @@ mjx-container[jax="CHTML"][display="true"] mjx-math {
   mjx-container[jax="CHTML"] {
     color: #f0f0f0;
   }
+}
+
+/* 修复多行对齐的位置问题 */
+mjx-container[jax="CHTML"] mjx-mrow[data-align="center"] {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+mjx-container[jax="CHTML"] mjx-mrow[data-align="left"] {
+  text-align: left !important;
+}
+
+mjx-container[jax="CHTML"] mjx-mrow[data-align="right"] {
+  text-align: right !important;
+}
+
+/* 实现精确的公式水平滚动 */
+mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar {
+  height: 6px;
+  background-color: #f5f5f5;
+}
+
+mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 3px;
 }

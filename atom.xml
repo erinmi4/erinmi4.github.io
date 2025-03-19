@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-19T16:09:42.123Z</updated>
+  <updated>2025-03-19T16:12:57.166Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>矩阵与多行公式测试</title>
+    <link href="https://erinmi4.github.io/2025/03/20/matrix-test/"/>
+    <id>https://erinmi4.github.io/2025/03/20/matrix-test/</id>
+    <published>2025-03-20T04:00:00.000Z</published>
+    <updated>2025-03-19T16:12:57.166Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="test" scheme="https://erinmi4.github.io/tags/test/"/>
+    
+    <category term="mathjax" scheme="https://erinmi4.github.io/tags/mathjax/"/>
+    
+  </entry>
   
   <entry>
     <title>MathJax 测试</title>
@@ -574,37 +599,6 @@
     <category term="算法导论" scheme="https://erinmi4.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
     
     <category term="MIT6006" scheme="https://erinmi4.github.io/tags/MIT6006/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MIT线性代数】【lec10】 矩阵的四个基本子空间</title>
-    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/"/>
-    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec10-ju-zhen-de-si-ge-ji-ben-zi-kong-jian/</id>
-    <published>2025-03-12T13:10:00.000Z</published>
-    <updated>2025-03-11T14:06:45.133Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-    <category term="MIT18.06SC" scheme="https://erinmi4.github.io/tags/MIT18-06SC/"/>
-    
-    <category term="2011fall" scheme="https://erinmi4.github.io/tags/2011fall/"/>
-    
-    <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
-    
-    <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
     
   </entry>
   
