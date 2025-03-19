@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【CS537】【lec4】CPU总结和地址空间, MIKA, blog, hexo, github, markdown">
+    <meta name="keywords" content="MIKA, blog, hexo, github, markdown">
     <meta name="description" content="This is a blog for MIKA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【CS537】【lec4】CPU总结和地址空间 | MIKA的博客</title>
+    <title>MIKA的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【CS537】【lec4】CPU总结和地址空间</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -441,33 +441,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
-                            </a>
-                        
-                            <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
-                                <span class="chip bg-color">《操作系统导论》</span>
-                            </a>
-                        
-                            <a href="/tags/CS537/">
-                                <span class="chip bg-color">CS537</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -476,28 +455,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-03-06
+                    2025-03-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-06
+                    2025-03-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    628
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -517,68 +496,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="CPU-虚拟化相关笔记"><a href="#CPU-虚拟化相关笔记" class="headerlink" title="CPU 虚拟化相关笔记"></a>CPU 虚拟化相关笔记</h1><h2 id="CPU-虚拟化概述"><a href="#CPU-虚拟化概述" class="headerlink" title="CPU 虚拟化概述"></a>CPU 虚拟化概述</h2><ul>
-<li><p>调度机制：使用进程间的调度来虚拟化 CPU。</p>
-</li>
-<li><p>受限的直接执行：将整个空间划分为用户空间和内核空间，因为一个 process 控制一个 CPU，所以要限制。使用时钟中断确保控制权能回到内核手中。</p>
-</li>
-</ul>
-<h2 id="I-O-操作与调度器"><a href="#I-O-操作与调度器" class="headerlink" title="I/O 操作与调度器"></a>I/O 操作与调度器</h2><h3 id="I-O-如何受到调度器操作"><a href="#I-O-如何受到调度器操作" class="headerlink" title="I/O 如何受到调度器操作"></a>I/O 如何受到调度器操作</h3><p>进程间的状态转换：</p>
-<ul>
-<li>运行中 ➔ 就绪：调度</li>
-<li>运行中 ➔ 阻塞（Blocked）：因 I/O 操作启动</li>
-<li>阻塞（Blocked）➔ 就绪：I/O 操作完成</li>
-</ul>
-<p>当一个进程进入 I/O 操作时，会有其他进程代替其执行（状态切换）。</p>
-<h3 id="模式切换机制"><a href="#模式切换机制" class="headerlink" title="模式切换机制"></a>模式切换机制</h3><ul>
-<li>响应时间</li>
-<li>FIFO</li>
-<li>SJF（最短作业优先）</li>
-<li>SJF（最短响应优先）</li>
-<li>周期时间</li>
-</ul>
-<p>在这个基础上，引入了多级反馈队列（MBFQ 机制），同时在周期时间和响应时间之间存在一对矛盾。</p>
-<h3 id="多级反馈队列（MLFQ）"><a href="#多级反馈队列（MLFQ）" class="headerlink" title="多级反馈队列（MLFQ）"></a>多级反馈队列（MLFQ）</h3><p>四条准则：</p>
-<ol>
-<li>优先级高的优先执行。</li>
-<li>同一优先级，共同划分轮转时间片执行。</li>
-<li>从最高优先级开始执行。</li>
-<li>如果一个进程占用了整个时间片（slice），就将该进程降级；否则，保持优先级。</li>
-</ol>
-<h1 id="虚拟化相关笔记"><a href="#虚拟化相关笔记" class="headerlink" title="虚拟化相关笔记"></a>虚拟化相关笔记</h1><h2 id="CPU-总结"><a href="#CPU-总结" class="headerlink" title="CPU 总结"></a>CPU 总结</h2><h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><ul>
-<li>进程抽象</li>
-<li>syscall（系统调用）</li>
-<li>system call for protection（用于保护的系统调用）</li>
-<li>分时共享的上下文切换</li>
-</ul>
-<h3 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h3><ul>
-<li>一系列调度指标：响应时间等</li>
-<li>MLFQ 的权衡（存在一对矛盾）</li>
-</ul>
-<h2 id="内存虚拟化"><a href="#内存虚拟化" class="headerlink" title="内存虚拟化"></a>内存虚拟化</h2><p>在一开始，我们认为一个进程控制了整个 CPU，但是一个进程使用整个机器，会造成多个任务使用内存的混叠，无法阻止恶意程序。</p>
-<p>我们有以下一些目标用来规范多任务运行：</p>
-<ul>
-<li><strong>透明性</strong> ：程序认为自己独享 CPU、内存。</li>
-<li><strong>保护</strong> ：在进程与进程之间，在进程与内核之间添加隔离保护。</li>
-<li><strong>效率</strong> ：不能浪费内存和减慢进程（所以需要使用硬件来执行的地址转换的任务）。</li>
-<li><strong>共享</strong> ：运行许多任务通过通信协作。</li>
-</ul>
-<h1 id="内存分时共享笔记"><a href="#内存分时共享笔记" class="headerlink" title="内存分时共享笔记"></a>内存分时共享笔记</h1><h2 id="抽象：地址空间"><a href="#抽象：地址空间" class="headerlink" title="抽象：地址空间"></a>抽象：地址空间</h2><p>我们需要什么样的地址空间？</p>
-<ul>
-<li><strong>Static</strong> ：代码和全局变量</li>
-<li><strong>Dynamic</strong> ：堆和栈</li>
-</ul>
-<h2 id="同步运行多任务的问题"><a href="#同步运行多任务的问题" class="headerlink" title="同步运行多任务的问题"></a>同步运行多任务的问题</h2><ul>
-<li>如何同步运行多任务？</li>
-<li>如果地址是 “硬编码” 的，如何避免内存碎片化？</li>
-</ul>
-<h2 id="四种机制"><a href="#四种机制" class="headerlink" title="四种机制"></a>四种机制</h2><ol>
-<li><strong>Time sharing</strong></li>
-<li><strong>Static Relocation</strong></li>
-<li><strong>Base</strong></li>
-<li><strong>Base + Bounds</strong></li>
-</ol>
-<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+                <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -604,7 +522,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://erinmi4.github.io/2025/03/06/cs537-lec4-cpu-zong-jie-he-di-zhi-kong-jian/">https://erinmi4.github.io/2025/03/06/cs537-lec4-cpu-zong-jie-he-di-zhi-kong-jian/</a>
+                    <a href="https://erinmi4.github.io/2025/03/19/audio-test/">https://erinmi4.github.io/2025/03/19/audio-test/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -641,19 +559,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
-                                </a>
-                            
-                                <a href="/tags/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B/">
-                                    <span class="chip bg-color">《操作系统导论》</span>
-                                </a>
-                            
-                                <a href="/tags/CS537/">
-                                    <span class="chip bg-color">CS537</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -695,68 +601,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2025/03/08/cs191-lec1-intro-to-deep-learning/">
-                    <div class="card-image">
-                        
-                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081023724.png" class="responsive-img" alt="【CS191】【lec1】Intro to Deep Learning">
-                        
-                        <span class="card-title">【CS191】【lec1】Intro to Deep Learning</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    深度学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                    <a href="/tags/MIT6S191/">
-                        <span class="chip bg-color">MIT6S191</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2025/03/05/di-yi-zhang-ji-suan-ji-gai-yao-yu-ji-zhu-xia/">
+                <a href="/2025/03/19/audio-test/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503051718148.png)" class="responsive-img" alt="第一章 计算机概要与技术（下）">
                         
-                        <span class="card-title">第一章 计算机概要与技术（下）</span>
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -767,14 +623,51 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            MIKA
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/03/19/tuo-fu-kou-yu-task1-lian-xi-1-jiao-yu-he-xue-xi-lei-educationandlearning/">
+                    <div class="card-image">
+                        
+                        <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503151434152.png" class="responsive-img" alt="【托福】【口语】Task1练习1：教育和学习类(educationandlearning)">
+                        
+                        <span class="card-title">【托福】【口语】Task1练习1：教育和学习类(educationandlearning)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-category">
-                                    计算机组成原理
+                            <a href="/categories/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
                                 </a>
                             
                             
@@ -784,16 +677,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">计算机组成原理</span>
+                    <a href="/tags/lab/">
+                        <span class="chip bg-color">lab</span>
                     </a>
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/">
-                        <span class="chip bg-color">计算机组成与设计硬件软件接口</span>
+                    <a href="/tags/%E6%89%98%E7%A6%8F/">
+                        <span class="chip bg-color">托福</span>
                     </a>
                     
-                    <a href="/tags/cs61C/">
-                        <span class="chip bg-color">cs61C</span>
+                    <a href="/tags/%E5%8F%A3%E8%AF%AD/">
+                        <span class="chip bg-color">口语</span>
                     </a>
                     
                 </div>
