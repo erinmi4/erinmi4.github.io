@@ -22,7 +22,7 @@ mjx-container[jax="CHTML"][display="true"] {
   scrollbar-width: thin;
 }
 
-/* 通用样式以确保与周围内容协调 */
+/* 通用样式，确保公式不被截断 */
 mjx-container {
   break-inside: avoid;
   min-width: auto !important;
@@ -30,20 +30,20 @@ mjx-container {
 
 /* 防止公式溢出容器 */
 mjx-math {
-  display: inline-block !important;
+  display: inline-block !重要;
   border-collapse: collapse;
   max-width: 100%;
   line-height: normal !important;
 }
 
-/* 数学公式块引用美化 */
+/* 数学公式块美化（例如引用公式） */
 .theorem-like {
   border-left: 4px solid #42b983;
   padding-left: 15px;
   color: #555;
 }
 
-/* 长公式自动换行保证可见性 */
+/* 针对长公式自动换行 */
 mjx-container[jax="CHTML"][display="true"] mjx-math {
   max-width: 100%;
   overflow-x: auto;
@@ -51,36 +51,12 @@ mjx-container[jax="CHTML"][display="true"] mjx-math {
   padding: 0.5em 0;
 }
 
-/* 针对矩阵的特殊处理 */
+/* 矩阵的特殊处理 */
 .mathjax-matrix {
-  min-width: 0 !important;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
   margin: 0.5em auto !important;
   padding: 0.2em 0 !important;
-}
-
-/* 矩阵单元格样式 */
-mjx-mtable mjx-table {
-  display: inline-table !important;
-  width: auto !important;
-  border-collapse: collapse;
-}
-
-mjx-mtable mjx-itable {
-  display: inline-table !important;
-  width: auto !important;
-  margin: 0 auto !important;
-}
-
-mjx-table > mjx-itable > mjx-row {
-  display: table-row !important;
-}
-
-mjx-table > mjx-itable > mjx-row > mjx-cell {
-  display: table-cell !important;
-  padding: 0.15em !important;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 /* 针对多行公式的特殊处理 */
@@ -88,17 +64,23 @@ mjx-table > mjx-itable > mjx-row > mjx-cell {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  min-width: 0 !important;
   margin: 0.8em auto !important;
+  min-width: 0 !important;
 }
 
-/* 处理对齐等式 */
-mjx-container mjx-mtable[align="align"] {
-  min-width: auto !important;
+/* 矩阵单元格基本样式 */
+mjx-mtable mjx-table,
+mjx-mtable mjx-itable {
+  display: inline-table !important;
   width: auto !important;
-  max-width: 100%;
-  overflow-x: auto;
-  margin: 0.5em auto !important;
+  border-collapse: collapse;
+}
+mjx-table > mjx-itable > mjx-row {
+  display: table-row !重要;
+}
+mjx-table > mjx-itable > mjx-row > mjx-cell {
+  display: table-cell !important;
+  padding: 0.15em !important;
 }
 
 /* 移动设备适配 */
@@ -107,17 +89,9 @@ mjx-container mjx-mtable[align="align"] {
     padding: 5px 0;
     overflow-x: auto;
   }
-  
   mjx-container[jax="CHTML"][display="true"] {
     font-size: 95% !important;
   }
-  
-  /* 在移动设备上保持矩阵可读性 */
-  mjx-container[jax="CHTML"][display="true"] mjx-mtable {
-    font-size: 90% !important;
-  }
-  
-  /* 确保公式可滚动而不会被截断 */
   .mathjax-matrix, .mathjax-multiline {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -131,26 +105,23 @@ mjx-container mjx-mtable[align="align"] {
   }
 }
 
-/* 修复多行对齐的位置问题 */
+/* 修复多行对齐问题 */
 mjx-container[jax="CHTML"] mjx-mrow[data-align="center"] {
   text-align: center !important;
   margin: 0 auto !important;
 }
-
 mjx-container[jax="CHTML"] mjx-mrow[data-align="left"] {
   text-align: left !important;
 }
-
 mjx-container[jax="CHTML"] mjx-mrow[data-align="right"] {
   text-align: right !important;
 }
 
-/* 实现精确的公式水平滚动 */
+/* 自定义滚动条样式 */
 mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar {
   height: 6px;
   background-color: #f5f5f5;
 }
-
 mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar-thumb {
   background-color: #cccccc;
   border-radius: 3px;

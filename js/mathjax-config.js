@@ -7,13 +7,11 @@ window.MathJax = {
     processEnvironments: true,
     tags: 'ams',
     packages: {'[+]': ['ams', 'noerrors', 'noundefined', 'boldsymbol', 'mhchem', 'color']},
-    // 启用自动换行，解决长公式问题
+    // 增强多行公式和矩阵的支持
     tagSide: 'right',
     tagIndent: '.8em',
     multlineWidth: '85%',
-    useLabelIds: false,
     macros: {
-      // 增加一些常用宏定义
       RR: '{\\bf R}',
       bold: ['{\\bf #1}', 1],
       vec: ['\\boldsymbol{#1}', 1]
@@ -43,15 +41,13 @@ window.MathJax = {
   },
   chtml: {
     scale: 1,
-    minScale: .5,
-    mtextFont: '',
-    merrorFont: '',
+    minScale: 0.5,
     unknownFamily: 'serif',
     mathmlSpacing: false,
-    exFactor: .5,
+    exFactor: 0.5,
     displayAlign: 'center',
     displayIndent: '0',
-    // 更好的矩阵显示
+    // 增加矩阵相关参数
     mtableColumnAlign: 'center',
     mtableColumnSpacing: '0.5em'
   },
@@ -67,7 +63,7 @@ window.MathJax = {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Enhanced MathJax rendering for matrices and multiline equations');
   
-  // 对矩阵和多行公式容器添加特殊样式类
+  // 为矩阵和多行公式添加专用样式类
   setTimeout(function() {
     // 处理矩阵
     const matrices = document.querySelectorAll('mjx-container mjx-mtable');
