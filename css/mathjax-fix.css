@@ -1,0 +1,31 @@
+/* 修复 MathJax 公式在 Hexo 中的显示问题 */
+.MathJax {
+  outline: 0;
+  display: inline-block !important;
+}
+
+/* 行内公式样式 */
+.mjx-chtml.MJXc-display {
+  margin: 1em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 修复公式垂直对齐 */
+.mjx-math {
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* 修复行内公式错位问题 */
+.mjx-chtml[display="true"] {
+  display: block;
+  margin: 1em 0;
+}
+
+/* 适配不同屏幕宽度 */
+@media screen and (max-width: 768px) {
+  .mjx-chtml.MJXc-display {
+    font-size: 90% !important;
+  }
+}

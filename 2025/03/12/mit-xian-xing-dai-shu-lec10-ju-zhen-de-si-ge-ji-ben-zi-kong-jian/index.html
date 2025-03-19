@@ -34,23 +34,17 @@
     
     
         
-            <script>
-                MathJax = {
-                    tex: {
-                        inlineMath: [['$', '$'], ['\\(', '\\)']],
-                        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                        processEscapes: true,
-                        processEnvironments: true
-                    },
-                    options: {
-                        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                    }
-                };
-            </script>
+            <!-- 使用外部JS文件配置MathJax -->
+            <script src="/js/mathjax-config.js"></script>
             <script type="text/javascript" async
                 src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
             </script>
         
+    
+
+    <!-- MathJax CSS 修复 -->
+    
+    <link rel="stylesheet" href="/css/mathjax-fix.css">
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -1053,7 +1047,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">85.2k</span>&nbsp;字
+                class="white-color">85.3k</span>&nbsp;字
             
             
             
