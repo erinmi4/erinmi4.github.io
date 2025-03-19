@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -479,9 +485,13 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                章节导图
+                                 章节导图
 
-第一部分：MIPS-32 概述指令的组成与 MIPS 的设计思想计算机执行任何程序，本质上都是在执行机器语言指令（instruction）。每条指令都是一条 0-1 串。指令首先要指明执行什么操作，通常用 0-1 串中的前几位来
+
+ 第一部分：MIPS-32 概述
+ 指令的组成与 MIPS 的设计思想
+计算机执行任何程序，本质上都是在执行机器语言指令（instruction）。每条指令都是一条 0-1 串。
+指令首先要指明执行什么操作，通常用 0-1 
                             
                         </div>
                         <div class="publish-info">
@@ -534,9 +544,16 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                CH1 习题课教材习题1.3 简述程序执行过程问题：讲述C等高级语言转化为计算机能够执行的指令的步骤。#card解答：程序从高级语言（如C）到计算机可执行指令的转换过程主要包括以下几个步骤：
+                                 CH1 习题课
+ 教材习题
+ 1.3 简述程序执行过程
+问题：
+讲述C等高级语言转化为计算机能够执行的指令的步骤。
+#card
+解答：
+程序从高级语言（如C）到计算机可执行指令的转换过程主要包括以下几个步骤：
 
-编译：高级语言代码被编译器转换为汇编语言代码。
+编译：高级语言代码被编译器
                             
                         </div>
                         <div class="publish-info">
@@ -590,12 +607,13 @@
                         <div class="summary block-with-text">
                             
                                 
-复习题
+ 复习题
+
 PC和服务器分别更看重哪项性能评价指标？
 CPU经典性能公式计算的是什么指标？公式是什么（注意有两个联系密切的版本）？
 我们是如何得出经典性能公式的？
 哪四个东西会通过影响性能公式中的某些项，从而影响性能？
-MIPS怎么计算？这个
+MIPS怎么计算？
                             
                         </div>
                         <div class="publish-info">
@@ -648,13 +666,14 @@ MIPS怎么计算？这个
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                本章问题
+                                 本章问题
+
 传统上计算机分为哪三类？后PC时代有哪两类计算机？
 KB MB GB之上有哪些存储容量单位？
 计算机设计的八个伟大思想是？
 Amdahl定律的公式为？
 高级语言经过什么过程变成汇编语言？汇编语言又经过什么变成机器语言？
-冯·诺依曼
+冯·诺
                             
                         </div>
                         <div class="publish-info">
@@ -770,7 +789,7 @@ Amdahl定律的公式为？
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -990,6 +1009,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

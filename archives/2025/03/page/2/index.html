@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -477,20 +483,24 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2025/03/12/mit-xian-xing-dai-shu-lec2-xiao-yuan-fa-yu-ju-zhen-yun-suan/">
+                        <a href="/2025/03/12/mit-xian-xing-dai-shu-lec1-xian-xing-fang-cheng-zu-de-ji-he-yu-dai-shu-shi-jiao/">
                             <div class="card-image">
                                 
-                                <img src="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/585e41af6ff4e96a08ee1bfe25aa3714_1_2.jpg" class="responsive-img" alt="【MIT线性代数】【lec2】消元法与矩阵运算">
+                                <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503112100479.png" class="responsive-img" alt="【MIT线性代数】【lec1】 线性方程组的几何与代数视角">
                                 
-                                <span class="card-title">【MIT线性代数】【lec2】消元法与矩阵运算</span>
+                                <span class="card-title">【MIT线性代数】【lec1】 线性方程组的几何与代数视角</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数第二讲：消元法与矩阵运算一、消元法（Elimination）1. 消元法概述
-目标：通过逐步消元将线性方程组化为上三角形式（Upper Triangular Form），从而简化求解过程。
-方法：从第一个方程开始，逐步消除后续方程中
+                                     线性代数第一讲：线性方程组的几何与代数视角
+ 一、课程介绍
+
+课程名称：18.06 线性代数
+教材：《Introduction to Linear Algebra》
+课程网址：web.mit.edu/18.06
+主讲人：Gilbert S
                                 
                             </div>
                             <div class="publish-info">
@@ -543,25 +553,23 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/">
+                        <a href="/2025/03/12/mit-xian-xing-dai-shu-lec2-xiao-yuan-fa-yu-ju-zhen-yun-suan/">
                             <div class="card-image">
                                 
-                                <img src="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/009788c94833f74f34b92430b3601cd6_1_4.jpg" class="responsive-img" alt="【MIT线性代数】【lec4】分解为a = lu">
+                                <img src="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/585e41af6ff4e96a08ee1bfe25aa3714_1_2.jpg" class="responsive-img" alt="【MIT线性代数】【lec2】消元法与矩阵运算">
                                 
-                                <span class="card-title">【MIT线性代数】【lec4】分解为a = lu</span>
+                                <span class="card-title">【MIT线性代数】【lec2】消元法与矩阵运算</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数第四讲：矩阵乘法与逆矩阵一、矩阵乘法与逆矩阵1. 矩阵乘法的逆
-问题：已知矩阵 $A$ 和 $B$ 的逆矩阵，求 $AB$ 的逆矩阵。
-结论：$(AB)^{-1} = B^{-1}A^{-1}$。
-验证：
+                                     线性代数第二讲：消元法与矩阵运算
+ 一、消元法（Elimination）
+ 1. 消元法概述
 
-
-
-$$AB \time
+目标：通过逐步消元将线性方程组化为上三角形式（Upper Triangular Form），从而简化求解过程。
+方法：从第一个方程开始，逐步消
                                 
                             </div>
                             <div class="publish-info">
@@ -625,9 +633,81 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数第三讲：矩阵乘法与逆矩阵一、矩阵乘法1. 标准乘法规则
-定义：矩阵 $A$ 乘以矩阵 $B$ 得到矩阵 $C$。
-元素计算：矩阵 $C$ 的第 $i$ 行第 $j$ 列的元素 $c_{ij}$ 是 $A$ 的第 $i$ 行与 $B$
+                                     线性代数第三讲：矩阵乘法与逆矩阵
+ 一、矩阵乘法
+ 1. 标准乘法规则
+
+定义：矩阵 AAA 乘以矩阵 BBB 得到矩阵 CCC。
+元素计算：矩阵 CCC 的第 iii 行第 jjj 列的元素 cijc_{ij}cij​ 是 AAA 的第
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2025-03-12
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                    数学
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/MIT18-06SC/"><span class="chip bg-color">MIT18.06SC</span></a>
+                            
+                            <a href="/tags/2011fall/"><span class="chip bg-color">2011fall</span></a>
+                            
+                            <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="chip bg-color">线性代数</span></a>
+                            
+                            <a href="/tags/problem-sets/"><span class="chip bg-color">problem-sets</span></a>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            <!-- year -->
+            
+
+            <!-- month -->
+            
+
+            <!-- every day posts -->
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>12</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/">
+                            <div class="card-image">
+                                
+                                <img src="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/009788c94833f74f34b92430b3601cd6_1_4.jpg" class="responsive-img" alt="【MIT线性代数】【lec4】分解为a = lu">
+                                
+                                <span class="card-title">【MIT线性代数】【lec4】分解为a = lu</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                     线性代数第四讲：矩阵乘法与逆矩阵
+ 一、矩阵乘法与逆矩阵
+ 1. 矩阵乘法的逆
+
+问题：已知矩阵 AAA 和 BBB 的逆矩阵，求 ABABAB 的逆矩阵。
+结论：(AB)−1=B−1A−1(AB)^{-1} = B^{-1}A^{-1}
                                 
                             </div>
                             <div class="publish-info">
@@ -691,10 +771,14 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数第五讲：置换矩阵、转置矩阵与向量空间一、置换矩阵（Permutations）1. 置换矩阵的定义
-定义：置换矩阵 $P$ 是通过交换单位矩阵 $I$ 的行得到的矩阵。
+                                     线性代数第五讲：置换矩阵、转置矩阵与向量空间
+ 一、置换矩阵（Permutations）
+ 1. 置换矩阵的定义
+
+定义：置换矩阵 PPP 是通过交换单位矩阵 III 的行得到的矩阵。
 性质：
-置换矩阵的逆矩阵等于其转置矩阵，即 $P^{-1} = 
+
+置换矩阵的逆矩阵等于其转置矩阵，即 P−1
                                 
                             </div>
                             <div class="publish-info">
@@ -758,13 +842,16 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数笔记：第六讲 - 向量空间与子空间1. 向量空间的定义
+                                     线性代数笔记：第六讲 - 向量空间与子空间
+ 1. 向量空间的定义
+
 定义：向量空间是一组向量，满足以下两个条件：
+
 可以将其中任意两个向量相加，结果仍在该空间内。
 可以将其中任意一个向量乘以任意常数，结果仍在该空间内。
 
 
-线性组合：上述两个条件
+线性组合：上
                                 
                             </div>
                             <div class="publish-info">
@@ -828,8 +915,11 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数笔记 - 第七讲一、课程主题本次课程主要探讨了线性代数中的向量空间，特别是矩阵的零空间（Null Space）和列空间（Column Space），并详细介绍了如何描述和计算这些空间中的向量。
-二、矩阵的零空间（一）零空间的定义矩阵
+                                     线性代数笔记 - 第七讲
+ 一、课程主题
+本次课程主要探讨了线性代数中的向量空间，特别是矩阵的零空间（Null Space）和列空间（Column Space），并详细介绍了如何描述和计算这些空间中的向量。
+ 二、矩阵的零空间
+ （一）零
                                 
                             </div>
                             <div class="publish-info">
@@ -893,9 +983,11 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数笔记 - 第八讲：解线性方程组 Ax=b一、课程主题本次课程的目标是完全解决线性方程组 $Ax = b$ 的问题，包括判断方程组是否有解，以及如何找到所有解。
-二、解线性方程组的步骤（一）判断方程组是否有解
-消元法（Eliminat
+                                     线性代数笔记 - 第八讲：解线性方程组 Ax=b
+ 一、课程主题
+本次课程的目标是完全解决线性方程组 Ax=bAx = bAx=b 的问题，包括判断方程组是否有解，以及如何找到所有解。
+ 二、解线性方程组的步骤
+ （一）判断方程组是否有解
                                 
                             </div>
                             <div class="publish-info">
@@ -959,7 +1051,9 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数笔记 - 第九讲：线性独立性、基和维度一、课程主题本次课程的核心内容是线性代数中的几个重要概念：线性独立性（Linear Independence）、向量张成空间（Span）、基（Basis） 和 维度（Dimension）。这些概
+                                     线性代数笔记 - 第九讲：线性独立性、基和维度
+ 一、课程主题
+本次课程的核心内容是线性代数中的几个重要概念：线性独立性（Linear Independence）、向量张成空间（Span）、基（Basis） 和 维度（Dimension）
                                 
                             </div>
                             <div class="publish-info">
@@ -1023,9 +1117,11 @@ $$AB \time
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性代数复习：向量、矩阵与子空间一、线性代数的重要性
+                                     线性代数复习：向量、矩阵与子空间
+ 一、线性代数的重要性
+
 教授观点：Gilbert Strang 教授认为线性代数非常重要，而美国大学通常过于注重微积分和微分方程的教学，导致学生在实际计算中缺乏线性代数的训练。
-实际应用：在现实世界中，许多问题
+实际应用：在现实世界中，
                                 
                             </div>
                             <div class="publish-info">
@@ -1055,71 +1151,6 @@ $$AB \time
                             <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="chip bg-color">线性代数</span></a>
                             
                             <a href="/tags/problem-sets/"><span class="chip bg-color">problem-sets</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            <!-- year -->
-            
-
-            <!-- month -->
-            
-
-            <!-- every day posts -->
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>12</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/">
-                            <div class="card-image">
-                                
-                                <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503081353413.png" class="responsive-img" alt="【MIT6.006】【lec3】 集合与排序">
-                                
-                                <span class="card-title">【MIT6.006】【lec3】 集合与排序</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    算法导论 - 第三讲：集合与排序一、课程介绍与主题回顾
-讲师：Justin，6.006课程的第三位讲师。
-课程主题：围绕算法设计与分析，重点关注接口（interface）与数据结构（data structure）的区别。
-接口：定义了一组操
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-03-12
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                    数据结构与算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="chip bg-color">数据结构与算法</span></a>
-                            
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"><span class="chip bg-color">算法导论</span></a>
-                            
-                            <a href="/tags/MIT6006/"><span class="chip bg-color">MIT6006</span></a>
                             
                         </div>
                         
@@ -1229,7 +1260,7 @@ $$AB \time
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1449,6 +1480,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -486,7 +492,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    349
+                    352
                 </div>
                 
 
@@ -513,24 +519,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>是否在答题前通读文章</strong><br>通读可以建立一个完整框架，适合advanced的学生<br>但是随着题目顺序做题适合绝大多数人</p>
-<p><strong>先看题还是先看段落</strong><br>先看段落可以构建框架性的认知<br>适合解决细节题目<br>同时对于没有题目的段落，也要看。</p>
-<p><strong>vocab题目怎么做</strong><br>绝大多数的词汇题目考察的只是释义<br>不需要care将单词带入原句后是否通顺</p>
-<p><strong>长难句怎么办</strong><br>先将长句子根据逗号划分为多个句子<br>通过语法将句子划分为更小单元</p>
-<p><strong>引用题怎么做</strong><br>看引用什么，找关键词，对应句子</p>
+                <p><strong>是否在答题前通读文章</strong><br>
+通读可以建立一个完整框架，适合advanced的学生<br>
+但是随着题目顺序做题适合绝大多数人</p>
+<p><strong>先看题还是先看段落</strong><br>
+先看段落可以构建框架性的认知<br>
+适合解决细节题目<br>
+同时对于没有题目的段落，也要看。</p>
+<p><strong>vocab题目怎么做</strong><br>
+绝大多数的词汇题目考察的只是释义<br>
+不需要care将单词带入原句后是否通顺</p>
+<p><strong>长难句怎么办</strong><br>
+先将长句子根据逗号划分为多个句子<br>
+通过语法将句子划分为更小单元</p>
+<p><strong>引用题怎么做</strong><br>
+看引用什么，找关键词，对应句子</p>
 <p><strong>修辞目的题</strong></p>
 <ul>
-<li>作者为什么这样写<blockquote>
-<p>6.In paragraph 4,why does the author cite<br>the research result of 9120?</p>
-</blockquote>
-</li>
+<li>作者为什么这样写</li>
 </ul>
-<p>所有的修辞都是为了表达作者想讲述的中心论点。<br>所以要关注该题目所对应段落的main idea<br>而不是detail</p>
-<p><strong>细节题</strong><br>找到题干中的关键句，然后在原文中找到同义句<br>然后在附近找答案<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503121757006.png" alt="image.png|625"></p>
-<p><strong>句子插入题</strong><br>注意句子中是否有代词(it)或者一些承上启下的转折词(Thus)</p>
-<p><strong>句意理解题</strong><br>先读句子，概括核心信息。对比选项</p>
 <blockquote>
-<p>可以适当将从句的信息剔除，比较答案和原文的core idea<br><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503121930686.png" alt="image.png"></p>
+<p><a target="_blank" rel="noopener" href="http://6.In">6.In</a> paragraph 4,why does the author cite<br>
+the research result of 9120?</p>
+</blockquote>
+<p>所有的修辞都是为了表达作者想讲述的中心论点。<br>
+所以要关注该题目所对应段落的main idea<br>
+而不是detail</p>
+<p><strong>细节题</strong><br>
+找到题干中的关键句，然后在原文中找到同义句<br>
+然后在附近找答案<br>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503121757006.png" alt="image.png|625"></p>
+<p><strong>句子插入题</strong><br>
+注意句子中是否有代词(it)或者一些承上启下的转折词(Thus)</p>
+<p><strong>句意理解题</strong><br>
+先读句子，概括核心信息。对比选项</p>
+<blockquote>
+<p>可以适当将从句的信息剔除，比较答案和原文的core idea<br>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503121930686.png" alt="image.png"></p>
 </blockquote>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
@@ -935,7 +960,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1155,6 +1180,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

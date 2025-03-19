@@ -32,6 +32,10 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
             <!-- 先加载MathJax配置 -->
@@ -48,6 +52,8 @@
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -528,10 +534,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="算法导论-第一讲：算法与计算"><a href="#算法导论-第一讲：算法与计算" class="headerlink" title="算法导论 - 第一讲：算法与计算"></a>算法导论 - 第一讲：算法与计算</h1><h2 id="一、课程介绍"><a href="#一、课程介绍" class="headerlink" title="一、课程介绍"></a>一、课程介绍</h2><ul>
+                <h1 id="算法导论-第一讲算法与计算"><a class="markdownIt-Anchor" href="#算法导论-第一讲算法与计算"></a> 算法导论 - 第一讲：算法与计算</h1>
+<h2 id="一-课程介绍"><a class="markdownIt-Anchor" href="#一-课程介绍"></a> 一、课程介绍</h2>
+<ul>
 <li><strong>课程名称</strong>：算法导论（Introduction to Algorithms）</li>
 <li><strong>授课教师</strong>：Jason Ku（主讲），Eric Demaine 和 Justin Solomon（共同授课）</li>
-<li><strong>课程目标</strong>：<ol>
+<li><strong>课程目标</strong>：
+<ol>
 <li>解决计算问题。</li>
 <li>证明算法的正确性。</li>
 <li>论证算法的效率。</li>
@@ -539,22 +548,30 @@
 </ol>
 </li>
 </ul>
-<h2 id="二、计算问题与算法"><a href="#二、计算问题与算法" class="headerlink" title="二、计算问题与算法"></a>二、计算问题与算法</h2><h3 id="1-什么是计算问题？"><a href="#1-什么是计算问题？" class="headerlink" title="1. 什么是计算问题？"></a>1. 什么是计算问题？</h3><ul>
+<h2 id="二-计算问题与算法"><a class="markdownIt-Anchor" href="#二-计算问题与算法"></a> 二、计算问题与算法</h2>
+<h3 id="1-什么是计算问题"><a class="markdownIt-Anchor" href="#1-什么是计算问题"></a> 1. 什么是计算问题？</h3>
+<ul>
 <li><strong>定义</strong>：计算问题可以被看作是一组输入与一组输出之间的二元关系。对于每个输入，指定哪些输出是正确的。</li>
-<li><strong>示例</strong>：<ul>
+<li><strong>示例</strong>：
+<ul>
 <li>在数组中查找值为 5 的索引。可能有多个索引满足条件，因此输出不唯一。</li>
 <li>在一个班级中查找是否有两个学生生日相同。如果人数超过 365，根据鸽巢原理，答案是肯定的。</li>
 </ul>
 </li>
 </ul>
-<h3 id="2-什么是算法？"><a href="#2-什么是算法？" class="headerlink" title="2. 什么是算法？"></a>2. 什么是算法？</h3><ul>
+<h3 id="2-什么是算法"><a class="markdownIt-Anchor" href="#2-什么是算法"></a> 2. 什么是算法？</h3>
+<ul>
 <li><strong>定义</strong>：算法是一个固定大小的程序或过程，它将输入映射到输出，并且输出必须是正确的。</li>
-<li><strong>示例</strong>：<ul>
-<li><strong>生日问题</strong>：检查一个班级中是否有两个学生具有相同的出生时间。<ul>
-<li><strong>算法描述</strong>：<ol>
+<li><strong>示例</strong>：
+<ul>
+<li><strong>生日问题</strong>：检查一个班级中是否有两个学生具有相同的出生时间。
+<ul>
+<li><strong>算法描述</strong>：
+<ol>
 <li>维护一个记录（存储已检查的学生生日）。</li>
 <li>按顺序采访每个学生，询问其生日。</li>
-<li>检查生日是否在记录中：<ul>
+<li>检查生日是否在记录中：
+<ul>
 <li>如果在记录中，返回匹配的一对。</li>
 <li>如果不在记录中，将该学生生日加入记录。</li>
 </ul>
@@ -567,14 +584,19 @@
 </ul>
 </li>
 </ul>
-<h2 id="三、算法的正确性与效率"><a href="#三、算法的正确性与效率" class="headerlink" title="三、算法的正确性与效率"></a>三、算法的正确性与效率</h2><h3 id="1-证明算法的正确性"><a href="#1-证明算法的正确性" class="headerlink" title="1. 证明算法的正确性"></a>1. 证明算法的正确性</h3><ul>
+<h2 id="三-算法的正确性与效率"><a class="markdownIt-Anchor" href="#三-算法的正确性与效率"></a> 三、算法的正确性与效率</h2>
+<h3 id="1-证明算法的正确性"><a class="markdownIt-Anchor" href="#1-证明算法的正确性"></a> 1. 证明算法的正确性</h3>
+<ul>
 <li><strong>方法</strong>：使用数学归纳法（Induction）。</li>
-<li><strong>示例</strong>（生日问题算法的正确性）：<ul>
+<li><strong>示例</strong>（生日问题算法的正确性）：
+<ul>
 <li><strong>归纳假设</strong>：如果前 K 个学生中有匹配，算法会在采访第 K+1 个学生之前返回匹配。</li>
 <li><strong>基础情况（Base Case）</strong>：K = 0。显然，0 个学生中不可能有匹配，假设成立。</li>
-<li><strong>归纳步骤（Inductive Step）</strong>：<ul>
+<li><strong>归纳步骤（Inductive Step）</strong>：
+<ul>
 <li>如果前 K 个学生中已有匹配，则根据归纳假设，算法已返回正确结果。</li>
-<li>如果前 K 个学生中无匹配，检查第 K+1 个学生：<ul>
+<li>如果前 K 个学生中无匹配，检查第 K+1 个学生：
+<ul>
 <li>如果第 K+1 个学生与前 K 个学生中的某个学生匹配，则算法会返回匹配。</li>
 <li>如果不匹配，则将该学生加入记录，继续检查。</li>
 </ul>
@@ -584,10 +606,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-算法的效率"><a href="#2-算法的效率" class="headerlink" title="2. 算法的效率"></a>2. 算法的效率</h3><ul>
+<h3 id="2-算法的效率"><a class="markdownIt-Anchor" href="#2-算法的效率"></a> 2. 算法的效率</h3>
+<ul>
 <li><strong>定义</strong>：效率不仅指算法运行的速度，还指与其他可能的解决方案相比的性能。</li>
-<li><strong>衡量方法</strong>：使用渐进分析（Asymptotic Analysis），而不是直接测量运行时间。<ul>
-<li><strong>常见时间复杂度</strong>：<ul>
+<li><strong>衡量方法</strong>：使用渐进分析（Asymptotic Analysis），而不是直接测量运行时间。
+<ul>
+<li><strong>常见时间复杂度</strong>：
+<ul>
 <li>常数时间（O(1)）：与输入大小无关。</li>
 <li>对数时间（O(log n)）：接近常数时间。</li>
 <li>线性时间（O(n)）：与输入大小成正比。</li>
@@ -599,9 +624,12 @@
 </ul>
 </li>
 </ul>
-<h2 id="四、计算模型"><a href="#四、计算模型" class="headerlink" title="四、计算模型"></a>四、计算模型</h2><ul>
-<li><strong>模型</strong>：使用“字随机访问存储器”（Word RAM）模型。<ul>
-<li><strong>特性</strong>：<ul>
+<h2 id="四-计算模型"><a class="markdownIt-Anchor" href="#四-计算模型"></a> 四、计算模型</h2>
+<ul>
+<li><strong>模型</strong>：使用“字随机访问存储器”（Word RAM）模型。
+<ul>
+<li><strong>特性</strong>：
+<ul>
 <li>内存由字（word）组成，每个字包含固定数量的比特（如 64 位）。</li>
 <li>CPU 可以在常数时间内随机访问内存中的任意字。</li>
 <li>支持基本操作：整数运算、逻辑运算、内存读写等。</li>
@@ -611,13 +639,16 @@
 </ul>
 </li>
 </ul>
-<h2 id="五、课程结构"><a href="#五、课程结构" class="headerlink" title="五、课程结构"></a>五、课程结构</h2><ul>
+<h2 id="五-课程结构"><a class="markdownIt-Anchor" href="#五-课程结构"></a> 五、课程结构</h2>
+<ul>
 <li><strong>第一部分（前 8 讲）</strong>：数据结构与排序。</li>
 <li><strong>第二部分</strong>：最短路径算法与图。</li>
 <li><strong>第三部分</strong>：动态规划。</li>
 </ul>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><ul>
-<li><strong>算法设计策略</strong>：<ol>
+<h2 id="六-总结"><a class="markdownIt-Anchor" href="#六-总结"></a> 六、总结</h2>
+<ul>
+<li><strong>算法设计策略</strong>：
+<ol>
 <li><strong>问题归约</strong>：将问题转化为已知问题的解决方案。</li>
 <li><strong>递归设计</strong>：设计递归算法解决新问题。</li>
 </ol>
@@ -1054,7 +1085,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1274,6 +1305,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

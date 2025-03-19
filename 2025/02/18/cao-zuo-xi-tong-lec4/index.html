@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -486,7 +492,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.8k
+                    7.9k
                 </div>
                 
 
@@ -523,11 +529,13 @@
 <p>有三种事件会导致CPU中断普通指令的执行</p>
 <ol>
 <li>系统调用ecall，会使得将权限转为内核，执行内核指令</li>
-<li>异常Exception，一条指令（无论是用户态还是内核态）执行了非法操作<ol>
+<li>异常Exception，一条指令（无论是用户态还是内核态）执行了非法操作
+<ol>
 <li>例如除以零或使用无效的虚拟地址。</li>
 </ol>
 </li>
-<li>设备中断<ol>
+<li>设备中断
+<ol>
 <li>对于一些读写请求，需要即时处理，不然缓冲区满了之后，会导致一些数据的丢失</li>
 </ol>
 </li>
@@ -549,8 +557,10 @@
 </ol>
 <blockquote>
 <ul>
-<li><strong>从用户模式切换到监督模式允许什么？</strong><ul>
-<li>监督模式可以使用CPU控制寄存器：<ul>
+<li><strong>从用户模式切换到监督模式允许什么？</strong>
+<ul>
+<li>监督模式可以使用CPU控制寄存器：
+<ul>
 <li><code>satp</code>：页表物理地址。</li>
 <li><code>stvec</code>：<code>ecall</code>跳转到内核的地址；指向跳板页。</li>
 <li><code>sepc</code>：<code>ecall</code>将用户<code>pc</code>保存在此。</li>
@@ -558,7 +568,8 @@
 </ul>
 </li>
 <li>监督模式可以使用没有<code>PTE_U</code>标志的PTE。</li>
-<li>但监督模式没有其他权限！<ul>
+<li>但监督模式没有其他权限！
+<ul>
 <li>例如，不能使用不在页表中的地址。</li>
 <li>因此，内核必须仔细设置，以便它能够工作。</li>
 </ul>
@@ -579,7 +590,8 @@
 <li>一个决定如何处理陷阱的C函数，</li>
 <li>以及系统调用或设备驱动服务例程</li>
 </ul>
-<h3 id="4-1-RISC-V陷阱机制（硬件准备）"><a href="#4-1-RISC-V陷阱机制（硬件准备）" class="headerlink" title="4.1 RISC-V陷阱机制（硬件准备）"></a>4.1 RISC-V陷阱机制（硬件准备）</h3><p>每个RISC-V CPU都有一组<strong>控制寄存器</strong>，内核可以写入这些寄存器以告诉CPU<strong>如何处理陷阱</strong>，也可以读取这些寄存器以<strong>了解已发生的陷阱</strong>。</p>
+<h3 id="41-risc-v陷阱机制硬件准备"><a class="markdownIt-Anchor" href="#41-risc-v陷阱机制硬件准备"></a> 4.1 RISC-V陷阱机制（硬件准备）</h3>
+<p>每个RISC-V CPU都有一组<strong>控制寄存器</strong>，内核可以写入这些寄存器以告诉CPU<strong>如何处理陷阱</strong>，也可以读取这些寄存器以<strong>了解已发生的陷阱</strong>。</p>
 <p><strong>标记陷阱状态，记录上下文，保护现场</strong></p>
 <p>因为我们会为三种不同情况，分别编写代码，所以我们要能够实现对于情况的区分</p>
 <p>以下是最重要的寄存器概述：</p>
@@ -602,7 +614,8 @@
 <li>从新的PC地址开始执行。</li>
 </ol>
 <p>注意，CPU不会切换到内核页表，不会切换到内核栈，也不会保存任何寄存器，除了PC。这些任务必须由内核软件完成。</p>
-<h3 id="4-2-来自用户空间的陷阱"><a href="#4-2-来自用户空间的陷阱" class="headerlink" title="4.2 来自用户空间的陷阱"></a>4.2 来自用户空间的陷阱</h3><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20230923151811134.png" alt="high-level picture of the procedure of switching from user mode to supervisor mode"></p>
+<h3 id="42-来自用户空间的陷阱"><a class="markdownIt-Anchor" href="#42-来自用户空间的陷阱"></a> 4.2 来自用户空间的陷阱</h3>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20230923151811134.png" alt="high-level picture of the procedure of switching from user mode to supervisor mode"></p>
 <p>用户态通过<code>syscall</code>切换到内核态，并执行系统调用的完整过程：</p>
 <ol>
 <li>用户态程序执行<code>ecall</code>指令。</li>
@@ -614,9 +627,11 @@
 <li>执行相应的系统调用处理函数。</li>
 <li>完成后，<code>syscall</code>返回，<code>usertrap</code>恢复上下文，跳回用户态继续执行。</li>
 </ol>
-<h4 id="“跳板页”（trampoline-page）"><a href="#“跳板页”（trampoline-page）" class="headerlink" title="“跳板页”（trampoline page）"></a>“跳板页”（trampoline page）</h4><p>Xv6陷阱处理设计的一个主要限制是：**RISC-V硬件在强制执行陷阱时不会切换页表。**这意味着<code>stvec</code>中的陷阱处理程序地址必须在用户页表中有有效的映射，因为当陷阱处理代码开始执行时，生效的是用户页表。此外，Xv6的陷阱处理代码需要切换到内核页表；为了在切换后能够继续执行，内核页表也必须对<code>stvec</code>指向的处理程序有映射。（<strong>这是一个在内存上，user space和kernel space拥有共同物理地址的地方</strong>）</p>
+<h4 id="跳板页trampoline-page"><a class="markdownIt-Anchor" href="#跳板页trampoline-page"></a> “跳板页”（trampoline page）</h4>
+<p>Xv6陷阱处理设计的一个主要限制是：**RISC-V硬件在强制执行陷阱时不会切换页表。**这意味着<code>stvec</code>中的陷阱处理程序地址必须在用户页表中有有效的映射，因为当陷阱处理代码开始执行时，生效的是用户页表。此外，Xv6的陷阱处理代码需要切换到内核页表；为了在切换后能够继续执行，内核页表也必须对<code>stvec</code>指向的处理程序有映射。（<strong>这是一个在内存上，user space和kernel space拥有共同物理地址的地方</strong>）</p>
 <p>Xv6通过一个“跳板页”（trampoline page）来满足这些要求。跳板页包含<code>uservec</code>，这是<code>stvec</code>指向的Xv6陷阱处理代码。跳板页在每个进程的页表中都映射到地址<code>TRAMPOLINE</code>，该地址位于虚拟地址空间的末尾，以便它位于程序为自己使用的内存之上。跳板页也在内核页表中映射到地址<code>TRAMPOLINE</code>。<strong>因此可以在监督模式下从那里开始执行陷阱处理。由于跳板页在内核地址空间中映射到相同的地址，因此在切换到内核页表后，陷阱处理程序可以继续执行。</strong></p>
-<h4 id="uservec的执行"><a href="#uservec的执行" class="headerlink" title="uservec的执行"></a>uservec的执行</h4><blockquote>
+<h4 id="uservec的执行"><a class="markdownIt-Anchor" href="#uservec的执行"></a> uservec的执行</h4>
+<blockquote>
 <p>在RISC-V架构中，<code>a0</code>寄存器是一个重要的通用寄存器，主要用于函数调用和返回值的传递。</p>
 </blockquote>
 <ol>
@@ -636,11 +651,13 @@
 <p>进程的<code>p-&gt;trapframe</code>也指向陷阱帧，尽管是通过其物理地址，因此内核可以通过内核页表使用它。</p>
 <p><strong>每个进程在被创建的时候，就有一个trapframe的结构体被分配了，并且映射到跳板页上，这样可以满足所有进程的陷阱要求</strong></p>
 <p><strong>陷阱帧包含当前进程的内核栈地址、当前CPU的<code>hartid</code>、<code>usertrap</code>函数的地址以及内核页表的地址。<code>uservec</code>检索这些值，将<code>satp</code>切换到内核页表，并调用<code>usertrap</code>。</strong></p>
-<h4 id="usertrap的执行"><a href="#usertrap的执行" class="headerlink" title="usertrap的执行"></a>usertrap的执行</h4><p><code>usertrap</code>的工作是确定陷阱的原因，处理它并返回</p>
+<h4 id="usertrap的执行"><a class="markdownIt-Anchor" href="#usertrap的执行"></a> usertrap的执行</h4>
+<p><code>usertrap</code>的工作是确定陷阱的原因，处理它并返回</p>
 <ul>
 <li>它首先更改<code>stvec</code>，以便在内核中发生的陷阱将由<code>kernelvec</code>而不是<code>uservec</code>处理。</li>
 <li>它保存<code>sepc</code>寄存器（保存的用户程序计数器），因为<code>usertrap</code>可能会调用<code>yield</code>切换到另一个进程的内核线程，而该进程可能会返回用户空间，在这个过程中它会修改<code>sepc</code>。</li>
-<li>处理陷阱<ul>
+<li>处理陷阱
+<ul>
 <li>如果陷阱是系统调用，<code>usertrap</code>调用<code>syscall</code>来处理；</li>
 <li>如果是设备中断，则调用<code>devintr</code></li>
 <li>否则是异常，内核会杀死违规进程。</li>
@@ -648,51 +665,64 @@
 </li>
 <li>在退出时，<code>usertrap</code>检查进程是否已被杀死，或者是否应该让出CPU（如果这个陷阱是时钟中断）。</li>
 </ul>
-<h4 id="usertrapret和userret的执行"><a href="#usertrapret和userret的执行" class="headerlink" title="usertrapret和userret的执行"></a>usertrapret和userret的执行</h4><h5 id="1-usertrapret函数的作用"><a href="#1-usertrapret函数的作用" class="headerlink" title="1. usertrapret函数的作用"></a><strong>1. <code>usertrapret</code>函数的作用</strong></h5><p><code>usertrapret</code>是内核中的一个C函数，位于<code>kernel/trap.c:90</code>。它的主要任务是为返回用户空间做好准备，具体步骤如下：</p>
-<h6 id="1-1-设置RISC-V控制寄存器"><a href="#1-1-设置RISC-V控制寄存器" class="headerlink" title="1.1 设置RISC-V控制寄存器"></a><strong>1.1 设置RISC-V控制寄存器</strong></h6><ul>
+<h4 id="usertrapret和userret的执行"><a class="markdownIt-Anchor" href="#usertrapret和userret的执行"></a> usertrapret和userret的执行</h4>
+<h5 id="1-usertrapret函数的作用"><a class="markdownIt-Anchor" href="#1-usertrapret函数的作用"></a> <strong>1. <code>usertrapret</code>函数的作用</strong></h5>
+<p><code>usertrapret</code>是内核中的一个C函数，位于<code>kernel/trap.c:90</code>。它的主要任务是为返回用户空间做好准备，具体步骤如下：</p>
+<h6 id="11-设置risc-v控制寄存器"><a class="markdownIt-Anchor" href="#11-设置risc-v控制寄存器"></a> <strong>1.1 设置RISC-V控制寄存器</strong></h6>
+<ul>
 <li><strong>设置<code>stvec</code></strong>：将<code>stvec</code>寄存器设置为指向<code>uservec</code>。<code>uservec</code>是用户空间陷阱向量，用于处理用户空间的陷阱（如系统调用或异常）。</li>
 <li><strong>准备陷阱帧字段</strong>：陷阱帧（<code>TRAPFRAME</code>）保存了用户态的上下文信息，包括寄存器状态和程序计数器（<code>sepc</code>）。</li>
 <li><strong>设置<code>sepc</code></strong>：将<code>sepc</code>寄存器设置为之前保存的用户程序计数器值，以便在返回用户空间时恢复执行。</li>
 </ul>
-<h6 id="1-2-调用userret"><a href="#1-2-调用userret" class="headerlink" title="1.2 调用userret"></a><strong>1.2 调用<code>userret</code></strong></h6><p><code>usertrapret</code>最后调用<code>userret</code>函数，传递以下参数：</p>
+<h6 id="12-调用userret"><a class="markdownIt-Anchor" href="#12-调用userret"></a> <strong>1.2 调用<code>userret</code></strong></h6>
+<p><code>usertrapret</code>最后调用<code>userret</code>函数，传递以下参数：</p>
 <ul>
 <li><strong><code>TRAPFRAME</code></strong>：通过<code>a0</code>寄存器传递，包含用户态的上下文信息。</li>
 <li><strong>用户页表指针</strong>：通过<code>a1</code>寄存器传递，指向进程的用户页表。</li>
 </ul>
 <hr>
-<h5 id="2-userret的作用"><a href="#2-userret的作用" class="headerlink" title="2. userret的作用"></a><strong>2. <code>userret</code>的作用</strong></h5><p><code>userret</code>是一个汇编函数，位于<code>kernel/trampoline.S:88</code>。它的主要任务是**切换到用户页表并恢复用户态的上下文。**以下是关键步骤：</p>
-<h6 id="2-1-切换页表"><a href="#2-1-切换页表" class="headerlink" title="2.1 切换页表"></a><strong>2.1 切换页表</strong></h6><ul>
+<h5 id="2-userret的作用"><a class="markdownIt-Anchor" href="#2-userret的作用"></a> <strong>2. <code>userret</code>的作用</strong></h5>
+<p><code>userret</code>是一个汇编函数，位于<code>kernel/trampoline.S:88</code>。它的主要任务是**切换到用户页表并恢复用户态的上下文。**以下是关键步骤：</p>
+<h6 id="21-切换页表"><a class="markdownIt-Anchor" href="#21-切换页表"></a> <strong>2.1 切换页表</strong></h6>
+<ul>
 <li><strong>设置<code>satp</code></strong>：<code>userret</code>将<code>satp</code>寄存器切换到进程的用户页表。用户页表只映射了用户空间的内存和跳板页，而不映射内核的其他内容。</li>
 <li><strong>跳板页的映射</strong>：跳板页在用户页表和内核页表中都映射到相同的虚拟地址。这使得<code>uservec</code>在切换<code>satp</code>后能够继续执行，而不会因为页表切换而导致地址失效。</li>
 </ul>
-<h6 id="2-2-恢复用户态上下文"><a href="#2-2-恢复用户态上下文" class="headerlink" title="2.2 恢复用户态上下文"></a><strong>2.2 恢复用户态上下文</strong></h6><ul>
+<h6 id="22-恢复用户态上下文"><a class="markdownIt-Anchor" href="#22-恢复用户态上下文"></a> <strong>2.2 恢复用户态上下文</strong></h6>
+<ul>
 <li><strong>复制用户<code>a0</code>到<code>sscratch</code></strong>：<code>userret</code>将陷阱帧中保存的用户<code>a0</code>值复制到<code>sscratch</code>寄存器。<code>sscratch</code>是一个临时寄存器，用于在内核和用户态之间交换数据。</li>
 <li><strong>恢复用户寄存器</strong>：从陷阱帧中恢复保存的用户寄存器，包括通用寄存器和程序计数器。</li>
 <li><strong>交换<code>a0</code>和<code>sscratch</code></strong>：进行最后一次交换，将用户的<code>a0</code>值恢复到<code>a0</code>寄存器，并将<code>TRAPFRAME</code>的地址保存到<code>sscratch</code>中，以便下一次陷阱发生时能够恢复上下文。</li>
 <li><strong>执行<code>sret</code>指令</strong>：最后，<code>userret</code>执行<code>sret</code>指令，将控制权返回到用户空间，并恢复用户程序的执行。</li>
 </ul>
 <hr>
-<h5 id="3-关键点总结"><a href="#3-关键点总结" class="headerlink" title="3. 关键点总结"></a><strong>3. 关键点总结</strong></h5><ol>
-<li><strong>页表切换</strong>：<ul>
+<h5 id="3-关键点总结"><a class="markdownIt-Anchor" href="#3-关键点总结"></a> <strong>3. 关键点总结</strong></h5>
+<ol>
+<li><strong>页表切换</strong>：
+<ul>
 <li><code>userret</code>将<code>satp</code>切换到用户页表，但用户页表只映射用户空间和跳板页，不映射内核的其他内容。</li>
 <li>跳板页在用户和内核页表中映射到相同的虚拟地址，确保切换后能够继续执行。</li>
 </ul>
 </li>
-<li><strong>上下文恢复</strong>：<ul>
+<li><strong>上下文恢复</strong>：
+<ul>
 <li>用户态的寄存器状态保存在陷阱帧中。</li>
 <li>通过<code>sscratch</code>寄存器交换<code>a0</code>值，确保用户态的<code>a0</code>被正确恢复，同时保存陷阱帧的地址。</li>
 </ul>
 </li>
-<li><strong>返回用户空间</strong>：<ul>
+<li><strong>返回用户空间</strong>：
+<ul>
 <li><code>userret</code>通过<code>sret</code>指令返回用户空间，恢复用户程序的执行。</li>
 </ul>
 </li>
 </ol>
-<h3 id="4-3-代码：调用系统调用（如何触发）"><a href="#4-3-代码：调用系统调用（如何触发）" class="headerlink" title="4.3 代码：调用系统调用（如何触发）"></a>4.3 代码：调用系统调用（如何触发）</h3><p>在chapter2中，我们提到，ecall的执行是参数放入寄存器<code>a0</code>和<code>a1</code>中，并将系统调用号放入<code>a7</code>。</p>
+<h3 id="43-代码调用系统调用如何触发"><a class="markdownIt-Anchor" href="#43-代码调用系统调用如何触发"></a> 4.3 代码：调用系统调用（如何触发）</h3>
+<p>在chapter2中，我们提到，ecall的执行是参数放入寄存器<code>a0</code>和<code>a1</code>中，并将系统调用号放入<code>a7</code>。</p>
 <p>系统调用号与<code>syscalls</code>数组的条目匹配，这是一个函数指针表（<code>kernel/syscall.c:108</code>）。<code>ecall</code>指令触发进入内核。</p>
 <p><code>syscall</code>（<code>kernel/syscall.c:133</code>）从<strong>陷阱帧中</strong>保存的<code>a7</code>中获取系统调用号，并用它来索引<code>syscalls</code>数组。对于第一个系统调用，<code>a7</code>包含<code>SYS_exec</code>（<code>kernel/syscall.h:8</code>），这将导致调用系统调用实现函数<code>sys_exec</code>。</p>
 <p>当<code>sys_exec</code>返回时，<code>syscall</code>将其返回值记录在<code>p-&gt;trapframe-&gt;a0</code>中。这将导致原始的用户空间调用<code>exec()</code>返回该值，因为RISC-V的C调用约定将返回值放在<code>a0</code>中。系统调用通常返回负数表示错误，返回零或正数表示成功。如果系统调用号无效，<code>syscall</code>会打印错误并返回<code>-1</code>。</p>
-<h3 id="4-4-代码：系统调用参数（如何传递）"><a href="#4-4-代码：系统调用参数（如何传递）" class="headerlink" title="4.4 代码：系统调用参数（如何传递）"></a>4.4 代码：系统调用参数（如何传递）</h3><p>内核中的系统调用实现需要找到用户代码传递的参数。</p>
+<h3 id="44-代码系统调用参数如何传递"><a class="markdownIt-Anchor" href="#44-代码系统调用参数如何传递"></a> 4.4 代码：系统调用参数（如何传递）</h3>
+<p>内核中的系统调用实现需要找到用户代码传递的参数。</p>
 <p>因为用户代码调用的是系统调用包装函数，所以参数最初位于RISC-V C调用约定指定的位置：寄存器中。</p>
 <p><strong>内核陷阱代码将用户寄存器保存到当前进程的陷阱帧中</strong>，内核代码可以从那里找到它们。</p>
 <p>内核函数<code>argint</code>、<code>argaddr</code>和<code>argfd</code>从陷阱帧中获取第<code>n</code>个系统调用参数，分别作为整数、指针或文件描述符。它们都调用<code>argraw</code>来获取相应的保存的用户寄存器（<code>kernel/syscall.c:35</code>）。</p>
@@ -702,19 +732,25 @@
 <p>文件系统调用（如<code>exec</code>）使用<code>fetchstr</code>从用户空间获取字符串文件名参数。<code>fetchstr</code>调用<code>copyinstr</code>来完成实际工作。</p>
 <p><code>copyinstr</code>（<code>kernel/vm.c:398</code>）从用户页表<code>pagetable</code>中的虚拟地址<code>srcva</code>复制最多<code>max</code>字节到<code>dst</code>。由于<code>pagetable</code>不是当前页表，<code>copyinstr</code>使用<code>walkaddr</code>（它调用<code>walk</code>）在<code>pagetable</code>中查找<code>srcva</code>，得到物理地址<code>pa0</code>。</p>
 <p>内核将每个物理RAM地址映射到相应的内核虚拟地址，因此<code>copyinstr</code>可以直接将字符串字节从<code>pa0</code>复制到<code>dst</code>。<code>walkaddr</code>（<code>kernel/vm.c:104</code>）检查用户提供的虚拟地址是否属于进程的用户地址空间，以防止程序欺骗内核读取其他内存。类似的函数<code>copyout</code>将数据从内核复制到用户提供的地址。</p>
-<h3 id="4-5-来自内核空间的陷阱"><a href="#4-5-来自内核空间的陷阱" class="headerlink" title="4.5 来自内核空间的陷阱"></a>4.5 来自内核空间的陷阱</h3><p>Xv6根据当前执行的是用户代码还是内核代码，以不同的方式配置CPU的陷阱寄存器。</p>
-<h5 id="kernelvec执行"><a href="#kernelvec执行" class="headerlink" title="kernelvec执行"></a>kernelvec执行</h5><p>当内核在一个CPU上执行时，内核将<code>stvec</code>指向<code>kernelvec</code>处的汇编代码（<code>kernel/kernelvec.S:10</code>）。因为Xv6已经在内核中，<code>kernelvec</code>可以依赖<code>satp</code>已经被设置为内核页表，并且栈指针指向一个有效的内核栈。<code>kernelvec</code>将所有32个寄存器推入栈中，稍后会从栈中恢复它们，以便被中断的内核代码可以无缝恢复执行。</p>
+<h3 id="45-来自内核空间的陷阱"><a class="markdownIt-Anchor" href="#45-来自内核空间的陷阱"></a> 4.5 来自内核空间的陷阱</h3>
+<p>Xv6根据当前执行的是用户代码还是内核代码，以不同的方式配置CPU的陷阱寄存器。</p>
+<h5 id="kernelvec执行"><a class="markdownIt-Anchor" href="#kernelvec执行"></a> kernelvec执行</h5>
+<p>当内核在一个CPU上执行时，内核将<code>stvec</code>指向<code>kernelvec</code>处的汇编代码（<code>kernel/kernelvec.S:10</code>）。因为Xv6已经在内核中，<code>kernelvec</code>可以依赖<code>satp</code>已经被设置为内核页表，并且栈指针指向一个有效的内核栈。<code>kernelvec</code>将所有32个寄存器推入栈中，稍后会从栈中恢复它们，以便被中断的内核代码可以无缝恢复执行。</p>
 <p><code>kernelvec</code>将寄存器保存在被中断的内核线程的栈中，这是合理的，因为这些寄存器的值属于该线程。这在陷阱导致切换到不同线程时尤为重要——在这种情况下，陷阱实际上会从新线程的栈返回，而被中断线程的保存寄存器安全地留在它的栈上。</p>
-<h5 id="kerneltrap执行"><a href="#kerneltrap执行" class="headerlink" title="kerneltrap执行"></a>kerneltrap执行</h5><p>保存寄存器后，<code>kernelvec</code>跳转到<code>kerneltrap</code>（<code>kernel/trap.c:134</code>）。<code>kerneltrap</code>为两种类型的陷阱做好了准备：设备中断和异常。它调用<code>devintr</code>（<code>kernel/trap.c:177</code>）来检查并处理设备中断。如果陷阱不是设备中断，那么它必定是异常，而如果在Xv6内核中发生异常，这总是致命错误；内核会调用<code>panic</code>并停止执行。</p>
+<h5 id="kerneltrap执行"><a class="markdownIt-Anchor" href="#kerneltrap执行"></a> kerneltrap执行</h5>
+<p>保存寄存器后，<code>kernelvec</code>跳转到<code>kerneltrap</code>（<code>kernel/trap.c:134</code>）。<code>kerneltrap</code>为两种类型的陷阱做好了准备：设备中断和异常。它调用<code>devintr</code>（<code>kernel/trap.c:177</code>）来检查并处理设备中断。如果陷阱不是设备中断，那么它必定是异常，而如果在Xv6内核中发生异常，这总是致命错误；内核会调用<code>panic</code>并停止执行。</p>
 <p>如果<code>kerneltrap</code>是由于时钟中断被调用的，并且一个进程的内核线程正在运行（而不是调度线程），<code>kerneltrap</code>会调用<code>yield</code>，以便其他线程有机会运行。在某个时刻，其中一个线程会<code>yield</code>，并让我们的线程及其<code>kerneltrap</code>再次恢复执行。第7章将解释<code>yield</code>中发生了什么。</p>
-<h5 id="sret"><a href="#sret" class="headerlink" title="sret"></a>sret</h5><p>当<code>kerneltrap</code>的工作完成后，它需要返回到被陷阱中断的代码。因为<code>yield</code>可能会干扰<code>sepc</code>和<code>sstatus</code>中的前一个模式，所以<code>kerneltrap</code>在开始时保存了它们。现在它恢复这些控制寄存器并返回到<code>kernelvec</code>（<code>kernel/kernelvec.S:48</code>）。<code>kernelvec</code>从栈中弹出保存的寄存器并执行<code>sret</code>，它将<code>sepc</code>复制到<code>pc</code>，并恢复被中断的内核代码。</p>
+<h5 id="sret"><a class="markdownIt-Anchor" href="#sret"></a> sret</h5>
+<p>当<code>kerneltrap</code>的工作完成后，它需要返回到被陷阱中断的代码。因为<code>yield</code>可能会干扰<code>sepc</code>和<code>sstatus</code>中的前一个模式，所以<code>kerneltrap</code>在开始时保存了它们。现在它恢复这些控制寄存器并返回到<code>kernelvec</code>（<code>kernel/kernelvec.S:48</code>）。<code>kernelvec</code>从栈中弹出保存的寄存器并执行<code>sret</code>，它将<code>sepc</code>复制到<code>pc</code>，并恢复被中断的内核代码。</p>
 <p>值得思考的是，如果<code>kerneltrap</code>由于时钟中断调用了<code>yield</code>，陷阱返回是如何发生的。</p>
 <p><strong>要先禁用中断，然后设置stvec，不然在上下文切换操作的时候，会被设备中断打断</strong></p>
 <p>当一个CPU从用户空间进入内核时，Xv6将该CPU的<code>stvec</code>设置为<code>kernelvec</code>；你可以在<code>usertrap</code>（<code>kernel/trap.c:29</code>）中看到这一点。存在一个时间窗口，内核已经开始执行，但<code>stvec</code>仍然设置为<code>uservec</code>，在这个窗口期间，必须确保不会发生设备中断。幸运的是，RISC-V在开始处理陷阱时总是禁用中断，Xv6直到设置<code>stvec</code>后才会再次启用它们。</p>
-<h3 id="4-6-页面错误异常"><a href="#4-6-页面错误异常" class="headerlink" title="4.6 页面错误异常"></a>4.6 页面错误异常</h3><p><strong>Xv6对异常的响应相当简单：如果在用户空间发生异常，内核会杀死出错的进程；</strong></p>
+<h3 id="46-页面错误异常"><a class="markdownIt-Anchor" href="#46-页面错误异常"></a> 4.6 页面错误异常</h3>
+<p><strong>Xv6对异常的响应相当简单：如果在用户空间发生异常，内核会杀死出错的进程；</strong></p>
 <p><strong>如果在内核中发生异常，内核会进入恐慌状态。</strong></p>
 <p>真实操作系统通常会有更有趣的响应方式。</p>
-<h5 id="“写时复制”（Copy-on-Write，COW）"><a href="#“写时复制”（Copy-on-Write，COW）" class="headerlink" title="“写时复制”（Copy-on-Write，COW）"></a>“写时复制”（Copy-on-Write，COW）</h5><p>以页面错误为例，许多内核利用页面错误实现“写时复制”（Copy-on-Write，COW）的<code>fork</code>功能。</p>
+<h5 id="写时复制copy-on-writecow"><a class="markdownIt-Anchor" href="#写时复制copy-on-writecow"></a> “写时复制”（Copy-on-Write，COW）</h5>
+<p>以页面错误为例，许多内核利用页面错误实现“写时复制”（Copy-on-Write，COW）的<code>fork</code>功能。</p>
 <p><strong>写时复制，就是一种计算机的“懒惰操作”，将父子进程在一个物理地址内共享内存空间，但是这段空间被设置为仅读。一旦写入内容，就会触发panic，同时将这段内存复制到另一片物理区域上。实现父子进程的复制粘贴</strong></p>
 <p>为了说明写时复制<code>fork</code>，考虑Xv6的<code>fork</code>，它在第3章中被描述过。</p>
 <p><code>fork</code>会导致子进程的初始内存内容与父进程在<code>fork</code>时的内存内容相同。Xv6通过<code>uvmcopy</code>（<code>kernel/vm.c:301</code>）实现<code>fork</code>，它为子进程分配物理内存并将父进程的内存内容复制进去。</p>
@@ -722,11 +758,14 @@
 <p>通过合理使用页表权限和页面错误，父进程和子进程可以安全地共享物理内存。<strong>当虚拟地址在页表中没有映射，或者映射的<code>PTE_V</code>标志被清除，或者映射的权限位（<code>PTE_R</code>、<code>PTE_W</code>、<code>PTE_X</code>、<code>PTE_U</code>）禁止正在进行的操作时，CPU会触发页面错误异常。</strong></p>
 <p><strong>RISC-V区分三种类型的页面错误：</strong></p>
 <ol>
-<li><p>加载页面错误（加载指令无法翻译其虚拟地址）</p>
+<li>
+<p>加载页面错误（加载指令无法翻译其虚拟地址）</p>
 </li>
-<li><p>存储页面错误（存储指令无法翻译其虚拟地址）</p>
+<li>
+<p>存储页面错误（存储指令无法翻译其虚拟地址）</p>
 </li>
-<li><p>指令页面错误（程序计数器中的地址无法翻译）。</p>
+<li>
+<p>指令页面错误（程序计数器中的地址无法翻译）。</p>
 <p><code>scause</code>寄存器指示页面错误的类型，而<code>stval</code>寄存器包含无法翻译的地址。</p>
 </li>
 </ol>
@@ -743,18 +782,22 @@
 </blockquote>
 <p>写时复制<code>fork</code>消除了这种内存复制的需要。此外，写时复制<code>fork</code>是透明的：应用程序无需修改即可受益。</p>
 <p>页表和页面错误的结合为写时复制之外的许多有趣可能性打开了大门。</p>
-<h5 id="懒惰分配"><a href="#懒惰分配" class="headerlink" title="懒惰分配"></a>懒惰分配</h5><p>另一个广泛使用的特性是<strong>懒惰分配</strong>，它包含两部分。首先，当应用程序通过调用<code>sbrk</code>请求更多内存时，内核会记录大小的增加，但不会分配物理内存，也不会为新范围的虚拟地址创建PTE。其次，在这些新地址上的页面错误时，内核会分配一个物理页面并将其映射到页表中。与写时复制<code>fork</code>一样，内核可以对应用程序透明地实现懒惰分配。</p>
+<h5 id="懒惰分配"><a class="markdownIt-Anchor" href="#懒惰分配"></a> 懒惰分配</h5>
+<p>另一个广泛使用的特性是<strong>懒惰分配</strong>，它包含两部分。首先，当应用程序通过调用<code>sbrk</code>请求更多内存时，内核会记录大小的增加，但不会分配物理内存，也不会为新范围的虚拟地址创建PTE。其次，在这些新地址上的页面错误时，内核会分配一个物理页面并将其映射到页表中。与写时复制<code>fork</code>一样，内核可以对应用程序透明地实现懒惰分配。</p>
 <blockquote>
 <p>sbrk 是一个进程用来<strong>收缩或扩展其内存</strong>的系统调用。</p>
 </blockquote>
 <p>由于应用程序通常会请求比实际需要更多的内存，懒惰分配是一个胜利：<strong>内核完全不需要为应用程序从未使用的页面做任何工作</strong>。此外，如果应用程序请求大幅增加地址空间，那么没有懒惰分配的<code>sbrk</code>会很昂贵：如果应用程序请求1GB内存，内核需要分配并清零262,144个4096字节的页面。懒惰分配允许这种成本随时间分散。另一方面，懒惰分配会增加页面错误的额外开销，这涉及内核/用户切换。操作系统可以通过每次页面错误分配一批连续页面而不是一个页面，并为这些页面错误专门化内核入口/出口代码，从而降低这种成本。</p>
-<h5 id="按需分页"><a href="#按需分页" class="headerlink" title="按需分页"></a>按需分页</h5><h6 id="1-按需分页的背景"><a href="#1-按需分页的背景" class="headerlink" title="1. 按需分页的背景"></a><strong>1. 按需分页的背景</strong></h6><p>在传统的程序加载方式中（如Xv6的<code>exec</code>实现），操作系统会在程序启动时将应用程序的所有文本段（代码）和数据段一次性加载到物理内存中。这种方式被称为“急切加载”（Eager Loading）。然而，这种方式存在一些问题：</p>
+<h5 id="按需分页"><a class="markdownIt-Anchor" href="#按需分页"></a> 按需分页</h5>
+<h6 id="1-按需分页的背景"><a class="markdownIt-Anchor" href="#1-按需分页的背景"></a> <strong>1. 按需分页的背景</strong></h6>
+<p>在传统的程序加载方式中（如Xv6的<code>exec</code>实现），操作系统会在程序启动时将应用程序的所有文本段（代码）和数据段一次性加载到物理内存中。这种方式被称为“急切加载”（Eager Loading）。然而，这种方式存在一些问题：</p>
 <ol>
 <li><strong>启动成本高</strong>：如果应用程序较大，一次性从磁盘加载所有内容到内存会耗费大量时间，导致用户在启动程序时感受到明显的延迟。</li>
 <li><strong>资源浪费</strong>：程序可能并不需要立即使用所有加载的页面，一次性加载所有内容会占用大量内存资源。</li>
 </ol>
 <hr>
-<h6 id="2-按需分页的工作原理"><a href="#2-按需分页的工作原理" class="headerlink" title="2. 按需分页的工作原理"></a><strong>2. 按需分页的工作原理</strong></h6><p>为了优化程序加载过程，现代操作系统采用了“按需分页”技术。按需分页的核心思想是：<strong>只在真正需要时才加载页面内容</strong>。具体实现方式如下：</p>
+<h6 id="2-按需分页的工作原理"><a class="markdownIt-Anchor" href="#2-按需分页的工作原理"></a> <strong>2. 按需分页的工作原理</strong></h6>
+<p>为了优化程序加载过程，现代操作系统采用了“按需分页”技术。按需分页的核心思想是：<strong>只在真正需要时才加载页面内容</strong>。具体实现方式如下：</p>
 <p><strong>2.1 创建页表并标记PTE为无效</strong></p>
 <ol>
 <li><strong>创建页表</strong>：操作系统为用户进程创建页表，但并不立即加载所有页面的内容。</li>
@@ -768,44 +811,53 @@
 <li><strong>恢复执行</strong>：修复页面错误后，进程继续执行。</li>
 </ol>
 <hr>
-<h6 id="3-按需分页的优点"><a href="#3-按需分页的优点" class="headerlink" title="3. 按需分页的优点"></a><strong>3. 按需分页的优点</strong></h6><ol>
-<li><strong>提高响应速度</strong>：<ul>
+<h6 id="3-按需分页的优点"><a class="markdownIt-Anchor" href="#3-按需分页的优点"></a> <strong>3. 按需分页的优点</strong></h6>
+<ol>
+<li><strong>提高响应速度</strong>：
+<ul>
 <li>按需分页避免了一次性加载所有页面的开销，用户可以更快地看到程序的响应。</li>
 <li>只有当进程真正访问某个页面时，才会触发页面错误并加载内容。</li>
 </ul>
 </li>
-<li><strong>节省内存资源</strong>：<ul>
+<li><strong>节省内存资源</strong>：
+<ul>
 <li>程序可能永远不会用到某些页面，按需分页避免了不必要的内存占用。</li>
 <li>提高了内存的利用率，支持运行更多或更大的程序。</li>
 </ul>
 </li>
-<li><strong>透明性</strong>：<ul>
+<li><strong>透明性</strong>：
+<ul>
 <li>按需分页对应用程序是透明的，应用程序无需修改即可受益于这一机制。</li>
 <li>操作系统在后台处理页面错误和页面加载，应用程序无需感知这些细节。</li>
 </ul>
 </li>
 </ol>
 <hr>
-<h6 id="4-与写时复制和懒惰分配的相似性"><a href="#4-与写时复制和懒惰分配的相似性" class="headerlink" title="4. 与写时复制和懒惰分配的相似性"></a><strong>4. 与写时复制和懒惰分配的相似性</strong></h6><p>按需分页与写时复制（Copy-On-Write，COW）和懒惰分配（Lazy Allocation）有相似之处：</p>
+<h6 id="4-与写时复制和懒惰分配的相似性"><a class="markdownIt-Anchor" href="#4-与写时复制和懒惰分配的相似性"></a> <strong>4. 与写时复制和懒惰分配的相似性</strong></h6>
+<p>按需分页与写时复制（Copy-On-Write，COW）和懒惰分配（Lazy Allocation）有相似之处：</p>
 <ol>
-<li><strong>写时复制（COW）</strong>：<ul>
+<li><strong>写时复制（COW）</strong>：
+<ul>
 <li>在<code>fork</code>操作中，子进程的页面最初与父进程共享。</li>
 <li>只有当页面被写入时，操作系统才会复制页面内容。</li>
 <li>这种机制减少了<code>fork</code>操作的开销，提高了效率。</li>
 </ul>
 </li>
-<li><strong>懒惰分配（Lazy Allocation）</strong>：<ul>
+<li><strong>懒惰分配（Lazy Allocation）</strong>：
+<ul>
 <li>在内存分配时（如<code>malloc</code>），操作系统并不立即分配物理页面。</li>
 <li>只有当进程访问分配的内存时，才会触发页面错误并分配物理页面。</li>
 <li>这种机制避免了不必要的内存分配，节省了资源。</li>
 </ul>
 </li>
-<li>按需分页<ul>
+<li>按需分页
+<ul>
 <li>本质上是因为如果一开始就将所有页都进行分配，如果这是一个小程序，可能会有大量的资源浪费</li>
 </ul>
 </li>
 </ol>
-<h3 id="4-7-现实世界中的应用"><a href="#4-7-现实世界中的应用" class="headerlink" title="4.7 现实世界中的应用"></a>4.7 现实世界中的应用</h3><p>跳板（trampoline）和陷阱帧（trapframe）可能看起来过于复杂。</p>
+<h3 id="47-现实世界中的应用"><a class="markdownIt-Anchor" href="#47-现实世界中的应用"></a> 4.7 现实世界中的应用</h3>
+<p>跳板（trampoline）和陷阱帧（trapframe）可能看起来过于复杂。</p>
 <p>一个主要的推动力是RISC-V在触发陷阱时尽可能少地执行操作，以实现非常快速的陷阱处理，这实际上非常重要。</p>
 <p>因此，<strong>内核陷阱处理程序的最初几条指令实际上需要在用户环境中执行</strong>：使用用户页表和用户寄存器的内容。而且，陷阱处理程序最初并不知道一些有用的信息，例如正在运行的进程的身份或内核页表的地址。</p>
 <p>解决方案之所以可能，是因为RISC-V提供了内核可以在进入用户空间之前存储信息的受保护位置：<code>sscratch</code>寄存器以及指向内核内存但因缺少<code>PTE_U</code>而受到保护的用户页表条目。Xv6的跳板和陷阱帧利用了这些RISC-V特性。</p>
@@ -1227,7 +1279,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1447,6 +1499,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

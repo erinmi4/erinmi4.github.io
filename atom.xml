@@ -6,7 +6,7 @@
   <link href="https://erinmi4.github.io/atom.xml" rel="self"/>
   
   <link href="https://erinmi4.github.io/"/>
-  <updated>2025-03-19T16:12:57.166Z</updated>
+  <updated>2025-03-19T16:20:50.387Z</updated>
   <id>https://erinmi4.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KaTeX 数学公式测试</title>
+    <link href="https://erinmi4.github.io/2025/03/21/katex-test/"/>
+    <id>https://erinmi4.github.io/2025/03/21/katex-test/</id>
+    <published>2025-03-21T02:00:00.000Z</published>
+    <updated>2025-03-19T16:20:50.387Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="test" scheme="https://erinmi4.github.io/tags/test/"/>
+    
+    <category term="katex" scheme="https://erinmi4.github.io/tags/katex/"/>
+    
+  </entry>
   
   <entry>
     <title>矩阵与多行公式测试</title>
@@ -187,7 +212,7 @@
     <link href="https://erinmi4.github.io/2025/03/16/audio-test/"/>
     <id>https://erinmi4.github.io/2025/03/16/audio-test/</id>
     <published>2025-03-16T01:55:46.000Z</published>
-    <updated>2025-03-19T09:42:26.542Z</updated>
+    <updated>2025-03-19T15:49:18.244Z</updated>
     
     
       
@@ -326,11 +351,11 @@
   </entry>
   
   <entry>
-    <title>【MIT线性代数】【lec4】分解为a = lu</title>
-    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/"/>
-    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/</id>
+    <title>【MIT线性代数】【lec3】矩阵乘法与逆矩阵</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec3-ju-zhen-cheng-fa-yu-ni-ju-zhen/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec3-ju-zhen-cheng-fa-yu-ni-ju-zhen/</id>
     <published>2025-03-12T14:10:00.000Z</published>
-    <updated>2025-03-11T14:29:41.944Z</updated>
+    <updated>2025-03-11T14:28:19.631Z</updated>
     
     
       
@@ -357,11 +382,11 @@
   </entry>
   
   <entry>
-    <title>【MIT线性代数】【lec3】矩阵乘法与逆矩阵</title>
-    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec3-ju-zhen-cheng-fa-yu-ni-ju-zhen/"/>
-    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec3-ju-zhen-cheng-fa-yu-ni-ju-zhen/</id>
+    <title>【MIT线性代数】【lec4】分解为a = lu</title>
+    <link href="https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/"/>
+    <id>https://erinmi4.github.io/2025/03/12/mit-xian-xing-dai-shu-lec4-fen-jie-wei-a-lu/</id>
     <published>2025-03-12T14:10:00.000Z</published>
-    <updated>2025-03-11T14:28:19.631Z</updated>
+    <updated>2025-03-11T14:29:41.944Z</updated>
     
     
       
@@ -570,35 +595,6 @@
     <category term="线性代数" scheme="https://erinmi4.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     
     <category term="problem-sets" scheme="https://erinmi4.github.io/tags/problem-sets/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MIT6.006】【lec3】 集合与排序</title>
-    <link href="https://erinmi4.github.io/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/"/>
-    <id>https://erinmi4.github.io/2025/03/12/mit6.006-lec3-ji-he-yu-pai-xu/</id>
-    <published>2025-03-12T14:07:00.000Z</published>
-    <updated>2025-03-11T13:53:46.808Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构与算法" scheme="https://erinmi4.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="数据结构与算法" scheme="https://erinmi4.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="算法导论" scheme="https://erinmi4.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
-    
-    <category term="MIT6006" scheme="https://erinmi4.github.io/tags/MIT6006/"/>
     
   </entry>
   

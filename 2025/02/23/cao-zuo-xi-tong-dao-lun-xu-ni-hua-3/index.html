@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -514,9 +520,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <hr>
-<h3 id="12-关于虚拟内存的对话"><a href="#12-关于虚拟内存的对话" class="headerlink" title="12 关于虚拟内存的对话"></a>12 关于虚拟内存的对话</h3><p><strong>虚拟内存是什么</strong></p>
+<h3 id="12-关于虚拟内存的对话"><a class="markdownIt-Anchor" href="#12-关于虚拟内存的对话"></a> 12 关于虚拟内存的对话</h3>
+<p><strong>虚拟内存是什么</strong></p>
 <p>是和虚拟CPU一样的一种幻想，让进程认为自己拥有整个内存。拥有大量的连续内存。</p>
-<h3 id="第13章-抽象：地址空间"><a href="#第13章-抽象：地址空间" class="headerlink" title="第13章　抽象：地址空间"></a>第13章　抽象：地址空间</h3><blockquote>
+<h3 id="第13章-抽象地址空间"><a class="markdownIt-Anchor" href="#第13章-抽象地址空间"></a> 第13章　抽象：地址空间</h3>
+<blockquote>
 <p>我们介绍了操作系统的一个重要子系统：虚拟内存。虚拟内存系统负责为程序提供一个巨大的、稀疏的、私有的地址空间的假象，其中保存了程序的所有指令和数据。操作系统在专门硬件的帮助下，通过每一个虚拟内存的索引，将其转换为物理地址，物理内存根据获得的物理地址去获取所需的信息。操作系统会同时对许多进程执行此操作，并且确保程序之间互相不会受到影响，也不会影响操作系统。整个方法需要大量的机制（很多底层机制）和一些关键的策略。</p>
 </blockquote>
 <p><strong>在前面，我们提到过——进程是指令和静态数据的组合，并且需要初始化堆栈，那么为什么进程需要使用内存呢</strong></p>
@@ -528,18 +536,20 @@
 <p>所以我们要提供一层抽象，让其他进程并不知道自己的地址空间。</p>
 <p>也就是<strong>隔离</strong></p>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224140627157.png" alt="共享内存" style="zoom:50%;">
-
-<h4 id="地址空间"><a href="#地址空间" class="headerlink" title="地址空间"></a>地址空间</h4><p>一个进程的地址空间包含运行的程序的所有内存状态。</p>
+<h4 id="地址空间"><a class="markdownIt-Anchor" href="#地址空间"></a> 地址空间</h4>
+<p>一个进程的地址空间包含运行的程序的所有内存状态。</p>
 <p>程序的代码（code，指令）必须在内存中，因此它们在地址空间里。当程序在运行的时候，利用栈（stack）来保存当前的函数调用信息，分配空间给局部变量，传递参数和函数返回值。最后，堆（heap）用于管理动态分配的、用户管理的内存</p>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224140702713.png" alt="地址空间的例子" style="zoom:50%;">
-
-<h4 id="内存虚拟化的目标"><a href="#内存虚拟化的目标" class="headerlink" title="内存虚拟化的目标"></a>内存虚拟化的目标</h4><ol>
+<h4 id="内存虚拟化的目标"><a class="markdownIt-Anchor" href="#内存虚拟化的目标"></a> 内存虚拟化的目标</h4>
+<ol>
 <li>透明：让每个程序都认为自己有大量的连续地址空间，从而实现内存复用。</li>
 <li>隔离：操作系统应确保进程受到保护（protect），不会受其他进程影响，操作系统本身也不会受进程影响。当一个进程执行加载、存储或指令提取时，它不应该以任何方式访问或影响任何其他进程或操作系统本身的内存内容（即在它的地址空间之外的任何内容）。</li>
 <li>效率（efficiency）。操作系统应该追求虚拟化尽可能高效（efficient），包括时间上（即不会使程序运行得更慢）和空间上（即不需要太多额外的内存来支持虚拟化）。</li>
 </ol>
-<h3 id="第14章：内存操作API"><a href="#第14章：内存操作API" class="headerlink" title="第14章：内存操作API"></a>第14章：内存操作API</h3><p>简单的C语言内存操作</p>
-<h3 id="第15章：-机制-地址转换"><a href="#第15章：-机制-地址转换" class="headerlink" title="第15章： 机制-地址转换"></a>第15章： 机制-地址转换</h3><p>在虚拟CPU中，我们采用受限直接访问的思路（也就是只在需要高级权限的地方使用内核模式，绝大部分时候依靠用户空间执行指令）</p>
+<h3 id="第14章内存操作api"><a class="markdownIt-Anchor" href="#第14章内存操作api"></a> 第14章：内存操作API</h3>
+<p>简单的C语言内存操作</p>
+<h3 id="第15章-机制-地址转换"><a class="markdownIt-Anchor" href="#第15章-机制-地址转换"></a> 第15章： 机制-地址转换</h3>
+<p>在虚拟CPU中，我们采用受限直接访问的思路（也就是只在需要高级权限的地方使用内核模式，绝大部分时候依靠用户空间执行指令）</p>
 <p>同样，为了高效实现地址转换，我们希望提高更多的灵活性</p>
 <p>我们的设计目标</p>
 <ul>
@@ -549,16 +559,16 @@
 <p>对于每个进程来说，自己都是从0地址开始。</p>
 <p>但是哪来那么多初始地址，所以，每个进程都产生了一种幻觉。</p>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224173657850.png" alt="进程理想地址空间" style="zoom:33%;">
-
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224173552264.png" alt="地址重定位模型" style="zoom:50%;">
-
-<h4 id="动态（基于硬件）重定位"><a href="#动态（基于硬件）重定位" class="headerlink" title="动态（基于硬件）重定位"></a>动态（基于硬件）重定位</h4><p>CPU通过两个硬件寄存器：<strong>基址寄存器</strong>和<strong>界限寄存器</strong>。让我们能够将地址空间放在物理内存的任何位置，同时又能确保进程只能访问自己的地址空间。</p>
+<h4 id="动态基于硬件重定位"><a class="markdownIt-Anchor" href="#动态基于硬件重定位"></a> 动态（基于硬件）重定位</h4>
+<p>CPU通过两个硬件寄存器：<strong>基址寄存器</strong>和<strong>界限寄存器</strong>。让我们能够将地址空间放在物理内存的任何位置，同时又能确保进程只能访问自己的地址空间。</p>
 <p>一句话：</p>
 <p><strong>虚拟寄存器加上基址就得到了实际地址，然后通过界限寄存器判断有没有越位</strong></p>
 <p>转换示例为了更好地理解基址加界限的地址转换的详细过程，我们来看一个例子。设想一个进程拥有4KB大小地址空间（是的，小得不切实际），它被加载到从16KB开始的物理内存中。一些地址转换结果见表15.1。</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224173945046.png" alt="转换示例"></p>
 <p>从例子中可以看到，通过基址加虚拟地址（可以看作是地址空间的偏移量）的方式，很容易得到物理地址。虚拟地址“过大”或者为负数时，会导致异常。</p>
-<h4 id="操作系统的问题"><a href="#操作系统的问题" class="headerlink" title="操作系统的问题"></a>操作系统的问题</h4><p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174629898.png" alt="操作系统职责"></p>
+<h4 id="操作系统的问题"><a class="markdownIt-Anchor" href="#操作系统的问题"></a> 操作系统的问题</h4>
+<p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174629898.png" alt="操作系统职责"></p>
 <blockquote>
 <p>第一，在进程创建时，操作系统必须采取行动，为进程的地址空间找到内存空间。由于我们假设每个进程的地址空间小于物理内存的大小，并且大小相同，这对操作系统来说很容易。它可以把整个物理内存看作一组槽块，标记了空闲或已用。当新进程创建时，操作系统检索这个数据结构（常被称为空闲列表，free list），为新地址空间找到位置，并将其标记为已用。如果地址空间可变，那么生活就会更复杂，我们将在后续章节中讨论。</p>
 <p>我们来看一个例子。在图15.2中，操作系统将物理内存的第一个槽块分配给自己，然后将例子中的进程重定位到物理内存地址32KB。另两个槽块（16～32KB，48～64KB）空闲，因此空闲列表（free list）就包含这两个槽块。</p>
@@ -567,33 +577,37 @@
 <p>第四，操作系统必须提供异常处理程序（exception handler），或要一些调用的函数，像上面提到的那样。操作系统在启动时加载这些处理程序（通过特权命令）。例如，当一个进程试图越界访问内存时，CPU会触发异常。在这种异常产生时，操作系统必须准备采取行动。通常操作系统会做出充满敌意的反应：终止错误进程。操作系统应该尽力保护它运行的机器，因此它不会对那些企图访问非法地址或执行非法指令的进程客气。再见了，行为不端的进程，很高兴认识你。</p>
 </blockquote>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174702310.png" alt="受限直接执行协议（动态重定位）" style="zoom: 50%;">
-
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250224174721058.png" alt="image-20250224174721058" style="zoom:50%;">
-
-<h3 id="第16章：分段"><a href="#第16章：分段" class="headerlink" title="第16章：分段"></a>第16章：分段</h3><p>动态重定位存在的问题：</p>
+<h3 id="第16章分段"><a class="markdownIt-Anchor" href="#第16章分段"></a> 第16章：分段</h3>
+<p>动态重定位存在的问题：</p>
 <ol>
 <li>基址和界限寄存器限定的空间不适合大程序扩展</li>
 <li>对于小程序堆栈之间的大部分空间被浪费</li>
 </ol>
 <p>虽然有如上问题，但是动态重定位满足了我们对于进程内存的一系列要求。或许我们只需要稍加改进。</p>
-<h4 id="分段基址：基址-界限管理的泛化"><a href="#分段基址：基址-界限管理的泛化" class="headerlink" title="分段基址：基址/界限管理的泛化"></a>分段基址：基址/界限管理的泛化</h4><p>在MMU中引入不止一个基址和界限寄存器对，而是给地址空间内的每个逻辑段（segment）一对。一个段只是地址空间里的一个连续定长的区域，在典型的地址空间里有 3 个逻辑不同的段：代码、栈和堆。<strong>分段的机制使得操作系统能够将不同的段放到不同的物理内存区域</strong>，从而避免了虚拟地址空间中的未使用部分占用物理内存。</p>
+<h4 id="分段基址基址界限管理的泛化"><a class="markdownIt-Anchor" href="#分段基址基址界限管理的泛化"></a> 分段基址：基址/界限管理的泛化</h4>
+<p>在MMU中引入不止一个基址和界限寄存器对，而是给地址空间内的每个逻辑段（segment）一对。一个段只是地址空间里的一个连续定长的区域，在典型的地址空间里有 3 个逻辑不同的段：代码、栈和堆。<strong>分段的机制使得操作系统能够将不同的段放到不同的物理内存区域</strong>，从而避免了虚拟地址空间中的未使用部分占用物理内存。</p>
 <p><strong>本质上是将基址的任务给固定下来了。原本是一个进程需要一个基址寄存器来保存，现在整个地址空间被分为多个段，基址也被固定下来了。</strong></p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225225535616.png" alt="两种不同的虚拟地址方式"></p>
-<h4 id="引用哪一个段"><a href="#引用哪一个段" class="headerlink" title="引用哪一个段"></a>引用哪一个段</h4><p><strong>硬件是如何知道地址引用了哪一个段，如何知道段内的偏移量</strong></p>
+<h4 id="引用哪一个段"><a class="markdownIt-Anchor" href="#引用哪一个段"></a> 引用哪一个段</h4>
+<p><strong>硬件是如何知道地址引用了哪一个段，如何知道段内的偏移量</strong></p>
 <ul>
-<li>显式方式<ul>
+<li>显式方式
+<ul>
 <li>通过设定前几位固定，比如00为代码段。</li>
 <li>后面为偏移量，与界限比较即可</li>
 </ul>
 </li>
 </ul>
-<h4 id="支持共享"><a href="#支持共享" class="headerlink" title="支持共享"></a>支持共享</h4><p>我们要知道，操作系统的两大核心思路是隔离和通信。</p>
+<h4 id="支持共享"><a class="markdownIt-Anchor" href="#支持共享"></a> 支持共享</h4>
+<p>我们要知道，操作系统的两大核心思路是隔离和通信。</p>
 <p>隔离在前面的各种虚拟化已经得到了很好地实现。</p>
 <p>但是这是一对矛盾的存在。</p>
 <p>所以我们决定设计一部分区域为共享区。在后面我们称之为Trampline（跳板页）</p>
 <p>在这里内核空间与用户空间可以实现通信，但是不会让恶意程序将恶意内容放入内核空间。</p>
 <p>进程之间可以通信，相互交换标志位和各种信息。</p>
-<h4 id="细粒度的划分"><a href="#细粒度的划分" class="headerlink" title="细粒度的划分"></a>细粒度的划分</h4><blockquote>
+<h4 id="细粒度的划分"><a class="markdownIt-Anchor" href="#细粒度的划分"></a> 细粒度的划分</h4>
+<blockquote>
 <p>物理内存很快充满了许多空闲空间的小洞，因而很难分配给新的段，或扩大已有的段。这种问题被称为外部碎片（external fragmentation）[R69]，如图16.3（左边）所示。</p>
 </blockquote>
 <p>分段的使用，任然是一种资源的浪费。</p>
@@ -997,7 +1011,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1217,6 +1231,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

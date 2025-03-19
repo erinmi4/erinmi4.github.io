@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -479,10 +485,13 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                算法导论 - 第三讲：集合与排序一、课程介绍与主题回顾
+                                 算法导论 - 第三讲：集合与排序
+ 一、课程介绍与主题回顾
+
 讲师：Justin，6.006课程的第三位讲师。
 课程主题：围绕算法设计与分析，重点关注接口（interface）与数据结构（data structure）的区别。
-接口：定义了一组操
+
+接口：定
                             
                         </div>
                         <div class="publish-info">
@@ -535,17 +544,19 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                算法导论 - 第二讲：数据结构与动态数组一、课程介绍
+                                 算法导论 - 第二讲：数据结构与动态数组
+ 一、课程介绍
+
 课程名称：6.006 算法导论
 讲师：Erik Demaine
 主题：数据结构与动态数组
 
-二、接口与数据结构
+ 二、接口与数据结构
+
 接口（Interface）：
+
 定义了可以执行的操作。
-不涉及具体实现。
-
-
+不涉及
                             
                         </div>
                         <div class="publish-info">
@@ -598,10 +609,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                算法导论 - 第一讲：算法与计算一、课程介绍
+                                 算法导论 - 第一讲：算法与计算
+ 一、课程介绍
+
 课程名称：算法导论（Introduction to Algorithms）
 授课教师：Jason Ku（主讲），Eric Demaine 和 Justin Solomon（共同授课）
-课程目标：
+课
                             
                         </div>
                         <div class="publish-info">
@@ -717,7 +730,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -937,6 +950,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -480,12 +486,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                CPU 虚拟化相关笔记CPU 虚拟化概述
+                                 CPU 虚拟化相关笔记
+ CPU 虚拟化概述
+
+
 调度机制：使用进程间的调度来虚拟化 CPU。
 
-受限的直接执行：将整个空间划分为用户空间和内核空间，因为一个 process 控制一个 CPU，所以要限制。使用时钟中断确保控制权能回到内核手中。
 
-
+受限的直接执行：将整个空间划分为用户空间和内核空间，因为一个 process 控制一个 CPU，所以要限制。使用时钟中断确保控制权能回到内
                             
                         </div>
                         <div class="publish-info">
@@ -540,10 +548,12 @@
                         <div class="summary block-with-text">
                             
                                 
-12 关于虚拟内存的对话虚拟内存是什么
+ 12 关于虚拟内存的对话
+虚拟内存是什么
 是和虚拟CPU一样的一种幻想，让进程认为自己拥有整个内存。拥有大量的连续内存。
-第13章　抽象：地址空间
-我们介绍了操作系统的一个重要子系统：虚拟内存。虚拟内存系统负责为程序提供一个巨大的、稀疏的、
+ 第13章　抽象：地址空间
+
+我们介绍了操作系统的一个重要子系统：虚拟内存。虚拟内存系统负责为程序提供一个巨大的、
                             
                         </div>
                         <div class="publish-info">
@@ -593,7 +603,8 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                第7章　进程调度：介绍我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I/O结合到
+                                 第7章　进程调度：介绍
+我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I/O结
                             
                         </div>
                         <div class="publish-info">
@@ -644,19 +655,24 @@
                         <div class="summary block-with-text">
                             
                                 
+
 进程是什么，进程如何创建
+
 
 虚拟化如何实现——时分共享
 
+
 如何实现时分共享——上下文切换
 
+
 如何在不增加系统开销的情况下实现虚拟化？
+
 
 如何有效地运行进程，同时保留对CPU的控制？
 
 
-第三章：关于虚拟化的对话每个进程都需要使用CPU。
-
+ 第三章：关于虚拟化的对话
+每个进程都需要
                             
                         </div>
                         <div class="publish-info">
@@ -864,7 +880,9 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Speed up system calls (easy)题目一些操作系统（例如 Linux）通过在用户空间和内核之间共享一个只读区域的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映射插入页
+                                 Speed up system calls (easy)
+ 题目
+一些操作系统（例如 Linux）通过在用户空间和内核之间共享一个只读区域的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映
                             
                         </div>
                         <div class="publish-info">
@@ -920,11 +938,13 @@
                             
                                 Chapter 3 Page tables
 
-重要要点
+ 重要要点
+
 页表与内存管理：
+
 分页机制实现了虚拟地址到物理地址的转换，每个进程拥有独立的地址空间。
 页表是内存管理的关键数据结构，用于记录虚拟地址与物理地址的映射关系。
-操作系统通过页表实现内存保
+操作系统通过页表实现
                             
                         </div>
                         <div class="publish-info">
@@ -974,9 +994,11 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                System call tracing (moderate)题目系统调用跟踪（中等难度）
+                                 System call tracing (moderate)
+ 题目
+系统调用跟踪（中等难度）
 在这个任务中，你需要添加一个系统调用跟踪功能，这可能有助于你在后续实验中进行调试。你将创建一个新的跟踪系统调用，用于控制跟踪功能。
-该系统调用应接受一
+该系统调用
                             
                         </div>
                         <div class="publish-info">
@@ -1116,7 +1138,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1336,6 +1358,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

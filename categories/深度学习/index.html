@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -479,12 +485,15 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                第一部分：深度学习与计算机视觉简介1.1 课程简介
+                                 第一部分：深度学习与计算机视觉简介
+ 1.1 课程简介
+
 课程主题：MIT 6.S191《深度学习入门》课程的第二天，专注于计算机视觉。
 课程目标：探讨如何让计算机拥有视觉能力，理解并感知物理世界。
 
-1.2 视觉能力的重要性
-背景：视觉是人类最
+ 1.2 视觉能力的重要性
+
+背景：
                             
                         </div>
                         <div class="publish-info">
@@ -533,7 +542,8 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                讲座内容概述本次讲座是 MIT 6.S191 课程的第二讲，主题为深度序列建模，重点介绍循环神经网络（RNN）、Transformer 和注意力机制等概念。讲座由 Ava 指导，旨在为学生打下序列建模的基础，以便更好地理解后续关于大型语言模
+                                 讲座内容概述
+本次讲座是 MIT 6.S191 课程的第二讲，主题为深度序列建模，重点介绍循环神经网络（RNN）、Transformer 和注意力机制等概念。讲座由 Ava 指导，旨在为学生打下序列建模的基础，以便更好地理解后续关于大型语
                             
                         </div>
                         <div class="publish-info">
@@ -571,21 +581,23 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2025/03/11/cs191-lab1-part1/">
+                    <a href="/2025/03/11/cs191-lab1-part2/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="【CS191】【lab1】part1">
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="【CS191】【lab1】part2">
                             
-                            <span class="card-title">【CS191】【lab1】part1</span>
+                            <span class="card-title">【CS191】【lab1】part2</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                PyTorch 入门与音乐生成实验笔记实验目标本实验旨在通过 PyTorch 框架，学习深度学习的基本概念，包括张量操作、神经网络定义、自动微分以及简单的优化过程。实验分为多个部分，逐步深入 PyTorch 的核心功能。
-实验环境
-PyTo
+                                 基于PyTorch和RNN的音乐生成实验笔记
+ 实验目标
+本实验旨在通过构建循环神经网络（RNN），学习音乐数据中的模式，并生成新的音乐。我们将使用PyTorch框架，以ABC符号表示的爱尔兰民间音乐数据集为基础，训练模型并生成音乐。
+
+
                             
                         </div>
                         <div class="publish-info">
@@ -627,21 +639,22 @@ PyTo
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2025/03/11/cs191-lab1-part2/">
+                    <a href="/2025/03/11/cs191-lab1-part1/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="【CS191】【lab1】part2">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="【CS191】【lab1】part1">
                             
-                            <span class="card-title">【CS191】【lab1】part2</span>
+                            <span class="card-title">【CS191】【lab1】part1</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                基于PyTorch和RNN的音乐生成实验笔记实验目标本实验旨在通过构建循环神经网络（RNN），学习音乐数据中的模式，并生成新的音乐。我们将使用PyTorch框架，以ABC符号表示的爱尔兰民间音乐数据集为基础，训练模型并生成音乐。
-
-2.1 
+                                 PyTorch 入门与音乐生成实验笔记
+ 实验目标
+本实验旨在通过 PyTorch 框架，学习深度学习的基本概念，包括张量操作、神经网络定义、自动微分以及简单的优化过程。实验分为多个部分，逐步深入 PyTorch 的核心功能。
+ 实验环境
                             
                         </div>
                         <div class="publish-info">
@@ -695,11 +708,13 @@ PyTo
                         <div class="summary block-with-text">
                             
                                 
-一、课程介绍1. 课程背景
+ 一、课程介绍
+ 1. 课程背景
+
 课程名称：MIT Introduction to Deep Learning（6.S191）
 授课教师：Alexander Amini 等
 课程时间：2025 年 1 月 6 日至 1 月 10 日
-课程形式：
+课
                             
                         </div>
                         <div class="publish-info">
@@ -811,7 +826,7 @@ PyTo
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1031,6 +1046,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

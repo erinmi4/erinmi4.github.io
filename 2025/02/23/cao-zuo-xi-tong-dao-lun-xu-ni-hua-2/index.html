@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -513,8 +519,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="第7章-进程调度：介绍"><a href="#第7章-进程调度：介绍" class="headerlink" title="第7章　进程调度：介绍"></a>第7章　进程调度：介绍</h3><p>我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I/O结合到场景中，但仍未解决操作系统根本无法看到未来的问题。</p>
-<h4 id="7-1-工作负载假设"><a href="#7-1-工作负载假设" class="headerlink" title="7.1　工作负载假设"></a>7.1　工作负载假设</h4><p>或许，在一开始，我们可以认为我们的内核是无所不知的，那当然它可以采用最优化的方法来对工作进行分配。</p>
+                <h3 id="第7章-进程调度介绍"><a class="markdownIt-Anchor" href="#第7章-进程调度介绍"></a> 第7章　进程调度：介绍</h3>
+<p>我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I/O结合到场景中，但仍未解决操作系统根本无法看到未来的问题。</p>
+<h4 id="71-工作负载假设"><a class="markdownIt-Anchor" href="#71-工作负载假设"></a> 7.1　工作负载假设</h4>
+<p>或许，在一开始，我们可以认为我们的内核是无所不知的，那当然它可以采用最优化的方法来对工作进行分配。</p>
 <blockquote>
 <p>我们对操作系统中运行的进程（有时也叫工作任务）做出如下的假设：</p>
 <p>1．每一个工作运行相同的时间。</p>
@@ -523,15 +531,18 @@
 <p>4．所有的工作只是用CPU（即它们不执行IO操作）。</p>
 <p>5．每个工作的运行时间是已知的。</p>
 </blockquote>
-<h4 id="7-2-调度指标"><a href="#7-2-调度指标" class="headerlink" title="7.2　调度指标"></a>7.2　调度指标</h4><p>如果我们已经能够对工作无所不知，那么我们应该制定一个指标来确保我们优先运行什么。</p>
+<h4 id="72-调度指标"><a class="markdownIt-Anchor" href="#72-调度指标"></a> 7.2　调度指标</h4>
+<p>如果我们已经能够对工作无所不知，那么我们应该制定一个指标来确保我们优先运行什么。</p>
 <p>不妨定义： T周转时间= T完成时间−T到达时间</p>
 <ul>
-<li><p>性能指标</p>
+<li>
+<p>性能指标</p>
 <ul>
 <li>如果我们期待快速得到某个程序的结果，那最好的办法就是一直运行这个程序</li>
 </ul>
 </li>
-<li><p>公平指标</p>
+<li>
+<p>公平指标</p>
 <ul>
 <li>如果我们期待所有的程序都有同样的机会被运行，那么最好的办法就是每个都只执行固定的时间</li>
 </ul>
@@ -539,7 +550,8 @@
 <p><strong>我们开发了两种调度程序。第一种类型（SJF、STCF）优化周转时间，但对响应时间不利。第二种类型（RR）优化响应时间，但对周转时间不利。</strong></p>
 </li>
 </ul>
-<h4 id="7-3-先进先出（FIFO）"><a href="#7-3-先进先出（FIFO）" class="headerlink" title="7.3　先进先出（FIFO）"></a>7.3　先进先出（FIFO）</h4><p>我们可以实现的最基本的算法，被称为先进先出（First In First Out或FIFO）调度，有时候也称为先到先服务（First Come First Served 或FCFS）。</p>
+<h4 id="73-先进先出fifo"><a class="markdownIt-Anchor" href="#73-先进先出fifo"></a> 7.3　先进先出（FIFO）</h4>
+<p>我们可以实现的最基本的算法，被称为先进先出（First In First Out或FIFO）调度，有时候也称为先到先服务（First Come First Served 或FCFS）。</p>
 <p>在假设中我们认为</p>
 <p>1．每一个工作运行相同的时间。</p>
 <p>如果现在有3个10s的程序同时到来，那么平均的周转时间就是 = (10 + 20 + 30) / 3 = 20s</p>
@@ -550,8 +562,10 @@
 <blockquote>
 <p>这个问题通常被称为护航效应（convoy effect）[B+79]，一些耗时较少的潜在资源消费者被排在重量级的资源消费者之后。这个调度方案可能让你想起在杂货店只有一个排队队伍的时候，如果看到前面的人装满 3 辆购物车食品并且掏出了支票本，你感觉如何？这会等很长时间[2]。提示：SJF原则最短任务优先代表一个总体调度原则，可以应用于所有系统，只要其中平均客户（或在我们案例中的任务）周转时间很重要。想想你等待的任何队伍：如果有关的机构关心客户满意度，他们可能会考虑到SJF。例如，大超市通常都有一个“零散购物”的通道，以确保仅购买几件东西的购物者，不会堵在为即将到来的冬天而大量购物以做准备的家庭后面。</p>
 </blockquote>
-<h4 id="7-4-最短任务优先（SJF）"><a href="#7-4-最短任务优先（SJF）" class="headerlink" title="7.4　最短任务优先（SJF）"></a>7.4　最短任务优先（SJF）</h4><p>先运行最短的任务，然后是次短的任务，如此下去。</p>
-<h4 id="7-5-最短完成时间优先（STCF）"><a href="#7-5-最短完成时间优先（STCF）" class="headerlink" title="7.5　最短完成时间优先（STCF）"></a>7.5　最短完成时间优先（STCF）</h4><p>现在我们要推翻假设2，如果所有程序不是同时到来，而是随机来到呢</p>
+<h4 id="74-最短任务优先sjf"><a class="markdownIt-Anchor" href="#74-最短任务优先sjf"></a> 7.4　最短任务优先（SJF）</h4>
+<p>先运行最短的任务，然后是次短的任务，如此下去。</p>
+<h4 id="75-最短完成时间优先stcf"><a class="markdownIt-Anchor" href="#75-最短完成时间优先stcf"></a> 7.5　最短完成时间优先（STCF）</h4>
+<p>现在我们要推翻假设2，如果所有程序不是同时到来，而是随机来到呢</p>
 <p>如果现在执行时间最长的任务最先来，执行最短的任务最后来。</p>
 <p>不就又形成了护航效应吗？</p>
 <p>我们通过抢占式操作来优化这个问题。</p>
@@ -562,25 +576,29 @@
 <li>将最短时间任务抢占执行</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223095834536.png" alt="STCF抢占执行"></p>
-<h4 id="7-6-新度量指标：响应时间"><a href="#7-6-新度量指标：响应时间" class="headerlink" title="7.6　新度量指标：响应时间"></a>7.6　新度量指标：响应时间</h4><blockquote>
+<h4 id="76-新度量指标响应时间"><a class="markdownIt-Anchor" href="#76-新度量指标响应时间"></a> 7.6　新度量指标：响应时间</h4>
+<blockquote>
 <p>因此，如果我们知道任务长度，而且任务只使用CPU，而我们唯一的衡量是周转时间，STCF将是一个很好的策略。事实上，对于许多早期批处理系统，这些类型的调度算法有一定的意义。然而，引入分时系统改变了这一切。现在，用户将会坐在终端前面，同时也要求系统的交互性好。因此，一个新的度量标准诞生了：响应时间（response time）。响应时间定义为从任务到达系统到首次运行的时间。更正式的定义是：</p>
 <p>T响应时间= T首次运行−T到达时间　　　　（7.2）</p>
 </blockquote>
 <p>例如，如果我们有上面的调度（A在时间0到达，B和C在时间10达到），每个作业的响应时间如下：作业A为0，B为0，C为10（平均：3.33）。</p>
 <p><strong>如何构建对响应时间敏感的调度程序？</strong></p>
-<h4 id="7-7轮转RR"><a href="#7-7轮转RR" class="headerlink" title="7.7轮转RR"></a>7.7轮转RR</h4><blockquote>
+<h4 id="77轮转rr"><a class="markdownIt-Anchor" href="#77轮转rr"></a> 7.7轮转RR</h4>
+<blockquote>
 <p>RR在一个时间片（time slice，有时称为调度量子，scheduling quantum）内运行一个工作，然后切换到运行队列中的下一个任务，而不是运行一个任务直到结束。它反复执行，直到所有任务完成。因此，RR有时被称为时间切片（time-slicing）。请注意，时间片长度必须是时钟中断周期的倍数。因此，如果时钟中断是每10ms中断一次，则时间片可以是10ms、20ms或10ms的任何其他倍数。</p>
 </blockquote>
 <p>这是一种极为公平的策略。同时每一项的响应时间都是比较快的。<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223100451678.png" alt="轮转RR"></p>
 <p>时间片越小，效应时间越快。</p>
 <p>但是时间片越小，上下文切换的成本就越大。</p>
 <p>要衡量这一对矛盾</p>
-<h4 id="7-8-结合I-O"><a href="#7-8-结合I-O" class="headerlink" title="7.8　结合I/O"></a>7.8　结合I/O</h4><p>和我们前面学习的<strong>进程状态</strong>一样。</p>
+<h4 id="78-结合io"><a class="markdownIt-Anchor" href="#78-结合io"></a> 7.8　结合I/O</h4>
+<p>和我们前面学习的<strong>进程状态</strong>一样。</p>
 <p>当程序申请I/O时候，该程序会被阻塞，也就不会使用CPU。</p>
 <p>如果这时候CPU不执行任何程序，也就会造成资源的浪费。</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223101007186.png" alt="I/O期间不执行程序"></p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225232115586.png" alt="image-20250225232115586"></p>
-<h3 id="第8章-调度：多级反馈队列"><a href="#第8章-调度：多级反馈队列" class="headerlink" title="第8章　调度：多级反馈队列"></a>第8章　调度：多级反馈队列</h3><p>本章介绍了一种调度方式，名为多级反馈队列（MLFQ）。你应该已经知道它为什么叫这个名字——它有多级队列，并利用反馈信息决定某个工作的优先级。以史为鉴：关注进程的一贯表现，然后区别对待</p>
+<h3 id="第8章-调度多级反馈队列"><a class="markdownIt-Anchor" href="#第8章-调度多级反馈队列"></a> 第8章　调度：多级反馈队列</h3>
+<p>本章介绍了一种调度方式，名为多级反馈队列（MLFQ）。你应该已经知道它为什么叫这个名字——它有多级队列，并利用反馈信息决定某个工作的优先级。以史为鉴：关注进程的一贯表现，然后区别对待</p>
 <p>本章包含了一组优化的MLFQ规则。为了方便查阅，我们重新列在这里。</p>
 <p>● 规则1：如果A的优先级 &gt; B的优先级，运行A（不运行B）。</p>
 <p>● 规则2：如果A的优先级 = B的优先级，轮转运行A和B。</p>
@@ -596,7 +614,8 @@
 <blockquote>
 <p>多级反馈队列是<strong>用历史经验预测未来</strong>的一个典型的例子，操作系统中有很多地方采用了这种技术（同样存在于计算机科学领域的很多其他地方，比如硬件的分支预测及缓存算法）。如果工作有明显的阶段性行为，因此可以预测，那么这种方式会很有效。当然，必须十分小心地使用这种技术，因为它可能出错，让系统做出比一无所知的时候更糟的决定。</p>
 </blockquote>
-<h4 id="8-1-MLFQ：基本规则"><a href="#8-1-MLFQ：基本规则" class="headerlink" title="8.1　MLFQ：基本规则"></a>8.1　MLFQ：基本规则</h4><p>我们知道SJF的优势在于周转时间，因为它存在优先级抢占</p>
+<h4 id="81-mlfq基本规则"><a class="markdownIt-Anchor" href="#81-mlfq基本规则"></a> 8.1　MLFQ：基本规则</h4>
+<p>我们知道SJF的优势在于周转时间，因为它存在优先级抢占</p>
 <p>而RR的优势在于响应时间，因为它最为平等。</p>
 <p>我们通过引入队列来将二者的优点结合起来</p>
 <p>MLFQ中有许多独立的队列（queue），每个队列有不同的优先级（priority level）。任何时刻，一个工作只能存在于一个队列中。MLFQ总是优先执行较高优先级的工作（即在较高级队列中的工作）。</p>
@@ -605,8 +624,8 @@
 <li>规则2：如果A的优先级 = B的优先级，轮转运行A和B。</li>
 </ul>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223101825161.png" alt="MLFQ的例子" style="zoom:50%;">
-
-<h4 id="8-2-尝试1：如何改变优先级"><a href="#8-2-尝试1：如何改变优先级" class="headerlink" title="8.2　尝试1：如何改变优先级"></a>8.2　尝试1：如何改变优先级</h4><p>总的来说，对于策略调度，我们有两个大的方向</p>
+<h4 id="82-尝试1如何改变优先级"><a class="markdownIt-Anchor" href="#82-尝试1如何改变优先级"></a> 8.2　尝试1：如何改变优先级</h4>
+<p>总的来说，对于策略调度，我们有两个大的方向</p>
 <ol>
 <li>将运行时间长的长任务放到低优先级</li>
 <li>将运行时间短，特别是经常I/O操作的交互型任务（读取键盘输入）放到优先级高</li>
@@ -619,19 +638,18 @@
 <p>● 规则4b：如果工作在其时间片以内主动释放CPU，则优先级不变。</p>
 </blockquote>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223102410970.png" alt="image-20250223102410970" style="zoom:50%;">
-
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223102427146.png" alt="image-20250223102427146" style="zoom:50%;">
-
-<h4 id="8-3-尝试2：提升优先级"><a href="#8-3-尝试2：提升优先级" class="headerlink" title="8.3　尝试2：提升优先级"></a>8.3　尝试2：提升优先级</h4><p><strong>饥饿问题</strong>：如果现在最高优先级内全部都是交互型任务，按照MLFQ，会一直被卡在优先级高处，而优先级低的任务一直无法运行。</p>
+<h4 id="83-尝试2提升优先级"><a class="markdownIt-Anchor" href="#83-尝试2提升优先级"></a> 8.3　尝试2：提升优先级</h4>
+<p><strong>饥饿问题</strong>：如果现在最高优先级内全部都是交互型任务，按照MLFQ，会一直被卡在优先级高处，而优先级低的任务一直无法运行。</p>
 <p>● 规则5：经过一段时间S，就将系统中所有工作重新加入最高优先级队列</p>
 <blockquote>
 <p>首先，进程不会饿死——在最高优先级队列中，它会以轮转的方式，与其他高优先级工作分享CPU，从而最终获得执行。其次，如果一个CPU密集型工作变成了交互型，当它优先级提升时，调度程序会正确对待它。</p>
 </blockquote>
 <p>这样才会让长时间程序得到执行机会</p>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223102944438.png" alt="image-20250223102944438" style="zoom:50%;">
-
 <p>但是这个优先级提升的时间要设置得较为合理</p>
-<h4 id="8-4-尝试3：更好的计时方式"><a href="#8-4-尝试3：更好的计时方式" class="headerlink" title="8.4　尝试3：更好的计时方式"></a>8.4　尝试3：更好的计时方式</h4><blockquote>
+<h4 id="84-尝试3更好的计时方式"><a class="markdownIt-Anchor" href="#84-尝试3更好的计时方式"></a> 8.4　尝试3：更好的计时方式</h4>
+<blockquote>
 <p>现在还有一个问题要解决：如何阻止调度程序被愚弄？可以看出，这里的元凶是规则4a和4b，导致工作在时间片以内释放CPU，就保留它的优先级。那么应该怎么做？这里的解决方案，是为MLFQ的每层队列提供更完善的CPU计时方式（accounting）。调度程序应该记录一个进程在某一层中消耗的总时间，而不是在调度时重新计时。只要进程用完了自己的配额，就将它降到低一优先级的队列中去。不论它是一次用完的，还是拆成很多次用完。</p>
 <p>因此，我们重写规则4a和4b。</p>
 <p>● 规则4：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次CPU），就降低其优先级（移入低一级队列）。</p>
@@ -639,7 +657,8 @@
 <p>可能有一些问题，执行时间很长，但是同时又会设置I/O</p>
 <p>所以需要同时判断两个指标</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223103608843.png" alt="image-20250223103608843"></p>
-<h3 id="第9章-调度：比例份额"><a href="#第9章-调度：比例份额" class="headerlink" title="第9章　调度：比例份额"></a>第9章　调度：比例份额</h3><p>本章介绍了比例份额调度的概念，并简单讨论了两种实现：彩票调度和步长调度。</p>
+<h3 id="第9章-调度比例份额"><a class="markdownIt-Anchor" href="#第9章-调度比例份额"></a> 第9章　调度：比例份额</h3>
+<p>本章介绍了比例份额调度的概念，并简单讨论了两种实现：彩票调度和步长调度。</p>
 <p>彩票调度通过随机值，聪明地做到了按比例分配。</p>
 <p>步长调度算法能够确定的获得需要的比例。</p>
 <p>虽然两者都很有趣，但由于一些原因，并没有作为CPU调度程序被广泛使用。一个原因是这两种方式都不能很好地适合I/O[AC97]；另一个原因是其中最难的票数分配问题并没有确定的解决方式，例如，如何知道浏览器进程应该拥有多少票数？通用调度程序（像前面讨论的MLFQ及其他类似的Linux调度程序）做得更好，因此得到了广泛的应用。</p>
@@ -647,36 +666,46 @@
 <p>比例份额算法基于一个简单的想法：调度程序的最终目标，是确保每个工作获得一定比例的CPU时间，而不是优化周转时间和响应时间。</p>
 <p>比例份额调度程序有一个非常优秀的现代例子，由Waldspurger和Weihl发现，名为彩票调度（lottery scheduling） [WW94]。但这个想法其实出现得更早[KL88]。基本思想很简单：每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。很简单吧？现在，谈谈细节！但还是先看看下面的关键问题。</p>
 </blockquote>
-<p><strong>为什么我们需要彩票机制</strong><br>我们希望可以通过一种随机性来执行某个进程，并且这种随机性会受到进程调用的次数影响。也就是更为频繁调用的进程会得到更多的彩票。</p>
+<p><strong>为什么我们需要彩票机制</strong><br>
+我们希望可以通过一种随机性来执行某个进程，并且这种随机性会受到进程调用的次数影响。也就是更为频繁调用的进程会得到更多的彩票。</p>
 <p><strong>为什么我们需要随机性</strong></p>
 <ul>
-<li><p>没有特殊情况，比如哪个程序更为重要执行哪一个，一切都是随机性。</p>
+<li>
+<p>没有特殊情况，比如哪个程序更为重要执行哪一个，一切都是随机性。</p>
 </li>
-<li><p>不需要通过过往的历史（不需要记录状态）来判断将来要如何分配资源（这样会占用资源）</p>
+<li>
+<p>不需要通过过往的历史（不需要记录状态）来判断将来要如何分配资源（这样会占用资源）</p>
 </li>
 </ul>
-<h4 id="彩票调度"><a href="#彩票调度" class="headerlink" title="彩票调度"></a>彩票调度</h4><p>基本思想很简单：每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。</p>
-<h5 id="彩票机制"><a href="#彩票机制" class="headerlink" title="彩票机制"></a>彩票机制</h5><ol>
+<h4 id="彩票调度"><a class="markdownIt-Anchor" href="#彩票调度"></a> 彩票调度</h4>
+<p>基本思想很简单：每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。</p>
+<h5 id="彩票机制"><a class="markdownIt-Anchor" href="#彩票机制"></a> 彩票机制</h5>
+<ol>
 <li>彩票货币：可以让用户自己设定，虽然资源是100，但是用户可以设定一共有500张彩票（或者更多）然后分配，只是计算占比而已</li>
 <li>彩票转让：比如客户端希望服务器能够更快返回结果，就转让彩票</li>
 <li>彩票通胀：如果进程认为自己相当重要（或者不重要）可以直接加减自身的彩票</li>
 </ol>
-<h5 id="彩票调度如何实现"><a href="#彩票调度如何实现" class="headerlink" title="彩票调度如何实现"></a>彩票调度如何实现</h5><p>出人意料地简单。通过一个链表就可以。</p>
+<h5 id="彩票调度如何实现"><a class="markdownIt-Anchor" href="#彩票调度如何实现"></a> 彩票调度如何实现</h5>
+<p>出人意料地简单。通过一个链表就可以。</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225232142747.png" alt="image-20250225232142747"></p>
 <p>首先要从彩票总数400中选择一个随机数（中奖号码）。假设选择了300。然后，遍历链表，用一个简单的计数器帮助我们找到中奖者将每张票的值加到counter上，直到值超过winner。这时，当前的列表元素所对应的进程就是中奖者。在我们的例子中，中奖彩票是300。首先，计A的票后，counter增加到100。因为100小于300，继续遍历。然后counter会增加到150（B的彩票），仍然小于300，继续遍历。最后，counter增加到400（显然大于300），因此退出遍历，current指向C（中奖者）。</p>
 <p><strong>但是彩票机制存在一个非常重要的问题，对于绝大多数的进程，我们并不知道它的执行时间，更不用说该如何分配彩票了</strong></p>
-<h4 id="步长调度"><a href="#步长调度" class="headerlink" title="步长调度"></a>步长调度</h4><blockquote>
+<h4 id="步长调度"><a class="markdownIt-Anchor" href="#步长调度"></a> 步长调度</h4>
+<blockquote>
 <p>步长调度也很简单。系统中的每个工作都有自己的步长，这个值与票数值成反比。在上面的例子中，A、B、C这3个工作的票数分别是100、50和250，我们通过用一个大数分别除以他们的票数来获得每个进程的步长。比如用10000除以这些票数值，得到了3个进程的步长分别为100、200和40。我们称这个值为每个进程的步长（stride）。每次进程运行后，我们会让它的计数器 [称为行程（pass）值] 增加它的步长，记录它的总体进展。之后，调度程序使用进程的步长及行程值来确定调度哪个进程。基本思路很简单：当需要进行调度时，选择目前拥有最小行程值的进程，并且在运行之后将该进程的行程值增加一个步长。</p>
 </blockquote>
 <p>每次运行行程最短的。</p>
 <p>这样可以维持一定的<strong>公平性</strong></p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223183524042.png" alt="步长调度"></p>
-<h3 id="第10章：多处理器调度"><a href="#第10章：多处理器调度" class="headerlink" title="第10章：多处理器调度"></a>第10章：多处理器调度</h3><h4 id="多核处理器和单核处理器"><a href="#多核处理器和单核处理器" class="headerlink" title="多核处理器和单核处理器"></a>多核处理器和单核处理器</h4><p><strong>为什么我们需要多核（CPU）处理器</strong></p>
+<h3 id="第10章多处理器调度"><a class="markdownIt-Anchor" href="#第10章多处理器调度"></a> 第10章：多处理器调度</h3>
+<h4 id="多核处理器和单核处理器"><a class="markdownIt-Anchor" href="#多核处理器和单核处理器"></a> 多核处理器和单核处理器</h4>
+<p><strong>为什么我们需要多核（CPU）处理器</strong></p>
 <p>因为当我们提升单核处理器的速度的同时，能耗也在不断上升。甚至已经称为了一个不得不考虑的问题。</p>
 <p>采用多核是解决矛盾的一种方式。</p>
 <p><strong>多核处理器的问题</strong></p>
 <ul>
-<li>正如我们的进程一样，一个进程只能在一个CPU上运行。如果我们有两个进程，和两个CPU，一个快，一个慢。那么会造成一块CPU的资源浪费<ul>
+<li>正如我们的进程一样，一个进程只能在一个CPU上运行。如果我们有两个进程，和两个CPU，一个快，一个慢。那么会造成一块CPU的资源浪费
+<ul>
 <li>所以，我们引入<strong>线程</strong></li>
 </ul>
 </li>
@@ -689,7 +718,8 @@
 <p>缓存本质上是一个小的内存，是内存与CPU之间的桥梁。</p>
 <p>利用了时间局部性和空间局部性的结果。</p>
 </blockquote>
-<h4 id="多核处理器的数据访问"><a href="#多核处理器的数据访问" class="headerlink" title="多核处理器的数据访问"></a>多核处理器的数据访问</h4><p><strong>如何实现跨CPU访问</strong></p>
+<h4 id="多核处理器的数据访问"><a class="markdownIt-Anchor" href="#多核处理器的数据访问"></a> 多核处理器的数据访问</h4>
+<p><strong>如何实现跨CPU访问</strong></p>
 <ol>
 <li>使用总线监控数据，如果存在变动，会通知</li>
 <li>使用<strong>互斥锁</strong>来实现原子操作</li>
@@ -698,19 +728,23 @@
 <p>但是这些数据在上下文切换的时候，都是保存在一个CPU上的。</p>
 <p>如果我们使用多线程，下一个线程是在另一个CPU上，怎么办</p>
 <p>所以我们尽可能分配在同一个CPU上，也就是<strong>缓存亲和性</strong></p>
-<h4 id="多核处理器的任务调度"><a href="#多核处理器的任务调度" class="headerlink" title="多核处理器的任务调度"></a>多核处理器的任务调度</h4><h4 id="单读列调度"><a href="#单读列调度" class="headerlink" title="单读列调度"></a>单读列调度</h4><p>对于多个（可能是4个）CPU，只有一个队列，每次将任务添加进来，然后随机地（或者有规律）地将任务分配给每个CPU</p>
+<h4 id="多核处理器的任务调度"><a class="markdownIt-Anchor" href="#多核处理器的任务调度"></a> 多核处理器的任务调度</h4>
+<h4 id="单读列调度"><a class="markdownIt-Anchor" href="#单读列调度"></a> 单读列调度</h4>
+<p>对于多个（可能是4个）CPU，只有一个队列，每次将任务添加进来，然后随机地（或者有规律）地将任务分配给每个CPU</p>
 <p>问题</p>
 <p>因为是一个队列分配给多个CPU，也就是，统一任务在不同时间可能会在不同CPU上执行。</p>
 <ol>
 <li>锁：总是要去判断锁，开关锁</li>
-<li>缓存亲和问题.<ol>
+<li>缓存亲和问题.
+<ol>
 <li>为了解决这个问题，大多数SQMS调度程序都引入了一些亲和度机制，尽可能让进程在同一个CPU上运行。保持一些工作的亲和度的同时，可能需要牺牲其他工作的亲和度来实现负载均衡。例如，针对同样的5个工作的调度如下：</li>
 <li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250223203628170.png" alt="亲和度机制"></li>
 <li>这种调度中，A、B、C、D 这4个工作都保持在同一个CPU上，只有工作E不断地来回迁移（migrating），从而尽可能多地获得缓存亲和度。为了公平起见，之后我们可以选择不同的工作来迁移。但实现这种策略可能很复杂。</li>
 </ol>
 </li>
 </ol>
-<h4 id="多队列调度"><a href="#多队列调度" class="headerlink" title="多队列调度"></a>多队列调度</h4><p>每个CPU都有独立的队列和调度策略。</p>
+<h4 id="多队列调度"><a class="markdownIt-Anchor" href="#多队列调度"></a> 多队列调度</h4>
+<p>每个CPU都有独立的队列和调度策略。</p>
 <p>问题：</p>
 <p>即<strong>负载不均</strong>（load imbalance）。假定和上面设定一样（4个工作，2个CPU），但假设一个工作（如C）这时执行完毕。现在调度队列如下：</p>
 <p><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250225232211193.png" alt="image-20250225232211193"></p>
@@ -1129,7 +1163,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1349,6 +1383,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

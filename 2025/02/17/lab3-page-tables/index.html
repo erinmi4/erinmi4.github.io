@@ -32,11 +32,17 @@
     <!-- 添加思维导图支持 -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
     
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
     
         
     
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
@@ -517,7 +523,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Speed-up-system-calls-easy"><a href="#Speed-up-system-calls-easy" class="headerlink" title="Speed up system calls (easy)"></a>Speed up system calls (<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.S081/2021/labs/guidance.html">easy</a>)</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>一些操作系统（例如 Linux）通过在<strong>用户空间和内核之间共享一个只读区域</strong>的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映射插入页表，你的第一个任务是在 xv6 中为 <code>getpid()</code> 系统调用实现这种优化。</p>
+                <h2 id="speed-up-system-calls-easy"><a class="markdownIt-Anchor" href="#speed-up-system-calls-easy"></a> Speed up system calls (<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.S081/2021/labs/guidance.html">easy</a>)</h2>
+<h4 id="题目"><a class="markdownIt-Anchor" href="#题目"></a> 题目</h4>
+<p>一些操作系统（例如 Linux）通过在<strong>用户空间和内核之间共享一个只读区域</strong>的数据来加速某些系统调用。这消除了在执行这些系统调用时需要跨越内核边界的需要。为了帮助你学习如何将映射插入页表，你的第一个任务是在 xv6 中为 <code>getpid()</code> 系统调用实现这种优化。</p>
 <p>当每个进程被创建时，在 <strong>USYSCALL（在 memlayout.h 中定义的一个虚拟地址）处映射一个只读页面</strong>。在该页面的<strong>起始位置</strong>存储一个 struct usyscall（也在 memlayout.h 中定义），并将其初始化为存储当前进程的 PID。在本实验中，用户空间一侧已经提供了 ugetpid()，它将自动使用 USYSCALL 映射。如果在运行 pgtbltest 时 ugetpid 测试用例通过，你将获得这部分实验的全部分数。</p>
 <p>以下是一些提示：</p>
 <ul>
@@ -527,83 +535,83 @@
 <li>不要忘记在 <code>allocproc()</code> 中分配和初始化该页面。</li>
 <li>确保在 <code>freeproc()</code> 中释放该页面。</li>
 </ul>
-<p><strong>思考问题：</strong><br>xv6 中还有哪些其他系统调用可以通过这种共享页面的方式加速？解释如何实现。</p>
+<p><strong>思考问题：</strong><br>
+xv6 中还有哪些其他系统调用可以通过这种共享页面的方式加速？解释如何实现。</p>
 <img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/image-20250219155648287.png" alt="syscall在" style="zoom:67%;">
-
-<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ul>
+<h4 id="思考"><a class="markdownIt-Anchor" href="#思考"></a> 思考</h4>
+<ul>
 <li>因为每个进程都需要存储一个usyscall，所以我们应该在<code>proc.h</code>，在结构体上加入。</li>
 </ul>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Per-process state</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc</span> {</span></span><br><span class="line">  <span class="type">pagetable_t</span> pagetable;       <span class="comment">// User page table</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">trapframe</span> *<span class="title">trapframe</span>;</span> <span class="comment">// data page for trampoline.S</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">usyscall</span> *<span class="title">usyscall</span>;</span>   <span class="comment">// 指向用户态系统调用页面的指针</span></span><br><span class="line">};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
 <ul>
 <li>使用mappages来实现页面映射</li>
 </ul>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// map 一个只读页面USYSCALL</span></span><br><span class="line">  <span class="keyword">if</span>(mappages(pagetable, USYSCALL, PGSIZE,</span><br><span class="line">              (uint64)(p-&gt;usyscall), PTE_R | PTE_U) &lt; <span class="number">0</span>){</span><br><span class="line">    uvmunmap(pagetable, TRAMPOLINE, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    uvmunmap(pagetable, TRAPFRAME, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    uvmfree(pagetable, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">mappages(<span class="type">pagetable_t</span> pagetable, uint64 va, uint64 size, uint64 pa, <span class="type">int</span> perm)</span><br></pre></td></tr></tbody></table></figure>
-
 <p><strong>特别注意：VA虚拟地址是定义一个位置。而pa，物理地址实际上是proc.h中定义的。</strong></p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// static struct proc* allocproc(void)</span></span><br><span class="line"><span class="keyword">if</span>((p-&gt;usyscall = (<span class="keyword">struct</span> usyscall *)kalloc()) == <span class="number">0</span>){</span><br><span class="line">  freeproc(p);</span><br><span class="line">  release(&amp;p-&gt;lock);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line">p-&gt;usyscall-&gt;pid = p-&gt;pid; <span class="comment">//store pid</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p-&gt;usyscall)</span><br><span class="line">  kfree((<span class="type">void</span>*)p-&gt;usyscall);</span><br><span class="line">p-&gt;usyscall = <span class="number">0</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-
-
-<h3 id="打印页表（简单）"><a href="#打印页表（简单）" class="headerlink" title="打印页表（简单）"></a>打印页表（简单）</h3><p>为了帮助你可视化RISC-V页表，并可能为未来的调试提供帮助，你的第二个任务是编写一个打印页表内容的函数。</p>
+<h3 id="打印页表简单"><a class="markdownIt-Anchor" href="#打印页表简单"></a> 打印页表（简单）</h3>
+<p>为了帮助你可视化RISC-V页表，并可能为未来的调试提供帮助，你的第二个任务是编写一个打印页表内容的函数。</p>
 <p>定义一个名为<code>vmprint()</code>的函数。它应该接受一个<code>pagetable_t</code>类型的参数，并按照下面描述的格式打印该页表。在<code>exec.c</code>中，在<code>return argc</code>之前插入<code>if (p-&gt;pid == 1) vmprint(p-&gt;pagetable)</code>，以打印第一个进程的页表。如果你通过了<code>make grade</code>中的<code>pte</code>打印测试，你将获得这部分实验的全部分数。</p>
-<p>现在，当你启动Xv6时，它应该会打印类似以下内容，<strong>描述第一个进程</strong>在完成<code>exec()</code>初始化时的页表：		</p>
+<p>现在，当你启动Xv6时，它应该会打印类似以下内容，<strong>描述第一个进程</strong>在完成<code>exec()</code>初始化时的页表：</p>
 <p>复制</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">page table <span class="number">0x0000000087f6e000</span></span><br><span class="line"> ..<span class="number">0</span>: pte <span class="number">0x0000000021fda801</span> pa <span class="number">0x0000000087f6a000</span></span><br><span class="line"> .. ..<span class="number">0</span>: pte <span class="number">0x0000000021fda401</span> pa <span class="number">0x0000000087f69000</span></span><br><span class="line"> .. .. ..<span class="number">0</span>: pte <span class="number">0x0000000021fdac1f</span> pa <span class="number">0x0000000087f6b000</span></span><br><span class="line"> .. .. ..<span class="number">1</span>: pte <span class="number">0x0000000021fda00f</span> pa <span class="number">0x0000000087f68000</span></span><br><span class="line"> .. .. ..<span class="number">2</span>: pte <span class="number">0x0000000021fd9c1f</span> pa <span class="number">0x0000000087f67000</span></span><br><span class="line"> ..<span class="number">255</span>: pte <span class="number">0x0000000021fdb401</span> pa <span class="number">0x0000000087f6d000</span></span><br><span class="line"> .. ..<span class="number">511</span>: pte <span class="number">0x0000000021fdb001</span> pa <span class="number">0x0000000087f6c000</span></span><br><span class="line"> .. .. ..<span class="number">509</span>: pte <span class="number">0x0000000021fdd813</span> pa <span class="number">0x0000000087f76000</span></span><br><span class="line"> .. .. ..<span class="number">510</span>: pte <span class="number">0x0000000021fddc07</span> pa <span class="number">0x0000000087f77000</span></span><br><span class="line"> .. .. ..<span class="number">511</span>: pte <span class="number">0x0000000020001c0b</span> pa <span class="number">0x0000000080007000</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>第一行显示传递给<code>vmprint</code>的参数。之后，每一行对应一个PTE（页表条目），包括引用树中更深层次的页表页面的PTE。每个PTE行通过缩进的“..”数量表示其在树中的深度。每个PTE行显示其在页表页面中的索引、PTE的位以及从PTE中提取的物理地址。不要打印无效的PTE。在上面的例子中，顶级页表页面有条目0和255的映射。条目0的下一层只有索引0被映射，而该索引0的底层有条目0、1和2被映射。</p>
+<p>第一行显示传递给<code>vmprint</code>的参数。之后，每一行对应一个PTE（页表条目），包括引用树中更深层次的页表页面的PTE。每个PTE行通过缩进的“…”数量表示其在树中的深度。每个PTE行显示其在页表页面中的索引、PTE的位以及从PTE中提取的物理地址。不要打印无效的PTE。在上面的例子中，顶级页表页面有条目0和255的映射。条目0的下一层只有索引0被映射，而该索引0的底层有条目0、1和2被映射。</p>
 <p>你的代码可能会输出与上面不同的物理地址。条目数量和虚拟地址应该是相同的。</p>
-<h4 id="一些建议："><a href="#一些建议：" class="headerlink" title="一些建议："></a>一些建议：</h4><ul>
+<h4 id="一些建议"><a class="markdownIt-Anchor" href="#一些建议"></a> 一些建议：</h4>
+<ul>
 <li>你可以将<code>vmprint()</code>放在<code>kernel/vm.c</code>中。</li>
 <li>使用<code>kernel/riscv.h</code>文件末尾的宏。</li>
 <li><code>freewalk</code>函数可能会给你一些启发。</li>
 <li>在<code>kernel/defs.h</code>中定义<code>vmprint</code>的原型，以便从<code>exec.c</code>中调用它。</li>
 <li>在<code>printf</code>调用中使用<code>%p</code>打印完整的64位十六进制PTE和地址，如示例所示。</li>
 </ul>
-<h4 id="解释vmprint的输出"><a href="#解释vmprint的输出" class="headerlink" title="解释vmprint的输出"></a>解释<code>vmprint</code>的输出</h4><p>根据文本中的图3-4解释<code>vmprint</code>的输出。页0中包含什么？页2中有什么？在用户模式下运行时，进程能否读写页1映射的内存？倒数第三页包含什么？</p>
+<h4 id="解释vmprint的输出"><a class="markdownIt-Anchor" href="#解释vmprint的输出"></a> 解释<code>vmprint</code>的输出</h4>
+<p>根据文本中的图3-4解释<code>vmprint</code>的输出。页0中包含什么？页2中有什么？在用户模式下运行时，进程能否读写页1映射的内存？倒数第三页包含什么？</p>
 <hr>
-<h4 id="解释示例输出"><a href="#解释示例输出" class="headerlink" title="解释示例输出"></a>解释示例输出</h4><ol>
-<li><strong>页表的结构</strong>：<ul>
+<h4 id="解释示例输出"><a class="markdownIt-Anchor" href="#解释示例输出"></a> 解释示例输出</h4>
+<ol>
+<li><strong>页表的结构</strong>：
+<ul>
 <li>页表是一个多级结构，每一级由页表条目（PTE）组成。</li>
 <li>每个PTE可以指向一个物理页面或下一级页表。</li>
 </ul>
 </li>
-<li><strong>页0的内容</strong>：<ul>
+<li><strong>页0的内容</strong>：
+<ul>
 <li>页0通常包含内核代码或数据。在Xv6中，页0可能映射了内核的某些部分。</li>
 </ul>
 </li>
-<li><strong>页2的内容</strong>：<ul>
+<li><strong>页2的内容</strong>：
+<ul>
 <li>页2可能包含用户空间的堆或栈。具体取决于进程的内存布局。</li>
 </ul>
 </li>
-<li><strong>页1的访问权限</strong>：<ul>
+<li><strong>页1的访问权限</strong>：
+<ul>
 <li>在用户模式下，进程是否可以读写页1映射的内存取决于PTE的权限位（如<code>PTE_U</code>和<code>PTE_W</code>）。</li>
 <li>如果PTE的<code>PTE_U</code>位被设置，则用户模式可以访问该页面；如果<code>PTE_W</code>位被设置，则可以写入。</li>
 </ul>
 </li>
-<li><strong>倒数第三页的内容</strong>：<ul>
+<li><strong>倒数第三页的内容</strong>：
+<ul>
 <li>倒数第三页可能是一个用户空间的页面，用于存储进程的代码、数据或栈。</li>
 <li>具体内容取决于进程的内存布局和页表的映射。</li>
 </ul>
 </li>
 </ol>
 <p>通过<code>vmprint</code>的输出，你可以清晰地看到进程的内存布局以及每个页面的映射情况。</p>
-<h4 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a>思考</h4><p>在分页机制中，页表项（PTE）可以有两种类型：</p>
+<h4 id="思考-2"><a class="markdownIt-Anchor" href="#思考-2"></a> 思考</h4>
+<p>在分页机制中，页表项（PTE）可以有两种类型：</p>
 <ul>
 <li><strong>叶子页表项（Leaf PTE）</strong>：直接映射到物理页面（通常是 4KB 的内存块）。</li>
 <li><strong>非叶子页表项（Non-Leaf PTE）</strong>：指向下一个级别的页表。</li>
 </ul>
 <p>注意如何判断一个PTE是否是叶子表项，也就是根据flags进行判断</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果页表项有效（PTE_V），并且它指向下一级页表（无 PTE_R/W/X 权限位）。</span></span><br><span class="line"><span class="keyword">if</span> ((pte &amp; PTE_V) &amp;&amp; (pte &amp; (PTE_R | PTE_W | PTE_X)) == <span class="number">0</span>)</span><br></pre></td></tr></tbody></table></figure>
-
 <p><strong>该题的要点，在于引导我们思考，虚拟地址到物理地址的传播路径</strong></p>
-<h3 id="检测哪些页面已被访问（难度较大）"><a href="#检测哪些页面已被访问（难度较大）" class="headerlink" title="检测哪些页面已被访问（难度较大）"></a>检测哪些页面已被访问（难度较大）</h3><p>一些垃圾回收器（一种自动内存管理的形式）可以从关于哪些页面已被访问（读或写）的信息中受益。在本实验的这一部分，你需要为 xv6 添加一个新功能，通过检查 RISC-V 页表中的访问位，将这些信息报告给用户空间。当 RISC-V 硬件页表解析器解决 TLB 缺失时，它会在 PTE 中标记这些位。</p>
+<h3 id="检测哪些页面已被访问难度较大"><a class="markdownIt-Anchor" href="#检测哪些页面已被访问难度较大"></a> 检测哪些页面已被访问（难度较大）</h3>
+<p>一些垃圾回收器（一种自动内存管理的形式）可以从关于哪些页面已被访问（读或写）的信息中受益。在本实验的这一部分，你需要为 xv6 添加一个新功能，通过检查 RISC-V 页表中的访问位，将这些信息报告给用户空间。当 RISC-V 硬件页表解析器解决 TLB 缺失时，它会在 PTE 中标记这些位。</p>
 <p>你的任务是实现 <code>pgaccess()</code>，这是一个系统调用，用于报告哪些页面已被访问。该系统调用接受三个参数。首先，它接受要检查的第一个用户页面的起始虚拟地址。其次，它接受要检查的页面数量。最后，它接受一个用户地址，用于存储结果到一个位掩码（一种数据结构，每个页面使用一个位，其中第一个页面对应最低有效位）。如果在运行 <code>pgtbltest</code> 时，<code>pgaccess</code> 测试用例通过，你将获得本实验部分的全部分数。</p>
 <p>以下是一些提示：</p>
 <ul>
@@ -1032,7 +1040,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86k</span>&nbsp;字
+                class="white-color">91.8k</span>&nbsp;字
             
             
             
@@ -1252,6 +1260,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

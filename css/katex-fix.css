@@ -1,0 +1,44 @@
+/* KaTeX 公式样式修复 */
+
+/* 行内公式样式 */
+.katex {
+  font-size: 1.1em !important;
+  line-height: 1.5;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 行间公式样式 */
+.katex-display {
+  padding: 0.5em 0;
+  margin: 1em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 修复矩阵样式 */
+.katex .mathnormal {
+  font-style: normal;
+}
+
+/* 针对矩阵优化 */
+.katex-display .katex .vmatrix,
+.katex-display .katex .pmatrix,
+.katex-display .katex .bmatrix,
+.katex-display .katex .Bmatrix,
+.katex-display .katex .cases {
+  min-width: auto !important;
+}
+
+/* 移动设备适配 */
+@media screen and (max-width: 768px) {
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .katex {
+    font-size: 1em !important;
+  }
+}
