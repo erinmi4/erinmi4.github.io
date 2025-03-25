@@ -489,21 +489,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-18
+                    2025-03-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -606,7 +606,7 @@
 <p><strong>主要操作</strong>：卷积、非线性激活（ReLU）、池化（下采样）。</p>
 </li>
 <li>
-<p><strong>卷积层</strong>：通过多个滤波器提取不同特征。</p>
+<p><strong>[[卷积层]]</strong>：通过多个滤波器提取不同特征。</p>
 <ul>
 <li><img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503181735485.png" alt="image.png|650"></li>
 </ul>
@@ -651,7 +651,21 @@
 这也是和机器学习所不一样的地方，机器学习通过人为地设计filter实现对特征的提取。<br>
 而深度学习通过大量的数据，通过神经网络的自学习，以及人类对于结果的惩罚机制来实现filter</p>
 </blockquote>
-<hr>
+<h5 id="卷积层和池化层"><a class="markdownIt-Anchor" href="#卷积层和池化层"></a> [[卷积层]]和[[池化层]]</h5>
+<ul>
+<li>卷积层就好像是一个<strong>放大镜</strong>，将图像中的细节找出来
+<ul>
+<li>比如手写数字识别，使用16个卷积核，也就是输入为1，输出为16个通道，相当于数字维度大幅上升，我们不能对特征做简化（不然找出来干什么），但是我们可以对空间做简化，将图片变小，这也就是池化层的作用（<strong>简化信息，减少计算量，同时保留最重要的特征（比如边缘的位置）。</strong>）</li>
+</ul>
+</li>
+<li>池化层就好像是一个<strong>笔记本</strong>，将找到的细节记录下来，可以大幅减少电脑的工作量。</li>
+</ul>
+<blockquote>
+<p>比如现在有28 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">×</span></span></span></span> 28的图片<br>
+我们在第一轮使用卷积层找16个特征，那么维度就是16<br>
+然后使用最大池化操作，图片降低为 14 * 14<br>
+我现在的维度就是 16 * 14 * 14</p>
+</blockquote>
 <h2 id="第四部分cnn的应用"><a class="markdownIt-Anchor" href="#第四部分cnn的应用"></a> 第四部分：CNN的应用</h2>
 <h3 id="41-分类任务"><a class="markdownIt-Anchor" href="#41-分类任务"></a> 4.1 分类任务</h3>
 <ul>
@@ -1117,7 +1131,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">92k</span>&nbsp;字
+                class="white-color">98.7k</span>&nbsp;字
             
             
             

@@ -1,0 +1,1375 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="【SuperMemo】【step1】基础操作, MIKA, blog, hexo, github, markdown">
+    <meta name="description" content="This is a blog for MIKA">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>【SuperMemo】【step1】基础操作 | MIKA的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+    <!-- 添加思维导图支持 -->
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+    
+    <!-- 使用KaTeX替代MathJax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet" href="/css/katex-fix.css">
+    
+    <!-- 修复Markdown渲染问题 -->
+    <link rel="stylesheet" href="/css/markdown-fix.css">
+    <link rel="stylesheet" href="/css/indent-fix.css">
+    
+    
+        
+    
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">MIKA的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">MIKA的博客</div>
+        <div class="logo-desc">
+            
+            This is a blog for MIKA
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://help.supermemo.org/images/0/04/Add_new.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">【SuperMemo】【step1】基础操作</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">效率工具</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-03-20
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-03-21
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    7 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一步步掌握supermemo-supermemo帮助总结"><a class="markdownIt-Anchor" href="#一步步掌握supermemo-supermemo帮助总结"></a> 《<a target="_blank" rel="noopener" href="https://help.supermemo.org/wiki/Step-by-step_to_SuperMemo_masteryhttps://help.supermemo.org/wiki/Step-by-step_to_SuperMemo_mastery">一步步掌握SuperMemo</a> - SuperMemo帮助》总结</h1>
+<h2 id="1-3分钟了解abc"><a class="markdownIt-Anchor" href="#1-3分钟了解abc"></a> 1. 3分钟了解ABC</h2>
+<ul>
+<li><strong>添加新内容</strong>：使用<code>Alt+A</code>添加问题和答案形式的新材料。</li>
+<li><strong>学习</strong>：使用<code>Ctrl+L</code>开始学习，直到显示“Nothing more to learn”。
+<ul>
+<li>这个过程中一般通过<strong>填空</strong>和<strong>评分</strong>来实现</li>
+</ul>
+</li>
+<li>如果你看到一张你不想学习的卡片，你可以： 删除或排除（即从学习过程中移除，但不会删除卡片内容） 可以按 <strong>Ctrl+D</strong> 排除一张卡片这将让卡片保留在你的集合中，但不会要求你复习。</li>
+</ul>
+<h2 id="2-简单与强大的supermemo"><a class="markdownIt-Anchor" href="#2-简单与强大的supermemo"></a> 2. 简单与强大的SuperMemo</h2>
+<ul>
+<li><strong>分阶段探索</strong>：通过<code>File: Level</code>菜单选择不同级别（初学者、基础、中级、专业）。</li>
+<li><strong>功能解锁</strong>：部分功能在特定级别不可用，但可通过快捷键访问。</li>
+</ul>
+<h2 id="3-知识安全与备份"><a class="markdownIt-Anchor" href="#3-知识安全与备份"></a> 3. 知识安全与备份</h2>
+<ul>
+<li><strong>重要性</strong>：备份是保护知识的关键，使用<code>Shift+Ctrl+C</code>定期备份。</li>
+<li><strong>建议</strong>：每隔几天在不同硬盘备份，每月在其他媒体备份。</li>
+</ul>
+<h2 id="4-查找文档"><a class="markdownIt-Anchor" href="#4-查找文档"></a> 4. 查找文档</h2>
+<ul>
+<li><strong>帮助页面</strong>：按<code>F1</code>获取上下文相关的帮助。</li>
+</ul>
+<h2 id="5-使用supermemo阅读"><a class="markdownIt-Anchor" href="#5-使用supermemo阅读"></a> 5. 使用SuperMemo阅读</h2>
+<ul>
+<li><strong>增量阅读</strong>：从互联网导入文章，转换为问答形式，提升学习效率。</li>
+<li><strong>长期收益</strong>：虽初期有挫折，但熟练后可显著提升学习能力。</li>
+</ul>
+<h4 id="摘录文章"><a class="markdownIt-Anchor" href="#摘录文章"></a> 摘录文章</h4>
+<p>在阅读过程中，你可以从文章中摘录最重要的部分进行学习。这是为了确保你不会忘记文章中最重要的内容。<br>
+<strong>摘录片段将会进行以下工作：</strong><br>
+创建包含摘录片段的新卡片<br>
+将新卡片加入学习过程<br>
+将原文章中摘录的片段标记为“已摘录”</p>
+<p>在阅读过程中，你可以从文章中摘录最重要的部分进行学习。<br>
+从你的文章中摘录一个重要的片段：<br>
+选中片段，然后<br>
+点击窗口底部的  （<strong>Alt+X</strong>）<br>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503201933739.png" alt="image.png"></p>
+<h4 id="制作卡片"><a class="markdownIt-Anchor" href="#制作卡片"></a> 制作卡片</h4>
+<p>你可以将文章片段（摘录）转换为问答卡片（完型填空）。你将使用挖空工具来实现这一点。完形填空是一个句子，被挖空的内容会用三个点代替。这样的句子可以理解为问句。你要做的就是回忆句子中缺失的部分。<br>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503201936539.png" alt="image.png"></p>
+<h4 id="卡片排序"><a class="markdownIt-Anchor" href="#卡片排序"></a> 卡片排序</h4>
+<p>当你想要将一张卡片加入到当天的待复习队列时，<br>
+你可以使用快捷键 Ctrl+Shift+J，然后输入一个数字。<br>
+该数字决定了这张卡片出现在队列的位置。默认为队列尾部。<br>
+输入 1 然后点确定，即可将卡片加入队首。（即当天第一个出现）</p>
+<p>卡片太难了，想要之后再学？</p>
+<p>Ctrl+J 可以自己设置下一次复习这张卡片的间隔，同时保留复习历史。</p>
+<p>Ctrl+M 也可以，但会清除复习历史（相当于变成新卡片）。</p>
+<p>如果 Ctrl+M 后不输入间隔，，卡片会从复习过程中清除，变成新学材料。</p>
+<h2 id="6-定期检查数据"><a class="markdownIt-Anchor" href="#6-定期检查数据"></a> 6. 定期检查数据</h2>
+<ul>
+<li><strong>修复收藏夹</strong>：使用<code>File: Repair collection (Ctrl+F12)</code>检查数据损坏。</li>
+</ul>
+<h2 id="7-窗口布局"><a class="markdownIt-Anchor" href="#7-窗口布局"></a> 7. 窗口布局</h2>
+<ul>
+<li><strong>自定义布局</strong>：根据显示器分辨率、字体大小等调整窗口布局。</li>
+<li><strong>保存与应用</strong>：使用<code>Shift+Ctrl+F5</code>保存布局，<code>Ctrl+F5</code>应用默认布局。</li>
+</ul>
+<h2 id="8-在supermemo中搜索内容"><a class="markdownIt-Anchor" href="#8-在supermemo中搜索内容"></a> 8. 在SuperMemo中搜索内容</h2>
+<ul>
+<li><strong>快速定位</strong>：使用<code>Ctrl+F</code>或导航栏的“搜索”按钮。</li>
+</ul>
+<h2 id="9-让知识容易记住"><a class="markdownIt-Anchor" href="#9-让知识容易记住"></a> 9. 让知识容易记住</h2>
+<ul>
+<li><strong>知识表述规则</strong>：阅读“20条知识表述规则”以简化记忆。</li>
+</ul>
+<h2 id="10-学习成功的原则"><a class="markdownIt-Anchor" href="#10-学习成功的原则"></a> 10. 学习成功的原则</h2>
+<ul>
+<li><strong>高效用户习惯</strong>：阅读“SuperMemo高效用户的十诫”节省学习时间。</li>
+</ul>
+<h2 id="11-加工知识"><a class="markdownIt-Anchor" href="#11-加工知识"></a> 11. 加工知识</h2>
+<ul>
+<li><strong>持续优化</strong>：检查元素的实用性、表述、逻辑性等。</li>
+<li><strong>操作示例</strong>：
+<ul>
+<li><strong>纠正元素</strong>：使用<code>Q</code>、<code>A</code>、<code>E</code>键编辑文本字段。</li>
+<li><strong>重新安排</strong>：使用<code>Ctrl+J</code>调整复习日期。</li>
+<li><strong>忽略元素</strong>：使用<code>Ctrl+D</code>移除学习过程中的元素。</li>
+<li><strong>删除元素</strong>：使用<code>Del</code>键清理收藏。</li>
+<li><strong>忘记元素</strong>：使用<code>Ctrl+R</code>稍后学习。</li>
+</ul>
+</li>
+</ul>
+<h2 id="12-统一知识体系"><a class="markdownIt-Anchor" href="#12-统一知识体系"></a> 12. 统一知识体系</h2>
+<ul>
+<li><strong>好处</strong>：
+<ul>
+<li><strong>全局学习</strong>：保持一个全局学习过程和统计数据。</li>
+<li><strong>多样化学习</strong>：混合材料的重复学习更有趣且能提升创造力。</li>
+<li><strong>避免忽视</strong>：防止某些收藏被忽略。</li>
+</ul>
+</li>
+<li><strong>合并收藏</strong>：使用<code>File: Merge collection</code>合并多个收藏。</li>
+</ul>
+<h2 id="13-学习过程统计"><a class="markdownIt-Anchor" href="#13-学习过程统计"></a> 13. 学习过程统计</h2>
+<ul>
+<li><strong>查看统计</strong>：
+<ul>
+<li><strong>重复日历</strong>：按<code>Ctrl+W</code>查看。</li>
+<li><strong>学习统计数据</strong>：按<code>F5</code>查看。</li>
+<li><strong>进度分析</strong>：使用<code>Toolkit: Statistics: Analysis (Shift+Alt+A)</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="14-添加多媒体"><a class="markdownIt-Anchor" href="#14-添加多媒体"></a> 14. 添加多媒体</h2>
+<ul>
+<li><strong>添加组件</strong>：使用撰写工具栏或<code>Edit: Add components</code>。</li>
+<li><strong>粘贴内容</strong>：使用<code>Ctrl+V</code>粘贴图片，<code>Ctrl+N</code>粘贴文本。</li>
+</ul>
+<h2 id="15-改善物品外观"><a class="markdownIt-Anchor" href="#15-改善物品外观"></a> 15. 改善物品外观</h2>
+<ul>
+<li><strong>元素菜单（<code>Alt+F10</code>）</strong>：
+<ul>
+<li><strong>颜色</strong>：改变元素颜色。</li>
+<li><strong>编辑标题</strong>：使用<code>Alt+T</code>。</li>
+<li><strong>删除组件</strong>：移除选定组件。</li>
+<li><strong>复制元素</strong>：使用<code>Alt+D</code>。</li>
+<li><strong>交换问答</strong>：使用<code>Shift+Ctrl+S</code>。</li>
+<li><strong>应用模板</strong>：使用<code>Shift+Ctrl+M</code>。</li>
+</ul>
+</li>
+<li><strong>组件菜单（<code>Alt+F12</code>）</strong>：
+<ul>
+<li><strong>颜色</strong>：改变组件颜色。</li>
+<li><strong>导入文件</strong>：显示文件内容。</li>
+<li><strong>编辑字体</strong>：更改文本字体。</li>
+<li><strong>删除组件</strong>：移除组件。</li>
+<li><strong>显示时间</strong>：定义组件的显示时间。</li>
+</ul>
+</li>
+</ul>
+<h2 id="16-自动更改元素外观"><a class="markdownIt-Anchor" href="#16-自动更改元素外观"></a> 16. 自动更改元素外观</h2>
+<ul>
+<li><strong>模板</strong>：
+<ul>
+<li><strong>保存模板</strong>：使用<code>Template: Save as template</code>。</li>
+<li><strong>设置默认模板</strong>：使用<code>Template: Save as default</code>。</li>
+<li><strong>应用模板</strong>：使用<code>Shift+Ctrl+M</code>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="想要给卡片改模板"><a class="markdownIt-Anchor" href="#想要给卡片改模板"></a> 想要给卡片改模板？</h4>
+<p>Ctrl+Shift+M，然后选模板吧。</p>
+<p>注意！把问答卡片的模板改成摘录卡片的模板，并不会改变卡片的类型。</p>
+<p>想要改变卡片类型，请使用 Ctrl+Shift+P，然后选择卡片类型。</p>
+<h2 id="17-构建知识树"><a class="markdownIt-Anchor" href="#17-构建知识树"></a> 17. 构建知识树</h2>
+<ul>
+<li><strong>组织结构</strong>：在“内容”窗口中组织知识结构。</li>
+<li><strong>结构意义</strong>：良好的结构有助于材料的查找和复习。</li>
+</ul>
+<h2 id="18-围绕概念组织知识"><a class="markdownIt-Anchor" href="#18-围绕概念组织知识"></a> 18. 围绕概念组织知识</h2>
+<ul>
+<li><strong>概念组</strong>：为不同领域的知识分配不同的概念组和外观。</li>
+<li><strong>设置概念组</strong>：使用<code>Shift+Ctrl+P</code>选择目标概念组。</li>
+</ul>
+<h2 id="19-文本组件选择"><a class="markdownIt-Anchor" href="#19-文本组件选择"></a> 19. 文本组件选择</h2>
+<ul>
+<li><strong>HTML组件</strong>：适用于增量阅读，便于文本处理。</li>
+<li><strong>纯文本组件</strong>：速度更快，占用空间更小。</li>
+<li><strong>组件转换</strong>：根据需要选择合适的文本组件。</li>
+</ul>
+<h2 id="20-难以记忆的项目"><a class="markdownIt-Anchor" href="#20-难以记忆的项目"></a> 20. 难以记忆的项目</h2>
+<ul>
+<li><strong>处理方法</strong>：
+<ul>
+<li><strong>重新表述</strong>：遵循“20条知识表述规则”。</li>
+<li><strong>助记技巧</strong>：添加示例、插图或使用其他记忆方法。</li>
+<li><strong>删除项目</strong>：考虑删除记忆次数过多的项目。</li>
+</ul>
+</li>
+</ul>
+<h2 id="21-浏览器和子集的威力"><a class="markdownIt-Anchor" href="#21-浏览器和子集的威力"></a> 21. 浏览器和子集的威力</h2>
+<ul>
+<li><strong>功能</strong>：
+<ul>
+<li><strong>审查子集</strong>：查看特定元素子集。</li>
+<li><strong>移动子集</strong>：将子集转移到其他SuperMemo或收藏。</li>
+<li><strong>推迟重复</strong>：调整子集的复习计划。</li>
+<li><strong>排序子集</strong>：按标题、优先级、难度等排序。</li>
+<li><strong>导出子集</strong>：将子集导出为文本。</li>
+<li><strong>操作元素集</strong>：进行集合运算和高级搜索。</li>
+</ul>
+</li>
+</ul>
+<h2 id="22-遗忘指数"><a class="markdownIt-Anchor" href="#22-遗忘指数"></a> 22. 遗忘指数</h2>
+<ul>
+<li><strong>定义</strong>：用于选择记忆程度和投入精力。</li>
+<li><strong>使用</strong>：参见“使用遗忘指数”。</li>
+</ul>
+<h2 id="23-分发学习材料"><a class="markdownIt-Anchor" href="#23-分发学习材料"></a> 23. 分发学习材料</h2>
+<ul>
+<li><strong>步骤</strong>：
+<ul>
+<li><strong>清理收藏</strong>：删除特定元素和评论。</li>
+<li><strong>重置学习过程</strong>：使用<code>File: Tools: Reset collection</code>。</li>
+<li><strong>排序收藏</strong>：按序数、难度或优先级排序。</li>
+<li><strong>自由分发</strong>：无需许可即可重新发布。</li>
+</ul>
+</li>
+</ul>
+<h2 id="24-前进后退卡片选择"><a class="markdownIt-Anchor" href="#24-前进后退卡片选择"></a> 24. 前进后退卡片选择</h2>
+<p>你可以点击窗口顶部中的  按钮回到浏览的上一张卡片<br>
+<img src="https://raw.githubusercontent.com/erinmi4/images/master/hexo/202503201922544.png" alt="image.png"></p>
+<p>你也可以按下 Alt+⬅️ 实现同样的效果</p>
+<p>反过来，你可以按下 Alt+➡️ 在之前浏览过的卡片列表上前进（就像在网页浏览器里面那样）</p>
+<h2 id="25卡片和文件夹上下级关系"><a class="markdownIt-Anchor" href="#25卡片和文件夹上下级关系"></a> 25.卡片和文件夹上下级关系</h2>
+<p>摘录出来的卡片，或者挖空的卡片，想要看原文？</p>
+<p>如果你没有移动这些卡片的位置，那么 Ctrl+⬆️ 就可以回到原文了。</p>
+<p>嗯，摘录/挖空的卡片都会成为原卡片的下级。</p>
+<p>如果对摘录的卡片继续摘录，就会加入到摘录卡片的下级。</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">MIKA</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://erinmi4.github.io/2025/03/20/supermemo-step1-ji-chu-cao-zuo/">https://erinmi4.github.io/2025/03/20/supermemo-step1-ji-chu-cao-zuo/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">MIKA</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">效率工具</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025/03/21/katex-test/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="KaTeX 数学公式测试">
+                        
+                        <span class="card-title">KaTeX 数学公式测试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            MIKA
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/test/">
+                        <span class="chip bg-color">test</span>
+                    </a>
+                    
+                    <a href="/tags/katex/">
+                        <span class="chip bg-color">katex</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/03/20/supermemo-step2-jian-jin-yue-du/">
+                    <div class="card-image">
+                        
+                        <img src="https://help.supermemo.org/images/0/04/Add_new.jpg" class="responsive-img" alt="【SuperMemo】【step2】渐进阅读">
+                        
+                        <span class="card-title">【SuperMemo】【step2】渐进阅读</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">效率工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2025</span>
+            
+            <span id="year">2025</span>
+            <a href="/about" target="_blank">MIKA</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">98.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/erinmi4" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2511592510@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2511592510" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2511592510" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<!-- 修复Markdown缩进问题的脚本 -->
+<script src="/js/markdown-indent-fix.js"></script>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>
