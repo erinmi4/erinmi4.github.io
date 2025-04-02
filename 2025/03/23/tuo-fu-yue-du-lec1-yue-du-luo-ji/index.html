@@ -47,9 +47,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="MIKA的博客" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -489,14 +489,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-23
+                    2025-04-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    170
+                    315
                 </div>
                 
 
@@ -523,7 +523,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>总结</strong></p>
+                <p>总的解题技巧</p>
+<ol>
+<li>多关键词联动
+<ol>
+<li>在题干中找到重要的单词-<strong>名词，动词</strong></li>
+<li>在文章中<strong>一目三行</strong>找</li>
+</ol>
+</li>
+<li>逻辑分割法
+<ol>
+<li>在关键句周围划分顺逆逻辑，看要不要包含其他句子</li>
+</ol>
+</li>
+<li>找题干<strong>问题方式</strong>
+<ol>
+<li>在题目中找关键词，看和提问能不能对上</li>
+<li>问原因</li>
+<li>问结果</li>
+</ol>
+</li>
+<li>找选项<strong>定位词</strong>
+<ol>
+<li>看名词
+<ol>
+<li>是否过于靠前</li>
+<li>过于靠后</li>
+<li>无中生有，张冠李戴 之类的 <strong>逻辑错误</strong></li>
+</ol>
+</li>
+<li>看副词
+<ol>
+<li>过分绝对</li>
+</ol>
+</li>
+<li>看动词
+<ol>
+<li>虚假比较</li>
+<li>虚假因果</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>总结</strong></p>
 <ol>
 <li>阅读第一句</li>
 <li>找到段落间的句间逻辑</li>
@@ -967,7 +1010,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">99.4k</span>&nbsp;字
+                class="white-color">109k</span>&nbsp;字
             
             
             
@@ -1190,6 +1233,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
