@@ -489,14 +489,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-04-12
+                    2025-04-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    425
+                    567
                 </div>
                 
 
@@ -523,7 +523,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一道答题3min</p>
+                <p>我的一些思考：<br>
+其实听力并没有什么技巧，一切都还是建立在<strong>听懂</strong>的基础上。<br>
+这也是<strong>自下向上</strong>的思想，你得会，会听懂说些什么，所谓听写，精听等都是在这之上。<br>
+上课学的是<strong>自上向下</strong>，听到谁和谁说话，听到可能的话题<br>
+比如，看到老师叫学生来谈及到论文，一般就是论文题，就要想到，论文有什么问题，老师的建议，学生应该怎么做。这是一个框架性的东西。</p>
+<hr>
+<p>一道答题3min</p>
 <ul>
 <li>一般正确选项反而不会包含<strong>关键词</strong></li>
 </ul>
@@ -1039,7 +1045,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">132.1k</span>&nbsp;字
+                class="white-color">142.3k</span>&nbsp;字
             
             
             
@@ -1262,6 +1268,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
