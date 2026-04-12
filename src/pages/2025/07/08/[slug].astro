@@ -1,0 +1,26 @@
+﻿---
+import RedirectLayout from "../../../../layouts/RedirectLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: "hello-world" },
+      props: {
+        to: "/posts/hello-world/",
+        title: "旧链接跳转"
+      }
+    },
+    {
+      params: { slug: "我的第一篇博客" },
+      props: {
+        to: "/posts/my-first-blog/",
+        title: "旧链接跳转"
+      }
+    }
+  ];
+}
+
+const { to, title } = Astro.props;
+---
+
+<RedirectLayout to={to} title={title} />

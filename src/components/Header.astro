@@ -1,0 +1,31 @@
+﻿---
+import { navItems, siteConfig } from "../lib/site";
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark">E</span>
+      <span class="brand__text">{siteConfig.author}</span>
+    </a>
+
+    <nav class="site-nav" aria-label="主导航">
+      {
+        navItems.map((item) => {
+          const active =
+            item.href === "/"
+              ? pathname === item.href
+              : pathname === item.href || pathname.startsWith(item.href);
+
+          return (
+            <a class:list={["site-nav__link", { "is-active": active }]} href={item.href}>
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>

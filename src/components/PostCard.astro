@@ -1,0 +1,31 @@
+﻿---
+import type { BlogEntry } from "../lib/content";
+import { formatDate, getCategoryUrl, getPostUrl } from "../lib/content";
+import TagList from "./TagList.astro";
+
+interface Props {
+  post: BlogEntry;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="post-card">
+  <div class="post-card__meta">
+    <span>{formatDate(post.data.pubDate)}</span>
+    <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
+  </div>
+
+  <h3 class="post-card__title">
+    <a href={getPostUrl(post)}>{post.data.title}</a>
+  </h3>
+
+  <p class="post-card__description">{post.data.description}</p>
+
+  <div class="post-card__footer">
+    <TagList tags={post.data.tags} />
+    <a class="post-card__link" href={getPostUrl(post)}>
+      阅读全文
+    </a>
+  </div>
+</article>

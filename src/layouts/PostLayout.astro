@@ -1,0 +1,59 @@
+﻿---
+import type { BlogEntry } from "../lib/content";
+import BaseLayout from "./BaseLayout.astro";
+import TagList from "../components/TagList.astro";
+import { formatDate, getCategoryUrl, getPostUrl } from "../lib/content";
+
+interface Props {
+  post: BlogEntry;
+  previousPost?: BlogEntry;
+  nextPost?: BlogEntry;
+}
+
+const { post, previousPost, nextPost } = Astro.props;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} pageClass="page-post">
+  <article class="shell post-shell">
+    <header class="post-hero">
+      <p class="eyebrow">文章</p>
+      <h1>{post.data.title}</h1>
+      <p class="post-hero__description">{post.data.description}</p>
+
+      <div class="post-hero__meta">
+        <span>{formatDate(post.data.pubDate)}</span>
+        <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
+      </div>
+
+      <TagList tags={post.data.tags} />
+    </header>
+
+    <div class="prose-card post-prose">
+      <slot />
+    </div>
+
+    <nav class="post-nav" aria-label="文章导航">
+      <div>
+        {
+          previousPost && (
+            <>
+              <span>上一篇</span>
+              <a href={getPostUrl(previousPost)}>{previousPost.data.title}</a>
+            </>
+          )
+        }
+      </div>
+
+      <div>
+        {
+          nextPost && (
+            <>
+              <span>下一篇</span>
+              <a href={getPostUrl(nextPost)}>{nextPost.data.title}</a>
+            </>
+          )
+        }
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

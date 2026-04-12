@@ -1,0 +1,33 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { getCategoryMap } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const categoryMap = await getCategoryMap();
+
+  return [...categoryMap.entries()].map(([category, posts]) => ({
+    params: { category },
+    props: { category, posts }
+  }));
+}
+
+const { category, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`分类：${category}`}
+  description={`查看分类 ${category} 下的全部文章。`}
+>
+  <section class="shell archive-shell">
+    <header class="page-heading">
+      <p class="eyebrow">Category</p>
+      <h1>{category}</h1>
+      <p>共收录 {posts.length} 篇文章。</p>
+    </header>
+
+    <div class="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

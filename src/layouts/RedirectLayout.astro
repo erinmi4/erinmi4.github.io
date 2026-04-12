@@ -1,0 +1,25 @@
+﻿---
+interface Props {
+  to: string;
+  title: string;
+}
+
+const { to, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=${to}`} />
+    <meta name="robots" content="noindex" />
+    <title>{title}</title>
+    <link rel="canonical" href={to} />
+  </head>
+  <body>
+    <p>
+      页面已迁移，正在跳转到
+      <a href={to}>{to}</a>
+    </p>
+  </body>
+</html>

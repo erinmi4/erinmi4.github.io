@@ -1,0 +1,86 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { getAllPosts, getCategoryMap, getTagMap } from "../lib/content";
+
+const posts = await getAllPosts();
+const featuredPosts = posts.slice(0, 3);
+const tagMap = await getTagMap();
+const categoryMap = await getCategoryMap();
+const tags = [...tagMap.keys()].slice(0, 6);
+const categories = [...categoryMap.entries()];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="shell hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow">Personal Blog</p>
+        <h1>把旧博客真正升级成一套可以长期维护的个人站点。</h1>
+        <p class="hero__lead">
+          这里记录技术学习、项目实践和持续成长。旧站曾经只剩下损坏的静态产物，现在它被重建为一个由 Astro 驱动、以 Markdown 管理内容的新博客。
+        </p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="/archives/">查看文章</a>
+          <a class="button" href="/about/">了解我</a>
+        </div>
+      </div>
+
+      <aside class="hero__panel">
+        <p class="hero__panel-label">站点状态</p>
+        <ul class="hero__stats">
+          <li>
+            <strong>{posts.length}</strong>
+            <span>已恢复文章</span>
+          </li>
+          <li>
+            <strong>{categories.length}</strong>
+            <span>文章分类</span>
+          </li>
+          <li>
+            <strong>{tags.length}</strong>
+            <span>常用标签</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Latest Posts</p>
+        <h2>最近更新</h2>
+      </div>
+      <a class="section-heading__link" href="/archives/">
+        查看全部文章
+      </a>
+    </div>
+
+    <div class="post-grid">
+      {featuredPosts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="shell section section--split">
+    <div class="info-card">
+      <p class="eyebrow">Tags</p>
+      <h2>从标签快速进入主题</h2>
+      <div class="pill-grid">
+        {tags.map((tag) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>{tag}</a>)}
+      </div>
+    </div>
+
+    <div class="info-card info-card--accent">
+      <p class="eyebrow">Projects</p>
+      <h2>项目页已重建为长期维护入口</h2>
+      <p>
+        历史项目资料仍在逐步整理，当前版本先把博客本体、内容管理和发布链路重建稳定，再继续补充项目细节。
+      </p>
+      <a class="button button--secondary" href="/projects/">
+        打开项目页
+      </a>
+    </div>
+  </section>
+</BaseLayout>

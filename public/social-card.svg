@@ -1,0 +1,21 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f3ec" />
+      <stop offset="100%" stop-color="#ead9c5" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#134e4a" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1050" cy="110" r="160" fill="#c96f3f" opacity="0.16" />
+  <circle cx="120" cy="520" r="180" fill="#0f766e" opacity="0.12" />
+  <rect x="90" y="90" width="1020" height="450" rx="40" fill="rgba(255,255,255,0.6)" />
+  <rect x="150" y="150" width="360" height="360" rx="44" fill="url(#card)" />
+  <text x="250" y="370" fill="#f7f3ec" font-size="200" font-family="Avenir Next, PingFang SC, sans-serif" font-weight="700">E</text>
+  <text x="570" y="270" fill="#13272a" font-size="58" font-family="Avenir Next, PingFang SC, sans-serif" font-weight="700">erinmi4 的个人博客</text>
+  <text x="570" y="348" fill="#355257" font-size="30" font-family="Avenir Next, PingFang SC, sans-serif">Astro 重建 · Markdown 内容管理 · GitHub Pages 发布</text>
+  <text x="570" y="420" fill="#355257" font-size="28" font-family="Avenir Next, PingFang SC, sans-serif">记录技术、项目与持续成长</text>
+</svg>

@@ -1,0 +1,26 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getTagMap } from "../../lib/content";
+
+const tagMap = await getTagMap();
+const tags = [...tagMap.entries()];
+---
+
+<BaseLayout title="标签" description="按标签浏览站内文章。">
+  <section class="shell archive-shell">
+    <header class="page-heading">
+      <p class="eyebrow">Tags</p>
+      <h1>标签</h1>
+      <p>使用标签快速聚合同主题内容。</p>
+    </header>
+
+    <div class="taxonomy-grid">
+      {tags.map(([tag, posts]) => (
+        <a class="taxonomy-card" href={`/tags/${encodeURIComponent(tag)}/`}>
+          <h2>{tag}</h2>
+          <p>{posts.length} 篇文章</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

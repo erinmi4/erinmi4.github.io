@@ -1,0 +1,39 @@
+﻿---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props;
+
+function getPageUrl(page: number) {
+  return page === 1 ? baseUrl : `${baseUrl}page/${page}/`;
+}
+---
+
+{
+  totalPages > 1 && (
+    <nav class="pagination" aria-label="分页">
+      <a
+        class:list={["pagination__link", { "is-disabled": currentPage === 1 }]}
+        aria-disabled={currentPage === 1}
+        href={currentPage === 1 ? undefined : getPageUrl(currentPage - 1)}
+      >
+        上一页
+      </a>
+
+      <span class="pagination__status">
+        第 {currentPage} / {totalPages} 页
+      </span>
+
+      <a
+        class:list={["pagination__link", { "is-disabled": currentPage === totalPages }]}
+        aria-disabled={currentPage === totalPages}
+        href={currentPage === totalPages ? undefined : getPageUrl(currentPage + 1)}
+      >
+        下一页
+      </a>
+    </nav>
+  )
+}

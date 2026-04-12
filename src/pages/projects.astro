@@ -1,0 +1,17 @@
+﻿---
+import { render } from "astro:content";
+import MarkdownPageLayout from "../layouts/MarkdownPageLayout.astro";
+import { getPageBySlug } from "../lib/content";
+
+const page = await getPageBySlug("projects");
+
+if (!page) {
+  throw new Error("Missing projects page content.");
+}
+
+const { Content } = await render(page);
+---
+
+<MarkdownPageLayout title={page.data.title} description={page.data.description}>
+  <Content />
+</MarkdownPageLayout>

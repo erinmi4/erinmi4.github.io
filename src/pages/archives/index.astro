@@ -1,0 +1,45 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatDate, getArchiveGroups, getCategoryUrl, getPostUrl } from "../../lib/content";
+
+const groups = await getArchiveGroups();
+---
+
+<BaseLayout title="博客归档" description="按时间浏览博客中的所有文章。">
+  <section class="shell archive-shell">
+    <header class="page-heading">
+      <p class="eyebrow">Archive</p>
+      <h1>博客归档</h1>
+      <p>按时间整理历史文章，方便快速回顾建站过程与技术记录。</p>
+    </header>
+
+    <div class="archive-groups">
+      {
+        groups.map((group) => (
+          <section class="archive-group">
+            <div class="archive-group__title">
+              <h2>
+                {group.year} 年 {group.month} 月
+              </h2>
+              <span>{group.entries.length} 篇</span>
+            </div>
+
+            <div class="archive-group__list">
+              {group.entries.map((post) => (
+                <article class="archive-item">
+                  <div>
+                    <p>{formatDate(post.data.pubDate)}</p>
+                    <h3>
+                      <a href={getPostUrl(post)}>{post.data.title}</a>
+                    </h3>
+                  </div>
+                  <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
