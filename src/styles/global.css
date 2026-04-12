@@ -470,6 +470,12 @@ main {
   border-radius: var(--radius-md);
 }
 
+.prose-card .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.35rem 0;
+}
+
 .prose-card blockquote {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
