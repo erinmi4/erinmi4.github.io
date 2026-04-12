@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="搜索" description="在博客文章和页面中搜索关键词。">
+  <section class="shell archive-shell">
+    <header class="page-heading">
+      <p class="eyebrow">Search</p>
+      <h1>站内搜索</h1>
+      <p>支持按标题、摘要、正文、标签和分类进行关键词搜索。</p>
+    </header>
+
+    <section class="search-shell">
+      <label class="search-shell__label" for="site-search">
+        搜索关键词
+      </label>
+      <input
+        class="search-shell__input"
+        id="site-search"
+        type="search"
+        placeholder="例如：修考、ESP32、博客重建、概率论"
+      />
+      <p class="search-shell__hint">输入后会即时显示匹配结果。</p>
+      <div class="search-results" id="search-results">
+        <p class="search-results__empty">先输入关键词，再开始搜索。</p>
+      </div>
+    </section>
+  </section>
+
+  <script is:inline>
+    const input = document.querySelector("#site-search");
+    const container = document.querySelector("#search-results");
+
+    const renderEmpty = (message) => {
+      if (!container) return;
+      container.innerHTML = `<p class="search-results__empty">${message}</p>`;
+    };
+
+    const highlight = (text, keyword) => {
+      if (!keyword) return text;
+      const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return text.replace(new RegExp(escaped, "gi"), (match) => `<mark>${match}</mark>`);
+    };
+
+    fetch("/search-index.json")
+      .then((response) => response.json())
+      .then((records) => {
+        if (!input || !container) return;
+
+        input.addEventListener("input", () => {
+          const keyword = input.value.trim().toLowerCase();
+
+          if (!keyword) {
+            renderEmpty("先输入关键词，再开始搜索。");
+            return;
+          }
+
+          const matches = records
+            .map((record) => {
+              const haystack = [
+                record.title,
+                record.description,
+                record.body,
+                record.category,
+                ...(record.tags || [])
+              ]
+                .join(" ")
+                .toLowerCase();
+
+              return { ...record, score: haystack.includes(keyword) ? haystack.indexOf(keyword) : -1 };
+            })
+            .filter((record) => record.score >= 0)
+            .sort((left, right) => left.score - right.score)
+            .slice(0, 20);
+
+          if (matches.length === 0) {
+            renderEmpty("没有找到匹配结果，可以换一个关键词试试。");
+            return;
+          }
+
+          container.innerHTML = matches
+            .map((record) => {
+              const snippetSource = `${record.description} ${record.body || ""}`.replace(/\s+/g, " ").trim();
+              const snippet = snippetSource.slice(0, 140);
+
+              return `
+                <article class="search-result-card">
+                  <div class="search-result-card__meta">
+                    <span>${record.type === "post" ? "文章" : "页面"}</span>
+                    <span>${record.category}</span>
+                  </div>
+                  <h2><a href="${record.url}">${highlight(record.title, keyword)}</a></h2>
+                  <p>${highlight(snippet, keyword)}...</p>
+                  <div class="search-result-card__tags">
+                    ${(record.tags || []).map((tag) => `<span>${tag}</span>`).join("")}
+                  </div>
+                </article>
+              `;
+            })
+            .join("");
+        });
+      })
+      .catch(() => {
+        renderEmpty("搜索索引加载失败，请稍后再试。");
+      });
+  </script>
+</BaseLayout>

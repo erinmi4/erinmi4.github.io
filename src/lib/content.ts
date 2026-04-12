@@ -17,6 +17,10 @@ export async function getPageBySlug(slug: string) {
   return pages.find((page: PageEntry) => page.slug === slug);
 }
 
+export async function getAllPages() {
+  return (await getCollection("pages")).filter((page) => !page.data.draft);
+}
+
 export async function getTagMap() {
   const posts = await getAllPosts();
   const tagMap = new Map<string, BlogEntry[]>();

@@ -1,7 +1,8 @@
-﻿---
+---
 import { render } from "astro:content";
 import MarkdownPageLayout from "../layouts/MarkdownPageLayout.astro";
 import { getPageBySlug } from "../lib/content";
+import { siteConfig } from "../lib/site";
 
 const page = await getPageBySlug("about");
 
@@ -13,5 +14,34 @@ const { Content } = await render(page);
 ---
 
 <MarkdownPageLayout title={page.data.title} description={page.data.description}>
+  <section class="profile-card">
+    <div>
+      <p class="profile-card__eyebrow">Profile</p>
+      <h2>{siteConfig.author} / {siteConfig.handle}</h2>
+      <p>{siteConfig.bio}</p>
+    </div>
+
+    <dl class="profile-card__meta">
+      <div>
+        <dt>所在地</dt>
+        <dd>{siteConfig.location}</dd>
+      </div>
+      <div>
+        <dt>GitHub</dt>
+        <dd>
+          <a href={siteConfig.social.github} rel="noreferrer" target="_blank">
+            {siteConfig.social.github}
+          </a>
+        </dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd>
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
   <Content />
 </MarkdownPageLayout>

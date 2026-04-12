@@ -1,35 +1,82 @@
-﻿---
+---
 import type { BlogEntry } from "../lib/content";
 import BaseLayout from "./BaseLayout.astro";
 import TagList from "../components/TagList.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import { formatDate, getCategoryUrl, getPostUrl } from "../lib/content";
+
+interface HeadingItem {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 interface Props {
   post: BlogEntry;
   previousPost?: BlogEntry;
   nextPost?: BlogEntry;
+  readingMinutes: number;
+  headings: HeadingItem[];
 }
 
-const { post, previousPost, nextPost } = Astro.props;
+const { post, previousPost, nextPost, readingMinutes, headings } = Astro.props;
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description} pageClass="page-post">
   <article class="shell post-shell">
-    <header class="post-hero">
-      <p class="eyebrow">文章</p>
-      <h1>{post.data.title}</h1>
-      <p class="post-hero__description">{post.data.description}</p>
+    <header class:list={["post-hero", { "has-hero-image": Boolean(post.data.heroImage) }]}>
+      {
+        post.data.heroImage && (
+          <img
+            class="post-hero__image"
+            src={post.data.heroImage}
+            alt={post.data.title}
+            loading="lazy"
+          />
+        )
+      }
 
-      <div class="post-hero__meta">
-        <span>{formatDate(post.data.pubDate)}</span>
-        <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
+      <div class="post-hero__content">
+        <p class="eyebrow">文章</p>
+        <h1>{post.data.title}</h1>
+        <p class="post-hero__description">{post.data.description}</p>
+
+        <div class="post-hero__meta">
+          <span>{formatDate(post.data.pubDate)}</span>
+          <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
+          <span>{readingMinutes} 分钟阅读</span>
+        </div>
+
+        <TagList tags={post.data.tags} />
       </div>
-
-      <TagList tags={post.data.tags} />
     </header>
 
-    <div class="prose-card post-prose">
-      <slot />
+    <div class="post-shell__body">
+      <aside class="post-shell__aside">
+        <section class="post-info-card">
+          <p class="post-info-card__eyebrow">阅读信息</p>
+          <dl class="post-info-card__list">
+            <div>
+              <dt>发布时间</dt>
+              <dd>{formatDate(post.data.pubDate)}</dd>
+            </div>
+            <div>
+              <dt>分类</dt>
+              <dd>{post.data.category}</dd>
+            </div>
+            <div>
+              <dt>预计阅读</dt>
+              <dd>{readingMinutes} 分钟</dd>
+            </div>
+          </dl>
+        </section>
+
+        <TableOfContents headings={headings} />
+      </aside>
+
+      <div class="prose-card post-prose">
+        <slot />
+      </div>
     </div>
 
     <nav class="post-nav" aria-label="文章导航">
