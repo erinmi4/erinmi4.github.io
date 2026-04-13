@@ -18,7 +18,8 @@ export async function getStaticPaths() {
 
 const { post, previousPost, nextPost } = Astro.props;
 const { Content, headings } = await render(post);
-const readingMinutes = Math.max(1, Math.ceil(post.body.replace(/\s+/g, "").length / 450));
+const readingSource = post.body ?? "";
+const readingMinutes = Math.max(1, Math.ceil(readingSource.replace(/\s+/g, "").length / 450));
 ---
 
 <PostLayout
