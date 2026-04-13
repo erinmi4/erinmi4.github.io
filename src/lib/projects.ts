@@ -13,6 +13,31 @@ export interface ProjectRecord {
 
 export const projects: ProjectRecord[] = [
   {
+    slug: "smart-agriculture",
+    title: "SmartAgriculture 智慧农业监测系统",
+    summary:
+      "一个基于 STM32F407 的课程/实践项目，围绕环境监测与远程控制搭建。项目实现了 LCD1602 数据显示、DHT11 温湿度采集、MQ-2 烟雾检测、光照检测、MPU6050 姿态显示，以及蓝牙远程阈值调节和报警控制。",
+    status: "已完成可运行版本，并附带多份调试与集成说明",
+    period: "2025",
+    role: "独立开发与集成调试",
+    technologies: [
+      "STM32F407",
+      "C",
+      "LCD1602",
+      "DHT11",
+      "MQ-2",
+      "MPU6050",
+      "蓝牙串口",
+      "Keil"
+    ],
+    highlights: [
+      "实现环境数据采集、显示、报警与远程阈值控制的完整链路",
+      "蓝牙命令支持双位数字指令，能够查询状态、调整阈值、启停报警",
+      "项目仓库内保留了系统调试说明、蓝牙调试指南和 MPU6050 角度显示集成文档，便于继续维护"
+    ],
+    repository: "https://github.com/erinmi4/SmartAgriculture"
+  },
+  {
     slug: "embedded-audio-thesis",
     title: "音频事件识别模型的嵌入式部署",
     summary:
@@ -58,6 +83,6 @@ export const projects: ProjectRecord[] = [
       "降低了多科并行时的信息碎片化问题",
       "后续会继续沉淀为更稳定的长期学习方法"
     ],
-    relatedPost: "/posts/如何在多任务需求的情况下，有条不紊地完成任务/"
+    relatedPost: "/posts/如何在多任务需求的情况下有条不紊地完成任务/"
   }
 ];

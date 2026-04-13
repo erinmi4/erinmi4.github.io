@@ -1,10 +1,14 @@
-﻿---
+---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
 import { getAllPosts, getCategoryMap, getTagMap } from "../lib/content";
+import { projects } from "../lib/projects";
+import { siteConfig } from "../lib/site";
 
 const posts = await getAllPosts();
 const featuredPosts = posts.slice(0, 3);
+const latestTimeline = posts.slice(0, 5);
+const featuredProjects = projects.slice(0, 3);
 const tagMap = await getTagMap();
 const categoryMap = await getCategoryMap();
 const tags = [...tagMap.keys()].slice(0, 6);
@@ -16,14 +20,15 @@ const categories = [...categoryMap.entries()];
     <div class="shell hero__grid">
       <div class="hero__content">
         <p class="eyebrow">Personal Blog</p>
-        <h1>把旧博客真正升级成一套可以长期维护的个人站点。</h1>
+        <h1>把博客变成一个同时服务写作、项目展示和学习沉淀的长期空间。</h1>
         <p class="hero__lead">
-          这里记录技术学习、项目实践和持续成长。旧站曾经只剩下损坏的静态产物，现在它被重建为一个由 Astro 驱动、以 Markdown 管理内容的新博客。
+          这里记录修考、项目实践、嵌入式、音频处理，以及我在长期学习过程中形成的方法和判断。
         </p>
 
         <div class="hero__actions">
           <a class="button button--primary" href="/archives/">查看文章</a>
-          <a class="button" href="/about/">了解我</a>
+          <a class="button" href="/search/">站内搜索</a>
+          <a class="button" href="/about/">关于我</a>
         </div>
       </div>
 
@@ -32,19 +37,49 @@ const categories = [...categoryMap.entries()];
         <ul class="hero__stats">
           <li>
             <strong>{posts.length}</strong>
-            <span>已恢复文章</span>
+            <span>已发布文章</span>
+          </li>
+          <li>
+            <strong>{featuredProjects.length}</strong>
+            <span>重点项目</span>
           </li>
           <li>
             <strong>{categories.length}</strong>
-            <span>文章分类</span>
-          </li>
-          <li>
-            <strong>{tags.length}</strong>
-            <span>常用标签</span>
+            <span>内容分类</span>
           </li>
         </ul>
       </aside>
     </div>
+  </section>
+
+  <section class="shell section section--triad">
+    <article class="info-card">
+      <p class="eyebrow">Search</p>
+      <h2>快速检索文章和页面</h2>
+      <p>支持按标题、正文、分类和标签搜索，适合在写作、复习和项目整理时快速回查内容。</p>
+      <a class="button button--secondary" href="/search/">打开搜索</a>
+    </article>
+
+    <article class="info-card info-card--accent">
+      <p class="eyebrow">About</p>
+      <h2>{siteConfig.author} / {siteConfig.handle}</h2>
+      <p>{siteConfig.bio}</p>
+      <a class="button" href="/about/">查看完整资料</a>
+    </article>
+
+    <article class="info-card">
+      <p class="eyebrow">Timeline</p>
+      <h2>最近时间线</h2>
+      <ul class="mini-timeline">
+        {latestTimeline.map((post) => (
+          <li>
+            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+            <span>{post.data.pubDate.toISOString().slice(0, 10)}</span>
+          </li>
+        ))}
+      </ul>
+      <a class="button" href="/archives/">查看完整时间线</a>
+    </article>
   </section>
 
   <section class="shell section">
@@ -63,6 +98,41 @@ const categories = [...categoryMap.entries()];
     </div>
   </section>
 
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Projects</p>
+        <h2>精选项目</h2>
+      </div>
+      <a class="section-heading__link" href="/projects/">
+        查看项目页
+      </a>
+    </div>
+
+    <div class="feature-grid">
+      {
+        featuredProjects.map((project) => (
+          <article class="feature-card">
+            <p class="feature-card__eyebrow">{project.status}</p>
+            <h3>{project.title}</h3>
+            <p>{project.summary}</p>
+            <div class="search-result-card__tags">
+              {project.technologies.slice(0, 4).map((tech) => <span>{tech}</span>)}
+            </div>
+            <div class="project-card__actions">
+              {project.relatedPost && <a class="button" href={project.relatedPost}>相关博客</a>}
+              {project.repository && (
+                <a class="button button--secondary" href={project.repository} rel="noreferrer" target="_blank">
+                  项目仓库
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
   <section class="shell section section--split">
     <div class="info-card">
       <p class="eyebrow">Tags</p>
@@ -72,15 +142,17 @@ const categories = [...categoryMap.entries()];
       </div>
     </div>
 
-    <div class="info-card info-card--accent">
-      <p class="eyebrow">Projects</p>
-      <h2>项目页已重建为长期维护入口</h2>
-      <p>
-        历史项目资料仍在逐步整理，当前版本先把博客本体、内容管理和发布链路重建稳定，再继续补充项目细节。
-      </p>
-      <a class="button button--secondary" href="/projects/">
-        打开项目页
-      </a>
+    <div class="info-card">
+      <p class="eyebrow">Categories</p>
+      <h2>按分类浏览内容</h2>
+      <div class="category-stack">
+        {categories.slice(0, 6).map(([category, entries]) => (
+          <a class="category-stack__item" href={`/categories/${encodeURIComponent(category)}/`}>
+            <span>{category}</span>
+            <strong>{entries.length} 篇</strong>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
