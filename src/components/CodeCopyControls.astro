@@ -1,0 +1,86 @@
+<script is:inline>
+  (() => {
+    const COPY_LABEL = "复制代码";
+    const COPIED_LABEL = "已复制";
+    const FAILED_LABEL = "复制失败";
+
+    const fallbackCopy = (text) => {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.top = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        return document.execCommand("copy");
+      } finally {
+        textarea.remove();
+      }
+    };
+
+    const writeToClipboard = async (text) => {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+
+      return fallbackCopy(text);
+    };
+
+    const setButtonState = (button, label) => {
+      button.textContent = label;
+      window.clearTimeout(button._copyResetTimer);
+      button._copyResetTimer = window.setTimeout(() => {
+        button.textContent = COPY_LABEL;
+      }, 1800);
+    };
+
+    const enhanceCodeBlocks = () => {
+      const codeBlocks = document.querySelectorAll(".prose-card pre");
+
+      for (const pre of codeBlocks) {
+        if (!(pre instanceof HTMLElement) || pre.dataset.copyEnhanced === "true") {
+          continue;
+        }
+
+        const code = pre.querySelector("code");
+        if (!(code instanceof HTMLElement)) {
+          continue;
+        }
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "code-copy-button";
+        button.textContent = COPY_LABEL;
+        button.setAttribute("aria-label", COPY_LABEL);
+
+        button.addEventListener("click", async () => {
+          const source = code.innerText.replace(/\n$/, "");
+
+          if (!source) {
+            return;
+          }
+
+          try {
+            await writeToClipboard(source);
+            setButtonState(button, COPIED_LABEL);
+          } catch (error) {
+            console.error("Failed to copy code block.", error);
+            setButtonState(button, FAILED_LABEL);
+          }
+        });
+
+        pre.dataset.copyEnhanced = "true";
+        pre.appendChild(button);
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", enhanceCodeBlocks, { once: true });
+    } else {
+      enhanceCodeBlocks();
+    }
+  })();
+</script>

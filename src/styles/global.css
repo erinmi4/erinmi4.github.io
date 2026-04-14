@@ -974,9 +974,40 @@ main {
 }
 
 .prose-card pre {
+  position: relative;
   overflow-x: auto;
-  padding: 1rem;
+  padding: 3.4rem 1rem 1rem;
   border-radius: var(--radius-md);
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 1;
+  min-height: 2.1rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(12, 18, 32, 0.72);
+  color: rgba(244, 247, 255, 0.92);
+  font: inherit;
+  font-size: 0.82rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.code-copy-button:hover {
+  transform: translateY(-1px);
+  background: rgba(28, 36, 58, 0.88);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.code-copy-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.65);
+  outline-offset: 2px;
 }
 
 .prose-card .katex-display {

@@ -1,6 +1,7 @@
 ---
 import type { BlogEntry } from "../lib/content";
 import BaseLayout from "./BaseLayout.astro";
+import CodeCopyControls from "../components/CodeCopyControls.astro";
 import TagList from "../components/TagList.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import { formatDate, getCategoryUrl, getPostUrl } from "../lib/content";
@@ -103,4 +104,5 @@ const { post, previousPost, nextPost, readingMinutes, headings } = Astro.props;
       </div>
     </nav>
   </article>
+  <CodeCopyControls />
 </BaseLayout>
