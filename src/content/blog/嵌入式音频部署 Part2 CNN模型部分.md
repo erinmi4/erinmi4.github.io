@@ -1,8 +1,8 @@
 ---
 title: 预处理与模型构建 Part2 模型训练与设计
 description: 解析基于TensorFlow的CNN模型代码，探讨如何为ESP32设计体积小且高效的音频分类模型。
-pubDate: 2026-04-15
-updatedDate: 2026-04-15
+pubDate: 2026-04-14
+updatedDate: 2026-04-14
 tags:
   - 深度学习
   - 信号处理
