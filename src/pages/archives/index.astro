@@ -1,9 +1,16 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { formatDate, getAllPosts, getArchiveGroups, getCategoryUrl, getPostUrl } from "../../lib/content";
+import {
+  formatDate,
+  getArchiveGroups,
+  getCategoryUrl,
+  getDateAnchorId,
+  getPostUrl,
+  getTimelineGroups
+} from "../../lib/content";
 
 const groups = await getArchiveGroups();
-const posts = await getAllPosts();
+const timelineGroups = await getTimelineGroups();
 ---
 
 <BaseLayout title="博客归档" description="按时间浏览博客中的所有文章。">
@@ -23,18 +30,39 @@ const posts = await getAllPosts();
       </div>
 
       <div class="timeline-list">
-        {posts.map((post) => (
+        {timelineGroups.map((group) => (
           <article class="timeline-item">
-            <div class="timeline-item__date">{formatDate(post.data.pubDate)}</div>
-            <div class="timeline-item__dot" aria-hidden="true"></div>
+            <div class="timeline-item__date">{formatDate(group.date)}</div>
+            <a
+              class="timeline-item__dot-link"
+              href={`#${getDateAnchorId(group.key)}`}
+              aria-label={`跳转到 ${formatDate(group.date)} 的归档位置`}
+            >
+              <span class="timeline-item__dot" aria-hidden="true"></span>
+            </a>
             <div class="timeline-item__content">
-              <a class="timeline-item__category" href={getCategoryUrl(post.data.category)}>
-                {post.data.category}
-              </a>
-              <h3>
-                <a href={getPostUrl(post)}>{post.data.title}</a>
-              </h3>
-              <p>{post.data.description}</p>
+              <div class="timeline-item__header">
+                <h3>
+                  {group.entries.length > 1
+                    ? `${group.entries[0].data.title} 等 ${group.entries.length} 篇`
+                    : group.entries[0].data.title}
+                </h3>
+                <span class="timeline-item__count">{group.entries.length} 篇</span>
+              </div>
+
+              <div class="timeline-item__posts">
+                {group.entries.map((post) => (
+                  <article class="timeline-entry">
+                    <a class="timeline-item__category" href={getCategoryUrl(post.data.category)}>
+                      {post.data.category}
+                    </a>
+                    <h4>
+                      <a href={getPostUrl(post)}>{post.data.title}</a>
+                    </h4>
+                    <p>{post.data.description}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </article>
         ))}
@@ -52,19 +80,28 @@ const posts = await getAllPosts();
               <span>{group.entries.length} 篇</span>
             </div>
 
-            <div class="archive-group__list">
-              {group.entries.map((post) => (
-                <article class="archive-item">
-                  <div>
-                    <p>{formatDate(post.data.pubDate)}</p>
-                    <h3>
-                      <a href={getPostUrl(post)}>{post.data.title}</a>
-                    </h3>
-                  </div>
-                  <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
-                </article>
-              ))}
-            </div>
+            {group.dayGroups.map((dayGroup) => (
+              <section class="archive-day" id={getDateAnchorId(dayGroup.key)}>
+                <div class="archive-day__header">
+                  <h3>{formatDate(dayGroup.date)}</h3>
+                  <span>{dayGroup.entries.length} 篇</span>
+                </div>
+
+                <div class="archive-group__list">
+                  {dayGroup.entries.map((post) => (
+                    <article class="archive-item">
+                      <div>
+                        <p>{formatDate(post.data.pubDate)}</p>
+                        <h4>
+                          <a href={getPostUrl(post)}>{post.data.title}</a>
+                        </h4>
+                      </div>
+                      <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
           </section>
         ))
       }

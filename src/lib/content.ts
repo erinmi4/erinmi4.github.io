@@ -3,6 +3,14 @@
 export type BlogEntry = CollectionEntry<"blog">;
 export type PageEntry = CollectionEntry<"pages">;
 
+function getDateKey(date: Date) {
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0")
+  ].join("-");
+}
+
 export async function getAllPosts() {
   const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
 
@@ -72,14 +80,45 @@ export async function getArchiveGroups() {
 
   return [...archiveMap.entries()].map(([key, entries]) => {
     const [year, month] = key.split("-");
+    const dayMap = new Map<string, BlogEntry[]>();
+
+    for (const post of entries) {
+      const dayKey = getDateKey(post.data.pubDate);
+      const bucket = dayMap.get(dayKey) ?? [];
+      bucket.push(post);
+      dayMap.set(dayKey, bucket);
+    }
 
     return {
       key,
       year,
       month,
-      entries
+      entries,
+      dayGroups: [...dayMap.entries()].map(([dayKey, dayEntries]) => ({
+        key: dayKey,
+        date: dayEntries[0].data.pubDate,
+        entries: dayEntries
+      }))
     };
   });
+}
+
+export async function getTimelineGroups() {
+  const posts = await getAllPosts();
+  const timelineMap = new Map<string, BlogEntry[]>();
+
+  for (const post of posts) {
+    const key = getDateKey(post.data.pubDate);
+    const bucket = timelineMap.get(key) ?? [];
+    bucket.push(post);
+    timelineMap.set(key, bucket);
+  }
+
+  return [...timelineMap.entries()].map(([key, entries]) => ({
+    key,
+    date: entries[0].data.pubDate,
+    entries
+  }));
 }
 
 export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions) {
@@ -101,4 +140,8 @@ export function getTagUrl(tag: string) {
 
 export function getCategoryUrl(category: string) {
   return `/categories/${encodeURIComponent(category)}/`;
+}
+
+export function getDateAnchorId(key: string) {
+  return `date-${key}`;
 }

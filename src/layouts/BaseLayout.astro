@@ -60,6 +60,8 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
       <span class="page-aura__spark page-aura__spark--one"></span>
       <span class="page-aura__spark page-aura__spark--two"></span>
     </div>
+    <div class="pointer-effects" aria-hidden="true">
+    </div>
     <div class="page-shell">
       <Header />
       <main>
@@ -67,5 +69,41 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
       </main>
       <Footer />
     </div>
+    <script is:inline>
+      (() => {
+        const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+        if (!media.matches) return;
+
+        const body = document.body;
+        const layer = document.querySelector(".pointer-effects");
+
+        if (!(layer instanceof HTMLElement)) {
+          return;
+        }
+
+        body.classList.add("has-custom-pointer");
+
+        const spawnBurst = (x, y) => {
+          const burst = document.createElement("span");
+          burst.className = "pointer-burst";
+          burst.style.left = `${x}px`;
+          burst.style.top = `${y}px`;
+
+          for (let index = 0; index < 7; index += 1) {
+            const particle = document.createElement("span");
+            particle.className = "pointer-burst__particle";
+            particle.style.setProperty("--angle", `${index * 51}deg`);
+            burst.appendChild(particle);
+          }
+
+          layer.appendChild(burst);
+          window.setTimeout(() => burst.remove(), 620);
+        };
+
+        document.addEventListener("mousedown", (event) => {
+          spawnBurst(event.clientX, event.clientY);
+        });
+      })();
+    </script>
   </body>
 </html>
