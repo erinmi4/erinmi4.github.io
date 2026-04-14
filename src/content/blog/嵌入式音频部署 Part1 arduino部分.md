@@ -9,6 +9,7 @@ tags:
   - 音频处理
   - 嵌入式
   - TinyML
+  - C语言
 category: 毕设
 draft: false
 ---
