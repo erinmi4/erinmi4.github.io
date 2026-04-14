@@ -288,7 +288,7 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .hero__content,
@@ -436,7 +436,9 @@ main {
 .hero__panel {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-self: start;
+  justify-content: flex-start;
+  gap: 1.25rem;
   padding: 1.75rem;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 24%),
@@ -457,7 +459,7 @@ main {
 .hero__stats {
   display: grid;
   gap: 1rem;
-  margin: 2rem 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
