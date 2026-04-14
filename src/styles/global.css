@@ -653,6 +653,66 @@ main {
   font-size: clamp(2.4rem, 5vw, 4rem);
 }
 
+.sort-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  margin: 0 0 1.5rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 0 18px 38px rgba(90, 72, 144, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.sort-toolbar__eyebrow {
+  margin: 0 0 0.3rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sort-toolbar__hint {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.sort-toolbar__control {
+  display: grid;
+  gap: 0.45rem;
+  min-width: min(100%, 15rem);
+  font-weight: 600;
+}
+
+.sort-toolbar__control span {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.sort-toolbar__select {
+  min-height: 3rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text);
+  font: inherit;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.sort-toolbar__select:focus {
+  outline: 2px solid rgba(107, 124, 255, 0.18);
+  border-color: rgba(107, 124, 255, 0.35);
+  box-shadow: 0 0 0 6px rgba(107, 124, 255, 0.08);
+  transform: translateY(-1px);
+}
+
 .archive-shell,
 .post-shell,
 .prose-shell {
@@ -1432,6 +1492,14 @@ main > *:nth-child(5) {
 
   .hero h1 {
     max-width: none;
+  }
+
+  .sort-toolbar {
+    align-items: stretch;
+  }
+
+  .sort-toolbar__control {
+    width: 100%;
   }
 
   .post-shell__aside {

@@ -1,7 +1,8 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostCard from "../../components/PostCard.astro";
-import { getCategoryMap } from "../../lib/content";
+import PostSortControls from "../../components/PostSortControls.astro";
+import { getCategoryMap, sortPosts } from "../../lib/content";
 
 export async function getStaticPaths() {
   const categoryMap = await getCategoryMap();
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { category, posts } = Astro.props;
+const sortedPosts = sortPosts(posts);
 ---
 
 <BaseLayout
@@ -26,8 +28,20 @@ const { category, posts } = Astro.props;
       <p>共收录 {posts.length} 篇文章。</p>
     </header>
 
-    <div class="post-grid">
-      {posts.map((post) => <PostCard post={post} />)}
+    <div data-post-sort-root>
+      <PostSortControls />
+
+      <div class="post-grid js-sortable-post-grid">
+        {sortedPosts.map((post) => (
+          <div
+            class="js-sortable-post"
+            data-title={post.data.title}
+            data-date-timestamp={post.data.pubDate.getTime()}
+          >
+            <PostCard post={post} />
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

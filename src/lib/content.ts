@@ -2,6 +2,31 @@
 
 export type BlogEntry = CollectionEntry<"blog">;
 export type PageEntry = CollectionEntry<"pages">;
+export type PostSortOption = "date-desc" | "date-asc" | "title-asc" | "title-desc";
+
+const titleCollator = new Intl.Collator("zh-CN", {
+  numeric: true,
+  sensitivity: "base"
+});
+
+function comparePosts(left: BlogEntry, right: BlogEntry, sort: PostSortOption) {
+  const leftTitle = left.data.title;
+  const rightTitle = right.data.title;
+  const leftDate = left.data.pubDate.getTime();
+  const rightDate = right.data.pubDate.getTime();
+
+  switch (sort) {
+    case "date-asc":
+      return leftDate - rightDate || titleCollator.compare(leftTitle, rightTitle);
+    case "title-asc":
+      return titleCollator.compare(leftTitle, rightTitle) || rightDate - leftDate;
+    case "title-desc":
+      return titleCollator.compare(rightTitle, leftTitle) || rightDate - leftDate;
+    case "date-desc":
+    default:
+      return rightDate - leftDate || titleCollator.compare(leftTitle, rightTitle);
+  }
+}
 
 function getDateKey(date: Date) {
   return [
@@ -14,10 +39,11 @@ function getDateKey(date: Date) {
 export async function getAllPosts() {
   const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
 
-  return posts.sort(
-    (left: BlogEntry, right: BlogEntry) =>
-      right.data.pubDate.getTime() - left.data.pubDate.getTime()
-  );
+  return sortPosts(posts, "date-desc");
+}
+
+export function sortPosts(posts: BlogEntry[], sort: PostSortOption = "date-desc") {
+  return [...posts].sort((left, right) => comparePosts(left, right, sort));
 }
 
 export async function getPageBySlug(slug: string) {

@@ -1,0 +1,119 @@
+---
+const sortOptions = [
+  { value: "date-desc", label: "最新发布" },
+  { value: "date-asc", label: "最早发布" },
+  { value: "title-asc", label: "标题 A-Z" },
+  { value: "title-desc", label: "标题 Z-A" }
+];
+---
+
+<div class="sort-toolbar js-post-sorter" data-default-sort="date-desc">
+  <div>
+    <p class="sort-toolbar__eyebrow">排序方式</p>
+    <p class="sort-toolbar__hint">默认按发布时间倒序展示，也可以切换为标题排序。</p>
+  </div>
+
+  <label class="sort-toolbar__control" for="post-sort-select">
+    <span>当前排序</span>
+    <select id="post-sort-select" class="sort-toolbar__select" name="sort">
+      {sortOptions.map((option) => (
+        <option value={option.value}>{option.label}</option>
+      ))}
+    </select>
+  </label>
+</div>
+
+<script is:inline>
+  (() => {
+    const initPostSorters = () => {
+      const sorters = document.querySelectorAll(".js-post-sorter");
+
+      if (sorters.length === 0) {
+        return;
+      }
+
+      const collator = new Intl.Collator("zh-CN", {
+        numeric: true,
+        sensitivity: "base"
+      });
+
+      const comparePosts = (left, right, sortValue) => {
+        const leftTitle = left.dataset.title ?? "";
+        const rightTitle = right.dataset.title ?? "";
+        const leftDate = Number(left.dataset.dateTimestamp ?? "0");
+        const rightDate = Number(right.dataset.dateTimestamp ?? "0");
+
+        switch (sortValue) {
+          case "date-asc":
+            return leftDate - rightDate || collator.compare(leftTitle, rightTitle);
+          case "title-asc":
+            return collator.compare(leftTitle, rightTitle) || rightDate - leftDate;
+          case "title-desc":
+            return collator.compare(rightTitle, leftTitle) || rightDate - leftDate;
+          case "date-desc":
+          default:
+            return rightDate - leftDate || collator.compare(leftTitle, rightTitle);
+        }
+      };
+
+      const syncUrl = (sortValue, defaultSort) => {
+        const nextUrl = new URL(window.location.href);
+
+        if (sortValue === defaultSort) {
+          nextUrl.searchParams.delete("sort");
+        } else {
+          nextUrl.searchParams.set("sort", sortValue);
+        }
+
+        window.history.replaceState({}, "", nextUrl);
+      };
+
+      for (const sorter of sorters) {
+        if (sorter instanceof HTMLElement && sorter.dataset.sortInitialized === "true") {
+          continue;
+        }
+
+        const root = sorter.closest("[data-post-sort-root]");
+        const select = sorter.querySelector(".sort-toolbar__select");
+        const grid = root?.querySelector(".js-sortable-post-grid");
+
+        if (!(sorter instanceof HTMLElement)) {
+          continue;
+        }
+
+        if (!(select instanceof HTMLSelectElement) || !(grid instanceof HTMLElement)) {
+          continue;
+        }
+
+        const defaultSort = sorter.dataset.defaultSort ?? "date-desc";
+        const cards = Array.from(grid.querySelectorAll(".js-sortable-post"));
+        const validSorts = new Set(Array.from(select.options).map((option) => option.value));
+        const requestedSort = new URL(window.location.href).searchParams.get("sort");
+        const initialSort =
+          requestedSort && validSorts.has(requestedSort) ? requestedSort : defaultSort;
+
+        const applySort = (sortValue) => {
+          cards
+            .slice()
+            .sort((left, right) => comparePosts(left, right, sortValue))
+            .forEach((card) => grid.appendChild(card));
+        };
+
+        sorter.dataset.sortInitialized = "true";
+        select.value = initialSort;
+        applySort(initialSort);
+
+        select.addEventListener("change", () => {
+          applySort(select.value);
+          syncUrl(select.value, defaultSort);
+        });
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPostSorters, { once: true });
+    } else {
+      initPostSorters();
+    }
+  })();
+</script>
