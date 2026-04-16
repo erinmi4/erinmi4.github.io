@@ -11,7 +11,17 @@ const latestTimeline = posts.slice(0, 5);
 const featuredProjects = projects.slice(0, 3);
 const tagMap = await getTagMap();
 const categoryMap = await getCategoryMap();
-const tags = [...tagMap.keys()].slice(0, 6);
+const tags = [...tagMap.entries()]
+  .sort((left, right) => {
+    const countDiff = right[1].length - left[1].length;
+
+    if (countDiff !== 0) {
+      return countDiff;
+    }
+
+    return left[0].localeCompare(right[0], "zh-CN");
+  })
+  .map(([tag]) => tag);
 const categories = [...categoryMap.entries()].sort((left, right) => {
   const countDiff = right[1].length - left[1].length;
 
