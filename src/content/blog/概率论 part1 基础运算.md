@@ -1,8 +1,8 @@
 ---
-title: 概率论
+title: 概率统计的基础计算
 description: 总结自《弱点克服 大学生の確率・統計 (藤田 岳彦) 》一书，使用最小笔记的形式去记录。
 pubDate: 2026-04-13
-updatedDate: 2026-04-13
+updatedDate: 2026-04-15
 tags:
   - 概率论
   - 修考
