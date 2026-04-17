@@ -1,6 +1,7 @@
 ---
 title: 矩阵的对角化与金字塔阶级
-description: 
+slug: 线性代数-矩阵的对角化与金字塔阶级
+description: 梳理矩阵对角化、特征值与特征向量之间的关系，并用层级视角理解不同矩阵的可处理性。
 pubDate: 2026-04-15
 updatedDate: 2026-04-15
 tags:
@@ -9,7 +10,6 @@ tags:
 category: 修考
 draft: false
 ---
-
 ### 特征值与特征向量的核心动机
 在线性代数中，我们经常需要处理输入向量 $x$ 经过矩阵 $A$ 的线性转换，得到输出向量 $Ax$。当矩阵 $A$ 非常庞大（例如 $1000 \times 1000$）且需要进行多次转换（例如 $A^k x$）时，直接相乘的计算量会非常惊人。
 
@@ -19,13 +19,13 @@ $$Ax = \lambda x$$
 
 ### 什么是对角化
 
-<img src="./%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5%E7%9A%84%E5%AF%B9%E8%A7%92%E5%8C%96%E4%B8%8E%E9%87%91%E5%AD%97%E5%A1%94%E9%98%B6%E7%BA%A7.assets/image-20260416115206657.png" alt="对角化的推导公式" style="zoom: 33%;" />
+<img src="./matrix-diagonalization-assets/image-20260416115206657.png" alt="对角化的推导公式" style="zoom: 33%;" />
 
 ### 矩阵的金字塔阶级
 
 基于特征向量的表现，矩阵被划分为一个严阶级的“金字塔”：
 
-![image-20260415090930521](./%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5%E7%9A%84%E5%AF%B9%E8%A7%92%E5%8C%96%E4%B8%8E%E9%87%91%E5%AD%97%E5%A1%94%E9%98%B6%E7%BA%A7.assets/image-20260415090930521.png)
+![image-20260415090930521](./matrix-diagonalization-assets/image-20260415090930521.png)
 
 *   **金字塔底层：瑕疵矩阵 (Defective Matrix)**
     *   **定义：** 虽然能算出特征值（通常伴随重复的特征值），但在求零空间时，**找不到 $n$ 条线性独立的特征向量**的矩阵。
