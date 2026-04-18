@@ -1,26 +1,224 @@
-﻿---
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getTagMap } from "../../lib/content";
+import PostCard from "../../components/PostCard.astro";
+import PostSortControls from "../../components/PostSortControls.astro";
+import { getAllPosts, getTagMap, sortPosts } from "../../lib/content";
 
+const posts = sortPosts(await getAllPosts());
 const tagMap = await getTagMap();
-const tags = [...tagMap.entries()];
+const tags = [...tagMap.entries()]
+  .sort((left, right) => {
+    const countDiff = right[1].length - left[1].length;
+
+    if (countDiff !== 0) {
+      return countDiff;
+    }
+
+    return left[0].localeCompare(right[0], "zh-CN");
+  })
+  .map(([tag, tagPosts]) => ({
+    tag,
+    count: tagPosts.length
+  }));
 ---
 
-<BaseLayout title="标签" description="按标签浏览站内文章。">
+<BaseLayout title="Topics" description="通过多选 topics 查看文章交集。">
   <section class="shell archive-shell">
     <header class="page-heading">
-      <p class="eyebrow">Tags</p>
-      <h1>标签</h1>
-      <p>使用标签快速聚合同主题内容。</p>
+      <p class="eyebrow">Topics</p>
+      <h1>Topics 交叉筛选</h1>
+      <p>可以一次选中多个 topics，页面会保留同时命中这些 topics 的文章交集。</p>
     </header>
 
-    <div class="taxonomy-grid">
-      {tags.map(([tag, posts]) => (
-        <a class="taxonomy-card" href={`/tags/${encodeURIComponent(tag)}/`}>
-          <h2>{tag}</h2>
-          <p>{posts.length} 篇文章</p>
-        </a>
-      ))}
-    </div>
+    <section class="info-card topic-filter" data-topic-filter-root>
+      <div class="topic-filter__top">
+        <div>
+          <p class="topic-filter__label">Topic Explorer</p>
+          <h2>选择你想组合的 topics</h2>
+        </div>
+        <button class="button topic-filter__clear" type="button" data-clear-topics>
+          清空选择
+        </button>
+      </div>
+
+      <p class="topic-filter__summary" data-topic-summary>
+        当前显示全部 {posts.length} 篇文章。
+      </p>
+
+      <div class="topic-filter__selected" data-selected-topics hidden></div>
+
+      <div class="topic-filter__chips" aria-label="Topics">
+        {tags.map(({ tag, count }) => (
+          <button class="topic-chip" type="button" data-topic={tag} aria-pressed="false">
+            <span>{tag}</span>
+            <strong>{count}</strong>
+          </button>
+        ))}
+      </div>
+
+      <p class="topic-filter__hint">
+        支持多选。例如先选“计算机组成原理”，再选“MIPS”，结果里只会留下同时属于这两个
+        topics 的文章。
+      </p>
+    </section>
+
+    <section data-post-sort-root>
+      <PostSortControls />
+
+      <div class="post-grid js-sortable-post-grid" data-topic-results>
+        {posts.map((post) => (
+          <div
+            class="js-sortable-post"
+            data-title={post.data.title}
+            data-date-timestamp={post.data.pubDate.getTime()}
+            data-topics={JSON.stringify(post.data.tags)}
+          >
+            <PostCard post={post} />
+          </div>
+        ))}
+      </div>
+
+      <div class="topic-filter__empty" data-topic-empty hidden>
+        当前 topics 组合下还没有匹配文章，减少一个筛选条件试试。
+      </div>
+    </section>
   </section>
 </BaseLayout>
+
+<script define:vars={{ validTopics: tags.map(({ tag }) => tag), totalPostCount: posts.length }} is:inline>
+  (() => {
+    const root = document.querySelector("[data-topic-filter-root]");
+    const resultsGrid = document.querySelector("[data-topic-results]");
+    const emptyState = document.querySelector("[data-topic-empty]");
+
+    if (!(root instanceof HTMLElement) || !(resultsGrid instanceof HTMLElement)) {
+      return;
+    }
+
+    const buttons = Array.from(root.querySelectorAll("[data-topic]")).filter(
+      (button) => button instanceof HTMLButtonElement
+    );
+    const cards = Array.from(resultsGrid.querySelectorAll(".js-sortable-post")).filter(
+      (card) => card instanceof HTMLElement
+    );
+    const summary = root.querySelector("[data-topic-summary]");
+    const selectedTopics = root.querySelector("[data-selected-topics]");
+    const clearButton = root.querySelector("[data-clear-topics]");
+    const topicSet = new Set(validTopics);
+
+    const normalizeTopics = (values) =>
+      [...new Set(values.map((value) => value.trim()).filter((value) => topicSet.has(value)))];
+
+    const readTopicsFromUrl = () =>
+      normalizeTopics(new URL(window.location.href).searchParams.getAll("topics"));
+
+    const syncUrl = (topics) => {
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.delete("topics");
+
+      for (const topic of topics) {
+        nextUrl.searchParams.append("topics", topic);
+      }
+
+      window.history.replaceState({}, "", nextUrl);
+    };
+
+    const renderSelectedTopics = (topics) => {
+      if (!(selectedTopics instanceof HTMLElement)) {
+        return;
+      }
+
+      if (topics.length === 0) {
+        selectedTopics.hidden = true;
+        selectedTopics.innerHTML = "";
+        return;
+      }
+
+      selectedTopics.hidden = false;
+      selectedTopics.innerHTML = topics
+        .map((topic) => `<span class="topic-chip topic-chip--selected-badge"><span>${topic}</span></span>`)
+        .join("");
+    };
+
+    const applyFilters = (topics) => {
+      let visibleCount = 0;
+
+      for (const card of cards) {
+        const cardTopics = normalizeTopics(JSON.parse(card.dataset.topics ?? "[]"));
+        const isVisible = topics.every((topic) => cardTopics.includes(topic));
+
+        card.hidden = !isVisible;
+
+        if (isVisible) {
+          visibleCount += 1;
+        }
+      }
+
+      for (const button of buttons) {
+        const topic = button.dataset.topic ?? "";
+        const isActive = topics.includes(topic);
+
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      }
+
+      if (summary instanceof HTMLElement) {
+        summary.textContent =
+          topics.length === 0
+            ? `当前显示全部 ${totalPostCount} 篇文章。`
+            : `当前显示 ${visibleCount} 篇文章，需同时命中：${topics.join(" / ")}。`;
+      }
+
+      if (clearButton instanceof HTMLButtonElement) {
+        clearButton.disabled = topics.length === 0;
+      }
+
+      renderSelectedTopics(topics);
+
+      if (emptyState instanceof HTMLElement) {
+        emptyState.hidden = visibleCount !== 0;
+      }
+
+      resultsGrid.hidden = visibleCount === 0;
+    };
+
+    let selected = readTopicsFromUrl();
+
+    for (const button of buttons) {
+      button.addEventListener("click", () => {
+        const topic = button.dataset.topic?.trim();
+
+        if (!topic) {
+          return;
+        }
+
+        selected = selected.includes(topic)
+          ? selected.filter((entry) => entry !== topic)
+          : [...selected, topic];
+
+        selected = normalizeTopics(selected);
+        applyFilters(selected);
+        syncUrl(selected);
+      });
+    }
+
+    if (clearButton instanceof HTMLButtonElement) {
+      clearButton.addEventListener("click", () => {
+        if (selected.length === 0) {
+          return;
+        }
+
+        selected = [];
+        applyFilters(selected);
+        syncUrl(selected);
+      });
+    }
+
+    window.addEventListener("popstate", () => {
+      selected = readTopicsFromUrl();
+      applyFilters(selected);
+    });
+
+    applyFilters(selected);
+  })();
+</script>

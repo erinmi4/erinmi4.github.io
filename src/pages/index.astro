@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
-import { getAllPosts, getCategoryMap, getTagMap } from "../lib/content";
+import { getAllPosts, getCategoryMap, getTagMap, getTopicsUrl } from "../lib/content";
 import { projects } from "../lib/projects";
 import { siteConfig } from "../lib/site";
 
@@ -11,7 +11,7 @@ const latestTimeline = posts.slice(0, 5);
 const featuredProjects = projects.slice(0, 3);
 const tagMap = await getTagMap();
 const categoryMap = await getCategoryMap();
-const tags = [...tagMap.entries()]
+const topicEntries = [...tagMap.entries()]
   .sort((left, right) => {
     const countDiff = right[1].length - left[1].length;
 
@@ -21,7 +21,7 @@ const tags = [...tagMap.entries()]
 
     return left[0].localeCompare(right[0], "zh-CN");
   })
-  .map(([tag]) => tag);
+  .map(([tag, topicPosts]) => ({ tag, count: topicPosts.length }));
 const categories = [...categoryMap.entries()].sort((left, right) => {
   const countDiff = right[1].length - left[1].length;
 
@@ -240,10 +240,19 @@ const wallpaperCards = [
 
   <section class="shell section section--split">
     <div class="info-card">
-      <p class="eyebrow">Tags</p>
-      <h2>Jump in through topics</h2>
-      <div class="pill-grid">
-        {tags.map((tag) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>{tag}</a>)}
+      <p class="eyebrow">Topics</p>
+      <h2>Filter through topics</h2>
+      <p>支持一次选择多个 topics，并直接查看这些 topics 的文章交集。</p>
+      <div class="pill-grid pill-grid--metrics">
+        {topicEntries.map(({ tag, count }) => (
+          <a class="pill pill--metric" href={getTopicsUrl([tag])}>
+            <span>{tag}</span>
+            <strong>{count}</strong>
+          </a>
+        ))}
+      </div>
+      <div class="topic-browser__actions">
+        <a class="button button--secondary" href="/tags/">Open topic explorer</a>
       </div>
     </div>
 

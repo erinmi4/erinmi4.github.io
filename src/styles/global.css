@@ -19,8 +19,8 @@
   --radius-lg: 22px;
   --radius-md: 18px;
   --shell: min(1180px, calc(100vw - 2rem));
-  --title-font: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", "Yu Mincho", "Hiragino Mincho ProN", serif;
-  --body-font: "Aptos", "Segoe UI Variable Text", "Yu Gothic UI", "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  --title-font: "Segoe UI Variable Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  --body-font: "Aptos", "Segoe UI Variable Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
   --mono-font: "Cascadia Code", Consolas, "Liberation Mono", monospace;
 }
 
@@ -39,6 +39,7 @@ body {
   background: linear-gradient(180deg, #fbf7f0, #f4eadc 48%, #f6efe5);
   color: var(--text);
   font-family: var(--body-font);
+  font-synthesis: none;
 }
 
 body::before,
@@ -401,9 +402,12 @@ main {
 .tag-list a,
 .pill,
 .search-result-card__tags span,
-.timeline-item__category {
+.timeline-item__category,
+.topic-chip,
+.topic-filter__selected span {
   display: inline-flex;
   align-items: center;
+  gap: 0.45rem;
   min-height: 2.2rem;
   padding: 0.38rem 0.9rem;
   border: 1px solid rgba(155, 107, 67, 0.14);
@@ -411,17 +415,55 @@ main {
   background: rgba(194, 106, 74, 0.08);
   color: var(--accent-strong);
   font-size: 0.9rem;
+  font-weight: 600;
   transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .hero__signal:hover,
 .tag-list a:hover,
 .pill:hover,
-.search-result-card__tags span:hover {
+.search-result-card__tags span:hover,
+.topic-chip:hover {
   transform: translateY(-2px);
   background: rgba(194, 106, 74, 0.14);
   border-color: rgba(155, 107, 67, 0.24);
   box-shadow: 0 12px 26px rgba(110, 84, 61, 0.08);
+}
+
+.topic-chip {
+  cursor: pointer;
+  font: inherit;
+}
+
+.topic-chip.is-active {
+  border-color: transparent;
+  background: linear-gradient(135deg, rgba(242, 210, 143, 0.98), rgba(194, 106, 74, 0.9));
+  color: #3b2619;
+  box-shadow: 0 14px 28px rgba(110, 84, 61, 0.13);
+}
+
+.tag-list__hash {
+  font-size: 0.84em;
+  opacity: 0.7;
+}
+
+.pill--metric,
+.topic-chip {
+  justify-content: space-between;
+}
+
+.pill--metric strong,
+.topic-chip strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
+  color: inherit;
+  font-size: 0.78rem;
+  line-height: 1.1;
 }
 
 .hero__actions,
@@ -695,10 +737,18 @@ main {
   gap: 0.65rem;
 }
 
+.pill-grid--metrics {
+  gap: 0.8rem;
+}
+
 .tag-list {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.topic-browser__actions {
+  margin-top: 1.2rem;
 }
 
 .section--split {
@@ -819,6 +869,72 @@ main {
 .project-card__period,
 .timeline-item__date,
 .mini-timeline span {
+  color: var(--text-soft);
+}
+
+.topic-filter {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.topic-filter__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.topic-filter__label {
+  margin: 0 0 0.45rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.topic-filter__top h2 {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1.08;
+}
+
+.topic-filter__summary,
+.topic-filter__hint {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.topic-filter__chips,
+.topic-filter__selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.topic-filter__selected[hidden] {
+  display: none;
+}
+
+.topic-chip--selected-badge {
+  cursor: default;
+  background: rgba(242, 210, 143, 0.24);
+}
+
+.topic-filter__clear:disabled {
+  opacity: 0.52;
+  pointer-events: none;
+}
+
+.topic-filter__empty {
+  padding: 1.2rem 1.25rem;
+  border: 1px dashed rgba(155, 107, 67, 0.28);
+  border-radius: 20px;
+  background: rgba(255, 250, 244, 0.78);
   color: var(--text-soft);
 }
 
@@ -1372,6 +1488,14 @@ main > *:nth-child(5) {
 
   .sort-toolbar {
     align-items: stretch;
+  }
+
+  .topic-filter__top {
+    flex-direction: column;
+  }
+
+  .topic-filter__clear {
+    width: 100%;
   }
 
   .sort-toolbar__control {

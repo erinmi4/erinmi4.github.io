@@ -36,6 +36,21 @@ function getDateKey(date: Date) {
   ].join("-");
 }
 
+function normalizeTopics(values: string[]) {
+  const seen = new Set<string>();
+
+  return values.filter((value) => {
+    const topic = value.trim();
+
+    if (!topic || seen.has(topic)) {
+      return false;
+    }
+
+    seen.add(topic);
+    return true;
+  });
+}
+
 export async function getAllPosts() {
   const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
 
@@ -55,12 +70,16 @@ export async function getAllPages() {
   return (await getCollection("pages")).filter((page) => !page.data.draft);
 }
 
+export function getPostTopics(entry: Pick<BlogEntry, "data"> | Pick<PageEntry, "data">) {
+  return normalizeTopics(entry.data.tags ?? []);
+}
+
 export async function getTagMap() {
   const posts = await getAllPosts();
   const tagMap = new Map<string, BlogEntry[]>();
 
   for (const post of posts) {
-    for (const tag of post.data.tags) {
+    for (const tag of getPostTopics(post)) {
       const bucket = tagMap.get(tag) ?? [];
       bucket.push(post);
       tagMap.set(tag, bucket);
@@ -158,6 +177,22 @@ export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions) {
 
 export function getPostUrl(post: BlogEntry) {
   return `/posts/${post.slug}/`;
+}
+
+export function getTopicsUrl(topics: string[] = []) {
+  const normalizedTopics = normalizeTopics(topics);
+
+  if (normalizedTopics.length === 0) {
+    return "/tags/";
+  }
+
+  const searchParams = new URLSearchParams();
+
+  for (const topic of normalizedTopics) {
+    searchParams.append("topics", topic);
+  }
+
+  return `/tags/?${searchParams.toString()}`;
 }
 
 export function getTagUrl(tag: string) {

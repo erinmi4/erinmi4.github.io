@@ -1,5 +1,5 @@
-﻿---
-import { getTagUrl } from "../lib/content";
+---
+import { getTopicsUrl } from "../lib/content";
 
 interface Props {
   tags: string[];
@@ -10,10 +10,13 @@ const { tags } = Astro.props;
 
 {
   tags.length > 0 && (
-    <ul class="tag-list" aria-label="标签">
+    <ul class="tag-list" aria-label="文章 topics">
       {tags.map((tag) => (
         <li>
-          <a href={getTagUrl(tag)}>{tag}</a>
+          <a href={getTopicsUrl([tag])}>
+            <span class="tag-list__hash">#</span>
+            <span>{tag}</span>
+          </a>
         </li>
       ))}
     </ul>
