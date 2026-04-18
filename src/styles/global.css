@@ -72,6 +72,7 @@ a {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 main {
@@ -950,6 +951,55 @@ main {
   border: 1px solid rgba(125, 95, 74, 0.12);
   border-radius: var(--radius-md);
   background: #fffaf3;
+}
+
+.prose-card :where(img) {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border: 1px solid rgba(125, 95, 74, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.prose-card :where(table) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(125, 95, 74, 0.14);
+  border-radius: var(--radius-md);
+  background: rgba(255, 252, 248, 0.9);
+}
+
+.prose-card :where(thead) {
+  background: rgba(242, 210, 143, 0.18);
+}
+
+.prose-card :where(th, td) {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(125, 95, 74, 0.12);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+.prose-card :where(th) {
+  color: var(--text);
+  font-family: var(--title-font);
+  font-weight: 700;
+}
+
+.prose-card :where(td) {
+  color: var(--text-soft);
+}
+
+.prose-card :where(tr:last-child td) {
+  border-bottom: none;
 }
 
 .prose-card blockquote {
