@@ -1,0 +1,55 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#F8F2E8"/>
+  <rect width="1920" height="1080" fill="url(#wash)"/>
+  <g opacity="0.42">
+    <path d="M0 96H1920" stroke="#D9CAB6" stroke-width="2"/>
+    <path d="M0 192H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 288H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 384H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 480H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 576H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 672H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 768H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 864H1920" stroke="#E9DDCF" stroke-width="2"/>
+    <path d="M0 960H1920" stroke="#D9CAB6" stroke-width="2"/>
+  </g>
+  <circle cx="1458" cy="184" r="122" fill="url(#sun)"/>
+  <path d="M0 770C210 722 400 700 570 708C760 718 906 760 1074 760C1262 760 1456 704 1634 698C1748 694 1844 706 1920 726V1080H0V770Z" fill="url(#hillOne)"/>
+  <path d="M0 828C228 790 410 778 550 784C734 792 918 850 1094 850C1316 850 1548 782 1920 688V1080H0V828Z" fill="url(#hillTwo)"/>
+  <g opacity="0.92">
+    <path d="M242 668H584V910H242V668Z" fill="#7D5F4A"/>
+    <path d="M228 640H598L642 668H184L228 640Z" fill="#5C4536"/>
+    <path d="M308 574H518V640H308V574Z" fill="#8C6A55"/>
+    <path d="M294 548H532L562 574H264L294 548Z" fill="#654D3D"/>
+    <path d="M382 454H448V548H382V454Z" fill="#755746"/>
+    <path d="M362 428H468L496 454H334L362 428Z" fill="#5C4536"/>
+    <path d="M402 350H428V428H402V350Z" fill="#654D3D"/>
+  </g>
+  <g opacity="0.88">
+    <path d="M118 888C150 850 176 820 198 782C220 820 246 850 278 888C242 874 216 874 198 874C180 874 154 874 118 888Z" fill="#C26A4A"/>
+    <path d="M244 932C278 894 306 864 330 824C354 864 382 894 416 932C378 918 350 918 330 918C310 918 282 918 244 932Z" fill="#A24630"/>
+    <path d="M1640 894C1676 854 1704 822 1728 780C1752 822 1780 854 1816 894C1776 880 1748 880 1728 880C1708 880 1680 880 1640 894Z" fill="#B5523B"/>
+    <path d="M1538 964C1570 926 1596 898 1618 860C1640 898 1666 926 1698 964C1662 950 1636 950 1618 950C1600 950 1574 950 1538 964Z" fill="#D17A50"/>
+  </g>
+  <text x="118" y="148" fill="#8B5F47" fill-opacity="0.9" font-family="'Segoe UI', 'Yu Mincho', serif" font-size="28" letter-spacing="10">KYOTO NOTEBOOK / MORNING LIGHT</text>
+  <text x="1198" y="964" fill="#8B5F47" fill-opacity="0.72" font-family="'Segoe UI', 'Yu Gothic UI', sans-serif" font-size="24" letter-spacing="8">PAPER . GARDEN . PATIENCE . LONG STUDY</text>
+  <defs>
+    <linearGradient id="wash" x1="960" y1="0" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBF6EE"/>
+      <stop offset="0.55" stop-color="#F5EBDD"/>
+      <stop offset="1" stop-color="#EFE2D0"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1458 184) rotate(90) scale(122)">
+      <stop stop-color="#F5D49C"/>
+      <stop offset="1" stop-color="#F5D49C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillOne" x1="960" y1="698" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DECDB8"/>
+      <stop offset="1" stop-color="#CDB69B"/>
+    </linearGradient>
+    <linearGradient id="hillTwo" x1="960" y1="688" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9DDCF"/>
+      <stop offset="1" stop-color="#D7C3AD"/>
+    </linearGradient>
+  </defs>
+</svg>
