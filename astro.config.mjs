@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
+import rehypeMark from "./src/lib/rehypeMark.ts";
 import remarkMath from "remark-math";
 import sitemap from "@astrojs/sitemap";
 
@@ -8,9 +9,9 @@ export default defineConfig({
   integrations: [sitemap()],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, rehypeMark],
     shikiConfig: {
-      theme: "github-dark-default"
+      theme: "github-light"
     }
   }
 });

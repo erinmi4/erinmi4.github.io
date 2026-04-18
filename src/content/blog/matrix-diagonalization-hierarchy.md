@@ -115,3 +115,17 @@ $$\det(A - \lambda I) = \det\begin{bmatrix} -\lambda & -1 \\ 1 & -\lambda \end{b
 $$A^4 = X \Lambda^4 X^{-1} = X \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} X^{-1} = X I X^{-1} = I$$
 **最终答案：**
 $$A^4 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$$
+
+## 什么是谱定理 Spectral theorem
+
+矩阵可以进行对角化，也就是有充足的特征向量能够覆盖整个空间。
+
+在这个基础上，这些basis之间还是互相垂直的。
+
+这是集合了两种最好的basis
+
+1. Orthogonal basis
+2. Engenvector basis
+
+
+
