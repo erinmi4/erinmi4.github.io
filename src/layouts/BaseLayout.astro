@@ -47,7 +47,20 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="theme-color" content="#f7efe3" />
+    <script is:inline>
+      (() => {
+        const storageKey = "mika-theme";
+        const root = document.documentElement;
+        const savedTheme = window.localStorage.getItem(storageKey);
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const initialTheme =
+          savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+
+        root.dataset.theme = initialTheme;
+        root.style.colorScheme = initialTheme;
+      })();
+    </script>
+    <meta name="theme-color" content="#f7efe3" data-theme-color />
   </head>
 
   <body class={pageClass}>
@@ -70,8 +83,69 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
     </div>
     <script is:inline>
       (() => {
-        const media = window.matchMedia("(hover: hover) and (pointer: fine)");
-        if (!media.matches) return;
+        const storageKey = "mika-theme";
+        const root = document.documentElement;
+        const themeButtons = document.querySelectorAll("[data-theme-toggle]");
+        const themeColorMeta = document.querySelector("[data-theme-color]");
+        const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+        const themeColors = {
+          light: "#f7efe3",
+          dark: "#11161d"
+        };
+
+        const getSystemTheme = () => (themeMedia.matches ? "dark" : "light");
+
+        const applyTheme = (theme) => {
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme;
+
+          if (themeColorMeta instanceof HTMLMetaElement) {
+            themeColorMeta.content = themeColors[theme] ?? themeColors.light;
+          }
+
+          themeButtons.forEach((button) => {
+            if (!(button instanceof HTMLButtonElement)) {
+              return;
+            }
+
+            const nextTheme = theme === "dark" ? "浅色模式" : "深色模式";
+            const label = button.querySelector("[data-theme-toggle-label]");
+
+            button.dataset.theme = theme;
+            button.setAttribute("aria-label", `切换到${nextTheme}`);
+
+            if (label instanceof HTMLElement) {
+              label.textContent = theme === "dark" ? "深色模式" : "浅色模式";
+            }
+          });
+        };
+
+        applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
+
+        themeMedia.addEventListener("change", () => {
+          const savedTheme = window.localStorage.getItem(storageKey);
+
+          if (savedTheme !== "dark" && savedTheme !== "light") {
+            applyTheme(getSystemTheme());
+          }
+        });
+
+        themeButtons.forEach((button) => {
+          if (!(button instanceof HTMLButtonElement)) {
+            return;
+          }
+
+          button.addEventListener("click", () => {
+            const currentTheme = root.dataset.theme === "dark" ? "dark" : "light";
+            const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+            window.localStorage.setItem(storageKey, nextTheme);
+            applyTheme(nextTheme);
+          });
+        });
+
+        const pointerMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
+        if (!pointerMedia.matches) return;
 
         const body = document.body;
         const layer = document.querySelector(".pointer-effects");
