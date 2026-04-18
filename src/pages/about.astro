@@ -15,32 +15,44 @@ const { Content } = await render(page);
 
 <MarkdownPageLayout title={page.data.title} description={page.data.description}>
   <section class="profile-card">
-    <div>
-      <p class="profile-card__eyebrow">Profile</p>
+    <div class="profile-card__content">
+      <p class="profile-card__eyebrow">Identity / Profile</p>
       <h2>{siteConfig.author} / {siteConfig.handle}</h2>
       <p>{siteConfig.bio}</p>
+      <div class="profile-card__quick-links">
+        <a class="button button--primary" href={siteConfig.social.github} rel="noreferrer" target="_blank">
+          View GitHub
+        </a>
+        <a class="button" href={`mailto:${siteConfig.email}`}>
+          Contact
+        </a>
+      </div>
     </div>
 
-    <dl class="profile-card__meta">
-      <div>
-        <dt>所在地</dt>
-        <dd>{siteConfig.location}</dd>
-      </div>
-      <div>
-        <dt>GitHub</dt>
-        <dd>
-          <a href={siteConfig.social.github} rel="noreferrer" target="_blank">
-            {siteConfig.social.github}
-          </a>
-        </dd>
-      </div>
-      <div>
-        <dt>Email</dt>
-        <dd>
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-        </dd>
-      </div>
-    </dl>
+    <div class="profile-card__visual">
+      <img class="profile-card__portrait" src="/images/portraits/mika-avatar.svg" alt="Anime style portrait of mika" />
+      <img class="profile-card__cover" src="/images/wallpapers/tokyo-skyline-tower.jpg" alt="Tokyo skyline wallpaper" />
+      <dl class="profile-card__meta">
+        <div>
+          <dt>Base</dt>
+          <dd>{siteConfig.location}</dd>
+        </div>
+        <div>
+          <dt>GitHub</dt>
+          <dd>
+            <a href={siteConfig.social.github} rel="noreferrer" target="_blank">
+              {siteConfig.handle}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </section>
 
   <Content />

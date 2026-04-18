@@ -1,0 +1,66 @@
+<svg width="768" height="768" viewBox="0 0 768 768" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="768" height="768" rx="72" fill="#07111F"/>
+  <rect x="24" y="24" width="720" height="720" rx="48" fill="url(#panel)"/>
+  <path d="M84 118C84 99.2223 99.2223 84 118 84H650C668.778 84 684 99.2223 684 118V650C684 668.778 668.778 684 650 684H118C99.2223 684 84 668.778 84 650V118Z" stroke="url(#frame)" stroke-width="2"/>
+  <g opacity="0.55">
+    <path d="M108 164H660" stroke="#4CC9F0" stroke-opacity="0.24" stroke-width="2"/>
+    <path d="M108 604H660" stroke="#FF4D8D" stroke-opacity="0.18" stroke-width="2"/>
+    <path d="M164 108V660" stroke="#4CC9F0" stroke-opacity="0.14" stroke-width="2"/>
+    <path d="M604 108V660" stroke="#4CC9F0" stroke-opacity="0.14" stroke-width="2"/>
+  </g>
+  <circle cx="384" cy="384" r="238" fill="url(#halo)" fill-opacity="0.95"/>
+  <path d="M246 557C275.506 497.667 323.167 468 389 468C454.833 468 502.494 497.667 532 557" stroke="#DCE8FF" stroke-width="28" stroke-linecap="round"/>
+  <path d="M273 309C273 240.517 328.517 185 397 185C465.483 185 521 240.517 521 309V335C521 403.483 465.483 459 397 459C328.517 459 273 403.483 273 335V309Z" fill="url(#skin)"/>
+  <path d="M288 319C286.42 257.978 331.653 201 392.5 201C451.405 201 495.825 251.387 498 310.5L503 294.5C515.612 254.545 500.417 210.882 465.919 187.128C438.771 168.434 406.325 159.668 373.653 162.26C324.413 166.167 282.448 198.786 266.118 245.402C257.777 269.214 255.032 295.69 258.092 320.729L266 385C286.58 372.841 302.652 359.681 314.216 345.52C333.683 321.679 343.998 292.99 343 263C370.967 303.176 420.609 330.249 491 344L504 361C509.016 324.595 510.053 306.469 503 278.5C497.462 256.538 485.602 236.616 468.963 221.269C461.938 214.788 454.206 209.166 445.941 204.51C455.403 218.853 459.794 236.928 458 256C437.104 221.947 402.185 201.569 363 201.5C326.64 201.436 295.258 219.933 278.5 248.5C286.368 269.42 289.621 291.157 288 319Z" fill="url(#hair)"/>
+  <path d="M351 327C362.598 327 372 336.402 372 348C372 351.866 370.955 355.487 369.131 358.597C364.78 366.017 355.987 370.193 347.355 369.23C337.126 368.088 329 359.368 329 349C329 336.85 338.85 327 351 327Z" fill="#15253D"/>
+  <path d="M448 327C459.598 327 469 336.402 469 348C469 351.866 467.955 355.487 466.131 358.597C461.78 366.017 452.987 370.193 444.355 369.23C434.126 368.088 426 359.368 426 349C426 336.85 435.85 327 448 327Z" fill="#15253D"/>
+  <path d="M344 349C350.195 349 355.217 343.978 355.217 337.783C355.217 336.843 355.101 335.93 354.882 335.057C356.846 339.349 357.933 344.123 357.933 349.152C357.933 355.554 356.17 361.545 353.103 366.666C351.743 366.856 350.353 366.955 348.94 366.955C341.256 366.955 334.267 364.018 329 359.203C333.53 353.025 338.959 349 344 349Z" fill="#4CC9F0"/>
+  <path d="M441 349C447.195 349 452.217 343.978 452.217 337.783C452.217 336.843 452.101 335.93 451.882 335.057C453.846 339.349 454.933 344.123 454.933 349.152C454.933 355.554 453.17 361.545 450.103 366.666C448.743 366.856 447.353 366.955 445.94 366.955C438.256 366.955 431.267 364.018 426 359.203C430.53 353.025 435.959 349 441 349Z" fill="#4CC9F0"/>
+  <path d="M332 303C343.667 294.333 357.833 291.5 374.5 294.5" stroke="#1B2943" stroke-width="12" stroke-linecap="round"/>
+  <path d="M428 296C444.667 291 459 292.833 471 301.5" stroke="#1B2943" stroke-width="12" stroke-linecap="round"/>
+  <path d="M395.931 353C395.931 353 387.958 384.858 389.431 392.5C390.367 397.354 395.48 401 402 401" stroke="#D6928D" stroke-width="8" stroke-linecap="round"/>
+  <path d="M367 419C377.5 429.167 390 434.25 404.5 434.25C419 434.25 431.833 429.167 443 419" stroke="#FF8AAE" stroke-width="10" stroke-linecap="round"/>
+  <path d="M318 393C332.136 393 343.595 384.717 343.595 374.5C343.595 372.904 343.315 371.356 342.789 369.873C347.113 373.781 349.8 378.984 349.8 384.706C349.8 396.466 338.446 406 324.44 406C319.979 406 315.788 405.033 312.113 403.331C308.813 400.433 307 396.829 307 393.02C310.39 393.007 314.015 393 318 393Z" fill="#FFABC0" fill-opacity="0.56"/>
+  <path d="M476 393C490.136 393 501.595 384.717 501.595 374.5C501.595 372.904 501.315 371.356 500.789 369.873C505.113 373.781 507.8 378.984 507.8 384.706C507.8 396.466 496.446 406 482.44 406C477.979 406 473.788 405.033 470.113 403.331C466.813 400.433 465 396.829 465 393.02C468.39 393.007 472.015 393 476 393Z" fill="#FFABC0" fill-opacity="0.56"/>
+  <path d="M246 570C297.169 529.682 348.102 509.523 398.8 509.523C448.908 509.523 494.975 528.716 537 567.102V650C537 668.778 521.778 684 503 684H279C260.222 684 245 668.778 245 650L246 570Z" fill="url(#jacket)"/>
+  <path d="M360 521L384.5 558L410 521" stroke="#D3E3FF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M331 684L361 549H435L467 684H331Z" fill="url(#core)"/>
+  <path d="M552 162H612" stroke="#FF4D8D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M584 130V194" stroke="#FF4D8D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M156 572H228" stroke="#4CC9F0" stroke-width="6" stroke-linecap="round"/>
+  <path d="M156 604H264" stroke="#4CC9F0" stroke-opacity="0.46" stroke-width="6" stroke-linecap="round"/>
+  <text x="132" y="150" fill="#DCE8FF" fill-opacity="0.82" font-family="'Segoe UI', 'Yu Gothic UI', sans-serif" font-size="22" letter-spacing="5">MIKA // TOKYO SIGNAL</text>
+  <text x="150" y="634" fill="#DCE8FF" fill-opacity="0.54" font-family="'Segoe UI', 'Yu Gothic UI', sans-serif" font-size="20" letter-spacing="7">EMBEDDED . AUDIO . LEARNING SYSTEMS</text>
+  <defs>
+    <linearGradient id="panel" x1="124" y1="120" x2="642" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C1830"/>
+      <stop offset="1" stop-color="#07111F"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="126" y1="116" x2="676" y2="676" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4CC9F0" stop-opacity="0.85"/>
+      <stop offset="0.45" stop-color="#A7B8D9" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#FF4D8D" stop-opacity="0.72"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(386 322) rotate(90) scale(282 260)">
+      <stop stop-color="#132544"/>
+      <stop offset="0.58" stop-color="#0F1B31"/>
+      <stop offset="1" stop-color="#091221"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="290" y1="220" x2="488" y2="431" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE7DE"/>
+      <stop offset="1" stop-color="#F8CBBE"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="261" y1="171" x2="503" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2B3554"/>
+      <stop offset="1" stop-color="#0C1526"/>
+    </linearGradient>
+    <linearGradient id="jacket" x1="245" y1="524" x2="537" y2="684" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13284A"/>
+      <stop offset="1" stop-color="#0A1528"/>
+    </linearGradient>
+    <linearGradient id="core" x1="399" y1="549" x2="399" y2="684" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#112B50"/>
+      <stop offset="1" stop-color="#08101D"/>
+    </linearGradient>
+  </defs>
+</svg>

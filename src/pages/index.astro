@@ -31,63 +31,121 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
 
   return left[0].localeCompare(right[0], "zh-CN");
 });
+
+const wallpaperCards = [
+  {
+    title: "Tokyo Skyline",
+    image: "/images/wallpapers/tokyo-skyline-tower.jpg",
+    note: "Downloaded royalty-free city wallpaper.",
+    credit: "Photo by miyou_-77 on Pexels",
+    href: "/images/wallpapers/tokyo-skyline-tower.jpg"
+  },
+  {
+    title: "Neon Street",
+    image: "/images/wallpapers/tokyo-neon-street.jpg",
+    note: "Downloaded royalty-free neon street wallpaper for a denser cyber-Japan mood.",
+    credit: "Photo by Christopher Politano on Pexels",
+    href: "/images/wallpapers/tokyo-neon-street.jpg"
+  },
+  {
+    title: "Tokyo Tower Night",
+    image: "/images/wallpapers/tokyo-tower-night.jpg",
+    note: "Downloaded royalty-free Tokyo tower wallpaper with warmer night lighting.",
+    credit: "Photo by Daisuke Fujita on Pexels",
+    href: "/images/wallpapers/tokyo-tower-night.jpg"
+  },
+  {
+    title: "Neon Grid",
+    image: "/images/wallpapers/tokyo-neon-grid.svg",
+    note: "Custom SVG wallpaper with a retro-future Tokyo skyline.",
+    credit: "Custom in-repo asset",
+    href: "/images/wallpapers/tokyo-neon-grid.svg"
+  },
+  {
+    title: "Station Signal",
+    image: "/images/wallpapers/tokyo-station-signal.svg",
+    note: "Custom poster-style wallpaper with Japanese city signage energy.",
+    credit: "Custom in-repo asset",
+    href: "/images/wallpapers/tokyo-station-signal.svg"
+  }
+];
 ---
 
 <BaseLayout>
   <section class="hero">
     <div class="shell hero__grid">
       <div class="hero__content">
-        <p class="eyebrow">Personal Blog</p>
-        <h1>把博客变成一个同时服务写作、项目展示和学习沉淀的长期空间。</h1>
+        <p class="eyebrow">Tokyo Signal / Personal Dispatch</p>
+        <h1>Code, study, and long-form notes for the next version of me.</h1>
         <p class="hero__lead">
-          这里记录修考、项目实践、嵌入式、音频处理，以及我在长期学习过程中形成的方法和判断。
+          这里不只是一份博客，更像一个持续更新的 personal signal page。
+          我把修考、嵌入式、音频智能、项目复盘和学习系统，整理成一个更清晰、更有气质的长期空间。
         </p>
 
+        <div class="hero__signals">
+          <span class="hero__signal">Embedded Systems</span>
+          <span class="hero__signal">Audio ML</span>
+          <span class="hero__signal">Japan-bound</span>
+        </div>
+
         <div class="hero__actions">
-          <a class="button button--primary" href="/archives/">查看文章</a>
-          <a class="button" href="/search/">站内搜索</a>
-          <a class="button" href="/about/">关于我</a>
+          <a class="button button--primary" href="/archives/">Open Archive</a>
+          <a class="button" href="/about/">About Mika</a>
+          <a class="button" href="/search/">Search Notes</a>
         </div>
       </div>
 
-      <aside class="hero__panel">
-        <p class="hero__panel-label">站点状态</p>
-        <ul class="hero__stats">
-          <li>
-            <strong>{posts.length}</strong>
-            <span>已发布文章</span>
-          </li>
-          <li>
-            <strong>{featuredProjects.length}</strong>
-            <span>重点项目</span>
-          </li>
-          <li>
-            <strong>{categories.length}</strong>
-            <span>内容分类</span>
-          </li>
-        </ul>
+      <aside class="hero__panel hero__profile">
+        <img class="hero__cover" src="/images/wallpapers/tokyo-skyline-tower.jpg" alt="Tokyo skyline wallpaper" />
+        <div class="hero__profile-body">
+          <img class="hero__avatar" src="/images/portraits/mika-avatar.svg" alt="Anime style portrait of mika" />
+          <div class="hero__identity">
+            <p class="hero__panel-label">Identity</p>
+            <h2>{siteConfig.author} / {siteConfig.handle}</h2>
+            <p>{siteConfig.bio}</p>
+          </div>
+
+          <dl class="hero__meta-list">
+            <div>
+              <dt>Base</dt>
+              <dd>{siteConfig.location}</dd>
+            </div>
+            <div>
+              <dt>Posts</dt>
+              <dd>{posts.length}</dd>
+            </div>
+            <div>
+              <dt>Projects</dt>
+              <dd>{featuredProjects.length}</dd>
+            </div>
+          </dl>
+        </div>
       </aside>
     </div>
   </section>
 
   <section class="shell section section--triad">
     <article class="info-card">
-      <p class="eyebrow">Search</p>
-      <h2>快速检索文章和页面</h2>
-      <p>支持按标题、正文、分类和标签搜索，适合在写作、复习和项目整理时快速回查内容。</p>
-      <a class="button button--secondary" href="/search/">打开搜索</a>
+      <p class="eyebrow">System</p>
+      <h2>One place for notes, code, and direction</h2>
+      <p>
+        从阶段性学习日志，到项目方案和长期方法论，这个站点开始更像一个具有个人气质的工作台。
+      </p>
+      <a class="button" href="/about/">Read the profile</a>
     </article>
 
     <article class="info-card info-card--accent">
-      <p class="eyebrow">About</p>
-      <h2>{siteConfig.author} / {siteConfig.handle}</h2>
-      <p>{siteConfig.bio}</p>
-      <a class="button" href="/about/">查看完整资料</a>
+      <p class="eyebrow">Search</p>
+      <h2>Fast retrieval for study and writing</h2>
+      <p>
+        现在可以更快按标题、正文、分类和标签查内容，方便你把博客当成真正可回看的知识库。
+      </p>
+      <a class="button button--secondary" href="/search/">Open search</a>
     </article>
 
     <article class="info-card">
       <p class="eyebrow">Timeline</p>
-      <h2>最近时间线</h2>
+      <h2>Latest updates on the feed</h2>
       <ul class="mini-timeline">
         {latestTimeline.map((post) => (
           <li>
@@ -96,7 +154,7 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
           </li>
         ))}
       </ul>
-      <a class="button" href="/archives/">查看完整时间线</a>
+      <a class="button" href="/archives/">Browse archive</a>
     </article>
   </section>
 
@@ -104,10 +162,10 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
     <div class="section-heading">
       <div>
         <p class="eyebrow">Latest Posts</p>
-        <h2>最近更新</h2>
+        <h2>Recent writing</h2>
       </div>
       <a class="section-heading__link" href="/archives/">
-        查看全部文章
+        All posts
       </a>
     </div>
 
@@ -120,10 +178,10 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
     <div class="section-heading">
       <div>
         <p class="eyebrow">Projects</p>
-        <h2>精选项目</h2>
+        <h2>Things I am building</h2>
       </div>
       <a class="section-heading__link" href="/projects/">
-        查看项目页
+        View projects
       </a>
     </div>
 
@@ -138,12 +196,41 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
               {project.technologies.slice(0, 4).map((tech) => <span>{tech}</span>)}
             </div>
             <div class="project-card__actions">
-              {project.relatedPost && <a class="button" href={project.relatedPost}>相关博客</a>}
+              {project.relatedPost && <a class="button" href={project.relatedPost}>Related Post</a>}
               {project.repository && (
                 <a class="button button--secondary" href={project.repository} rel="noreferrer" target="_blank">
-                  项目仓库
+                  Repository
                 </a>
               )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Tokyo Moodboard</p>
+        <h2>Wallpaper set for the new aesthetic</h2>
+      </div>
+      <a class="section-heading__link" href="/images/wallpapers/tokyo-skyline-tower.jpg">
+        Open full wallpaper
+      </a>
+    </div>
+
+    <div class="wallpaper-grid">
+      {
+        wallpaperCards.map((wallpaper) => (
+          <article class="wallpaper-card">
+            <a class="wallpaper-card__image-link" href={wallpaper.href}>
+              <img class="wallpaper-card__image" src={wallpaper.image} alt={wallpaper.title} />
+            </a>
+            <div class="wallpaper-card__body">
+              <p class="wallpaper-card__eyebrow">{wallpaper.credit}</p>
+              <h3>{wallpaper.title}</h3>
+              <p>{wallpaper.note}</p>
             </div>
           </article>
         ))
@@ -154,7 +241,7 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
   <section class="shell section section--split">
     <div class="info-card">
       <p class="eyebrow">Tags</p>
-      <h2>从标签快速进入主题</h2>
+      <h2>Jump in through topics</h2>
       <div class="pill-grid">
         {tags.map((tag) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>{tag}</a>)}
       </div>
@@ -162,12 +249,12 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
 
     <div class="info-card">
       <p class="eyebrow">Categories</p>
-      <h2>按分类浏览内容</h2>
+      <h2>Read by content lane</h2>
       <div class="category-stack">
         {categories.slice(0, 6).map(([category, entries]) => (
           <a class="category-stack__item" href={`/categories/${encodeURIComponent(category)}/`}>
             <span>{category}</span>
-            <strong>{entries.length} 篇</strong>
+            <strong>{entries.length} posts</strong>
           </a>
         ))}
       </div>

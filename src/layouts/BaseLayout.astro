@@ -1,4 +1,4 @@
-﻿---
+---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { siteConfig } from "../lib/site";
@@ -47,18 +47,17 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+    <meta name="theme-color" content="#08111f" />
   </head>
 
   <body class={pageClass}>
+    <div class="site-backdrop" aria-hidden="true"></div>
     <div class="page-aura" aria-hidden="true">
-      <span class="page-aura__orb page-aura__orb--one"></span>
-      <span class="page-aura__orb page-aura__orb--two"></span>
-      <span class="page-aura__orb page-aura__orb--three"></span>
-      <span class="page-aura__petal page-aura__petal--one"></span>
-      <span class="page-aura__petal page-aura__petal--two"></span>
-      <span class="page-aura__petal page-aura__petal--three"></span>
-      <span class="page-aura__spark page-aura__spark--one"></span>
-      <span class="page-aura__spark page-aura__spark--two"></span>
+      <span class="page-aura__beam page-aura__beam--one"></span>
+      <span class="page-aura__beam page-aura__beam--two"></span>
+      <span class="page-aura__halo page-aura__halo--one"></span>
+      <span class="page-aura__halo page-aura__halo--two"></span>
+      <span class="page-aura__grid"></span>
     </div>
     <div class="pointer-effects" aria-hidden="true">
     </div>

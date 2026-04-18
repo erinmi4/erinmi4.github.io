@@ -1,4 +1,4 @@
-﻿---
+---
 import { navItems, siteConfig } from "../lib/site";
 
 const pathname = Astro.url.pathname;
@@ -7,11 +7,16 @@ const pathname = Astro.url.pathname;
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="brand" href="/">
-      <span class="brand__mark">E</span>
-      <span class="brand__text">{siteConfig.author}</span>
+      <span class="brand__mark">
+        <img src="/images/portraits/mika-avatar.svg" alt="" />
+      </span>
+      <span class="brand__stack">
+        <span class="brand__text">{siteConfig.author}</span>
+        <span class="brand__subtext">Tokyo Signal</span>
+      </span>
     </a>
 
-    <nav class="site-nav" aria-label="主导航">
+    <nav class="site-nav" aria-label="Primary">
       {
         navItems.map((item) => {
           const active =
