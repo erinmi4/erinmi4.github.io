@@ -1,6 +1,7 @@
 ---
 title: 四大空间
 description: 总结自《新版演习线性代数_寺田文行》一书，使用最小笔记的形式去记录。
+slug: 线性代数-chapter-3-四大空间
 pubDate: 2026-04-15
 updatedDate: 2026-04-15
 tags:
