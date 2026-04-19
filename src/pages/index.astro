@@ -191,9 +191,9 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
                 {project.technologies.slice(0, 4).map((tech) => <span>{tech}</span>)}
               </div>
               <div class="project-card__actions">
-                {project.relatedPost && <a class="button" href={project.relatedPost}>Related post</a>}
+                {project.relatedPost && <a class="button button--secondary" href={project.relatedPost}>Related post</a>}
                 {project.repository && (
-                  <a class="button button--primary" href={project.repository} rel="noreferrer" target="_blank">
+                  <a class="button button--secondary" href={project.repository} rel="noreferrer" target="_blank">
                     Repository
                   </a>
                 )}
