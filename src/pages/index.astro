@@ -34,14 +34,14 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
 ---
 
 <BaseLayout>
-  <section class="hero">
+  <section class="home-band home-band--light hero">
     <div class="shell hero__grid">
       <div class="hero__content">
         <p class="eyebrow">Field Notes</p>
-        <h1>Notes on systems, study, and deliberate long-term work.</h1>
+        <h1>Notes on systems, study, and a slower kind of ambition.</h1>
         <p class="hero__lead">
-          This site is a living knowledge base for my work on embedded systems, audio intelligence,
-          exam preparation, and the learning systems I keep refining in public.
+          A personal archive of embedded systems work, audio intelligence experiments, exam
+          preparation, and the methods I use to keep long projects coherent.
         </p>
 
         <div class="hero__signals">
@@ -57,183 +57,208 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
         </div>
       </div>
 
-      <aside class="hero__panel">
-        <p class="hero__panel-label">At a glance</p>
-        <h2>Writing first, profile second.</h2>
-        <p class="hero__panel-copy">
-          The archive is the main entry point. Topics, categories, and project notes exist to make
-          returning easier.
-        </p>
+      <aside class="hero__artifact">
+        <div class="hero__artifact-frame">
+          <div class="hero__artifact-sketch" aria-hidden="true">
+            <span class="hero__artifact-loop"></span>
+            <span class="hero__artifact-stroke"></span>
+            <span class="hero__artifact-dot"></span>
+          </div>
+          <img
+            class="hero__artifact-image"
+            src={siteConfig.profileImage.src}
+            alt={siteConfig.profileImage.alt}
+          />
+        </div>
 
-        <dl class="hero__meta-list">
-          <div>
-            <dt>Posts</dt>
-            <dd>{posts.length}</dd>
-          </div>
-          <div>
-            <dt>Topics</dt>
-            <dd>{topicEntries.length}</dd>
-          </div>
-          <div>
-            <dt>Base</dt>
-            <dd>{siteConfig.location}</dd>
-          </div>
-        </dl>
+        <div class="hero__artifact-body">
+          <p class="hero__artifact-label">Current direction</p>
+          <h2>Writing first, profile second.</h2>
+          <p class="hero__artifact-copy">
+            This blog is meant to read more like a notebook than a dashboard: essays, study logs,
+            project fragments, and ideas that become clearer by being written down.
+          </p>
 
-        <ul class="hero__panel-list">
-          {latestTimeline.map((post) => (
-            <li>
-              <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
-            </li>
-          ))}
-        </ul>
+          <dl class="hero__meta-list">
+            <div>
+              <dt>Base</dt>
+              <dd>{siteConfig.location}</dd>
+            </div>
+            <div>
+              <dt>Posts</dt>
+              <dd>{posts.length}</dd>
+            </div>
+            <div>
+              <dt>Topics</dt>
+              <dd>{topicEntries.length}</dd>
+            </div>
+          </dl>
+
+          <p class="media-credit">
+            <a href={siteConfig.profileImage.creditHref} rel="noreferrer" target="_blank">
+              {siteConfig.profileImage.creditText}
+            </a>
+          </p>
+        </div>
       </aside>
     </div>
   </section>
 
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Latest posts</p>
-        <h2>Recent writing</h2>
+  <section class="home-band home-band--light section">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Latest posts</p>
+          <h2>Recent writing</h2>
+        </div>
+        <a class="section-heading__link" href="/archives/">
+          All posts
+        </a>
       </div>
-      <a class="section-heading__link" href="/archives/">
-        All posts
-      </a>
-    </div>
 
-    <div class="post-grid">
-      {featuredPosts.map((post) => <PostCard post={post} />)}
-    </div>
-  </section>
-
-  <section class="shell section section--split">
-    <div class="info-card">
-      <p class="eyebrow">Topics</p>
-      <h2>Browse by topic clusters</h2>
-      <p>
-        Use the topic explorer when you want a narrower reading lane across courses, projects, or
-        recurring interests.
-      </p>
-      <div class="pill-grid pill-grid--metrics">
-        {topicEntries.slice(0, 12).map(({ tag, count }) => (
-          <a class="pill pill--metric" href={getTopicsUrl([tag])}>
-            <span>{tag}</span>
-            <strong>{count}</strong>
-          </a>
-        ))}
-      </div>
-      <div class="topic-browser__actions">
-        <a class="button button--secondary" href="/tags/">Open topic explorer</a>
-      </div>
-    </div>
-
-    <div class="info-card info-card--accent">
-      <p class="eyebrow">Categories</p>
-      <h2>Move through the archive by lane</h2>
-      <p>
-        Categories act like broader shelves, while topics stay useful for cross-cutting study
-        threads.
-      </p>
-      <div class="category-stack">
-        {categories.slice(0, 6).map(([category, entries]) => (
-          <a class="category-stack__item" href={`/categories/${encodeURIComponent(category)}/`}>
-            <span>{category}</span>
-            <strong>{entries.length} posts</strong>
-          </a>
-        ))}
+      <div class="post-grid">
+        {featuredPosts.map((post) => <PostCard post={post} />)}
       </div>
     </div>
   </section>
 
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Projects</p>
-        <h2>Selected builds and long-form work</h2>
-      </div>
-      <a class="section-heading__link" href="/projects/">
-        View projects
-      </a>
-    </div>
+  <section class="home-band home-band--dark section">
+    <div class="shell section--split">
+      <div class="info-card info-card--dark">
+        <p class="eyebrow">Topics</p>
+        <h2>Read across recurring threads.</h2>
+        <p>
+          Topics are the most useful way to trace how ideas return across courses, projects, and
+          different stages of preparation.
+        </p>
 
-    <div class="feature-grid">
-      {
-        featuredProjects.map((project) => (
-          <article class="feature-card">
-            <p class="feature-card__eyebrow">{project.status}</p>
-            <h3>{project.title}</h3>
-            <p>{project.summary}</p>
-            <div class="search-result-card__tags">
-              {project.technologies.slice(0, 4).map((tech) => <span>{tech}</span>)}
-            </div>
-            <div class="project-card__actions">
-              {project.relatedPost && <a class="button" href={project.relatedPost}>Related post</a>}
-              {project.repository && (
-                <a class="button button--secondary" href={project.repository} rel="noreferrer" target="_blank">
-                  Repository
-                </a>
-              )}
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </section>
+        <div class="pill-grid pill-grid--metrics">
+          {topicEntries.slice(0, 12).map(({ tag, count }) => (
+            <a class="pill pill--metric" href={getTopicsUrl([tag])}>
+              <span>{tag}</span>
+              <strong>{count}</strong>
+            </a>
+          ))}
+        </div>
 
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Profile</p>
-        <h2>A quieter introduction</h2>
-      </div>
-      <a class="section-heading__link" href="/about/">
-        Full profile
-      </a>
-    </div>
-
-    <article class="profile-card">
-      <div class="profile-card__content">
-        <p class="profile-card__eyebrow">Mika / erinmi4</p>
-        <h2>Studying toward Japan, building toward depth.</h2>
-        <p>{siteConfig.bio}</p>
-        <div class="profile-card__quick-links">
-          <a class="button button--primary" href={siteConfig.social.github} rel="noreferrer" target="_blank">
-            View GitHub
-          </a>
-          <a class="button" href={`mailto:${siteConfig.email}`}>
-            Contact
+        <div class="topic-browser__actions">
+          <a class="button button--dark" href="/tags/">
+            Open topic explorer
           </a>
         </div>
       </div>
 
-      <div class="profile-card__visual">
-        <img
-          class="profile-card__portrait"
-          src={siteConfig.profileImage.src}
-          alt={siteConfig.profileImage.alt}
-          loading="lazy"
-        />
-        <p class="media-credit">
-          <a href={siteConfig.profileImage.creditHref} rel="noreferrer" target="_blank">
-            {siteConfig.profileImage.creditText}
-          </a>
+      <div class="info-card info-card--dark">
+        <p class="eyebrow">Categories</p>
+        <h2>Move by shelf, not just by date.</h2>
+        <p>
+          Categories are broader lanes for browsing. They are less precise than topics, but useful
+          when you want a calmer overview of the archive.
         </p>
-        <dl class="profile-card__meta">
-          <div>
-            <dt>Base</dt>
-            <dd>{siteConfig.location}</dd>
-          </div>
-          <div>
-            <dt>Focus</dt>
-            <dd>Embedded systems / Audio ML / Study design</dd>
-          </div>
-          <div>
-            <dt>Projects</dt>
-            <dd>{projects.length}</dd>
-          </div>
-        </dl>
+
+        <div class="category-stack">
+          {categories.slice(0, 6).map(([category, entries]) => (
+            <a class="category-stack__item" href={`/categories/${encodeURIComponent(category)}/`}>
+              <span>{category}</span>
+              <strong>{entries.length} posts</strong>
+            </a>
+          ))}
+        </div>
       </div>
-    </article>
+    </div>
+  </section>
+
+  <section class="home-band home-band--light section">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2>Selected builds and long-form work</h2>
+        </div>
+        <a class="section-heading__link" href="/projects/">
+          View projects
+        </a>
+      </div>
+
+      <div class="feature-grid">
+        {
+          featuredProjects.map((project) => (
+            <article class="feature-card">
+              <p class="feature-card__eyebrow">{project.status}</p>
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
+              <div class="search-result-card__tags">
+                {project.technologies.slice(0, 4).map((tech) => <span>{tech}</span>)}
+              </div>
+              <div class="project-card__actions">
+                {project.relatedPost && <a class="button" href={project.relatedPost}>Related post</a>}
+                {project.repository && (
+                  <a class="button button--primary" href={project.repository} rel="noreferrer" target="_blank">
+                    Repository
+                  </a>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="home-band home-band--dark section">
+    <div class="shell section--split">
+      <article class="profile-card profile-card--dark">
+        <div class="profile-card__content">
+          <p class="eyebrow">Profile</p>
+          <h2>Studying toward Japan, building toward depth.</h2>
+          <p>{siteConfig.bio}</p>
+
+          <div class="profile-card__quick-links">
+            <a class="button button--light" href={siteConfig.social.github} rel="noreferrer" target="_blank">
+              View GitHub
+            </a>
+            <a class="button button--dark" href={`mailto:${siteConfig.email}`}>
+              Contact
+            </a>
+          </div>
+        </div>
+
+        <div class="profile-card__visual">
+          <dl class="profile-card__meta">
+            <div>
+              <dt>Focus</dt>
+              <dd>Embedded systems / Audio ML / Study design</dd>
+            </div>
+            <div>
+              <dt>Projects</dt>
+              <dd>{projects.length}</dd>
+            </div>
+            <div>
+              <dt>Archive</dt>
+              <dd>{latestTimeline.length} recent entries highlighted</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="info-card info-card--dark timeline-card">
+        <p class="eyebrow">Recent path</p>
+        <h2>Small movements, kept visible.</h2>
+        <ul class="mini-timeline">
+          {latestTimeline.map((post) => (
+            <li>
+              <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+              <span>{post.data.pubDate.toISOString().slice(0, 10)}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="topic-browser__actions">
+          <a class="button button--light" href="/archives/">
+            Browse timeline
+          </a>
+        </div>
+      </article>
+    </div>
   </section>
 </BaseLayout>

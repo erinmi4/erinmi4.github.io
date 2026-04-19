@@ -60,7 +60,7 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
         root.style.colorScheme = initialTheme;
       })();
     </script>
-    <meta name="theme-color" content="#f3eee5" data-theme-color />
+    <meta name="theme-color" content="#f5f4ed" data-theme-color />
   </head>
 
   <body class={pageClass}>
@@ -80,8 +80,8 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
         const themeColorMeta = document.querySelector("[data-theme-color]");
         const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
         const themeColors = {
-          light: "#f3eee5",
-          dark: "#171b22"
+          light: "#f5f4ed",
+          dark: "#141413"
         };
 
         const getSystemTheme = () => (themeMedia.matches ? "dark" : "light");
