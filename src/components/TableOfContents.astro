@@ -16,7 +16,7 @@ const filtered = headings.filter((heading) => heading.depth <= 3);
 {
   filtered.length > 0 && (
     <aside class="toc-card">
-      <p class="toc-card__eyebrow">目录</p>
+      <p class="toc-card__eyebrow">Contents</p>
       <ul class="toc-list">
         {filtered.map((heading) => (
           <li class:list={["toc-list__item", `depth-${heading.depth}`]}>

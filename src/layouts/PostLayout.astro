@@ -38,14 +38,14 @@ const { post, previousPost, nextPost, readingMinutes, headings } = Astro.props;
       }
 
       <div class="post-hero__content">
-        <p class="eyebrow">文章</p>
+        <p class="eyebrow">Article</p>
         <h1>{post.data.title}</h1>
         <p class="post-hero__description">{post.data.description}</p>
 
         <div class="post-hero__meta">
           <span>{formatDate(post.data.pubDate)}</span>
           <a href={getCategoryUrl(post.data.category)}>{post.data.category}</a>
-          <span>{readingMinutes} 分钟阅读</span>
+          <span>{readingMinutes} min read</span>
         </div>
 
         <TagList tags={post.data.tags} />
@@ -55,19 +55,19 @@ const { post, previousPost, nextPost, readingMinutes, headings } = Astro.props;
     <div class="post-shell__body">
       <aside class="post-shell__aside">
         <section class="post-info-card">
-          <p class="post-info-card__eyebrow">阅读信息</p>
+          <p class="post-info-card__eyebrow">Reading notes</p>
           <dl class="post-info-card__list">
             <div>
-              <dt>发布时间</dt>
+              <dt>Published</dt>
               <dd>{formatDate(post.data.pubDate)}</dd>
             </div>
             <div>
-              <dt>分类</dt>
+              <dt>Category</dt>
               <dd>{post.data.category}</dd>
             </div>
             <div>
-              <dt>预计阅读</dt>
-              <dd>{readingMinutes} 分钟</dd>
+              <dt>Reading time</dt>
+              <dd>{readingMinutes} minutes</dd>
             </div>
           </dl>
         </section>
@@ -80,12 +80,12 @@ const { post, previousPost, nextPost, readingMinutes, headings } = Astro.props;
       </div>
     </div>
 
-    <nav class="post-nav" aria-label="文章导航">
+    <nav class="post-nav" aria-label="Article navigation">
       <div>
         {
           previousPost && (
             <>
-              <span>上一篇</span>
+              <span>Previous</span>
               <a href={getPostUrl(previousPost)}>{previousPost.data.title}</a>
             </>
           )
@@ -96,7 +96,7 @@ const { post, previousPost, nextPost, readingMinutes, headings } = Astro.props;
         {
           nextPost && (
             <>
-              <span>下一篇</span>
+              <span>Next</span>
               <a href={getPostUrl(nextPost)}>{nextPost.data.title}</a>
             </>
           )

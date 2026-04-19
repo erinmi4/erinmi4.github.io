@@ -10,7 +10,7 @@ const { tags } = Astro.props;
 
 {
   tags.length > 0 && (
-    <ul class="tag-list" aria-label="文章 topics">
+    <ul class="tag-list" aria-label="Post topics">
       {tags.map((tag) => (
         <li>
           <a href={getTopicsUrl([tag])}>

@@ -167,7 +167,7 @@ export async function getTimelineGroups() {
 }
 
 export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions) {
-  return new Intl.DateTimeFormat("zh-CN", {
+  return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",

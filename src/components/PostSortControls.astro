@@ -1,20 +1,20 @@
 ---
 const sortOptions = [
-  { value: "date-desc", label: "最新发布" },
-  { value: "date-asc", label: "最早发布" },
-  { value: "title-asc", label: "标题 A-Z" },
-  { value: "title-desc", label: "标题 Z-A" }
+  { value: "date-desc", label: "Newest first" },
+  { value: "date-asc", label: "Oldest first" },
+  { value: "title-asc", label: "Title A-Z" },
+  { value: "title-desc", label: "Title Z-A" }
 ];
 ---
 
 <div class="sort-toolbar js-post-sorter" data-default-sort="date-desc">
   <div>
-    <p class="sort-toolbar__eyebrow">排序方式</p>
-    <p class="sort-toolbar__hint">默认按发布时间倒序展示，也可以切换为标题排序。</p>
+    <p class="sort-toolbar__eyebrow">Sort</p>
+    <p class="sort-toolbar__hint">Default order follows publication date, with title sorting available when you need it.</p>
   </div>
 
   <label class="sort-toolbar__control" for="post-sort-select">
-    <span>当前排序</span>
+    <span>Order</span>
     <select id="post-sort-select" class="sort-toolbar__select" name="sort">
       {sortOptions.map((option) => (
         <option value={option.value}>{option.label}</option>

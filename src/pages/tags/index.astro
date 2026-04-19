@@ -22,27 +22,27 @@ const tags = [...tagMap.entries()]
   }));
 ---
 
-<BaseLayout title="Topics" description="通过多选 topics 查看文章交集。">
+<BaseLayout title="Topics" description="Explore posts by combining multiple topics.">
   <section class="shell archive-shell">
     <header class="page-heading">
       <p class="eyebrow">Topics</p>
-      <h1>Topics 交叉筛选</h1>
-      <p>可以一次选中多个 topics，页面会保留同时命中这些 topics 的文章交集。</p>
+      <h1>Topic intersections</h1>
+      <p>Combine multiple topics and keep only the posts that match all of them.</p>
     </header>
 
     <section class="info-card topic-filter" data-topic-filter-root>
       <div class="topic-filter__top">
         <div>
           <p class="topic-filter__label">Topic Explorer</p>
-          <h2>选择你想组合的 topics</h2>
+          <h2>Build a narrower reading lane</h2>
         </div>
         <button class="button topic-filter__clear" type="button" data-clear-topics>
-          清空选择
+          Clear selection
         </button>
       </div>
 
       <p class="topic-filter__summary" data-topic-summary>
-        当前显示全部 {posts.length} 篇文章。
+        Showing all {posts.length} articles.
       </p>
 
       <div class="topic-filter__selected" data-selected-topics hidden></div>
@@ -57,8 +57,7 @@ const tags = [...tagMap.entries()]
       </div>
 
       <p class="topic-filter__hint">
-        支持多选。例如先选“计算机组成原理”，再选“MIPS”，结果里只会留下同时属于这两个
-        topics 的文章。
+        Multi-select is supported. For example, combining “计算机组成原理” and “MIPS” keeps only the posts shared by both topics.
       </p>
     </section>
 
@@ -79,7 +78,7 @@ const tags = [...tagMap.entries()]
       </div>
 
       <div class="topic-filter__empty" data-topic-empty hidden>
-        当前 topics 组合下还没有匹配文章，减少一个筛选条件试试。
+        No articles match this combination yet. Try removing one topic.
       </div>
     </section>
   </section>
@@ -165,8 +164,8 @@ const tags = [...tagMap.entries()]
       if (summary instanceof HTMLElement) {
         summary.textContent =
           topics.length === 0
-            ? `当前显示全部 ${totalPostCount} 篇文章。`
-            : `当前显示 ${visibleCount} 篇文章，需同时命中：${topics.join(" / ")}。`;
+            ? `Showing all ${totalPostCount} articles.`
+            : `Showing ${visibleCount} article${visibleCount === 1 ? "" : "s"} that match: ${topics.join(" / ")}.`;
       }
 
       if (clearButton instanceof HTMLButtonElement) {

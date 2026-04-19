@@ -18,14 +18,14 @@ const sortedPosts = sortPosts(posts);
 ---
 
 <BaseLayout
-  title={`分类：${category}`}
-  description={`查看分类 ${category} 下的全部文章。`}
+  title={`Category: ${category}`}
+  description={`Browse every post filed under ${category}.`}
 >
   <section class="shell archive-shell">
     <header class="page-heading">
       <p class="eyebrow">Category</p>
       <h1>{category}</h1>
-      <p>共收录 {posts.length} 篇文章。</p>
+      <p>{posts.length} article{posts.length > 1 ? "s" : ""} in this lane.</p>
     </header>
 
     <div data-post-sort-root>

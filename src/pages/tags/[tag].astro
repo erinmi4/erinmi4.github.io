@@ -17,12 +17,12 @@ const { tag, posts } = Astro.props;
 const sortedPosts = sortPosts(posts);
 ---
 
-<BaseLayout title={`标签：${tag}`} description={`查看与 ${tag} 相关的所有文章。`}>
+<BaseLayout title={`Topic: ${tag}`} description={`Browse every post tagged with ${tag}.`}>
   <section class="shell archive-shell">
     <header class="page-heading">
-      <p class="eyebrow">Tag</p>
+      <p class="eyebrow">Topic</p>
       <h1>{tag}</h1>
-      <p>共收录 {posts.length} 篇相关文章。</p>
+      <p>{posts.length} related article{posts.length > 1 ? "s" : ""}.</p>
     </header>
 
     <div data-post-sort-root>

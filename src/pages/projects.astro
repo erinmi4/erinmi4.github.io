@@ -3,12 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { projects } from "../lib/projects";
 ---
 
-<BaseLayout title="项目" description="围绕嵌入式、博客重建与学习系统的项目整理。">
+<BaseLayout title="Projects" description="Selected projects across embedded systems, blogging infrastructure, and study workflows.">
   <section class="shell archive-shell">
     <header class="page-heading">
       <p class="eyebrow">Projects</p>
-      <h1>项目整理</h1>
-      <p>这里收录当前已经有真实内容支撑、并且我愿意持续整理的项目。</p>
+      <h1>Selected projects</h1>
+      <p>Work with real implementation detail, not placeholder polish.</p>
     </header>
 
     <div class="project-grid">
@@ -27,11 +27,11 @@ import { projects } from "../lib/projects";
 
             <dl class="project-card__meta">
               <div>
-                <dt>角色</dt>
+                <dt>Role</dt>
                 <dd>{project.role}</dd>
               </div>
               <div>
-                <dt>技术栈</dt>
+                <dt>Stack</dt>
                 <dd>{project.technologies.join(" / ")}</dd>
               </div>
             </dl>
@@ -41,10 +41,10 @@ import { projects } from "../lib/projects";
             </ul>
 
             <div class="project-card__actions">
-              {project.relatedPost && <a class="button" href={project.relatedPost}>相关博客</a>}
+              {project.relatedPost && <a class="button" href={project.relatedPost}>Related post</a>}
               {project.repository && (
                 <a class="button button--secondary" href={project.repository} rel="noreferrer" target="_blank">
-                  查看仓库
+                  Repository
                 </a>
               )}
             </div>

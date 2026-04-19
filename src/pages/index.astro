@@ -7,7 +7,7 @@ import { siteConfig } from "../lib/site";
 
 const posts = await getAllPosts();
 const featuredPosts = posts.slice(0, 3);
-const latestTimeline = posts.slice(0, 5);
+const latestTimeline = posts.slice(0, 4);
 const featuredProjects = projects.slice(0, 3);
 const tagMap = await getTagMap();
 const categoryMap = await getCategoryMap();
@@ -31,137 +31,70 @@ const categories = [...categoryMap.entries()].sort((left, right) => {
 
   return left[0].localeCompare(right[0], "zh-CN");
 });
-
-const wallpaperCards = [
-  {
-    title: "Tokyo Skyline",
-    image: "/images/wallpapers/tokyo-skyline-tower.jpg",
-    note: "Downloaded royalty-free city wallpaper.",
-    credit: "Photo by miyou_-77 on Pexels",
-    href: "/images/wallpapers/tokyo-skyline-tower.jpg"
-  },
-  {
-    title: "Neon Street",
-    image: "/images/wallpapers/tokyo-neon-street.jpg",
-    note: "Downloaded royalty-free neon street wallpaper for a denser cyber-Japan mood.",
-    credit: "Photo by Christopher Politano on Pexels",
-    href: "/images/wallpapers/tokyo-neon-street.jpg"
-  },
-  {
-    title: "Tokyo Tower Night",
-    image: "/images/wallpapers/tokyo-tower-night.jpg",
-    note: "Downloaded royalty-free Tokyo tower wallpaper with warmer night lighting.",
-    credit: "Photo by Daisuke Fujita on Pexels",
-    href: "/images/wallpapers/tokyo-tower-night.jpg"
-  },
-  {
-    title: "Neon Grid",
-    image: "/images/wallpapers/tokyo-neon-grid.svg",
-    note: "Custom SVG wallpaper with a retro-future Tokyo skyline.",
-    credit: "Custom in-repo asset",
-    href: "/images/wallpapers/tokyo-neon-grid.svg"
-  },
-  {
-    title: "Station Signal",
-    image: "/images/wallpapers/tokyo-station-signal.svg",
-    note: "Custom poster-style wallpaper with Japanese city signage energy.",
-    credit: "Custom in-repo asset",
-    href: "/images/wallpapers/tokyo-station-signal.svg"
-  }
-];
 ---
 
 <BaseLayout>
   <section class="hero">
     <div class="shell hero__grid">
       <div class="hero__content">
-        <p class="eyebrow">Tokyo Signal / Personal Dispatch</p>
-        <h1>Code, study, and long-form notes for the next version of me.</h1>
+        <p class="eyebrow">Field Notes</p>
+        <h1>Notes on systems, study, and deliberate long-term work.</h1>
         <p class="hero__lead">
-          这里不只是一份博客，更像一个持续更新的 personal signal page。
-          我把修考、嵌入式、音频智能、项目复盘和学习系统，整理成一个更清晰、更有气质的长期空间。
+          This site is a living knowledge base for my work on embedded systems, audio intelligence,
+          exam preparation, and the learning systems I keep refining in public.
         </p>
 
         <div class="hero__signals">
-          <span class="hero__signal">Embedded Systems</span>
+          <span class="hero__signal">Embedded systems</span>
           <span class="hero__signal">Audio ML</span>
-          <span class="hero__signal">Japan-bound</span>
+          <span class="hero__signal">Study workflows</span>
         </div>
 
         <div class="hero__actions">
-          <a class="button button--primary" href="/archives/">Open Archive</a>
+          <a class="button button--primary" href="/archives/">Open archive</a>
+          <a class="button" href="/search/">Search notes</a>
           <a class="button" href="/about/">About Mika</a>
-          <a class="button" href="/search/">Search Notes</a>
         </div>
       </div>
 
-      <aside class="hero__panel hero__profile">
-        <img class="hero__cover" src="/images/wallpapers/tokyo-skyline-tower.jpg" alt="Tokyo skyline wallpaper" />
-        <div class="hero__profile-body">
-          <img class="hero__avatar" src="/images/portraits/mika-avatar.svg" alt="Anime style portrait of mika" />
-          <div class="hero__identity">
-            <p class="hero__panel-label">Identity</p>
-            <h2>{siteConfig.author} / {siteConfig.handle}</h2>
-            <p>{siteConfig.bio}</p>
-          </div>
+      <aside class="hero__panel">
+        <p class="hero__panel-label">At a glance</p>
+        <h2>Writing first, profile second.</h2>
+        <p class="hero__panel-copy">
+          The archive is the main entry point. Topics, categories, and project notes exist to make
+          returning easier.
+        </p>
 
-          <dl class="hero__meta-list">
-            <div>
-              <dt>Base</dt>
-              <dd>{siteConfig.location}</dd>
-            </div>
-            <div>
-              <dt>Posts</dt>
-              <dd>{posts.length}</dd>
-            </div>
-            <div>
-              <dt>Projects</dt>
-              <dd>{featuredProjects.length}</dd>
-            </div>
-          </dl>
-        </div>
+        <dl class="hero__meta-list">
+          <div>
+            <dt>Posts</dt>
+            <dd>{posts.length}</dd>
+          </div>
+          <div>
+            <dt>Topics</dt>
+            <dd>{topicEntries.length}</dd>
+          </div>
+          <div>
+            <dt>Base</dt>
+            <dd>{siteConfig.location}</dd>
+          </div>
+        </dl>
+
+        <ul class="hero__panel-list">
+          {latestTimeline.map((post) => (
+            <li>
+              <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
       </aside>
     </div>
-  </section>
-
-  <section class="shell section section--triad">
-    <article class="info-card">
-      <p class="eyebrow">System</p>
-      <h2>One place for notes, code, and direction</h2>
-      <p>
-        从阶段性学习日志，到项目方案和长期方法论，这个站点开始更像一个具有个人气质的工作台。
-      </p>
-      <a class="button" href="/about/">Read the profile</a>
-    </article>
-
-    <article class="info-card info-card--accent">
-      <p class="eyebrow">Search</p>
-      <h2>Fast retrieval for study and writing</h2>
-      <p>
-        现在可以更快按标题、正文、分类和标签查内容，方便你把博客当成真正可回看的知识库。
-      </p>
-      <a class="button button--secondary" href="/search/">Open search</a>
-    </article>
-
-    <article class="info-card">
-      <p class="eyebrow">Timeline</p>
-      <h2>Latest updates on the feed</h2>
-      <ul class="mini-timeline">
-        {latestTimeline.map((post) => (
-          <li>
-            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
-            <span>{post.data.pubDate.toISOString().slice(0, 10)}</span>
-          </li>
-        ))}
-      </ul>
-      <a class="button" href="/archives/">Browse archive</a>
-    </article>
   </section>
 
   <section class="shell section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Latest Posts</p>
+        <p class="eyebrow">Latest posts</p>
         <h2>Recent writing</h2>
       </div>
       <a class="section-heading__link" href="/archives/">
@@ -174,11 +107,50 @@ const wallpaperCards = [
     </div>
   </section>
 
+  <section class="shell section section--split">
+    <div class="info-card">
+      <p class="eyebrow">Topics</p>
+      <h2>Browse by topic clusters</h2>
+      <p>
+        Use the topic explorer when you want a narrower reading lane across courses, projects, or
+        recurring interests.
+      </p>
+      <div class="pill-grid pill-grid--metrics">
+        {topicEntries.slice(0, 12).map(({ tag, count }) => (
+          <a class="pill pill--metric" href={getTopicsUrl([tag])}>
+            <span>{tag}</span>
+            <strong>{count}</strong>
+          </a>
+        ))}
+      </div>
+      <div class="topic-browser__actions">
+        <a class="button button--secondary" href="/tags/">Open topic explorer</a>
+      </div>
+    </div>
+
+    <div class="info-card info-card--accent">
+      <p class="eyebrow">Categories</p>
+      <h2>Move through the archive by lane</h2>
+      <p>
+        Categories act like broader shelves, while topics stay useful for cross-cutting study
+        threads.
+      </p>
+      <div class="category-stack">
+        {categories.slice(0, 6).map(([category, entries]) => (
+          <a class="category-stack__item" href={`/categories/${encodeURIComponent(category)}/`}>
+            <span>{category}</span>
+            <strong>{entries.length} posts</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="shell section">
     <div class="section-heading">
       <div>
         <p class="eyebrow">Projects</p>
-        <h2>Things I am building</h2>
+        <h2>Selected builds and long-form work</h2>
       </div>
       <a class="section-heading__link" href="/projects/">
         View projects
@@ -196,7 +168,7 @@ const wallpaperCards = [
               {project.technologies.slice(0, 4).map((tech) => <span>{tech}</span>)}
             </div>
             <div class="project-card__actions">
-              {project.relatedPost && <a class="button" href={project.relatedPost}>Related Post</a>}
+              {project.relatedPost && <a class="button" href={project.relatedPost}>Related post</a>}
               {project.repository && (
                 <a class="button button--secondary" href={project.repository} rel="noreferrer" target="_blank">
                   Repository
@@ -212,61 +184,56 @@ const wallpaperCards = [
   <section class="shell section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Tokyo Moodboard</p>
-        <h2>Wallpaper set for the new aesthetic</h2>
+        <p class="eyebrow">Profile</p>
+        <h2>A quieter introduction</h2>
       </div>
-      <a class="section-heading__link" href="/images/wallpapers/tokyo-skyline-tower.jpg">
-        Open full wallpaper
+      <a class="section-heading__link" href="/about/">
+        Full profile
       </a>
     </div>
 
-    <div class="wallpaper-grid">
-      {
-        wallpaperCards.map((wallpaper) => (
-          <article class="wallpaper-card">
-            <a class="wallpaper-card__image-link" href={wallpaper.href}>
-              <img class="wallpaper-card__image" src={wallpaper.image} alt={wallpaper.title} />
-            </a>
-            <div class="wallpaper-card__body">
-              <p class="wallpaper-card__eyebrow">{wallpaper.credit}</p>
-              <h3>{wallpaper.title}</h3>
-              <p>{wallpaper.note}</p>
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="shell section section--split">
-    <div class="info-card">
-      <p class="eyebrow">Topics</p>
-      <h2>Filter through topics</h2>
-      <p>支持一次选择多个 topics，并直接查看这些 topics 的文章交集。</p>
-      <div class="pill-grid pill-grid--metrics">
-        {topicEntries.map(({ tag, count }) => (
-          <a class="pill pill--metric" href={getTopicsUrl([tag])}>
-            <span>{tag}</span>
-            <strong>{count}</strong>
+    <article class="profile-card">
+      <div class="profile-card__content">
+        <p class="profile-card__eyebrow">Mika / erinmi4</p>
+        <h2>Studying toward Japan, building toward depth.</h2>
+        <p>{siteConfig.bio}</p>
+        <div class="profile-card__quick-links">
+          <a class="button button--primary" href={siteConfig.social.github} rel="noreferrer" target="_blank">
+            View GitHub
           </a>
-        ))}
-      </div>
-      <div class="topic-browser__actions">
-        <a class="button button--secondary" href="/tags/">Open topic explorer</a>
-      </div>
-    </div>
-
-    <div class="info-card">
-      <p class="eyebrow">Categories</p>
-      <h2>Read by content lane</h2>
-      <div class="category-stack">
-        {categories.slice(0, 6).map(([category, entries]) => (
-          <a class="category-stack__item" href={`/categories/${encodeURIComponent(category)}/`}>
-            <span>{category}</span>
-            <strong>{entries.length} posts</strong>
+          <a class="button" href={`mailto:${siteConfig.email}`}>
+            Contact
           </a>
-        ))}
+        </div>
       </div>
-    </div>
+
+      <div class="profile-card__visual">
+        <img
+          class="profile-card__portrait"
+          src={siteConfig.profileImage.src}
+          alt={siteConfig.profileImage.alt}
+          loading="lazy"
+        />
+        <p class="media-credit">
+          <a href={siteConfig.profileImage.creditHref} rel="noreferrer" target="_blank">
+            {siteConfig.profileImage.creditText}
+          </a>
+        </p>
+        <dl class="profile-card__meta">
+          <div>
+            <dt>Base</dt>
+            <dd>{siteConfig.location}</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Embedded systems / Audio ML / Study design</dd>
+          </div>
+          <div>
+            <dt>Projects</dt>
+            <dd>{projects.length}</dd>
+          </div>
+        </dl>
+      </div>
+    </article>
   </section>
 </BaseLayout>

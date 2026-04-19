@@ -14,17 +14,17 @@ function getPageUrl(page: number) {
 
 {
   totalPages > 1 && (
-    <nav class="pagination" aria-label="分页">
+    <nav class="pagination" aria-label="Pagination">
       <a
         class:list={["pagination__link", { "is-disabled": currentPage === 1 }]}
         aria-disabled={currentPage === 1}
         href={currentPage === 1 ? undefined : getPageUrl(currentPage - 1)}
       >
-        上一页
+        Previous
       </a>
 
       <span class="pagination__status">
-        第 {currentPage} / {totalPages} 页
+        Page {currentPage} of {totalPages}
       </span>
 
       <a
@@ -32,7 +32,7 @@ function getPageUrl(page: number) {
         aria-disabled={currentPage === totalPages}
         href={currentPage === totalPages ? undefined : getPageUrl(currentPage + 1)}
       >
-        下一页
+        Next
       </a>
     </nav>
   )

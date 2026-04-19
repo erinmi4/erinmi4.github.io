@@ -13,10 +13,10 @@ if (!page) {
 const { Content } = await render(page);
 ---
 
-<MarkdownPageLayout title={page.data.title} description={page.data.description}>
+<MarkdownPageLayout title="About" description="A profile note on the person, projects, and study systems behind this site.">
   <section class="profile-card">
     <div class="profile-card__content">
-      <p class="profile-card__eyebrow">Identity / Profile</p>
+      <p class="profile-card__eyebrow">Profile</p>
       <h2>{siteConfig.author} / {siteConfig.handle}</h2>
       <p>{siteConfig.bio}</p>
       <div class="profile-card__quick-links">
@@ -30,8 +30,17 @@ const { Content } = await render(page);
     </div>
 
     <div class="profile-card__visual">
-      <img class="profile-card__portrait" src="/images/portraits/mika-avatar.svg" alt="Anime style portrait of mika" />
-      <img class="profile-card__cover" src="/images/wallpapers/tokyo-skyline-tower.jpg" alt="Tokyo skyline wallpaper" />
+      <img
+        class="profile-card__portrait"
+        src={siteConfig.profileImage.src}
+        alt={siteConfig.profileImage.alt}
+        loading="lazy"
+      />
+      <p class="media-credit">
+        <a href={siteConfig.profileImage.creditHref} rel="noreferrer" target="_blank">
+          {siteConfig.profileImage.creditText}
+        </a>
+      </p>
       <dl class="profile-card__meta">
         <div>
           <dt>Base</dt>

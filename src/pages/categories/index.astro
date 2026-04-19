@@ -6,19 +6,19 @@ const categoryMap = await getCategoryMap();
 const categories = [...categoryMap.entries()];
 ---
 
-<BaseLayout title="分类" description="按分类浏览站内文章。">
+<BaseLayout title="Categories" description="Browse the archive by category.">
   <section class="shell archive-shell">
     <header class="page-heading">
       <p class="eyebrow">Categories</p>
-      <h1>分类</h1>
-      <p>用分类快速理解内容结构。</p>
+      <h1>Categories</h1>
+      <p>Use category pages to move through the archive by content lane.</p>
     </header>
 
     <div class="taxonomy-grid">
       {categories.map(([category, posts]) => (
         <a class="taxonomy-card" href={`/categories/${encodeURIComponent(category)}/`}>
           <h2>{category}</h2>
-          <p>{posts.length} 篇文章</p>
+          <p>{posts.length} article{posts.length > 1 ? "s" : ""}</p>
         </a>
       ))}
     </div>

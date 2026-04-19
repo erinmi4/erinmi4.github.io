@@ -60,20 +60,11 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
         root.style.colorScheme = initialTheme;
       })();
     </script>
-    <meta name="theme-color" content="#f7efe3" data-theme-color />
+    <meta name="theme-color" content="#f3eee5" data-theme-color />
   </head>
 
   <body class={pageClass}>
     <div class="site-backdrop" aria-hidden="true"></div>
-    <div class="page-aura" aria-hidden="true">
-      <span class="page-aura__beam page-aura__beam--one"></span>
-      <span class="page-aura__beam page-aura__beam--two"></span>
-      <span class="page-aura__halo page-aura__halo--one"></span>
-      <span class="page-aura__halo page-aura__halo--two"></span>
-      <span class="page-aura__grid"></span>
-    </div>
-    <div class="pointer-effects" aria-hidden="true">
-    </div>
     <div class="page-shell">
       <Header />
       <main>
@@ -89,8 +80,8 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
         const themeColorMeta = document.querySelector("[data-theme-color]");
         const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
         const themeColors = {
-          light: "#f7efe3",
-          dark: "#11161d"
+          light: "#f3eee5",
+          dark: "#171b22"
         };
 
         const getSystemTheme = () => (themeMedia.matches ? "dark" : "light");
@@ -108,14 +99,14 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
               return;
             }
 
-            const nextTheme = theme === "dark" ? "浅色模式" : "深色模式";
+            const nextTheme = theme === "dark" ? "light mode" : "dark mode";
             const label = button.querySelector("[data-theme-toggle-label]");
 
             button.dataset.theme = theme;
-            button.setAttribute("aria-label", `切换到${nextTheme}`);
+            button.setAttribute("aria-label", `Switch to ${nextTheme}`);
 
             if (label instanceof HTMLElement) {
-              label.textContent = theme === "dark" ? "深色模式" : "浅色模式";
+              label.textContent = theme === "dark" ? "Dark mode" : "Light mode";
             }
           });
         };
@@ -142,39 +133,6 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
             window.localStorage.setItem(storageKey, nextTheme);
             applyTheme(nextTheme);
           });
-        });
-
-        const pointerMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
-        if (!pointerMedia.matches) return;
-
-        const body = document.body;
-        const layer = document.querySelector(".pointer-effects");
-
-        if (!(layer instanceof HTMLElement)) {
-          return;
-        }
-
-        body.classList.add("has-custom-pointer");
-
-        const spawnBurst = (x, y) => {
-          const burst = document.createElement("span");
-          burst.className = "pointer-burst";
-          burst.style.left = `${x}px`;
-          burst.style.top = `${y}px`;
-
-          for (let index = 0; index < 7; index += 1) {
-            const particle = document.createElement("span");
-            particle.className = "pointer-burst__particle";
-            particle.style.setProperty("--angle", `${index * 51}deg`);
-            burst.appendChild(particle);
-          }
-
-          layer.appendChild(burst);
-          window.setTimeout(() => burst.remove(), 620);
-        };
-
-        document.addEventListener("mousedown", (event) => {
-          spawnBurst(event.clientX, event.clientY);
         });
       })();
     </script>

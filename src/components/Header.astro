@@ -8,11 +8,11 @@ const pathname = Astro.url.pathname;
   <div class="shell site-header__inner">
     <a class="brand" href="/">
       <span class="brand__mark">
-        <img src="/images/portraits/mika-avatar.svg" alt="" />
+        <img src={siteConfig.profileImage.src} alt="" />
       </span>
       <span class="brand__stack">
         <span class="brand__text">{siteConfig.author}</span>
-        <span class="brand__subtext">Tokyo Signal</span>
+        <span class="brand__subtext">{siteConfig.subtitle}</span>
       </span>
     </a>
 
@@ -32,9 +32,9 @@ const pathname = Astro.url.pathname;
         })
       }
 
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换主题">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
         <span class="theme-toggle__icon" aria-hidden="true">◐</span>
-        <span class="theme-toggle__label" data-theme-toggle-label>浅色模式</span>
+        <span class="theme-toggle__label" data-theme-toggle-label>Light mode</span>
       </button>
     </nav>
   </div>

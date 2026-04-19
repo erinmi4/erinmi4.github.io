@@ -2,27 +2,27 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="搜索" description="在博客文章和页面中搜索关键词。">
+<BaseLayout title="Search" description="Search across posts and standalone pages.">
   <section class="shell archive-shell">
     <header class="page-heading">
       <p class="eyebrow">Search</p>
-      <h1>站内搜索</h1>
-      <p>支持按标题、摘要、正文、标签和分类进行关键词搜索。</p>
+      <h1>Search the archive</h1>
+      <p>Search across titles, summaries, body text, tags, and categories.</p>
     </header>
 
     <section class="search-shell">
       <label class="search-shell__label" for="site-search">
-        搜索关键词
+        Search query
       </label>
       <input
         class="search-shell__input"
         id="site-search"
         type="search"
-        placeholder="例如：修考、ESP32、博客重建、概率论"
+        placeholder="Try 修考, ESP32, probability, or 博客重建"
       />
-      <p class="search-shell__hint">输入后会即时显示匹配结果。</p>
+      <p class="search-shell__hint">Results update as you type.</p>
       <div class="search-results" id="search-results">
-        <p class="search-results__empty">先输入关键词，再开始搜索。</p>
+        <p class="search-results__empty">Start with a keyword and the matching notes will appear here.</p>
       </div>
     </section>
   </section>
@@ -51,7 +51,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           const keyword = input.value.trim().toLowerCase();
 
           if (!keyword) {
-            renderEmpty("先输入关键词，再开始搜索。");
+            renderEmpty("Start with a keyword and the matching notes will appear here.");
             return;
           }
 
@@ -74,7 +74,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             .slice(0, 20);
 
           if (matches.length === 0) {
-            renderEmpty("没有找到匹配结果，可以换一个关键词试试。");
+            renderEmpty("No matching results yet. Try a broader or different keyword.");
             return;
           }
 
@@ -86,7 +86,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               return `
                 <article class="search-result-card">
                   <div class="search-result-card__meta">
-                    <span>${record.type === "post" ? "文章" : "页面"}</span>
+                    <span>${record.type === "post" ? "Article" : "Page"}</span>
                     <span>${record.category}</span>
                   </div>
                   <h2><a href="${record.url}">${highlight(record.title, keyword)}</a></h2>
@@ -101,7 +101,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
       })
       .catch(() => {
-        renderEmpty("搜索索引加载失败，请稍后再试。");
+        renderEmpty("Search index failed to load. Please try again later.");
       });
   </script>
 </BaseLayout>
