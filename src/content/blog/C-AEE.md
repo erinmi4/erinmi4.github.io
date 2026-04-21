@@ -2,6 +2,7 @@
 title: C-AAE：用于隐私保护活动识别的压缩匿名自编码器
 slug: compressed-anonymous-autoencoder-activity-recognition
 description: 面向可穿戴传感器场景，讨论如何在保留动作识别能力的同时削弱身份可识别性。
+
 pubDate: 2026-04-21
 updatedDate: 2026-04-21
 tags:
