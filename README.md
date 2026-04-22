@@ -1,5 +1,20 @@
 # erinmi4.github.io
 
+## 快速新增文章
+
+在仓库根目录运行：
+
+```bash
+npm run new:post -- "修考第6天"
+```
+
+说明：
+
+- 不要写成 `npm new post--修考第6天`
+- 文章标题必须放在 `--` 后面，建议始终用引号包住
+- 命令会创建 `src/content/blog/<文章标题>.md`
+- 创建后需要补全 `description`、`tags`、`category`，再运行 `npm run check` 或 `npm run build`
+
 这是一个基于 Astro 重建的个人博客源码仓库。
 
 这个仓库原本只剩下一份损坏的 GitHub Pages 静态产物，现在已经迁移成一套可以长期维护的博客工程：文章用 Markdown 编写，页面自动生成，推送后通过 GitHub Actions 发布到 GitHub Pages。

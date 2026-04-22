@@ -6,7 +6,7 @@
   "description": "Modern Astro-powered personal blog for erinmi4.",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node ./scripts/validate-content.mjs",
+    "prebuild": "node ./scripts/reset-astro-cache.mjs && node ./scripts/validate-content.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
