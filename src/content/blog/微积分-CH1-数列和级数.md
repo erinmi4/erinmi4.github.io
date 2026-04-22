@@ -126,7 +126,7 @@ $$(\alpha - 2)(\alpha + 1) = 0$$
 
 ### 夹逼定理
 
-
+**夹逼定理**（挤压定理）：若 $a_n \le c_n \le b_n$ 且 $\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = a$，则 $\lim_{n \to \infty} c_n = a$。
 
 
 
