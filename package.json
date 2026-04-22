@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
     "new:post": "node ./scripts/new-post.mjs",
-    "publish": "powershell -ExecutionPolicy Bypass -File .\\scripts\\publish.ps1"
+    "publish": "node ./scripts/publish.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
