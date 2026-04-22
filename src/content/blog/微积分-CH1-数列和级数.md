@@ -26,7 +26,9 @@ By rationalizing the numerator, the expression becomes![image-20260422100841723]
 
 #### 比值判定法
 
-在数列与级数的学习中，判定 $\frac{a^n}{n!}$ 的极限是一个非常经典的课题。你选择 $\infty$ 是一个直觉上的常见错误，通常是因为忽略了**阶乘（Factorial）\**与\**幂函数（Power Function）**在趋于无穷大时增长速度的本质差异。
+在数列与级数的学习中，判定 $\frac{a^n}{n!}$ 的极限是一个非常经典的课题。你选择 $\infty$ 是一个直觉上的常见错误，通常是因为忽略了**阶乘（Factorial）** 与 **幂函数（Power Function）** 在趋于无穷大时增长速度的本质差异。
+
+> 阶乘与幂函数真的太适合比值判定法了
 
 以下是详细的解释：
 
