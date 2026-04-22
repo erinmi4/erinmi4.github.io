@@ -6,9 +6,12 @@
   "description": "Modern Astro-powered personal blog for erinmi4.",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node ./scripts/validate-content.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check && tsc --noEmit"
+    "check": "astro check && tsc --noEmit",
+    "new:post": "node ./scripts/new-post.mjs",
+    "publish": "powershell -ExecutionPolicy Bypass -File .\\scripts\\publish.ps1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",

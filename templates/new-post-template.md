@@ -11,7 +11,7 @@ draft: true
 # heroImage: /images/example-cover.jpg
 ---
 
-> 复制这篇模板后，优先修改文件名、`title`、`description`、`pubDate`、`tags`、`category`，确认没有残留旧 `slug`。
+> 优先用 `npm run new:post -- "文章标题"` 新建文章。只有确实需要自定义链接时才填写 `slug`，否则保持不写，直接用文件名生成链接最稳。
 
 ## 这篇文章想解决什么问题
 
