@@ -3,6 +3,7 @@ title: 嵌入式音频部署 Part1 arduino部分
 description: 主要是将Arduino部分的代码进行解析
 pubDate: 2026-04-14
 updatedDate: 2026-04-14
+slug: embedded-audio-deployment-part1-arduino-esp32
 tags:
   - 深度学习
   - 信号处理
@@ -35,7 +36,7 @@ draft: false
 
 ### 初始化 I2S 麦克风
 
-```C++
+```cpp
 void setupMicrophone() {
   i2s_config_t i2s_config = {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX), // 配置为主机接收模式
@@ -68,7 +69,7 @@ void setupMicrophone() {
 
 在单片机中，最忌讳的就是死等（Blocking）。如果我们一次性阻塞等待 0.5 秒的音频收完，这段时间内 ESP32 什么都干不了。因此，代码中实现了一个**非阻塞读取**机制：
 
-```C++
+```cpp
 // 非阻塞读取：
 // 每次 loop() 只尝试把当前 DMA 准备好的数据补进 captureBuffer。
 // 收满一个滑动步长（0.5秒）的数据后才返回 true，触发后续的推理。
@@ -97,7 +98,7 @@ bool readNonBlockingI2S(int32_t* buffer, size_t buffer_size, size_t* bytesRead) 
 
 ### 滑动窗口设计
 当成功读取到 0.5 秒新数据后，我们并非只对这 0.5 秒推理，而是采用**滑动窗口（Sliding Window）**。我们保留上一次的后 0.5 秒，加上最新的 0.5 秒，拼成完整的 1 秒。这能有效防止某个重要的声音特征正好被切断在两段音频中间。
-```c++
+```cpp
 // 丢弃最旧的 0.5 秒，把剩余数据往前挪
 memmove(audioWindow, audioWindow + SLIDE_SAMPLES, (NUM_SAMPLES - SLIDE_SAMPLES) * sizeof(int32_t));
 // 把最新采集的 0.5 秒拼到尾部
@@ -112,7 +113,7 @@ memcpy(audioWindow + (NUM_SAMPLES - SLIDE_SAMPLES), captureBuffer, SLIDE_SAMPLES
 
 ### 位移与浮点归一化
 INMP441 麦克风输出的是 **24-bit** PCM 数据，但 ESP32 的 I2S 外设是按 **32-bit** 槽位读取的（数据左对齐或右端补零），所以我们需要通过右移将其还原，并转换为 $[-1.0, 1.0]$ 的浮点数：
-```c++
+```cpp
 float convertMicSampleToFloat(int32_t sample) {
   int32_t pcm24 = sample >> MIC_RIGHT_SHIFT; // 剔除无效位
   return static_cast<float>(pcm24) / MIC_FULL_SCALE_24BIT; // 归一化
@@ -124,7 +125,7 @@ float convertMicSampleToFloat(int32_t sample) {
 * **减去均值**：消除直流分量。
 * **RMS 静音阈值**：如果环境太安静（计算出的 RMS 小于 `SILENCE_RMS_THRESHOLD`），直接跳过后续昂贵的 FFT 和神经网络计算，大大降低设备功耗。
 
-```c++
+```cpp
 // 1. 求均值
 const float mean = sum / NUM_SAMPLES;
 // 2. 去均值，补偿增益，求能量
@@ -148,7 +149,7 @@ if (rms < SILENCE_RMS_THRESHOLD) {
 
 ### 分帧与加窗
 将 1 秒的音频切分成 20 帧（`NUM_MEL_FRAMES`）。由于强行截断会导致频谱边缘出现“泄漏”（高频噪声），在做快速傅里叶变换（FFT）之前，需要给每帧乘上一个汉明窗（Hamming Window），让波形两端平滑过渡到 0。
-```c++
+```cpp
 // 截取当前帧数据，长度不够用 0 填充
 for (int i = 0; i < FFT_SIZE; i++) {
   vReal[i] = (startIdx + i < NUM_SAMPLES) ? audioData[startIdx + i] : 0.0f;
@@ -162,7 +163,7 @@ FFT.complexToMagnitude(); // 将复数结果转为能量幅值
 ### Mel 滤波器组与取对数
 人耳对低频更敏感，对高频不敏感（例如你能分辨 100Hz 和 200Hz，但很难分辨 10100Hz 和 10200Hz）。**Mel 滤波器组**就是一堆在低频密集、高频稀疏的三角滤波器。我们将 FFT 出来的线性频谱乘上预先计算好的滤波器系数矩阵 `melFilterCoeffs`，就能得到符合人耳听觉的特征。
 随后对结果加上一个极小值防止 `log(0)`，并取自然对数。
-```c++
+```cpp
 applyMelFilterBank(vReal, melEnergyBuffer);
 for (int mel = 0; mel < NUM_MEL_FILTERS; mel++) {
   float raw_log_mel = logf(melEnergyBuffer[mel] + 1e-9f);
@@ -180,7 +181,7 @@ for (int mel = 0; mel < NUM_MEL_FILTERS; mel++) {
 当特征准备就绪，神经网络登场。ESP32 的内部 SRAM 非常珍贵，而运行模型往往需要较大的内存池（Tensor Arena）存放算子中间结果。
 
 因此，代码中强制将 Tensor Arena 分配在 **PSRAM（外部伪静态随机存储器）** 中：
-```c++
+```cpp
 // tensor arena 放到 PSRAM，给模型中间张量使用
 tensor_arena = static_cast<uint8_t*>(heap_caps_malloc(tensor_arena_size, MALLOC_CAP_SPIRAM));
 ```
@@ -188,7 +189,7 @@ tensor_arena = static_cast<uint8_t*>(heap_caps_malloc(tensor_arena_size, MALLOC_
 初始化解释器（Interpreter）并检查输入维度。**`validateInputTensorShape()` 函数非常关键**，它能防止你更换模型后，C++ 板端的数组大小与新模型不匹配而导致内存越界或 silently wrong（错得神不知鬼不觉）。
 
 推理执行其实就是一行代码：
-```c++
+```cpp
 if (interpreter->Invoke() != kTfLiteOk) {
   Serial.println("Invoke() failed.");
   return;
@@ -204,7 +205,7 @@ if (interpreter->Invoke() != kTfLiteOk) {
 
 ### 指数滑动平均 (EMA)
 我们将本次推理的结果（`currentScores`）与过去的历史结果（`smoothedScores`）进行加权融合：
-```c++
+```cpp
 for (int i = 0; i < NUM_CLASSES; i++) {
   smoothedScores[i] =
     (SMOOTHING_ALPHA * smoothedScores[i]) +
@@ -218,7 +219,7 @@ for (int i = 0; i < NUM_CLASSES; i++) {
 1. `PREDICTION_THRESHOLD` (0.60)：最高得分必须大于 60%。
 2. `PREDICTION_MARGIN` (0.12)：第一名得分必须比第二名高出至少 12%。
 
-```c++
+```cpp
 if (top1Score > PREDICTION_THRESHOLD && (top1Score - top2Score) > PREDICTION_MARGIN) {
   // 达到双重标准，确信预测成功
   Serial.printf("predict=%s ...\n", CLASS_NAMES[top1Index]);

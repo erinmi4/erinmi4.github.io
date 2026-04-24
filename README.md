@@ -5,7 +5,7 @@
 在仓库根目录运行：
 
 ```bash
-npm run new:post -- "修考第6天"
+npm run new:post -- "过去问-计算机组成原理-2021"
 ```
 
 说明：

@@ -19,7 +19,12 @@ const pages = defineCollection({
   schema: documentSchema
 });
 
+const files = defineCollection({
+  schema: z.object({}).passthrough()
+});
+
 export const collections = {
   blog,
-  pages
+  pages,
+  files
 };
