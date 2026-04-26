@@ -12,6 +12,56 @@ draft: false
 
 [TOC]
 
+```mermaid
+graph LR
+    %% 核心节点
+    Root((行列式))
+    
+    %% 主分支
+    Solve[解方程]
+    Calc[求值方法]
+    Inverse[求逆矩阵]
+    Special[特殊形式]
+
+    Root --- Solve
+    Root --- Calc
+    Root --- Inverse
+    Root --- Special
+
+    %% 解方程分支
+    Solve --> Cramer["Cramer's Rule"]
+    Solve --> InvSolve["逆矩阵法: x = A⁻¹b"]
+
+    %% 求值方法分支
+    Calc --> Sarrus["Sarrus法则 (对角线法)"]
+    Calc --> Cofactor[余因子展开]
+    Cofactor --> Zero["技巧: 构造 0 元素"]
+    Calc --> Linear[线性性质]
+    Linear --> Proof["证明技巧: 结果驱动变换"]
+    Calc --> Product["积的性质: |AB| = |A||B|"]
+
+    %% 逆矩阵步骤分支
+    Inverse --> S1["1. 求行列式值 |A|"]
+    Inverse --> S2["2. 求代数余子式"]
+    Inverse --> S3["3. 伴随矩阵 (余子式转置)"]
+    Inverse --> S4["4. 代入 A⁻¹ = (1/|A|)A*"]
+
+    %% 特殊形式分支
+    Special --> Poly[多项式表示]
+    Special --> Van["范特蒙德 (Vandermonde)"]
+    Special --> Block[分块矩阵 Block]
+    Block --> BlockEq["det = |X| * |Z|"]
+
+    %% 样式美化
+    style Root fill:#f9f,stroke:#333,stroke-width:2px
+    style Special fill:#e1f5fe,stroke:#01579b
+    style Solve fill:#e8f5e9,stroke:#2e7d32
+```
+
+
+
+
+
 ## 补充的矩阵定义
 
 - **可换矩阵**：满足乘法交换律的矩阵，即 $AB = BA$。
