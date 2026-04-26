@@ -12,6 +12,93 @@ draft: false
 
 ![NotebookLM Mind Map (1)](./%E5%BE%AE%E7%A7%AF%E5%88%86-CH1-%E6%95%B0%E5%88%97%E5%92%8C%E7%BA%A7%E6%95%B0.assets/NotebookLM%20Mind%20Map%20(1).png)
 
+```mermaid
+graph LR
+    %% 核心根节点
+    Root((<b>数列与级数</b>))
+    style Root fill:#FF7043,stroke:#BF360C,stroke-width:3px,color:#fff
+
+    %% 数列部分分支
+    subgraph SeqSection [数列部分]
+        Seq[<b>数列性质</b>]
+        Conv{收敛证明}
+        Theorem[重要定理]
+        Limit[重要极限]
+    end
+
+    Root --- Seq
+    Seq --- Conv
+    Seq --- Theorem
+    Seq --- Limit
+
+    Conv --- Mono[单调有界性质]
+    Mono --- Bound[有界性证明]
+    Mono --- Monotonic[单调性证明]
+    Monotonic --- Indu[数学归纳法]
+
+    Theorem --- Squeeze[夹逼定理<br/>通过构造可以获得极限]
+
+    Limit --- NatE["自然常数 $e$:<br/>$\lim_{n \to \infty}(1 + \frac{1}{n})^n$"]
+
+    %% 级数部分分支
+    subgraph SerSection [级数部分]
+        Ser[<b>级数性质</b>]
+        Base[基础概念]
+        Judge[判定方法]
+        Common[常见级数]
+        Power[幂级数]
+        Expand[函数展开]
+    end
+
+    Root --- Ser
+    Ser --- Base
+    Ser --- Judge
+    Ser --- Common
+    Ser --- Power
+    Ser --- Expand
+
+    Base --- Sn[部分和 $S_n$]
+    Base --- Def[收敛定义: $S_n$ 极限存在]
+    Base --- Cond[收敛必要条件: $a_n \to 0$]
+
+    Judge --- Pos[正项级数]
+    Pos --- C1[比较判定法]
+    Pos --- C2[比值判定法: d'Alembert]
+    Pos --- C3[根号判定法: Cauchy]
+    Pos --- C4[积分判定法]
+
+    Judge --- Any[任意项级数]
+    Any --- A1[绝对收敛: 绝对值级数收敛]
+    Any --- A2[条件收敛: 原级数收敛但绝对值发散]
+    Any --- A3[交错级数: Leibniz 准则]
+
+    Common --- Geo[几何级数: 公比绝对值小于1收敛]
+    Common --- PSer["$p$-级数: $p > 1$ 收敛"]
+    PSer --- Har[调和级数 Harmonic series]
+
+    Power --- PCore[核心理论]
+    PCore --- R[收敛半径 $R$]
+    PCore --- Domain[收敛圆与收敛域]
+    Power --- PCalc[计算与性质]
+    PCalc --- Ratio[系数比值法求半径]
+    PCalc --- Deriv[项别求导: 半径不变]
+    PCalc --- Integ[项别积分: 半径不变]
+
+    Expand --- Taylor[泰勒展开式]
+    Expand --- Funcs[常用展开: 指数和三角函数]
+
+    %% 样式美化
+    classDef seqStyle fill:#E3F2FD,stroke:#1565C0,stroke-width:1px
+    classDef serStyle fill:#E8F5E9,stroke:#2E7D32,stroke-width:1px
+    classDef nodeStyle fill:#FFFDE7,stroke:#FBC02D,stroke-width:1px
+    
+    class Seq,Conv,Theorem,Limit,Mono,Bound,Monotonic,Indu,Squeeze,NatE seqStyle
+    class Ser,Base,Judge,Common,Power,Expand,Sn,Def,Cond,Pos,Any,Geo,PSer,Har,PCore,PCalc serStyle
+    class C1,C2,C3,C4,A1,A2,A3,R,Domain,Ratio,Deriv,Integ,Taylor,Funcs nodeStyle
+```
+
+
+
 [TOC]
 
 ## 这一章在讲什么

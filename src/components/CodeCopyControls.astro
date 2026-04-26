@@ -33,6 +33,10 @@
           continue;
         }
 
+        if (code.classList.contains("language-mermaid")) {
+          continue;
+        }
+
         const button = document.createElement("button");
         button.type = "button";
         button.className = "code-copy-button";

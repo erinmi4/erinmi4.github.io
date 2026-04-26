@@ -1,0 +1,149 @@
+<script is:inline type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+  const SOURCE_SELECTOR = ".prose-card pre > code.language-mermaid";
+  const RENDERED_SELECTOR = ".prose-card [data-mermaid-renderer='true']";
+
+  let diagramCounter = 0;
+  let activeTheme = "";
+  let themeObserver;
+
+  const getThemeName = () =>
+    document.documentElement.dataset.theme === "dark" ? "dark" : "default";
+
+  const getThemeVariables = () => {
+    const styles = getComputedStyle(document.documentElement);
+
+    return {
+      fontFamily: styles.getPropertyValue("--body-font").trim() || undefined,
+      background: styles.getPropertyValue("--surface-warm").trim() || undefined,
+      primaryColor: styles.getPropertyValue("--surface-strong").trim() || undefined,
+      primaryTextColor: styles.getPropertyValue("--text").trim() || undefined,
+      primaryBorderColor: styles.getPropertyValue("--border-strong").trim() || undefined,
+      lineColor: styles.getPropertyValue("--text-soft").trim() || undefined,
+      tertiaryColor: styles.getPropertyValue("--surface").trim() || undefined,
+      mainBkg: styles.getPropertyValue("--surface-strong").trim() || undefined,
+      secondBkg: styles.getPropertyValue("--surface").trim() || undefined,
+      tertiaryBkg: styles.getPropertyValue("--bg-soft").trim() || undefined
+    };
+  };
+
+  const configureMermaid = () => {
+    const theme = getThemeName();
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "strict",
+      theme,
+      themeVariables: getThemeVariables()
+    });
+
+    activeTheme = theme;
+  };
+
+  const ensureMermaidContainers = () => {
+    const sourceBlocks = document.querySelectorAll(SOURCE_SELECTOR);
+
+    for (const code of sourceBlocks) {
+      if (!(code instanceof HTMLElement)) {
+        continue;
+      }
+
+      const pre = code.closest("pre");
+      if (!(pre instanceof HTMLElement)) {
+        continue;
+      }
+
+      const source = code.textContent?.trim();
+      if (!source) {
+        continue;
+      }
+
+      const container = document.createElement("div");
+      container.className = "mermaid-diagram";
+      container.dataset.mermaidRenderer = "true";
+      container.dataset.mermaidSource = source;
+      container.setAttribute("role", "img");
+      container.setAttribute("aria-label", "Mermaid diagram");
+
+      pre.replaceWith(container);
+    }
+  };
+
+  const renderDiagram = async (container) => {
+    const source = container.dataset.mermaidSource;
+    if (!source) {
+      return;
+    }
+
+    container.setAttribute("aria-busy", "true");
+    container.classList.remove("has-error");
+
+    try {
+      const id = `mermaid-diagram-${diagramCounter++}`;
+      const { svg, bindFunctions } = await mermaid.render(id, source);
+
+      container.innerHTML = svg;
+      bindFunctions?.(container);
+    } catch (error) {
+      console.error("Failed to render Mermaid diagram.", error);
+      container.textContent = "Mermaid diagram failed to render.";
+      container.classList.add("has-error");
+    } finally {
+      container.removeAttribute("aria-busy");
+    }
+  };
+
+  const renderAllDiagrams = async (force = false) => {
+    ensureMermaidContainers();
+
+    if (force || activeTheme !== getThemeName()) {
+      configureMermaid();
+    }
+
+    const containers = document.querySelectorAll(RENDERED_SELECTOR);
+
+    for (const container of containers) {
+      if (container instanceof HTMLElement) {
+        await renderDiagram(container);
+      }
+    }
+  };
+
+  const watchThemeChanges = () => {
+    if (themeObserver) {
+      return;
+    }
+
+    themeObserver = new MutationObserver(async (mutations) => {
+      for (const mutation of mutations) {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-theme" &&
+          activeTheme !== getThemeName()
+        ) {
+          await renderAllDiagrams(true);
+          break;
+        }
+      }
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"]
+    });
+  };
+
+  const initMermaid = async () => {
+    await renderAllDiagrams(true);
+    watchThemeChanges();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      void initMermaid();
+    }, { once: true });
+  } else {
+    void initMermaid();
+  }
+</script>

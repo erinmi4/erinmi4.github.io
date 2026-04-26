@@ -1309,6 +1309,32 @@ a.button--primary {
   background: #232321;
 }
 
+.prose-card .mermaid-diagram {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  background: var(--surface-warm);
+  box-shadow:
+    0 0 0 1px var(--border-strong),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="dark"] .prose-card .mermaid-diagram {
+  background: #232321;
+}
+
+.prose-card .mermaid-diagram svg {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+
+.prose-card .mermaid-diagram.has-error {
+  color: var(--accent);
+  font-weight: 500;
+}
+
 .prose-card :where(img) {
   margin: 1.5rem auto;
   border-radius: var(--radius-lg);
