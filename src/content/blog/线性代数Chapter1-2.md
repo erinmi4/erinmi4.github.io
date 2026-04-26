@@ -2,7 +2,7 @@
 title: 行列式和逆矩阵
 description: 总结自《新版演习线性代数_寺田文行》一书，使用最小笔记的形式去记录。
 pubDate: 2026-04-13
-updatedDate: 2026-04-13
+updatedDate: 2026-04-26
 tags:
   - 线性代数
   - 修考

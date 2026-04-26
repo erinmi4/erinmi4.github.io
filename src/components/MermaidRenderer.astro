@@ -1,7 +1,7 @@
 <script is:inline type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
-  const SOURCE_SELECTOR = ".prose-card pre > code.language-mermaid";
+  const SOURCE_SELECTOR = ".prose-card pre[data-language='mermaid'] > code, .prose-card pre > code.language-mermaid";
   const RENDERED_SELECTOR = ".prose-card [data-mermaid-renderer='true']";
 
   let diagramCounter = 0;
@@ -49,7 +49,7 @@
         continue;
       }
 
-      const pre = code.closest("pre");
+      const pre = code.closest("pre[data-language='mermaid'], pre");
       if (!(pre instanceof HTMLElement)) {
         continue;
       }

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import CodeCopyControls from "../components/CodeCopyControls.astro";
+import MermaidRenderer from "../components/MermaidRenderer.astro";
 
 interface Props {
   title: string;
@@ -22,5 +23,6 @@ const { title, description } = Astro.props;
       <slot />
     </article>
   </section>
+  <MermaidRenderer />
   <CodeCopyControls />
 </BaseLayout>

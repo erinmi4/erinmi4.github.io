@@ -20,6 +20,14 @@
       }, 1800);
     };
 
+    const isMermaidBlock = (pre, code) => {
+      if (!(pre instanceof HTMLElement) || !(code instanceof HTMLElement)) {
+        return false;
+      }
+
+      return pre.dataset.language === "mermaid" || code.classList.contains("language-mermaid");
+    };
+
     const enhanceCodeBlocks = () => {
       const codeBlocks = document.querySelectorAll(".prose-card pre");
 
@@ -33,7 +41,7 @@
           continue;
         }
 
-        if (code.classList.contains("language-mermaid")) {
+        if (isMermaidBlock(pre, code)) {
           continue;
         }
 
