@@ -1,8 +1,8 @@
 ---
 title: "微积分-CH2-微分"
-description: "从极限、连续到导数定义与求导法则，串起微积分第二章中理解变化率的核心路径。"
+description: "整理极限、连续、导数定义、求导法则与常见应用，梳理微积分第二章的核心脉络。"
 pubDate: 2026-04-25
-updatedDate: 2026-04-25
+updatedDate: 2026-04-27
 tags:
   - 修考
   - 微积分
@@ -12,134 +12,357 @@ draft: true
 
 ![NotebookLM Mind Map (3)](./%E5%BE%AE%E7%A7%AF%E5%88%86-CH2-%E5%BE%AE%E5%88%86.assets/NotebookLM%20Mind%20Map%20(3).png)
 
+[TOC]
 
+## 这一章在讲什么
 
-# From Limits to the Derivative: A Guide to Conceptual Evolution
+第二章的主线其实很清楚：先用**极限**描述“趋近”，再用**连续**判断函数在一点附近是否平滑连通，最后把“平均变化率”推进到“瞬时变化率”，自然得到**导数**。
 
-## 1. The Gateway: Why We Study Change
-Welcome, explorer. You are about to embark on a journey that transforms how you perceive the world. Mathematics often seems static—fixed numbers and unmoving shapes—but the reality of our universe is motion. Calculus is the language of that motion, a way to deconstruct the "hidden motion" within seemingly still functions.
+从复习角度看，这一章可以分成四块：
 
-By shifting our focus from the **macroscopic** (average change over a distance) to the **microscopic** (the change at a single, precise moment), we unlock the ability to predict the future of a moving object or the curvature of a lens. This transition from "nearly there" to "exactly then" is the heart of the evolution from limits to derivatives.
+- **极限**：会不会求，存不存在，左右极限是否一致。
+- **连续**：会不会判断间断点，能不能套介值定理。
+- **导数**：会不会从定义出发理解导数的本质。
+- **应用**：会不会用求导公式、洛必达法则、泰勒展开和二阶导数处理题目。
 
-> **Core Insight:** "To understand change, we must learn to look at a single moment without losing the context of the journey. The derivative is the mathematical tool that allows us to capture the 'instant' by perfecting the art of the 'limit'."
+如果把整章压缩成一句话，那就是：
 
-Before we can capture a single moment of change, we must first master the language of "nearly there": the **Limit**.
+> 极限解决“能否逼近”，连续解决“是否断开”，导数解决“这一瞬间到底怎么变”。
 
----
+## 一、极限：从“接近”开始
 
-## 2. The Foundation: The Limit and the Art of Approaching
-At its core, a limit describes the value a function $f(x)$ approaches as the input $x$ gets closer and closer to a specific point $a$. Crucially, the function does not need to be defined at $x=a$ for the limit to exist. We write this as: 
-$$\lim_{x\to a}f(x)=A$$
+### 1. 极限的核心定义
 
-### Criteria for Existence
-For a limit to truly exist at point $a$, the function must approach the same value from both directions. In the language of mathematical analysis, we define this using one-sided limits:
+设函数 $f(x)$ 在点 $a$ 的附近有定义，如果当 $x$ 无限接近 $a$ 时，$f(x)$ 无限接近某个常数 $A$，就记作
 
-| Type of Limit        | Notation              | Meaning                                                      |
-| :------------------- | :-------------------- | :----------------------------------------------------------- |
-| **Right-side Limit** | $\lim_{x\to a^+}f(x)$ | The value $f(x)$ approaches as $x$ nears $a$ from the right ($x > a$). |
-| **Left-side Limit**  | $\lim_{x\to a^-}f(x)$ | The value $f(x)$ approaches as $x$ nears $a$ from the left ($x < a$). |
-| **The Limit**        | $\lim_{x\to a}f(x)=A$ | **Existence Rule:** Only exists if the Left and Right limits are equal to $A$. |
+$$
+\lim_{x \to a} f(x) = A
+$$
 
-### The Arithmetic of Limits (Theorem 2.1)
-Limits are "well-behaved," allowing us to break down complex expressions into manageable logic. If $f(x) \to A$ and $g(x) \to B$ as $x \to a$:
+这里最关键的一点是：**讨论极限时，重点是“趋近过程”，不一定要求 $x=a$ 时函数本身有定义。**
 
-* **Sum/Difference:** $f(x) \pm g(x) \to A \pm B$.
-* **Product:** $f(x)g(x) \to AB$ (including constant multiples $cf(x) \to cA$).
-* **Quotient:** $f(x)/g(x) \to A/B$, provided $B \neq 0$.
-* **The Squeeze Theorem:** If $f(x) \le h(x) \le g(x)$ and both $f(x)$ and $g(x)$ approach $A$, then $h(x)$ is "squeezed" and must also approach $A$.
+### 2. 左右极限
 
----
+判断极限是否存在，先看左右两边：
 
-## 3. The Bridge: Continuity and the Unbroken Path
-A function is continuous at a point if there are no "gaps," "jumps," or "breaks" in its graph. This bridge is built on three strict conditions:
+- 右极限：$\lim_{x \to a^+} f(x)$
+- 左极限：$\lim_{x \to a^-} f(x)$
 
-1.  **$f(a)$ must exist:** The function is actually defined at the point.
-2.  **$\lim_{x\to a}f(x)$ must exist:** The path from the left and right meet at the same "height."
-3.  **$\lim_{x\to a}f(x) = f(a)$:** The limit and the actual point are identical.
+只有当左右极限都存在且相等时，$\lim_{x \to a} f(x)$ 才存在。
 
-### The Power of Continuity
-Continuous functions follow the **Intermediate Value Theorem (Theorem 2.7)**. If $f(x)$ is continuous on a closed interval $[a, b]$, it must pass through every value $\eta$ between $f(a)$ and $f(b)$. This is the logical proof that continuous functions don't "jump"—if a path starts below a line and ends above it, it must cross it.
+这类判断在分段函数、绝对值函数、含 $e^{1/x}$ 的题里很常见。比如：
 
-> **Note: Continuity vs. Differentiability**
-> Being continuous is a prerequisite for being differentiable, but it is not a guarantee. Differentiability implies continuity, but the reverse is not true. A function can be "connected" but have a sharp corner (like $f(x) = |x|$ at $x=0$), or oscillate so violently that a single slope cannot be determined.
+- 当 $x \to 0^+$ 时，$e^{1/x} \to \infty$
+- 当 $x \to 0^-$ 时，$e^{1/x} \to 0$
 
----
+所以这类题如果不分左右看，通常会直接出错。
 
-## 4. The Transformation: Defining the Derivative
-The derivative is the "instantaneous" rate of change. While an average slope requires a **Secant Line** connecting two distinct points, the derivative allows us to find the slope of a **Tangent Line** at exactly one point.
+### 3. 极限的基本运算法则
 
-### The Formal Definition
-The derivative $f'(a)$ is the limit of the difference quotient as the interval $h$ shrinks to nothing:
+若 $\lim_{x \to a} f(x) = A$，$\lim_{x \to a} g(x) = B$，则：
 
-$$f'(a) = \lim_{h\to 0} \frac{f(a + h) - f(a)}{h}$$
+- $\lim_{x \to a}[f(x) \pm g(x)] = A \pm B$
+- $\lim_{x \to a}[f(x)g(x)] = AB$
+- $\lim_{x \to a}\dfrac{f(x)}{g(x)} = \dfrac{A}{B}$，前提是 $B \ne 0$
 
+此外还要熟悉**夹逼定理**：若
 
+$$
+f(x) \le h(x) \le g(x)
+$$
 
-### Dual Interpretations
-* **Geometric Meaning:** The slope of the tangent line to the curve $y=f(x)$ at point $P(a, f(a))$.
-* **Physical Interpretation:** The instantaneous rate of change (e.g., velocity if $f(x)$ represents position).
+且
 
-**When does the Derivative fail?** Differentiability requires that the limit above exists and is finite. It fails if the "Right-side" and "Left-side" derivatives don't match (forming a "cusp"). It also fails if the limit simply does not exist due to infinite oscillation at the point.
+$$
+\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = A
+$$
 
----
+那么
 
-## 5. The Toolbox: Rules of Differentiation
-Calculating derivatives via limits is the foundation, but shortcuts allow us to calculate change with elegance and speed.
+$$
+\lim_{x \to a} h(x) = A
+$$
 
-### Basic Derivatives Table (Theorems 2.10 - 2.14)
-| Function $f(x)$      | Derivative $f'(x)$    | Function $f(x)$      | Derivative $f'(x)$ |
-| :------------------- | :-------------------- | :------------------- | :----------------- |
-| **Constant** $C$     | $0$                   | **Sine** $\sin x$    | $\cos x$           |
-| **Power** $x^\alpha$ | $\alpha x^{\alpha-1}$ | **Cosine** $\cos x$  | $-\sin x$          |
-| **Exp** $e^x$        | $e^x$                 | **Tangent** $\tan x$ | $\sec^2 x$         |
-| **Log** $\ln x$      | $1/x$                 | **$\arcsin x$**      | $1/\sqrt{1-x^2}$   |
-| **$\arctan x$**      | $1/(1+x^2)$           |                      |                    |
+三角函数极限、含震荡函数的题，经常靠它收尾。
 
-### The "Power Tools" of Calculus
-* **The Chain Rule:** The ultimate tool for composite functions.
-    1.  **Identify:** Label the inner function $u = f(x)$ and outer $z = g(u)$.
-    2.  **Differentiate:** Find $dz/du$ and $du/dx$.
-    3.  **Multiply:** $\frac{dz}{dx} = \frac{dz}{du} \cdot \frac{du}{dx}$.
-* **Inverse Function Derivative:** Allows finding the derivative of difficult functions (like $\ln x$) by using their easier inverses (like $e^y$).
-* **Higher-Order Derivatives & Concavity:** The second derivative $f''(x)$ tells us about the "bending" of the curve. If $f''(x) > 0$, the curve is **concave up** (it "holds water").
+### 4. 复习时要背熟的标准极限
 
----
+下面这些最好看到就能直接反应出来：
 
-## 6. The Horizon: Power Applications (L'Hôpital and Taylor)
-### L'Hôpital's Rule (Theorem 2.21)
-If a limit results in $0/0$ or $\infty/\infty$, you can differentiate the numerator and denominator separately: 
-$$\lim \frac{f(x)}{g(x)} = \lim \frac{f'(x)}{g'(x)}$$
-**The 7 Indeterminate Forms:**
+1. $\lim_{x \to 0} \dfrac{\sin x}{x} = 1$
+2. $\lim_{x \to 0} \dfrac{1 - \cos x}{x^2} = \dfrac{1}{2}$
+3. $\lim_{x \to 0} (1+x)^{1/x} = e$
+4. $\lim_{x \to 0} \dfrac{\ln(1+x)}{x} = 1$
+5. $\lim_{n \to \infty} n(\sqrt[n]{x}-1) = \ln x$
 
-1. $0/0$ 
-1.   $\infty/\infty$ 
-1. $\infty - \infty$ 
-1. $0 \times \infty$ 
-1. $1^\infty$ 
-1.  $0^0$ 
-1.  $\infty^0$
+这些式子不只是单独考，更常作为中间步骤嵌在综合题里。
 
-### Taylor and Maclaurin Series (Theorems 2.19 - 2.20)
-These approximate complex functions as simple polynomials near a point:
-* $e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots$
-* $\sin x \approx x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots$
-* $\cos x \approx 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots$
+## 二、连续：函数有没有“断掉”
 
----
+### 1. 连续的三个条件
 
-## 7. Mastery Checklist: Thinking Like a Mathematician
-### The Conceptual Roadmap
-1.  **Limits:** Can I approach a value without touching it?
-2.  **Continuity:** Is the path unbroken?
-3.  **Differentiability:** Is the path smooth enough to have a single, non-oscillating slope?
-4.  **Optimization:** Where does the change stop (maxima/minima/concavity)?
+函数 $f(x)$ 在 $x=a$ 处连续，当且仅当下面三件事同时成立：
 
-### Self-Assessment Checklist
-* [ ] I can identify existence via right-side and left-side limits.
-* [ ] I can state the 3 conditions for continuity.
-* [ ] I can explain the Intermediate Value Theorem.
-* [ ] I can apply Rolle's Theorem and the Mean Value Theorem.
-* [ ] I can differentiate composite functions using the Chain Rule.
-* [ ] I can use $f''(x)$ to determine if a curve is concave up or down.
-* [ ] I can recognize the 7 indeterminate forms and apply L'Hôpital's Rule.
-* [ ] I can expand $e^x$, $\sin x$, and $\cos x$ into Maclaurin Series.
+1. $f(a)$ 有定义；
+2. $\lim_{x \to a} f(x)$ 存在；
+3. $\lim_{x \to a} f(x) = f(a)$。
+
+很多题目本质上就是把这三个条件拆开检查。
+
+### 2. 连续与可导的关系
+
+必须分清这两个概念：
+
+- **可导一定连续**
+- **连续不一定可导**
+
+典型反例是 $f(x)=|x|$ 在 $x=0$ 处连续，但不可导，因为左右导数不相等。
+
+所以做判断题时，不要把“连续”和“光滑”混为一谈。
+
+### 3. 介值定理
+
+若 $f(x)$ 在闭区间 $[a,b]$ 上连续，那么它会取到 $f(a)$ 和 $f(b)$ 之间的一切值。
+
+特别地，如果
+
+$$
+f(a)f(b) < 0
+$$
+
+那么至少存在一点 $c \in (a,b)$，使得
+
+$$
+f(c)=0
+$$
+
+这就是证明“方程在某区间内有根”的标准工具。
+
+## 三、导数：把平均变化率逼到瞬时
+
+### 1. 导数的定义
+
+导数来自平均变化率
+
+$$
+\frac{f(a+h)-f(a)}{h}
+$$
+
+当 $h \to 0$ 时，如果这个极限存在，就得到 $f(x)$ 在 $x=a$ 处的导数：
+
+$$
+f'(a)=\lim_{h \to 0}\frac{f(a+h)-f(a)}{h}
+$$
+
+这个定义一定要理解，而不只是记住。因为很多证明题、判定题、构造题都要回到定义。
+
+### 2. 导数的几何意义和物理意义
+
+导数有两种最常见的解释：
+
+- **几何意义**：曲线 $y=f(x)$ 在点 $P(a,f(a))$ 处切线的斜率；
+- **物理意义**：瞬时变化率，比如位移函数的导数是瞬时速度。
+
+也就是说，导数本质上描述的是“函数在某一点附近变化得有多快”。
+
+### 3. 不可导的常见情形
+
+下面几种情况尤其容易考：
+
+- 左导数和右导数不相等；
+- 切线斜率趋于无穷大；
+- 函数在该点剧烈振荡，极限不存在；
+- 函数本身在该点不连续。
+
+复习时可以把“连续”和“可导”当成两层筛子：先看连不连续，再看能不能求出唯一切线斜率。
+
+## 四、求导法则：从定义过渡到计算
+
+### 1. 基本求导公式
+
+下面这些是最基础的一组：
+
+| 函数 | 导数 |
+| :-- | :-- |
+| $C$ | $0$ |
+| $x^\alpha$ | $\alpha x^{\alpha-1}$ |
+| $e^x$ | $e^x$ |
+| $\ln x$ | $\dfrac{1}{x}$ |
+| $\sin x$ | $\cos x$ |
+| $\cos x$ | $-\sin x$ |
+| $\tan x$ | $\sec^2 x$ |
+| $\arcsin x$ | $\dfrac{1}{\sqrt{1-x^2}}$ |
+| $\arctan x$ | $\dfrac{1}{1+x^2}$ |
+
+这些公式本身不难，难点通常在于看清函数结构。
+
+### 2. 四则运算法则
+
+若 $u=u(x)$，$v=v(x)$，则：
+
+- $(u \pm v)' = u' \pm v'$
+- $(uv)' = u'v + uv'$
+- $\left(\dfrac{u}{v}\right)' = \dfrac{u'v-uv'}{v^2}$，其中 $v \ne 0$
+
+### 3. 链式法则
+
+链式法则是这一章最重要的计算工具之一。若 $y=f(u)$，$u=g(x)$，则
+
+$$
+\frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dx}
+$$
+
+做复合函数时，最稳的方式是分两步：
+
+1. 先找“外层函数”和“内层函数”；
+2. 先对外层求导，再乘内层导数。
+
+像 $\sin(x^2)$、$e^{x^3}$、$\ln(1+x^2)$ 这一类题，核心都是链式法则。
+
+### 4. 对数求导法
+
+当函数是幂指函数、连乘式或者结构很复杂时，常用对数求导。比如：
+
+$$
+y=f(x)^{g(x)}
+$$
+
+通常先两边取对数：
+
+$$
+\ln y = g(x)\ln f(x)
+$$
+
+再求导会更直接。
+
+像 $x^x$、$(\sin x)^x$ 这类题，基本都要想到这一步。
+
+## 五、高阶导数与函数形状
+
+### 1. 二阶导数的意义
+
+一阶导数看增减，二阶导数看弯曲趋势。
+
+- 若 $f''(x)>0$，图像向上凹；
+- 若 $f''(x)<0$，图像向下凹。
+
+所以二阶导数常用来：
+
+- 判断极值点的类型；
+- 判断函数的凹凸性；
+- 配合不等式或图像题分析函数形状。
+
+### 2. 极值问题的基本步骤
+
+求最大值最小值时，一般按这个顺序：
+
+1. 求 $f'(x)$；
+2. 令 $f'(x)=0$，找驻点；
+3. 检查定义域端点；
+4. 结合 $f''(x)$ 或符号变化判断极大极小。
+
+这是导数应用题最基础的模板。
+
+## 六、洛必达法则与泰勒展开
+
+### 1. 洛必达法则
+
+当极限是
+
+- $\dfrac{0}{0}$
+- $\dfrac{\infty}{\infty}$
+
+这样的未定式时，可以考虑洛必达法则：
+
+$$
+\lim_{x \to a}\frac{f(x)}{g(x)}
+=
+\lim_{x \to a}\frac{f'(x)}{g'(x)}
+$$
+
+前提是相应条件满足，并且求导后的极限更容易处理。
+
+### 2. 常见未定式
+
+除了上面两种，复习时还要能识别：
+
+1. $0/0$
+2. $\infty/\infty$
+3. $\infty-\infty$
+4. $0\cdot\infty$
+5. $1^\infty$
+6. $0^0$
+7. $\infty^0$
+
+其中后面几种通常需要先变形，再转成分式或对数形式处理。
+
+### 3. 泰勒与麦克劳林展开
+
+常见展开式要熟：
+
+$$
+e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots
+$$
+
+$$
+\sin x = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots
+$$
+
+$$
+\cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots
+$$
+
+$$
+\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots
+$$
+
+遇到高阶无穷小比较、复杂极限、局部近似时，展开通常比反复套洛必达更稳。
+
+## 七、做题时的几个常见提醒
+
+### 1. 遇到极限，先判断类型
+
+不要一上来就硬算，先看：
+
+- 是直接代入型，还是未定式？
+- 要不要看左右极限？
+- 能不能用标准极限、等价无穷小、夹逼或展开？
+
+### 2. 遇到复合函数，优先拆层
+
+很多求导错误不是不会求，而是没看清结构。碰到复杂函数，先问自己：
+
+- 最外层是什么？
+- 最里面是什么？
+- 有没有必要先取对数？
+
+### 3. 遇到证明有根、证明取值，想到连续
+
+只要题目和“存在一个点”有关，尤其是“方程在区间内有解”，优先联想到介值定理。
+
+### 4. 遇到最值和图像，想到一阶导数与二阶导数
+
+一阶导数解决“增减”，二阶导数解决“凹凸”和“极值类型”，这两个工具要配合着看。
+
+## 八、这一章的复习清单
+
+- [ ] 我能判断一个极限是否存在，并会检查左右极限。
+- [ ] 我能写出连续的三个条件。
+- [ ] 我能说明“可导一定连续，但连续不一定可导”。
+- [ ] 我能用导数定义解释瞬时变化率。
+- [ ] 我能熟练使用四则求导法则和链式法则。
+- [ ] 我能处理反三角函数求导和对数求导。
+- [ ] 我能用二阶导数判断凹凸性和极值类型。
+- [ ] 我能识别未定式，并判断何时适合用洛必达法则。
+- [ ] 我能写出常见麦克劳林展开式并用于极限题。
+
+## 九、最后串一下整章逻辑
+
+这章真正要建立的，不只是几条公式，而是一套顺序清楚的思考方式：
+
+1. 先用**极限**描述接近；
+2. 再用**连续**判断函数是否断开；
+3. 再把平均变化率推进成**导数**；
+4. 最后把导数用于**求值、判号、最值、凹凸和近似展开**。
+
+如果这条线能在脑子里连起来，第二章的大部分题目都不会显得零散。
