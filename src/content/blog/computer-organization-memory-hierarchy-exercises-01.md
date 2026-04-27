@@ -1,5 +1,6 @@
 ---
 title: CH5 存储器层次结构习题集 01
+slug: "computer-organization-memory-hierarchy-exercises-01"
 description: 围绕存储器层次结构中的地址划分与 Cache 容量计算，整理适合快速复习的短题解。
 pubDate: 2026-04-23
 updatedDate: 2026-04-23

@@ -1,6 +1,7 @@
 ---
 title: 行列式和逆矩阵
-description: 总结自《新版演习线性代数_寺田文行》一书，使用最小笔记的形式去记录。
+slug: "线性代数Chapter1-2"
+description: 总结自《新版演习线性代数_寺田文行》一书，用最小笔记形式串起行列式、可逆性与基础运算。
 pubDate: 2026-04-13
 updatedDate: 2026-04-26
 tags:

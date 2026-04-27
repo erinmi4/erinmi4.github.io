@@ -52,6 +52,7 @@ try {
 const today = formatToday();
 const content = `---
 title: ${quoteYaml(title)}
+slug: ${quoteYaml(fileStem)}
 description: ${quoteYaml(`${title}，待补充摘要。`)}
 pubDate: ${today}
 updatedDate: ${today}

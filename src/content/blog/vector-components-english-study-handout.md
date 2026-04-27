@@ -1,5 +1,6 @@
 ---
 title: Vector Components English Study Handout
+slug: "vector-components-english-study-handout"
 description: An English-first handout on vector components, vector operations, division points, and space vectors with short explanations and practice answers.
 pubDate: 2026-04-23
 updatedDate: 2026-04-23

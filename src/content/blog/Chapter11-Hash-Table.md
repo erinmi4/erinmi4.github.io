@@ -1,6 +1,7 @@
 ---
 title: "Chapter11 Hash Table"
-description: "Chapter11 Hash Table，待补充摘要。"
+slug: "Chapter11-Hash-Table"
+description: "围绕哈希表的核心思想，整理装载因子、冲突处理、通用哈希与缓存友好实现之间的关系。"
 pubDate: 2026-04-24
 updatedDate: 2026-04-24
 tags:
@@ -89,3 +90,16 @@ This study guide provides a comprehensive overview of hash tables as a data stru
 | **Slot**                         | An individual position or entry within a hash table or direct-address table. |
 | **Universal Hashing**            | A randomized hashing strategy where the hash function is chosen at random from a family of functions with provable collision bounds. |
 | **Wee Hash Function**            | A register-efficient hash function family based on quadratic transformations and bit-swapping, inspired by RC6. |
+
+
+
+---
+
+
+
+# book
+
+A hash table is an effective
+data structure for implementing dictionaries. 
+
+> what is a diction : insert , search , delete

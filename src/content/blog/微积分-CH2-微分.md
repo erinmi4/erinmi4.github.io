@@ -1,6 +1,6 @@
 ---
 title: "微积分-CH2-微分"
-description: "微积分-CH2-微分，待补充摘要。"
+description: "从极限、连续到导数定义与求导法则，串起微积分第二章中理解变化率的核心路径。"
 pubDate: 2026-04-25
 updatedDate: 2026-04-25
 tags:

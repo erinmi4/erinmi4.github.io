@@ -4,15 +4,26 @@ import { fileURLToPath } from "node:url";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..");
-const astroCacheFile = path.join(repoRoot, ".astro", "data-store.json");
+const astroCacheFiles = [
+  path.join(repoRoot, ".astro", "data-store.json"),
+  path.join(repoRoot, "node_modules", ".astro", "data-store.json")
+];
 
-try {
-  await fs.unlink(astroCacheFile);
-  console.log("Removed stale Astro content cache.");
-} catch (error) {
-  if (error && typeof error === "object" && "code" in error && error.code === "ENOENT") {
-    process.exit(0);
+let removedCount = 0;
+
+for (const astroCacheFile of astroCacheFiles) {
+  try {
+    await fs.unlink(astroCacheFile);
+    removedCount += 1;
+  } catch (error) {
+    if (error && typeof error === "object" && "code" in error && error.code === "ENOENT") {
+      continue;
+    }
+
+    throw error;
   }
+}
 
-  throw error;
+if (removedCount > 0) {
+  console.log(`Removed ${removedCount} stale Astro content cache file(s).`);
 }

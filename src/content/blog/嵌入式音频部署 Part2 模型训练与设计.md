@@ -1,6 +1,7 @@
 ---
 title: 预处理与模型构建 Part2 模型训练与设计
-description: 解析基于TensorFlow的CNN模型代码，探讨如何为ESP32设计体积小且高效的音频分类模型。
+slug: "嵌入式音频部署 Part2 模型训练与设计"
+description: 解析基于 TensorFlow 的训练流程与 CNN 设计思路，聚焦如何为 ESP32 压缩出可部署的音频分类模型。
 pubDate: 2026-04-14
 updatedDate: 2026-04-14
 tags:

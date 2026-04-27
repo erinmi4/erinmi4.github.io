@@ -1,5 +1,6 @@
 ---
 title: 数列和级数
+slug: "微积分-CH1-数列和级数"
 description: 微积分 CH1 的数列与级数复习笔记，整理数列极限、递推数列与常见级数判别法。
 pubDate: 2026-04-22
 updatedDate: 2026-04-22

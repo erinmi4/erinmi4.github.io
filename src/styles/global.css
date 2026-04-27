@@ -1139,6 +1139,8 @@ a.button--primary {
 }
 
 .post-shell__body {
+  --post-panel-top: 5.5rem;
+  --post-panel-max-height: calc(100vh - var(--post-panel-top) - 1rem);
   display: grid;
   align-items: start;
   gap: clamp(1.25rem, 3vw, 2rem);
@@ -1147,10 +1149,16 @@ a.button--primary {
 
 .post-shell__aside {
   position: sticky;
-  top: 5.5rem;
+  top: var(--post-panel-top);
   display: grid;
   align-content: start;
   gap: 0.85rem;
+  max-height: var(--post-panel-max-height);
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-right: 0.2rem;
 }
 
 .post-info-card,
@@ -1168,7 +1176,12 @@ a.button--primary {
 
 .post-prose {
   min-width: 0;
+  min-height: 0;
+  max-height: var(--post-panel-max-height);
   padding: clamp(1.5rem, 3vw, 2.25rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 .toc-list__item a {
@@ -1343,6 +1356,25 @@ a.button--primary {
     var(--shadow-whisper);
 }
 
+.prose-card :where(
+  iframe[src*="youtube.com"],
+  iframe[src*="youtube-nocookie.com"],
+  iframe[src*="youtu.be"],
+  iframe[src*="bilibili.com"]
+) {
+  display: block;
+  width: min(100%, 52rem);
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 1.5rem auto;
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 1px var(--border),
+    var(--shadow-whisper);
+}
+
 .prose-card .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
@@ -1511,6 +1543,16 @@ a.button--primary {
 
   .post-shell__aside {
     position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+    scrollbar-gutter: auto;
+  }
+
+  .post-prose {
+    max-height: none;
+    overflow: visible;
+    scrollbar-gutter: auto;
   }
 
   .profile-card__meta,

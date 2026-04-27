@@ -1,6 +1,7 @@
 ---
 title: CH2交流分析
-description: 梳理电路分析第二章中的直流电路基础概念与核心解题方法。
+slug: "电路分析CH2交流分析"
+description: 梳理电路分析第二章中的交流电路基础概念与核心解题方法。
 pubDate: 2026-04-15
 updatedDate: 2026-04-15
 tags:

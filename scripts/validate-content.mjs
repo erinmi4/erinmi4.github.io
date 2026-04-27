@@ -59,6 +59,15 @@ function getEffectiveSlug(frontmatter, filePath) {
   return explicitSlug || path.basename(filePath, path.extname(filePath));
 }
 
+function toFileStem(value) {
+  return value
+    .trim()
+    .replace(/[<>:"/\\|?*\u0000-\u001F]/g, "-")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 const files = await collectMarkdownFiles(blogDir);
 const errors = [];
 const slugMap = new Map();
@@ -81,6 +90,16 @@ for (const filePath of files) {
     if (!value || value.toLowerCase?.() === "null") {
       errors.push(`${relativePath}: "${key}" must be present and non-empty.`);
     }
+  }
+
+  const title = getField(frontmatter, "title");
+  const explicitSlug = getField(frontmatter, "slug");
+  const fileStem = path.basename(filePath, path.extname(filePath));
+
+  if (title && !explicitSlug && toFileStem(title) !== fileStem) {
+    errors.push(
+      `${relativePath}: title no longer matches the file-derived slug; add an explicit "slug" or rename the file.`
+    );
   }
 
   const slug = getEffectiveSlug(frontmatter, filePath);
