@@ -1176,12 +1176,40 @@ a.button--primary {
 
 .post-prose {
   min-width: 0;
-  min-height: 0;
-  max-height: var(--post-panel-max-height);
   padding: clamp(1.5rem, 3vw, 2.25rem);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-gutter: stable;
+}
+
+@media (min-width: 1025px) {
+  .page-post .post-shell__aside {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .page-post .post-shell__aside::-webkit-scrollbar {
+    width: 0.55rem;
+  }
+
+  .page-post .post-shell__aside::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .page-post .post-shell__aside::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    background-clip: padding-box;
+  }
+
+  .page-post .post-shell__aside:hover,
+  .page-post .post-shell__aside:focus-within {
+    scrollbar-color: color-mix(in srgb, var(--text-soft) 34%, transparent) transparent;
+  }
+
+  .page-post .post-shell__aside:hover::-webkit-scrollbar-thumb,
+  .page-post .post-shell__aside:focus-within::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--text-soft) 34%, transparent);
+    background-clip: padding-box;
+  }
 }
 
 .toc-list__item a {
@@ -1552,7 +1580,6 @@ a.button--primary {
   .post-prose {
     max-height: none;
     overflow: visible;
-    scrollbar-gutter: auto;
   }
 
   .profile-card__meta,
