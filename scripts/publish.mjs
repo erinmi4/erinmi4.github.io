@@ -2,6 +2,8 @@ import { spawnSync } from "node:child_process";
 
 const message = process.argv[2] || "post";
 const isWindows = process.platform === "win32";
+const sshOriginUrl = "git@github.com:erinmi4/erinmi4.github.io.git";
+const httpsOriginUrl = "https://github.com/erinmi4/erinmi4.github.io.git";
 
 function run(description, command, args, options = {}) {
   console.log(`\n==> ${description}`);
@@ -42,6 +44,23 @@ function captureLines(command, args) {
   const output = capture(command, args);
   return output ? output.split(/\r?\n/).filter(Boolean) : [];
 }
+
+function ensureSshOrigin() {
+  const originUrl = capture("git", ["remote", "get-url", "origin"]);
+
+  if (originUrl === sshOriginUrl) {
+    return;
+  }
+
+  if (originUrl === httpsOriginUrl) {
+    run("Switching origin remote to SSH", "git", ["remote", "set-url", "origin", sshOriginUrl]);
+    return;
+  }
+
+  throw new Error(`Unexpected origin remote: ${originUrl}`);
+}
+
+ensureSshOrigin();
 
 if (isWindows) {
   run("Building site", "cmd.exe", ["/d", "/s", "/c", "npm run build"]);
