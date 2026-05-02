@@ -101,7 +101,9 @@ $$\mathbf{P}_{BSC} = \begin{bmatrix} \bar{p} & p \\ p & \bar{p} \end{bmatrix}$$
 | **有噪无损** | 多个输入对应一个输出 | $H(X\|Y) > 0, H(Y\|X)$ | 每行只有一个非零元素 |
 
 - **噪声熵** $H(Y|X)$：信道噪声引起的不确定性。
+  - $$H(Y|X) = \sum_{i=1}^{r} P(x_i) H(Y|x_i)$$
 - **疑义度** $H(X|Y)$：由于信道损伤导致从输出端无法完全推回输入端的不确定性。
+  - $$H(X|Y) = \sum_{j=1}^{s} P(y_j) H(X|y_j)$$  **错误公式，参考例题1就知道为什么了** 
 
 ## 四、 信道容量 (Channel Capacity)
 
@@ -140,6 +142,8 @@ $$C = 1 - \text{效率} = 1 - \frac{R}{C}$$
 1. **计算噪声熵** $H(Y|X)$： $H(Y|X) = 0.6 \cdot H(5/6, 1/6) + 0.4 \cdot H(3/4, 1/4) \approx 0.71 \text{ bit/symbol}$
 2. **计算输出分布** $P_Y$： $P_Y = [0.6, 0.4] \cdot \begin{bmatrix} 5/6 & 1/6 \\ 3/4 & 1/4 \end{bmatrix} = [0.8, 0.2]$
 3. **计算互信息** $I(X; Y)$： $I(X; Y) = H(Y) - H(Y|X) = H(0.8, 0.2) - 0.71 \approx 0.7219 - 0.71 = 0.0119 \text{ bit/symbol}$
+
+![图片](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH2-%E4%BF%A1%E9%81%93.assets/rn_image_picker_lib_temp_700a6b47-6157-47a6-be4b-a3426caf1e33.jpg)
 
 ### 例2：BSC 传输能力判断
 
