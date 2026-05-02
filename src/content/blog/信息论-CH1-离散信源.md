@@ -1,6 +1,6 @@
 ---
 title: "信息论-CH1-离散信源"
-slug: "信息论-CH1-离散信源"
+slug: "信息论笔记：离散信源与马尔可夫模型"
 description: "信息论-CH1-离散信源，待补充摘要。"
 pubDate: 2026-04-29
 updatedDate: 2026-04-29
