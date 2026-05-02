@@ -105,6 +105,8 @@ $$\mathbf{P}_{BSC} = \begin{bmatrix} \bar{p} & p \\ p & \bar{p} \end{bmatrix}$$
 - **疑义度** $H(X|Y)$：由于信道损伤导致从输出端无法完全推回输入端的不确定性。
   - $$H(X|Y) = \sum_{j=1}^{s} P(y_j) H(X|y_j)$$  **错误公式，参考例题1就知道为什么了** 
 
+![Channel Coding Theorem - an overview | ScienceDirect Topics](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH2-%E4%BF%A1%E9%81%93.assets/3-s2.0-B9780128229422000054-f04-06-9780128229422.jpg)
+
 ## 四、 信道容量 (Channel Capacity)
 
 ### 4.1 定义
