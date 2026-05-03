@@ -32,12 +32,18 @@ draft: false
 
 $$\begin{cases} c_4 = c_1 \oplus c_3 \\ c_5 = c_1 \oplus c_2 \\ c_6 = c_1 \oplus c_2 \oplus c_3 \\ c_7 = c_2 \oplus c_3 \end{cases}$$
 
+> 一部分是信息位一部分是校验位
+
+![Linear Block Code - Explanation of Encoding and Decoding with Example -  Electronics Desk](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/codeword-matrix.jpg)
+
 ### 1.3 系统码 (Systematic Codes)
 
 系统码是指码字可以明确划分为**信息位**和**校验位**两个部分。
 
 - 形式 1：$[ \text{信息位} \mid \text{校验位} ]$
 - 形式 2：$[ \text{校验位} \mid \text{信息位} ]$ (笔记中提到“一刀切”，前面校验，后面信息，这也是一种常见形式)
+
+![Systematic encoding non systematic encoding](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/Systematic-and-non-systematic-encoding.png)
 
 ## 2. 生成矩阵 $G$ (Generator Matrix)
 
@@ -47,15 +53,19 @@ $$C = m \cdot G$$
 
 其中，$m$ 是 $1 \times k$ 向量，$G$ 是 $k \times n$ 矩阵。
 
+> 如果我们需要编码，那么我们就需要求出生成多项式
+
 ### 2.1 典型形式（系统码）
 
 若 $G = [I_k \mid P]$，其中 $I_k$ 是 $k \times k$ 单位阵，$P$ 是 $k \times r$ 校验矩阵，则生成的码字是系统码。
 
 - **注**：非系统码可以通过初等行变换转化为系统码。
 
-**例题 (来自笔记 image_5e0900.jpg)**: 给定 $G = [I \mid P] = \begin{bmatrix} 1 & 0 & 0 & 1 & 1 & 1 & 0 \\ 0 & 1 & 0 & 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 1 & 1 & 0 & 1 \end{bmatrix}$ 每一行都是一个合法的码字。
+**例题** 给定 $G = [I \mid P] = \begin{bmatrix} 1 & 0 & 0 & 1 & 1 & 1 & 0 \\ 0 & 1 & 0 & 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 1 & 1 & 0 & 1 \end{bmatrix}$ 每一行都是一个合法的码字。
 
 ## 3. 校验矩阵 $H$ (Parity-Check Matrix)
+
+![image-20260503130907287](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/image-20260503130907287.png)
 
 校验矩阵用于验证接收到的码字是否正确。 若 $G = [I_k \mid P]$，则对应的校验矩阵为 $H = [P^T \mid I_r]$。 满足关系：$G \cdot H^T = 0$。
 
@@ -108,23 +118,22 @@ $$S = Y \cdot H^T$$
 2. 求余数：$r(x) = [m(x) \cdot x^r] \mod g(x)$。
 3. 合成码多项式：$C(x) = m(x) \cdot x^r \oplus r(x)$。
 
-**例题 (来自笔记 image_5e08bd.png)**: 已知 $g(x) = x^3 + x^2 + 1$，输入信息 $0110$。
 
-1. $k=4, r=3 \to n=7$。信息位 $0110 \to m(x) = x^2 + x$。
-2. $m(x) \cdot x^3 = x^5 + x^4$。
-3. $(x^5 + x^4) \div (x^3 + x^2 + 1)$，余数为 $x^2$。
-4. 码字多项式为 $x^5 + x^4 + x^2$，对应序列为 $0110100$。
 
 ## 7. 综合例题
 
-### 例 1：汉明距离与纠错能力 (image_5e0618.png)
+### 例 1：汉明距离与纠错能力
+
+![图片](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/image-1777784542542-56.webp)
 
 已知一组码字，通过比较每两个码字之间的差异，找出最小距离 $d_{min}$。 若 $d_{min}=3$，则：
 
 - 检测错误数 $e$: $3 \ge e+1 \to e=2$。
 - 纠正错误数 $t$: $3 \ge 2t+1 \to t=1$。
 
-### 例 2：已知 $H$ 求参数 (image_5e08d9.jpg)
+### 例 2：已知 $H$ 求参数 
+
+![图片](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/image-1777784563346-59.webp)
 
 已知 $H$ 为 $4 \times 9$ 矩阵。
 
@@ -133,10 +142,23 @@ $$S = Y \cdot H^T$$
 - 编码率 $R = k/n = 5/9$。
 - 通过行变换观察 $H$ 的线性相关性，求得 $d_{min} = 4$。
 
-### 例 3：汉明码编码过程 (image_5e0612.png)
+### 例 3：汉明码编码过程
+
+![图片](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/image.webp)
 
 已知校验矩阵 $H = \begin{bmatrix} 1 & 1 & 1 & 0 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 1 & 0 & 0 & 1 \end{bmatrix}$ 这是一个系统码形式 $H = [P^T \mid I]$。
 
 1. 写出 $G = [I \mid P]$。
 2. 输入序列分段编码：$1101, 0110, 010 \dots$
 3. 利用 $C = m \cdot G$ 分段求出对应的码序列并拼接。
+
+### 例4 循环码
+
+**例题 **: 已知 $g(x) = x^3 + x^2 + 1$，输入信息 $0110$。
+
+1. $k=4, r=3 \to n=7$。信息位 $0110 \to m(x) = x^2 + x$。
+2. $m(x) \cdot x^3 = x^5 + x^4$。
+3. $(x^5 + x^4) \div (x^3 + x^2 + 1)$，余数为 $x^2$。
+4. 码字多项式为 $x^5 + x^4 + x^2$，对应序列为 $0110100$。
+
+![图片](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH5-%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81.assets/image-1777784585156-62.webp)
