@@ -15,6 +15,8 @@ draft: false
 
 ## 1. 基本概念与目的
 
+![Channel Coding Theorem](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH4-%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81.assets/maxresdefault.jpg)
+
 - **目的**：通过增加信源符号的冗余度（Redundancy），提高信息传输的可靠性（Reliability）。
 - **模型**：$x_i \to [C] \to y_j$
   - 发送端发送信号 $x_i$。
