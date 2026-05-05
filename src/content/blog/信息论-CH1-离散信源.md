@@ -15,11 +15,20 @@ draft: false
 
 [2024信息论与编码原理期末复习](https://www.bilibili.com/video/BV1b1421r7vn/?buvid=XU5EF145F0DFFF3C5E71837D937FA3080CB89&from_spmid=search.search-result.0.0&is_story_h5=false&mid=gD1TsSbShVg1Y9hI4zeZKA%3D%3D&plat_id=116&share_from=ugc&share_medium=android&share_plat=android&share_session_id=455d2c3a-6869-44da-b97c-d980dbccba49&share_source=COPY&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1777387517&unique_k=B2iGPaz&up_id=427516537&vd_source=f6a1c5561b1c1e28133e4465302990f3)
 
+<iframe
+  src="/pdfs/Information-theory.pdf"
+  width="100%"
+  height="800"
+  style="border: 1px solid #ddd; border-radius: 8px;"
+></iframe>
+
 ## 第一章：离散信源 (Discrete Sources)
 
 ### 1. 基本概念
 
-信源的传输过程本质上是从符号集中抽取符号并发送。
+![image-20260504193244595](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH1-%E7%A6%BB%E6%95%A3%E4%BF%A1%E6%BA%90.assets/image-20260504193244595.png)
+
+信源的传输过程本质上是从符号集中抽取**符号**并发送。
 
 - **自信息 (Self-information)**：表示某一具体符号的不确定性。
   - **原理**：符号发生的概率越低，其携带的信息量越大（不确定性越高）。
@@ -104,6 +113,8 @@ draft: false
 ## 第四章：典型例题解析
 
 ### 例题 1：黑白气象传真图
+
+![image-20260504192209521](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH1-%E7%A6%BB%E6%95%A3%E4%BF%A1%E6%BA%90.assets/image-20260504192209521.png)
 
 信源 $X = \{\text{黑}, \text{白}\}$，已知 $P(\text{黑}) = 0.3, P(\text{白}) = 0.7$。
 

@@ -140,13 +140,23 @@ Huffman 编码是一种能使平均码长最小的变长编码算法。
 
 ## 6. 限失真信源编码 (Rate-Distortion Theory)
 
+[Rate Distortion Theory](https://people.kth.se/~mflierl/EQ2845/07-RateDistortionTheory.pdf)
+
+[[信息论与编码] 限失真信源编码定理](https://www.bilibili.com/video/BV1Le4y1K7x8/?spm_id_from=333.337.search-card.all.click&vd_source=f6a1c5561b1c1e28133e4465302990f3)
+
+> 这里我没有仔细看，如果真的要考，那么优先看上面的这个视频。
+
 在允许一定失真的情况下，进一步压缩数据。
+
+![率失真函数的性质信息率失真函数的性质R(D) 是非负的实数, $\mathrm{R}(\mathrm{D}) \geq - 掘金](./%E4%BF%A1%E6%81%AF%E8%AE%BA-CH3-%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81.assets/95052c15833a4aa595bc83cbb4294bd6tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp)
 
 ### 6.1 失真矩阵 (Rate-Distortion Theory)
 
 $$D = [d(x_i, y_j)] = \begin{bmatrix} d_{11} & \cdots & d_{1r} \\ \vdots & \ddots & \vdots \\ d_{r1} & \cdots & d_{rr} \end{bmatrix}$$
 
 表示输入 $x_i$ 却输出 $y_j$ 时的失真程度。
+
+$R(D)$ 函数是在允许一定失真条件下，平均互信息的最小值。
 
 ### 6.2 最小失真 $D_{min}$ 与最大失真 $D_{max}$
 
@@ -157,6 +167,12 @@ $$D = [d(x_i, y_j)] = \begin{bmatrix} d_{11} & \cdots & d_{1r} \\ \vdots & \ddot
 2. **计算** $D_{max}$： 假设输出与输入完全无关（选择一个最佳的固定输出 $y_j$），计算各列的加权和，挑出其中的最小值：
 
    $$D_{max} = \min_j \sum_i P(x_i) d(x_i, y_j)$$
+
+
+
+如何求满足保真度 $D_{min}$ 的实验信道
+
+>  在错误概率最小处填1，其他填0
 
 ### 香农第三定理 (限失真信源编码定理)
 
