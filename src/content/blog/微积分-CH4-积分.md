@@ -62,6 +62,28 @@ $$S = \int_{a}^{b} f(x) \, dx$$
 
 原式 $= \int \frac{1}{(x+2)^2 + (\sqrt{2})^2} \, dx$ 联想到 $(\arctan x)' = \frac{1}{1+x^2}$ $= \frac{1}{\sqrt{2}} \arctan\left(\frac{x+2}{\sqrt{2}}\right) + C$
 
+> 另外一种配方法
+>
+> **例题** $$\frac{dy}{dx} = \frac{x^2}{x^2 + 4}$$
+>
+> 我们可以通过对右侧关于 $x$ 进行不定积分来求解。首先对右侧分式进行变形，以便积分：
+>
+> $$\frac{x^2}{x^2 + 4} = \frac{(x^2 + 4) - 4}{x^2 + 4} = 1 - \frac{4}{x^2 + 4}$$
+>
+> 两边关于 $x$ 积分：
+>
+> $$y = \int \left( 1 - \frac{4}{x^2 + 4} \right) dx$$
+>
+> $$y = x - 4 \int \frac{1}{x^2 + 2^2} dx$$
+>
+> 利用公式 $\int \frac{1}{x^2 + a^2} dx = \frac{1}{a} \arctan(\frac{x}{a}) + C$（这里 $a=2$）：
+>
+> $$y = x - 4 \cdot \left( \frac{1}{2} \arctan\frac{x}{2} \right) + C$$
+>
+> **通解为：**
+>
+> $$y = x - 2 \arctan\frac{x}{2} + C \quad (C \text{ 为常数})$$
+
 **例题（部分分式）：** $\int \frac{3x-1}{x^2-2x-3} \, dx = \int \frac{3x-1}{(x-3)(x+1)} \, dx$ 
 
 设 $\frac{3x-1}{(x-3)(x+1)} = \frac{A}{x-3} + \frac{B}{x+1}$，解得 $A=2, B=1$。 
