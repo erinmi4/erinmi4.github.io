@@ -13,6 +13,8 @@ draft: false
 
 # 第3章 积分部分
 
+<iframe src="https://drive.google.com/file/d/13WY8lRjKer8xWD29Ysxo-YiV7ztImERG/preview" width="640" height="480"></iframe>
+
 ## 1. 定积分的概念与定义
 
 定积分在几何上可以表示为曲线与坐标轴之间围成的面积。
