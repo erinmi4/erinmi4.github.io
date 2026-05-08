@@ -16,6 +16,10 @@ heroImage: /images/posts/calculus-ch7-differential-equations/cover.png
 
 <iframe src="https://drive.google.com/file/d/1Nb6qV7uXlGi1cY7VHmI809apAUAdBvdH/preview" width="840" height="480"></iframe>
 
+<iframe src="https://drive.google.com/file/d/15NBqpR8CaXULN28PhNlMCMgWCPIK-7O2/preview" width="840" height="480"></iframe>
+
+
+
 微分方程的作用在于：当我们已知一个函数的导数关系（变化规律）时，通过建立方程来求出原函数 $y(x)$。
 
 ## 💡 引入实例：牛顿冷却定律
@@ -184,7 +188,7 @@ $$\frac{\sqrt{6}}{6} \arctan \left[ \frac{\sqrt{6}}{3}(3x + 2y + 1) \right] = x 
 
 这种方程的奇妙之处在于，它不仅有一组整齐的“直线解”，还隐藏着一个由这些直线“围”出来的**曲线解**（即奇异解）。
 
-> 本质上是一阶导数的m
+> 本质上是一阶导数的幂次情况
 
 ---
 
