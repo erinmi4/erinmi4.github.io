@@ -1,7 +1,7 @@
 ---
 title: "微积分-CH7-微分方程"
 slug: "微积分-CH7-微分方程"
-description: "微积分-CH7-微分方程，待补充摘要。"
+description: "微分方程从大类上分为一阶微分方程和二阶微分方程。"
 pubDate: 2026-05-04
 updatedDate: 2026-05-04
 tags:
@@ -13,7 +13,19 @@ heroImage: /images/posts/calculus-ch7-differential-equations/cover.png
 ---
 [TOC]
 # 第七章：微分方程 (Differential Equations)
-
+微分方程本质上是用来求 y 和 x 的关系的一种方式。
+也就是 $f(y)=f(x)$,但是中间拥有的内容只有导数 $y'=dy/dx$。
+微分方程从大类上分为一阶微分方程和二阶微分方程,
+一阶微分方程
+1. 分离变量法，主要是将x与y各自放一边，特别注意，对于 (ax+by)经常出现的情况应该使用 $u = x + y$
+2. 齐次方程，也就是次数相同的情况，这种需要  set u as  y/x.
+3. 线性情况：$dy/dx + Q(x)y = P(x)$ 
+对于这种情况需要先求 等于 0 的情况
+然后 set C as C(X),返回去求出$C(X)$的解答就可以了
+4. 非线性情况，也就是所谓的伯努利情况$$y' + P(x)y = Q(x)y^n$$
+这种情况需要转化为线性情况，也就是通过使用两边除以y来得到答案并且记得
+set $u = y^{1-n}$ 
+5. 
 <iframe src="https://drive.google.com/file/d/1Nb6qV7uXlGi1cY7VHmI809apAUAdBvdH/preview" width="840" height="480"></iframe>
 
 <iframe src="https://drive.google.com/file/d/15NBqpR8CaXULN28PhNlMCMgWCPIK-7O2/preview" width="840" height="480"></iframe>
