@@ -12,7 +12,10 @@ draft: false
 heroImage: /images/posts/calculus-ch7-differential-equations/cover.png
 ---
 [TOC]
+<iframe src="https://drive.google.com/file/d/15NJcGlSc1ICiUh9A3HpmB-ibwseRpr3A/preview" width="640" height="480"></iframe>
+
 # 第七章：微分方程 (Differential Equations)
+
 微分方程本质上是用来求 y 和 x 的关系的一种方式。
 也就是 $f(y)=f(x)$,但是中间拥有的内容只有导数 $y'=dy/dx$。
 微分方程从大类上分为一阶微分方程和二阶微分方程,

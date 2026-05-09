@@ -13,6 +13,8 @@ draft: false
 
 # 第六章 无穷级数
 
+<iframe src="https://drive.google.com/file/d/1eVb054FH96sUMWn8-agfqCKUUdeXRIFj/preview" width="640" height="480"></iframe>
+
 ## 一、 为什么研究级数？
 
 **芝诺悖论（阿基里斯追乌龟）：** 无限项求和一定不收敛吗？ 级数的研究本质上是讨论无限个数值相加的收敛性问题，将复杂的函数表达为简单的幂函数之和。
