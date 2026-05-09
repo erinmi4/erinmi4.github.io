@@ -44,7 +44,13 @@ draft: false
 - **LEFT(i)**：$2i$
 - **RIGHT(i)**：$2i + 1$
 
-> **注意**：如果数组从 $0$ 开始，则：$Parent(i) = \lfloor (i-1)/2 \rfloor$, $Left(i) = 2i+1$, $Right(i) = 2i+2$。
+> **注意**：如果数组从 $0$ 开始，则：
+>
+> $Parent(i) = \lfloor (i-1)/2 \rfloor$, 
+>
+> $Left(i) = 2i+1$, 
+>
+> $Right(i) = 2i+2$。
 
 ![image-20260509105018794](./%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-CH6-%E5%A0%86%E6%8E%92%E5%BA%8F.assets/image-20260509105018794.png)
 
@@ -65,7 +71,7 @@ draft: false
 
 ### 2.2 伪代码
 
-```
+```python
 MAX-HEAPIFY(A, i)
     l = LEFT(i)
     r = RIGHT(i)
@@ -104,8 +110,10 @@ BUILD-MAX-HEAP(A, n)
 
 ### 3.3 关键点思考
 
-- **为什么从** $\lfloor n/2 \rfloor$ **开始？** 因为下标为 $\lfloor n/2 \rfloor + 1$ 到 $n$ 的结点全是叶子结点，每个叶子结点本身就可以看作一个符合性质的堆。
-- **为什么是倒序（从后往前）？** `MAX-HEAPIFY` 假设左右子树已经是堆。如果从前往后，调整根结点时其子树尚未处理，无法保证最终结果是最大堆。
+- **为什么从** $\lfloor n/2 \rfloor$ **开始？** 
+  - 因为下标为 $\lfloor n/2 \rfloor + 1$ 到 $n$ 的结点全是叶子结点，每个叶子结点本身就可以看作一个符合性质的堆。
+- **为什么是倒序（从后往前）？** 
+  - `MAX-HEAPIFY` 假设左右子树已经是堆。如果从前往后，调整根结点时其子树尚未处理，无法保证最终结果是最大堆。
 - **复杂度**：虽然简单分析为 $O(n \lg n)$，但通过精确计算，该过程的紧确界为 $O(n)$。
 
 ## 4. 堆排序算法 (HEAPSORT)
@@ -123,7 +131,7 @@ BUILD-MAX-HEAP(A, n)
 
 
 
-画图描绘数组 A=⟨5,13,2,25,7,17,20,8,4⟩ 执行HEAPSORT的过程。
+#### 画图描绘数组 A=⟨5,13,2,25,7,17,20,8,4⟩ 执行HEAPSORT的过程。
 
 解答：
 
@@ -187,7 +195,7 @@ HEAPSORT(A, n)
 
 **提取最大值：**
 
-```
+```python
 MAX-HEAP-EXTRACT-MAX(A)
     if A.heap-size < 1: error "heap underflow"
     max = A[1]
@@ -199,7 +207,7 @@ MAX-HEAP-EXTRACT-MAX(A)
 
 **增加关键字 (Bubble Up)：**
 
-```
+```python
 MAX-HEAP-INCREASE-KEY(A, i, key)
     if key < A[i]: error "new key is smaller than current key"
     A[i] = key
@@ -220,7 +228,7 @@ MAX-HEAP-INCREASE-KEY(A, i, key)
 2. 堆规模减 1。
 3. 比较新元素与原元素（或与其父结点/子结点）的大小，决定向上调整（Increase-Key 逻辑）还是向下调整（Heapify 逻辑）。
 
-```
+```python
 MAX-HEAP-DELETE(A, i)
     last_val = A[A.heap-size]
     A.heap-size = A.heap-size - 1
@@ -259,7 +267,7 @@ MAX-HEAP-DELETE(A, i)
 
 **Java 实现示例：**
 
-```
+```java
 class Solution {
     class Status implements Comparable<Status> {
         int val;
