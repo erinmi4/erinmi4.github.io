@@ -10,7 +10,7 @@ tags:
   - 修考
 category: 修考
 draft: false
-heroImage: /%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH3-%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E8%A1%A8%E7%A4%BA.assets/taylor%252Bswift%252Bfourier%252Bseries%252Bmaths%252Bphysics.jpg
+heroImage: /images/posts/Signal-and-system/memo.jpg
 
 ---
 
