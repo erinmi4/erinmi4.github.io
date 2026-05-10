@@ -25,6 +25,7 @@ draft: false
   https://zhuanlan.zhihu.com/p/549118974
 - 算法导论（第四版）第七章：快速排序　第四节：快速排序的分析 - 千葉原的文章 - 知乎
   https://zhuanlan.zhihu.com/p/549267719
+  - 【【算法分析设计速成课】各种排序：选择，冒泡，归并，快速】 https://www.bilibili.com/video/BV1DdrHBUEpX/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
 # 第七章 快速排序 (QuickSort) 学习笔记
 
