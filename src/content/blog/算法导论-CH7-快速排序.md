@@ -48,9 +48,11 @@ draft: false
    - 指针 $i$ 维护“小于等于 pivot”区域的边界。
 3. **重构区域**：最终数组被划分为三个区域： `[小于等于 pivot 区域] [pivot] [大于 pivot 区域]`
 
+![image-20260510131655837](./%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-CH7-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F.assets/image-20260510131655837.png)
+
 ### 2.2 伪代码实现
 
-```
+```python
 QUICKSORT(A, p, r)
     if p < r
         q = PARTITION(A, p, r)
@@ -77,7 +79,7 @@ PARTITION(A, p, r)
 - **现状**：若元素全相同，`if A[j] ≤ x` 永远成立，`i` 会增加到 $r-1$，最终返回 $q = r$。这会导致最坏情况。
 - **改进**：通过计数判断是否全相同。
 
-```
+```python
 PARTITION_MODIFIED(A, p, r)
     x = A[r]
     i = p - 1
@@ -133,6 +135,8 @@ $$T(n) = T(9/10 n) + T(1/10 n) + \Theta(n)$$
 
 其递归树深度依然是 $\log_{10/9} n = \Theta(\lg n)$，故运行时间仍为 $\Theta(n \lg n)$。这说明**只要划分是常数比例的，算法就很快**。
 
+![image-20260510131901258](./%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-CH7-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F.assets/image-20260510131901258.png)
+
 ### 3.4 相关练习题
 
 - **7.2-2**：全相同元素数组。划分产生 $n-1$ 和 $0$，递归式 $T(n) = T(n-1) + \Theta(n)$，结果为 $\Theta(n^2)$。
@@ -146,7 +150,7 @@ $$T(n) = T(9/10 n) + T(1/10 n) + \Theta(n)$$
 
 在划分前，随机选择一个元素与 $A[r]$ 交换。
 
-```
+```python
 RANDOMIZED-PARTITION(A, p, r)
     i = RANDOM(p, r)
     exchange A[r] with A[i]
