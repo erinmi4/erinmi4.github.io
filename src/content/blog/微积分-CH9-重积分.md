@@ -15,6 +15,8 @@ draft: false
 
 - 【考研数学球坐标系下三重积分r的确定方法】 https://www.bilibili.com/video/BV1kg411g7wa/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
+- [Section 15.3 : Double Integrals over General Regions](https://tutorial.math.lamar.edu/Classes/CalcIII/DIGeneralRegion.aspx)
+
 <iframe src="https://drive.google.com/file/d/1HRCXEakSpWJtYA_pceA-A6pxSMgdJrig/preview" width="640" height="480"></iframe>
 
 
@@ -581,6 +583,8 @@ $$I = 8 - 4\sqrt{2}$$
 
 # 二：三重积分
 
+Section 15.5 : Triple Integrals
+
 ## 1. 普通三重积分转化为三次积分
 
 这份图片详细讲解了**三重积分**的解题过程，主要采用了“先一后二”（投影法）的思路。以下是题目 3.2.1 的详细解析：
@@ -641,7 +645,7 @@ $$\iiint_{\Omega} xz \, \mathrm{d}x\mathrm{d}y\mathrm{d}z = \int_{-1}^{1} \mathr
 
 ## 2. 三重积分的多维解法
 
-### 1. 题目要求
+### 1. 一般三重积分题目
 
 计算 $I = \iiint_{\Omega} z \, dx dy dz$
 
@@ -706,6 +710,8 @@ $$I = \int_{-2}^{2} dx \int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}} dy \int_{x^2+y^2}^{4}
 
 ## 3. 三重积分化为三次积分
 
+[](https://tutorial.math.lamar.edu/Classes/CalcIII/TripleIntegrals.aspx)
+
 ### 1. 题目要求
 
 将三重积分 $I = \iiint_{\Omega} f(x, y, z) \, dx dy dz$ 化为三次积分。
@@ -764,7 +770,9 @@ $$I = \int_{0}^{1} dx \int_{0}^{1-x} dy \int_{0}^{xy} f(x, y, z) \, dz$$
 
 ## 4. 球坐标
 
-![img](./%E5%BE%AE%E7%A7%AF%E5%88%86-CH9-%E9%87%8D%E7%A7%AF%E5%88%86.assets/v2-4335a294d24bfa9906c396c827f3d627_r.jpg)
+[Section 15.7 : Triple Integrals in Spherical Coordinates](https://tutorial.math.lamar.edu/Classes/CalcIII/TISphericalCoords.aspx)
+
+![This graph has a standard 3D coordinate system.  The positive z-axis is straight up, the positive x-axis moves off to the left and slightly downward and positive y-axis move off the right and slightly downward.  There is a point labeled $\left( x,y,z \right)=\left( r,\theta ,z \right)$ that appears to be in the 1st octant (i.e. x, y, and z are all positive).   From this point a dashed line dropped straight down in the xy-plane (reaching it at a right angle) and the dashed line is labeled “z”.   From the origin a new dashed line is drawn until it reaches the point where the “z” dashed line hits the xy-plane.  The angle from the positive x-axis and the “r” dashed line is shown as $\theta$.  In addition, there is a line from the origin up to the point that is labeled $\rho$ and the angle from the positive z-axis to this new line is shown at $\varphi $.](./%E5%BE%AE%E7%A7%AF%E5%88%86-CH9-%E9%87%8D%E7%A7%AF%E5%88%86.assets/image001.png)
 
 ## 
 
