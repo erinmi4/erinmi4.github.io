@@ -336,3 +336,27 @@ $$q(t) = x(t+T_1) - x(t-T_1)$$
 
 【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=67&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
+### 3.2
+
+【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=68&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+- 注意指数的共轭怎么写
+- cos与sin之间的转换，为什么不是 n + pi/2  ，而是整个内部 + pi/2
+
+
+
+### 3.3
+
+【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=69&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+这一题也错了，但是我认为是因为我对于**欧拉公式**不熟练掌握
+
+### 3.4
+
+【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=70&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+很重要
+
+> 我原本认为应该用性质，也就是 时移 来求解
+>
+> 但是使用冲激串的方法似乎更加简单
