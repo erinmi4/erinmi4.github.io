@@ -13,6 +13,8 @@ draft: false
 
 # 第二章：微积分之导数篇
 
+<iframe src="https://drive.google.com/file/d/1zLbAuNoho9KUG-kbblUZUbhbi9PybKaJ/preview" width="640" height="480"></iframe>
+
 ## 1. 导数的定义与几何意义
 
 ### 1.1 从直线到曲线
