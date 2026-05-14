@@ -283,6 +283,10 @@ $$F(jt) \longleftrightarrow 2\pi f(-\omega)$$
 
 学习笔记：这个性质非常重要。当某些信号在时域直接求变换非常困难时，如果它的函数形式与某种已知的频谱函数相似，可以利用对偶性直接写出结果。
 
+> 时同频反
+
+![image-20260514132042335](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260514132042335.png)
+
 **典型例题：矩形脉冲与 Sinc 函数的对偶**
 
 1. 已知矩形脉冲的变换：
@@ -300,7 +304,7 @@ $$F(jt) \longleftrightarrow 2\pi f(-\omega)$$
 
 ![对偶性质](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260514131459975.png)
 
-![image-20260514132042335](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260514132042335.png)
+
 
 #### 典型例题 1：矩形脉冲与 Sinc 函数的对偶
 
