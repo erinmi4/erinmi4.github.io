@@ -17,6 +17,9 @@ heroImage: /images/posts/Signal-and-system/memo.jpg
 - [Fourier Transform of Cos](https://www.classcentral.com/classroom/youtube-fourier-transform-examples-91154)
 - [Fourier Transform of Cos with Phase Shift](https://www.youtube.com/watch?v=97eKhJwf9Mk&list=PLx7-Q20A1VYL0vNQAEdaEejHz_i9WKuo4&index=2)
 - 【[信号与系统]连续信号傅里叶变换性质-共轭对称特性】 https://www.bilibili.com/video/BV16e411M7TS/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+- 【傅里叶变换的对称性】 https://www.bilibili.com/video/BV1Fy4y1G7ve/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+- 【2、傅里叶变换与帕斯瓦尔定理】 https://www.bilibili.com/video/BV1yT421a71U/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+- 【信号与系统，中科院研究生带你背常用傅里叶变换对(一），包你记住！记不住当我没说！】 https://www.bilibili.com/video/BV14U4y1c7ec/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
 
 
@@ -243,4 +246,191 @@ $$x_{1e}(t) = \frac{1}{2}[x_1(t) + x_1(-t)]$$
 $$\mathcal{F}\{x(t)\} = 2\,\text{Re}\{X_1(j\omega)\} = 2 \cdot \frac{\alpha}{\alpha^2 + \omega^2} = \frac{2\alpha}{\alpha^2 + \omega^2}$$
 
 **总结：** 这种方法避免了直接计算双边信号的积分 $\int_{-\infty}^{\infty} e^{-\alpha|t|} e^{-j\omega t} dt$，而是通过已知单边信号的变换结果，结合"时域偶部对应频域实部"这一性质直接得出答案。
+
+### 5. 微分与积分性质
+
+**时域微分性质**
+
+若 $x(t) \leftrightarrow X(j\omega)$，则：
+
+$$\frac{dx(t)}{dt} \longleftrightarrow j\omega X(j\omega)$$
+
+重点理解：时域内的微分运算在频域中对应于直接乘以 $j\omega$。这极大地简化了线性微分方程的求解，将其转化为代数运算。
+
+**时域积分性质**
+
+$$\int_{-\infty}^{t} x(\tau) d\tau \longleftrightarrow \frac{1}{j\omega} X(j\omega) + \pi X(0) \delta(\omega)$$
+
+注意：积分性质包含两部分：第一部分是频率响应的缩放（对应微分的逆运算），第二部分 $\pi X(0) \delta(\omega)$ 对应于信号的直流分量（$t \to \infty$ 时的累积值）。
+
+### 6. 时间与频率的尺度变换性质
+
+若 $x(t) \longleftrightarrow X(j\omega)$，对于常数 $a \neq 0$：
+
+$$x(at) \longleftrightarrow \frac{1}{|a|} X\left( \frac{j\omega}{a} \right)$$
+
+直观理解：
+
+- **时域压缩（$|a| > 1$）：** 信号在时间上变快，对应的频域波形会展宽（扩展）。
+- **时域扩展（$|a| < 1$）：** 信号在时间上变慢，对应的频域波形会压缩。
+- **幅度变化：** 注意频域幅度前有 $\frac{1}{|a|}$ 的系数，这是为了保持变换前后的能量关系。
+
+### 7. 对偶性质 (Duality Property)
+
+核心结论：若 $f(t) \longleftrightarrow F(j\omega)$，则：
+
+$$F(jt) \longleftrightarrow 2\pi f(-\omega)$$
+
+学习笔记：这个性质非常重要。当某些信号在时域直接求变换非常困难时，如果它的函数形式与某种已知的频谱函数相似，可以利用对偶性直接写出结果。
+
+**典型例题：矩形脉冲与 Sinc 函数的对偶**
+
+1. 已知矩形脉冲的变换：
+   若 $x_1(t)$ 是脉冲宽度为 $2T_1$ 的矩形波：
+
+   $$x_1(t) = \begin{cases} 1, & |t| < T_1 \\ 0, & |t| > T_1 \end{cases} \longleftrightarrow X_1(j\omega) = \frac{2\sin(\omega T_1)}{\omega}$$
+
+2. 利用对偶性求 Sinc 函数的变换：
+   设 $x_2(t) = \frac{\sin(Wt)}{\pi t}$，求其频谱 $X_2(j\omega)$。
+   根据对偶性，时域的 Sinc 函数对应频域的矩形：
+
+   $$x_2(t) = \frac{\sin(Wt)}{\pi t} \longleftrightarrow X_2(j\omega) = \begin{cases} 1, & |\omega| < W \\ 0, & |\omega| > W \end{cases}$$
+
+   (整理注：此处体现了"时域有限，频域无限；频域有限，时域无限"的特性)
+
+![对偶性质](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260514131459975.png)
+
+![image-20260514132042335](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260514132042335.png)
+
+#### 典型例题 1：矩形脉冲与 Sinc 函数的对偶
+
+1. **已知矩形脉冲：** $x_1(t) = \text{rect}(t/2T_1) \longleftrightarrow X_1(j\omega) = \frac{2\sin(\omega T_1)}{\omega}$
+2. **利用对偶性求 Sinc 变换：** $x_2(t) = \frac{\sin(Wt)}{\pi t} \longleftrightarrow X_2(j\omega) = \text{rect}(\omega/2W)$
+
+#### 典型例题 2：利用对偶性求 $g(t) = \frac{2}{1+t^2}$ (参考 image_b17a77.png)
+
+**已知条件：** 指数信号 $x(t) = e^{-|t|}$ 的变换为 $X(j\omega) = \frac{2}{1+\omega^2}$。 **推导过程：**
+
+1. 根据对偶性公式 $F(jt) \longleftrightarrow 2\pi f(-\omega)$；
+
+2. 将 $X(j\omega)$ 中的 $\omega$ 替换为 $t$，得到 $X(jt) = \frac{2}{1+t^2}$；
+
+3. 对应的频谱为 $2\pi x(-\omega) = 2\pi e^{-|-\omega|} = 2\pi e^{-|\omega|}$；
+
+4. **最终结果：**
+
+   $$\mathcal{F}\left\{ \frac{2}{1+t^2} \right\} = 2\pi e^{-|\omega|}$$
+
+
+
+### 8. 帕塞瓦尔定理 (Parseval's Relation)
+
+$$\int_{-\infty}^{+\infty} |x(t)|^2 dt = \frac{1}{2\pi} \int_{-\infty}^{+\infty} |X(j\omega)|^2 d\omega$$
+
+物理意义：信号在时域的总能量等于其在频域对所有频率分量能量密度的积分。这证明了傅里叶变换是一个能量守恒的过程。
+
+​	
+
+#### 典型应用：利用 FT 求解时域积分 (参考 image_b17a59.jpg)
+
+**题目：** 计算 $\int_{-\infty}^{\infty} \frac{\sin^2 \pi t}{t^2} dt$。
+
+**解析思路：**
+
+1. **构造信号：** 令 $f(t) = \frac{\sin^2 \pi t}{t^2} = \pi^2 \text{Sa}^2(\pi t)$。
+
+2. **性质关联：** 注意到 $\int_{-\infty}^{\infty} f(t) dt = F(j0)$，即时域积分等于其频谱在零频率处的值。
+
+3. **计算频谱：**
+
+   - 已知 $\pi \frac{\sin \pi t}{\pi t} \longleftrightarrow \pi \cdot \text{rect}(\frac{\omega}{2\pi})$（幅度为 $\pi$，带宽从 $-\pi$ 到 $\pi$ 的方波）。
+   - 根据相乘性质，$f(t)$ 为两个 Sinc 函数相乘，对应频域为两个方波的卷积（再乘 $1/2\pi$）。
+   - 方波与自身卷积得到三角形频谱 $F(j\omega)$。
+
+4. **求** $F(0)$**：**
+
+   - 两个宽度为 $2\pi$、高度为 $\pi$ 的方波卷积，中心处的值为 $\int_{-\pi}^{\pi} \pi \cdot \pi d\theta = 2\pi^3$。
+   - 乘以系数 $1/2\pi$，得到 $F(0) = \frac{1}{2\pi} \cdot 2\pi^3 = \pi^2$。
+
+5. **最终结果：**
+
+   $$\int_{-\infty}^{\infty} \frac{\sin^2 \pi t}{t^2} dt = \pi^2$$
+
+
+
+### 4.5 卷积性质 (Convolution Property)
+
+若 $y(t) = h(t) * x(t)$，则：
+
+$$Y(j\omega) = H(j\omega) X(j\omega)$$
+
+核心结论：时域内的卷积对应频域内的乘积。
+
+这是 LTI（线性时不变）系统分析的基石：系统的输出频谱等于输入频谱与系统频率响应的乘积。
+
+### 4.6 相乘性质 (Multiplication Property)
+
+若 $r(t) = s(t) \cdot p(t)$，则：
+
+$$R(j\omega) = \frac{1}{2\pi} [S(j\omega) * P(j\omega)] = \frac{1}{2\pi} \int_{-\infty}^{+\infty} S(j\theta) P(j(\omega - \theta)) d\theta$$
+
+核心结论：时域内的相乘对应频域内的卷积（带 $1/2\pi$ 系数）。
+
+应用笔记：一个信号与另一个信号相乘，可以理解为用一个信号去调制另一个信号的振幅。因此，该性质也是幅度调制 (Amplitude Modulation) 的理论基础。
+
+若 $r(t) = s(t) \cdot p(t)$，则：
+
+$$R(j\omega) = \frac{1}{2\pi} [S(j\omega) * P(j\omega)]$$
+
+- **核心结论：** **时域相乘** $\longleftrightarrow$ **频域卷积**（注意 $1/2\pi$ 系数）。
+
+#### 典型例题：幅度调制 (AM) 基础 
+
+**题目：** 设信号 $s(t)$ 的频谱为 $S(j\omega)$，考虑信号 $r(t) = s(t) \cos(\omega_0 t)$，求其频谱 $R(j\omega)$。
+
+**解析过程：**
+
+1. **已知载波变换：** $p(t) = \cos(\omega_0 t) \longleftrightarrow P(j\omega) = \pi \delta(\omega - \omega_0) + \pi \delta(\omega + \omega_0)$。
+
+2. **应用相乘性质：**
+
+   $$R(j\omega) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} S(j\theta) P(j(\omega - \theta)) d\theta$$
+
+3. **利用冲击函数的筛选性质：**
+
+   $$R(j\omega) = \frac{1}{2} S(j(\omega - \omega_0)) + \frac{1}{2} S(j(\omega + \omega_0))$$
+
+- **物理意义：**
+  - 一个信号与余弦波相乘，相当于将其频谱搬移至载波频率 $\pm \omega_0$ 处。
+  - **信息保持：** 虽然频率升高了，但 $s(t)$ 中的全部信息被原封不动地保留了下来。这构成了幅度调制系统的基础。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
