@@ -73,8 +73,12 @@ $$x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j\omega) e^{j\omega t} d\omeg
 - **反变换 (Synthesis Equation):**
 
   $$x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j\omega) e^{j\omega t} d\omega$$
+  
+  > 我们会发现，正变换与反变换中 积分内部的  $e^{-j \omega t}$ 的顺序和 计算$a_k$也就是傅里叶级数的时候截然相反
+  >
+  > 你只需要想想 $X(jw)=T \times a_k$ 就能理解其中的原因了。
 
-> **要点总结 (参考 `image_49b657.jpg`)：**
+> **要点总结 ：**
 >
 > - 时域脉冲宽度与频域 Sinc 函数具有**反比关系**：时域信号 $x(t)$ 越宽，频域能量越集中（变窄）。
 > - 周期信号的系数 $a_k$ 是其单周期对应非周期信号变换 $X(j\omega)$ 的**等间隔采样**。
@@ -410,9 +414,23 @@ $$R(j\omega) = \frac{1}{2\pi} [S(j\omega) * P(j\omega)]$$
 
 
 
+---
 
 
 
+### 4.1
+
+【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=107&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+### 4.2
+
+【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=108&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+### 4.4
+
+【【信号与系统课后题逐题精讲】奥本海姆第二版《信号与系统》课后题逐题详细解析【第一章~第五章】】 https://www.bilibili.com/video/BV1nj42197yF/?p=110&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+**门函数**的常见处理，要看这道题
 
 
 
