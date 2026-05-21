@@ -45,22 +45,22 @@ function captureLines(command, args) {
   return output ? output.split(/\r?\n/).filter(Boolean) : [];
 }
 
-function ensureSshOrigin() {
+function ensureHttpsOrigin() {
   const originUrl = capture("git", ["remote", "get-url", "origin"]);
 
-  if (originUrl === sshOriginUrl) {
+  if (originUrl === httpsOriginUrl) {
     return;
   }
 
-  if (originUrl === httpsOriginUrl) {
-    run("Switching origin remote to SSH", "git", ["remote", "set-url", "origin", sshOriginUrl]);
+  if (originUrl === sshOriginUrl) {
+    run("Switching origin remote to HTTPS", "git", ["remote", "set-url", "origin", httpsOriginUrl]);
     return;
   }
 
   throw new Error(`Unexpected origin remote: ${originUrl}`);
 }
 
-ensureSshOrigin();
+ensureHttpsOrigin();
 
 if (isWindows) {
   run("Building site", "cmd.exe", ["/d", "/s", "/c", "npm run build"]);
