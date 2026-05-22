@@ -183,6 +183,10 @@ $$x(t - t_0) \leftrightarrow a_k e^{-jk\omega_0 t_0}$$
 
 - **注意**：时移不改变频谱的**模**（$|a_k|$ 不变），只改变相位。
 
+![image-20260522234946100](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH3-%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E8%A1%A8%E7%A4%BA.assets/image-20260522234946100.png)
+
+> 已知延时器，求频率响应
+
 ### 3. 共轭与共轭对称性 (Conjugation)
 
 $$x^*(t) \leftrightarrow a_{-k}^*$$
