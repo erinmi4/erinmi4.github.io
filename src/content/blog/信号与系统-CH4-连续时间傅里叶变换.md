@@ -19,7 +19,7 @@ heroImage: /images/posts/Signal-and-system/memo.jpg
 - 【[信号与系统]连续信号傅里叶变换性质-共轭对称特性】 https://www.bilibili.com/video/BV16e411M7TS/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 - 【傅里叶变换的对称性】 https://www.bilibili.com/video/BV1Fy4y1G7ve/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 - 【2、傅里叶变换与帕斯瓦尔定理】 https://www.bilibili.com/video/BV1yT421a71U/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
-- 【信号与系统，中科院研究生带你背常用傅里叶变换对(一），包你记住！记不住当我没说！】 https://www.bilibili.com/video/BV14U4y1c7ec/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+- 【【公开课】 信號與系統 - 臺灣科技大學 - 黃騰毅教授】 https://www.bilibili.com/video/BV1PE411X7b8/?p=19&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
 
 
@@ -51,6 +51,8 @@ $$a_k = \frac{1}{T} \int_{-T/2}^{T/2} x(t) e^{-j k \omega_0 t} dt$$
 定义**包络函数** $X(j\omega)$（即傅里叶变换）：
 
 $$X(j\omega) = \int_{-\infty}^{+\infty} x(t) e^{-j \omega t} dt$$
+
+![image-20260522185517531](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260522185517531.png)
 
 对比可知，傅里叶级数系数可以表示为包络的样本：
 
@@ -138,6 +140,16 @@ $$X(j\omega) = \frac{2\sin(\omega T_1)}{\omega}$$
 
 - **时域信号 $x(t)$：** $e^{-at}u(t), \quad a > 0$
 - **频域变换 $X(j\omega)$：** $\displaystyle \frac{1}{a + j\omega}$
+
+![image-20260522190903955](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260522190903955.png)
+
+![image-20260522191030096](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260522191030096.png)
+
+> 当$a=0$的时候，转换为$u(t)$的变换
+>
+> 因为不稳定，所以没有频率响应
+>
+> ![image-20260522191430006](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260522191430006.png)
 
 ### 单位冲激函数变换对
 
@@ -375,6 +387,8 @@ $$Y(j\omega) = H(j\omega) X(j\omega)$$
 核心结论：时域内的卷积对应频域内的乘积。
 
 这是 LTI（线性时不变）系统分析的基石：系统的输出频谱等于输入频谱与系统频率响应的乘积。
+
+![image-20260522185033204](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4-%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260522185033204.png)
 
 ### 4.6 相乘性质 (Multiplication Property)
 
