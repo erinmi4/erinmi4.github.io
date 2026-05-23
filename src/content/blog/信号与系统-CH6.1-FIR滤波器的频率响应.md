@@ -56,7 +56,7 @@ $$y[n] = \underbrace{\left( A e^{j \phi} e^{j \hat{\omega} n} \right)}_{\text{�
 
 $$y[n] = x[n] \cdot H(e^{j \hat{\omega}})$$
 
-其中，**频率响应** $H(e^{j \hat{\omega}})$ 定义为单位脉冲响应 $h[n]$ 的离散时间傅里叶变换（DTFT）：
+其中，**频率响应** $H(e^{j \hat{\omega}})$ 定义为单位脉冲响应 $h[n]$ 的**离散时间傅里叶变换（DTFT）**：
 
 $$H(e^{j \hat{\omega}}) = \sum_{k=-\infty}^{+\infty} h[k] e^{-j \hat{\omega} k}$$
 
@@ -88,8 +88,8 @@ $$H(e^{j \hat{\omega}}) = (2 + 2\cos\hat{\omega}) e^{-j\hat{\omega}}$$
 
 因为对于所有的数字频率 $\hat{\omega}$，$(2 + 2\cos\hat{\omega}) \ge 0$ 恒成立，所以：
 
-1. **幅频响应 (Magnitude Response)：** $$ |H(e^{j \hat{\omega}})| = 2 + 2\cos\hat{\omega}
-2. **相频响应 (Phase Response)：** $$ \angle H(e^{j \hat{\omega}}) = -\hat{\omega}
+1. **幅频响应 (Magnitude Response)：** $$|H(e^{j \hat{\omega}})| = 2 + 2\cos\hat{\omega}$$
+2. **相频响应 (Phase Response)：** $$ \angle H(e^{j \hat{\omega}}) = -\hat{\omega}$$
 
 ### 2.3 幅度与相位响应曲线绘制
 
@@ -165,7 +165,7 @@ $$x[n] = 2\cos\left( \frac{\pi}{3} n + \frac{\pi}{4} \right)$$
 
 ## 四、 LTI 系统的时域与频域对应关系
 
-已知时域的单位脉冲响应 $h[n]$ 可以通过傅里叶变换求得频域的频率响应 $H(e^{j\hat{\omega}})$。 反之，如果能将频域响应表示为复指数求和的傅里叶级数形式，我们也可以非常直观地反推出其时域的系统差分方程或单位脉冲响应。
+已知时域的单位脉冲响应 $h[n]$ 可以通过傅里叶变换求得频域的频率响应 $H(e^{j\hat{\omega}})$。 反之，如果能将频域响应表示为**复指数求和的傅里叶级数形式**，我们也可以非常直观地反推出其时域的系统差分方程或单位脉冲响应。
 
 ### 4.1 单位延时系统与通用延时规律
 
