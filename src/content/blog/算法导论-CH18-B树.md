@@ -16,14 +16,6 @@ draft: false
 
 - [Interactive demo](https://www.cs.usfca.edu/~galles/visualization/BTree.html)
 
-
-
-- 从58页开始是如何在树上删除节点的方法
-
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSiAuo1sqm-5gGJJpRfUE5cqbJXKF8cBPljr3Y4v1SDomCvBeYSXxeYdX-NmoOlUUPdhQAd4gQIToS-/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-
-
 # CS61B 课程笔记：B-Trees (2-3 & 2-3-4 Trees)
 
 ## 一、 BST 高度危机与渐进性能分析 (BST Height & Worst Case)
