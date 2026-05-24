@@ -5,9 +5,10 @@ description: "详细阅读笔记：傅里叶级数与线性时不变系统——
 pubDate: 2026-05-12
 updatedDate: 2026-05-12
 tags:
-  - "未分类"
-category: "分类"
-draft: true
+  - 信号与系统
+  - 修考
+category: 修考
+draft: false
 ---
 
 ---

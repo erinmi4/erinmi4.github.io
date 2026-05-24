@@ -27,7 +27,7 @@ draft: false
 
 > 这说明复指数信号是信号与系统中的 基本信号
 
-- LTI 系统对输入正弦信号的影响仅体现在**振幅（Amplitude）\**和\**相位（Phase）\**的改变上，而\**角频率** $\hat{\omega}$ **绝不会发生改变**。
+- LTI 系统对输入正弦信号的影响仅体现在**振幅（Amplitude）和相位（Phase）**的改变上，而 **角频率$\hat{\omega}$ **绝不会发生改变。
 
 $$x[n] \xrightarrow{\quad \text{LTI Filter} \quad} y[n]$$
 
@@ -134,7 +134,9 @@ $$\begin{aligned} y[n] &= x[n] \cdot H(e^{j \pi/3}) \\ &= \left( 2e^{j \pi/4} e^
 
 $$H^*(e^{j\hat{\omega}}) = H(e^{-j\hat{\omega}})$$
 
-这意味着幅频响应是偶对称的，相频响应是奇对称的。当输入为一个实正弦信号：
+这意味着**幅频响应是偶对称的，相频响应是奇对称的**。
+
+当输入为一个实正弦信号：
 
 $$x[n] = A\cos(\hat{\omega}_0 n + \phi)$$
 
