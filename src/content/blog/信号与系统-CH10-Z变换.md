@@ -13,6 +13,7 @@ draft: false
 
 - 【6-1 Z 轉換(一)】 https://www.bilibili.com/video/BV1PE411X7b8/?p=14&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 - 【6-2 Z 轉換(二)】 https://www.bilibili.com/video/BV1PE411X7b8/?p=15&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+- 【6-3 Z 轉換、零點極點與頻率響應】 https://www.bilibili.com/video/BV1PE411X7b8/?p=16&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
 
 
