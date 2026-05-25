@@ -13,6 +13,8 @@ draft: false
 
 https://www.eecs70.org/assets/pdf/notes/n16.pdf
 
+- https://drive.google.com/drive/folders/1baQ4QSCN9-g2nyRRlfkJ96marZdCQGLa
+
 # 概率论精修笔记：随机变量、分布与期望
 
 https://gemini.google.com/app/c6e6217ff148f5da

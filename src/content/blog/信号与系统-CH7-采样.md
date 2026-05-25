@@ -350,6 +350,8 @@ $$y(t) = \sum_{n=-\infty}^{\infty} y[n] \cdot p(t - nT_s)$$
 
 1. **若** $p(t)$ **为矩形脉冲（Square Pulse）**：对应零阶保持器（ZOH），波形呈阶梯状。
 
+   ![image-20260525113326315](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH7-%E9%87%87%E6%A0%B7.assets/image-20260525113326315.png)
+
 2. **若** $p(t)$ **为三角形脉冲（Triangular Pulse）**：对应线性插值。
 
 3. **若** $p(t)$ **为理想的** $\text{sinc}$ **函数（即带限插值 Bandlimited Interpolation）**：
@@ -357,3 +359,7 @@ $$y(t) = \sum_{n=-\infty}^{\infty} y[n] \cdot p(t - nT_s)$$
    $$p(t) = \frac{\sin(\pi t / T_s)}{\pi t / T_s}$$
 
    在理论上，该数学模型可以实现连续信号的**无损、完美重建**（不含任何额外高频分量）。其背后的频域原理将在学习完连续傅里叶变换后得到更深层次的揭示。
+
+   > 因为sinc是bound limited signal
+
+   ![image-20260525113400256](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH7-%E9%87%87%E6%A0%B7.assets/image-20260525113400256.png)
