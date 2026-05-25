@@ -15,6 +15,14 @@ draft: false
 - 【6-2 Z 轉換(二)】 https://www.bilibili.com/video/BV1PE411X7b8/?p=15&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 - 【6-3 Z 轉換、零點極點與頻率響應】 https://www.bilibili.com/video/BV1PE411X7b8/?p=16&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
+
+
+- https://www.youtube.com/watch?v=cZHPnZSxRVM&list=PLX6FA3vfNTfChkbNQGxVPrIsvkC_DwNV6&index=15
+
+- https://www.youtube.com/watch?v=jCLNIwSozfk&list=PLX6FA3vfNTfChkbNQGxVPrIsvkC_DwNV6&index=16
+
+- https://www.youtube.com/watch?v=HFb2Gm-OQOw&list=PLX6FA3vfNTfChkbNQGxVPrIsvkC_DwNV6&index=17
+
 # 数字信号处理：Z 变换与滤波器设计
 
 ## 一、 Z 变换的基本概念 (Basic Concepts of Z-Transform)

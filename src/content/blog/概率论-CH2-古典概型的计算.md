@@ -15,6 +15,8 @@ https://www.eecs70.org/assets/pdf/notes/n14.pdf
 
 # 概率论精益笔记：条件概率、独立性与事件组合
 
+https://gemini.google.com/app/185114fc732f363e
+
 ## 一、 条件概率 (Conditional Probability)
 
 ### 1.1 核心直觉与背景

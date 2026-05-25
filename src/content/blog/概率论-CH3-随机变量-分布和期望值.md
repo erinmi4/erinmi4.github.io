@@ -15,6 +15,8 @@ https://www.eecs70.org/assets/pdf/notes/n16.pdf
 
 # 概率论精修笔记：随机变量、分布与期望
 
+https://gemini.google.com/app/c6e6217ff148f5da
+
 本笔记基于你的手写课堂笔记，结合课程大纲进行了系统性的梳理与数学严谨性润色。
 
 ## 1. 随机变量 (Random Variables)
@@ -69,6 +71,8 @@ $$\sum_{a \in \mathcal{A}} \mathbb{P}[X = a] = 1$$
 
 **伯努利分布**（又称 **0-1 分布**）是单次试验中最简单的离散分布。
 
+> 也可以理解为实验1次的二项分布
+
 ### 3.1 物理背景
 
 试验只有两种可能的结果：“成功”（记为 1）或“失败”（记为 0）。
@@ -78,6 +82,8 @@ $$\sum_{a \in \mathcal{A}} \mathbb{P}[X = a] = 1$$
 若 $X$ 服从参数为 $p$ 的伯努利分布，记作 $X \sim Bernoulli(p)$ 或 $X \sim Ber(p)$： 
 
 $$\mathbb{P}[X = i] = \begin{cases} p, & \text{若 } i = 1 \ 1-p, & \text{若 } i = 0 \end{cases}$$ 其中参数 $0 \le p \le 1$ 代表成功的概率。
+
+伯努利分布的期望与方差公式（$E(X)=p$, $V(X)=p(1-p)$）
 
 ## 4. 二项分布 (Binomial Distribution)
 
