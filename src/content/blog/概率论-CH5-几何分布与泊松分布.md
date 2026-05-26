@@ -348,3 +348,345 @@ $$\mathbb{P}[X = i] = \frac{\lambda^i}{i!} \cdot \underbrace{\left[ \frac{n}{n} 
 $$\lim_{n \to \infty} \mathbb{P}[X = i] = \frac{\lambda^i}{i!} \cdot 1 \cdot e^{-\lambda} \cdot 1 = \frac{\lambda^i}{i!} e^{-\lambda}$$
 
 *极限证明完毕！*
+
+---
+
+# 离散概率分布：精准练习与巩固指南（含详细推导与答案）
+
+这份指南旨在将你整理的**几何分布**与**泊松分布**笔记知识点，完美对接你上传的日语教材 **《Chapter 3：離散確率分布》**（对应文件：`004_Chapter-3.-離散確率分布.pdf`）。
+
+这里为每一道精选题目提供了极其详尽的推导过程、解题技巧和最终答案，帮助你进行深度巩固。
+
+## 🎯 第一部分：几何分布与无记忆性巩固
+
+### 1. 期望、方差与尾部概率基础演练
+
+- **对应教材位置**：**Page 46 —— 問題 21：幾何分布, ファーストサクセス分布 I**
+
+#### 📝 【题目背景】
+
+连续投掷一枚骰子。设 $X$ 为第一次出现 6 点之前，出现非 6 点的次数；设 $Y$ 为第一次出现 6 点时投掷的总次数。
+
+1. 求 $X$ 的概率分布 $\mathbb{P}[X=k]$、$Y$ 的概率分布 $\mathbb{P}[Y=k]$、以及两者的期望 $\mathbb{E}$ 和方差 $\text{Var}$。
+2. 计算尾部概率 $\mathbb{P}[X \ge 20]$，区间概率 $\mathbb{P}[20 \le Y < 30]$，以及特殊期望 $\mathbb{E}[(1/3)^X]$。
+
+#### ✏️ 【详细推导与答案】
+
+##### **第 1 问：求** $X$ **与** $Y$ **的分布、期望与方差**
+
+- **物理模型分析**：每次投骰子，“出现 6 点”的成功概率 $p = \frac{1}{6}$，“出现非 6 点”的失败概率 $q = 1 - p = \frac{5}{6}$。
+
+- $X$ **的分布**：$X$ 代表成功前的失败次数，可取 $0, 1, 2, \dots$。
+
+  $$\mathbb{P}[X = k] = \frac{1}{6} \left(\frac{5}{6}\right)^k, \quad k = 0, 1, 2, \dots \quad \text{（几何分布）}$$
+
+- $Y$ **的分布**：$Y$ 代表首次成功时的总试验次数（即 $Y = X + 1$），可取 $1, 2, 3, \dots$。
+
+  $$\mathbb{P}[Y = k] = \frac{1}{6} \left(\frac{5}{6}\right)^{k-1}, \quad k = 1, 2, 3, \dots \quad \text{（首成分布 / First Success）}$$
+
+- **期望计算**：
+
+  - 利用等比级数求导技巧，我们已知 $Y$ 的期望 $\mathbb{E}[Y] = \frac{1}{p} = 6$。
+
+  - 由于 $Y = X + 1$，根据期望的线性性质：
+
+    $$\mathbb{E}[X] = \mathbb{E}[Y - 1] = \mathbb{E}[Y] - 1 = 6 - 1 = 5$$
+
+- **方差计算**：
+
+  - 常数平移不改变方差大小，即 $\text{Var}(X) = \text{Var}(Y - 1) = \text{Var}(Y)$。
+
+  - 根据方差公式：
+
+    $$\text{Var}(X) = \text{Var}(Y) = \frac{1-p}{p^2} = \frac{5/6}{(1/6)^2} = 5 \times 6 = 30$$
+
+> **💡 本问答案**：
+>
+> - $\mathbb{P}[X=k] = \frac{1}{6}\left(\frac{5}{6}\right)^k \ (k \ge 0)$，$\mathbb{E}[X] = 5$，$\text{Var}(X) = 30$。
+> - $\mathbb{P}[Y=k] = \frac{1}{6}\left(\frac{5}{6}\right)^{k-1} \ (k \ge 1)$，$\mathbb{E}[Y] = 6$，$\text{Var}(Y) = 30$。
+
+##### **第 2 问：计算三个特定概率与期望**
+
+- **① 尾部概率** $\mathbb{P}[X \ge 20]$：
+
+  - 物理意义：在第一次投出 6 点前，至少投出了 20 次非 6 点。即**前 20 次投掷全部失败（均没有投出 6）**。
+
+  - 直接得出：
+
+    $$\mathbb{P}[X \ge 20] = q^{20} = \left(\frac{5}{6}\right)^{20}$$
+
+- **② 区间概率** $\mathbb{P}[20 \le Y < 30]$：
+
+  - 该事件等价于 $Y \in \{20, 21, \dots, 29\}$。
+
+  - 我们可以将其转化为两个尾部概率之差：
+
+    $$\mathbb{P}[20 \le Y < 30] = \mathbb{P}[Y \ge 20] - \mathbb{P}[Y \ge 30]$$
+
+  - 依据首成分布的尾部公式，“$Y \ge k$” 表示前 $k-1$ 次全部失败：
+
+    $$\mathbb{P}[Y \ge 20] = \left(\frac{5}{6}\right)^{19}, \quad \mathbb{P}[Y \ge 30] = \left(\frac{5}{6}\right)^{29}$$
+
+  - 因此：
+
+    $$\mathbb{P}[20 \le Y < 30] = \left(\frac{5}{6}\right)^{19} - \left(\frac{5}{6}\right)^{29} = \left(\frac{5}{6}\right)^{19} \left[ 1 - \left(\frac{5}{6}\right)^{10} \right]$$
+
+- **③ 特殊期望** $\mathbb{E}[(1/3)^X]$：
+
+  - 依据期望的定义（LOTUS 定理）：
+
+    $$\mathbb{E}\left[\left(\frac{1}{3}\right)^X\right] = \sum_{k=0}^{\infty} \left(\frac{1}{3}\right)^k \cdot \mathbb{P}[X=k] = \sum_{k=0}^{\infty} \left(\frac{1}{3}\right)^k \cdot \frac{1}{6} \left(\frac{5}{6}\right)^k = \frac{1}{6} \sum_{k=0}^{\infty} \left(\frac{5}{18}\right)^k$$
+
+  - 这是一个公比 $r = \frac{5}{18} < 1$ 的无穷等比级数，应用求和公式 $\sum r^k = \frac{1}{1-r}$：
+
+    $$\mathbb{E}\left[\left(\frac{1}{3}\right)^X\right] = \frac{1}{6} \cdot \frac{1}{1 - \frac{5}{18}} = \frac{1}{6} \cdot \frac{18}{13} = \frac{3}{13}$$
+
+> **💡 本问答案**：
+>
+> - $\mathbb{P}[X \ge 20] = \left(\frac{5}{6}\right)^{20}$
+> - $\mathbb{P}[20 \le Y < 30] = \left(\frac{5}{6}\right)^{19} - \left(\frac{5}{6}\right)^{29}$
+> - $\mathbb{E}[(1/3)^X] = \frac{3}{13}$
+
+### 2. 条件概率与无记忆性实战
+
+- **对应教材位置**：**Page 48 —— 問題 22：幾何分布, ファーストサクセス分布 II**
+
+#### 📝 【题目背景】
+
+设双胞胎 A 和 B 的寿命（离散时间）分别为随机变量 $X$ 和 $Y$，它们相互独立，且都服从几何分布 $Ge(1/80)$。
+
+- *注：不同的日系教材对* $Ge(p)$ *有两种定义 convention（从 0 开始或从 1 开始）。为确保严谨，下方提供两种情况的完美推导。*
+
+#### ✏️ 【详细推导与答案】
+
+#### **【情形 A】若教材定义** $Ge(p)$ **从 1 开始（代表生存的年份数，最符合人寿物理背景）**
+
+此时 $X, Y \in \{1, 2, \dots\}$，$p = \frac{1}{80}$，失败率 $q = \frac{79}{80}$。PMF 为 $\mathbb{P}[X=k] = p q^{k-1}$。
+
+- **① 求** $\mathbb{E}[X]$：
+
+  - 首成分布的期望公式直接给出：
+
+    $$\mathbb{E}[X] = \frac{1}{p} = 80 \quad \text{（岁）}$$
+
+- **② 求条件概率** $\mathbb{P}[X \ge 90 \mid X \ge 60]$：
+
+  - 根据无记忆性公式 $\mathbb{P}[X > n+m \mid X > m] = \mathbb{P}[X > n]$：
+
+    $$\mathbb{P}[X \ge 90 \mid X \ge 60] = \mathbb{P}[X \ge 31] = q^{30} = \left(\frac{79}{80}\right)^{30}$$
+
+  - *代数验证*：
+
+    $$\mathbb{P}[X \ge 90 \mid X \ge 60] = \frac{\mathbb{P}[X \ge 90]}{\mathbb{P}[X \ge 60]} = \frac{q^{89}}{q^{59}} = q^{30} = \left(\frac{79}{80}\right)^{30}$$
+
+- **③ 设** $Z = \min(X, Y)$**，求** $\mathbb{P}[Z \ge k]$ **门槛概率及** $Z$ **的分布**：
+
+  - 因为 $X, Y$ 独立：
+
+    $$\mathbb{P}[Z \ge k] = \mathbb{P}[X \ge k, Y \ge k] = \mathbb{P}[X \ge k]\mathbb{P}[Y \ge k] = q^{k-1} \cdot q^{k-1} = (q^2)^{k-1} = \left(\frac{6241}{6400}\right)^{k-1}$$
+
+  - 这说明 $Z$ 也是一个首成分布，其新的等效失败率为 $q' = q^2 = \frac{6241}{6400}$，成功率为：
+
+    $$p' = 1 - q' = 1 - \frac{6241}{6400} = \frac{159}{6400}$$
+
+  - 因此 $Z = \min(X, Y) \sim \text{Geom}_1\left(\frac{159}{6400}\right)$，其 PMF 为：
+
+    $$\mathbb{P}[Z = k] = p' (q')^{k-1} = \frac{159}{6400} \left(\frac{6241}{6400}\right)^{k-1}, \quad k = 1, 2, \dots$$
+
+- **④ 求** $\mathbb{E}[Z]$**、**$\text{Var}(Z)$ **以及** $\mathbb{E}[\max(X, Y)]$：
+
+  - **期望**：$\mathbb{E}[Z] = \frac{1}{p'} = \frac{6400}{159} \approx 40.25$。
+
+  - **方差**：$\text{Var}(Z) = \frac{q'}{(p')^2} = \frac{6241/6400}{(159/6400)^2} = \frac{6241 \times 6400}{159^2} = \frac{39942400}{25281} \approx 1579.9$。
+
+  - **极大值期望** $\mathbb{E}[\max(X, Y)]$：
+
+    - 利用代数恒等式 $\max(X,Y) + \min(X,Y) = X + Y$，两边取期望：
+
+      $$\mathbb{E}[\max(X, Y)] = \mathbb{E}[X] + \mathbb{E}[Y] - \mathbb{E}[\min(X, Y)] = 80 + 80 - 40.25 = 119.75 \quad \text{（岁）}$$
+
+### 3. 赠券收集问题（海报收集）
+
+- **对应教材位置**：**Page 66 —— 問題 31：総合問題 (1) ~ (4)**
+
+#### 📝 【题目背景】
+
+每购买一张偶像组合（共 $N$ 人）的 CD，都会随机等概率附赠一张成员的海报。
+
+1. 购买 $N$ 张 CD 时，集齐全部 $N$ 人海报的概率。
+2. 购买 $N+1$ 张 CD 时，集齐全部 $N$ 人海报的概率。
+3. 购买 $m$ 张 CD 时，集齐的海报人数为 $X_m$，求其期望 $\mathbb{E}[X_m]$。
+4. 设购买 $Y$ 张 CD 时首次集齐全部 $N$ 人的海报，求期望 $\mathbb{E}[Y]$。
+
+#### ✏️ 【详细推导与答案】
+
+##### **第 1 问：购买** $N$ **张 CD 集齐的概率**
+
+- **分析**：购买 $N$ 张 CD 且获得 $N$ 张互不相同的海报。
+
+- **计算**：相当于将 $N$ 个不同的海报全排列填入 $N$ 个购买位置，方法数为 $N!$。总样本空间为 $N^N$。
+
+  $$\mathbb{P}[\text{购买 } N \text{ 张集齐}] = \frac{N!}{N^N}$$
+
+##### **第 2 问：购买** $N+1$ **张 CD 集齐的概率**
+
+*此题在日文原书中有两种常见的语义理解，这里给出最严谨的两种解答分析：*
+
+- **语义一：在第** $N+1$ **次购买的瞬间“正好”首次集齐全部** $N$ **张海报**
+
+  - **分析**：这意味着在前 $N$ 次购买中，我们**只集齐了** $N-1$ **种不同的海报**（有且仅有一种海报重复了），而在第 $N+1$ 次购买时，恰好抽中了那张唯一缺失的海报。
+
+  - **步骤**：
+
+    1. 从 $N$ 种中选出 $N-1$ 种出现在前 $N$ 次中：共有 $\binom{N}{N-1} = N$ 种选法。
+    2. 将这选出的 $N-1$ 种海报排入前 $N$ 个位置，使得每种至少出现一次（即有且仅有一种出现了 2 次）： 这等价于将 $N$ 个元素划分成 $N-1$ 个非空集合（第二类斯特林数 $S(N, N-1) = \binom{N}{2}$），再给集合分配成员，方法数为 $\binom{N}{2} \times (N-1)!$。
+    3. 第 $N+1$ 次购买必须精准抽中唯一缺失的那 1 种海报（概率为 $\frac{1}{N}$）。
+
+  - **公式**：
+
+    $$\text{方法数} = N \cdot \left[ \binom{N}{2} \cdot (N-1)! \right] \cdot 1 = N \cdot \frac{N(N-1)}{2} \cdot (N-1)! = \frac{N(N-1)}{2} \cdot N!$$
+
+    $$\mathbb{P}[\text{正好在第 } N+1 \text{ 次集齐}] = \frac{\frac{N(N-1)}{2} \cdot N!}{N^{N+1}} = \frac{N! (N-1)}{2 N^N}$$
+
+- **语义二：在前** $N+1$ **次购买内“已经”集齐了全部** $N$ **张海报（允许在第** $N$ **次就提前集齐）**
+
+  - **公式**：
+
+    $$\mathbb{P}[\text{前 } N+1 \text{ 次内集齐}] = \mathbb{P}[\text{第 } N \text{ 次集齐}] + \mathbb{P}[\text{第 } N+1 \text{ 次首次集齐}] = \frac{N!}{N^N} + \frac{N! (N-1)}{2 N^N} = \frac{N!(N+1)}{2 N^N}$$
+
+##### **第 3 问：求** $X_m$**（购买** $m$ **张 CD 收集到的海报种数）的期望**
+
+- **分析**：利用**指示变量（Indicator Variable）分解法**。
+
+- **步骤**：
+
+  1. 设随机变量 $I_j$ 表示第 $j$ 位成员的海报是否被收集到：
+
+     $$I_j = \begin{cases} 1, & \text{成员 } j \text{ 已被收集到} \\ 0, & \text{未收集到} \end{cases}$$
+
+  2. 易得 $X_m = \sum_{j=1}^N I_j$。
+
+  3. 计算 $I_j = 1$ 的概率：
+
+     $$\mathbb{P}[I_j = 1] = 1 - \mathbb{P}[\text{购买 } m \text{ 次均未抽中成员 } j] = 1 - \left(1 - \frac{1}{N}\right)^m$$
+
+  4. 利用期望的线性性质：
+
+     $$\mathbb{E}[X_m] = \sum_{j=1}^N \mathbb{E}[I_j] = N \cdot \mathbb{P}[I_1 = 1] = N \left[ 1 - \left(1 - \frac{1}{N}\right)^m \right]$$
+
+##### **第 4 问：求首次集齐全部** $N$ **人海报所需 CD 数** $Y$ **的期望**
+
+- **分析**：这正是我们在笔记中推导过的经典“赠券收集问题”。
+
+- **步骤**：
+
+  - 将 $Y$ 拆分为 $Y = \sum_{i=1}^N X_i$，其中 $X_i$ 是收集齐 $i-1$ 种后，拿到第 $i$ 种新海报所需的购买次数。
+
+  - $X_i$ 服从几何分布，其单次中奖概率 $p_i = \frac{N - (i-1)}{N} = \frac{N-i+1}{N}$。
+
+  - 其期望为 $\mathbb{E}[X_i] = \frac{1}{p_i} = \frac{N}{N-i+1}$。
+
+  - 总期望为：
+
+    $$\mathbb{E}[Y] = \sum_{i=1}^N \mathbb{E}[X_i] = N \sum_{i=1}^N \frac{1}{N-i+1} = N \sum_{k=1}^N \frac{1}{k} \approx N(\ln N + \gamma_E)$$
+
+## 🎯 第二部分：泊松分布与极限理论巩固
+
+### 1. 泊松近似（帕青哥中奖问题）
+
+- **对应教材位置**：**Page 54 —— 問題 25：ポアソン分布 I**
+
+#### 📝 【题目背景】
+
+在帕青哥游戏中，单次入球的中奖概率为 $p = 1/1000$。设投掷 $n = 1000$ 次时中奖次数为 $X$，其泊松近似变量为 $Y$。
+
+1. 用二项分布写出 $X = 0$ 和 $X = k$ 的精确概率。
+2. 用泊松近似计算 $\mathbb{P}[Y=0]$ 与 $\mathbb{P}[Y=k]$。
+3. 求泊松近似后 $Y$ 的期望 $\mathbb{E}[Y]$ 与方差 $\text{Var}(Y)$。
+
+#### ✏️ 【详细推导与答案】
+
+##### **第 1 问：精确二项概率**
+
+- $X \sim \text{Binomial}(1000, 1/1000)$。
+
+  $$\mathbb{P}[X=0] = \binom{1000}{0} \left(\frac{1}{1000}\right)^0 \left(\frac{999}{1000}\right)^{1000} = (0.999)^{1000}$$
+
+  $$\mathbb{P}[X=k] = \binom{1000}{k} \left(\frac{1}{1000}\right)^k \left(\frac{999}{1000}\right)^{1000-k}$$
+
+##### **第 2 问：泊松近似概率**
+
+- 计算泊松参数：$\lambda = n p = 1000 \times \frac{1}{1000} = 1$。
+
+- 变量 $Y \sim \text{Poisson}(1)$ 的 PMF 为 $\mathbb{P}[Y=k] = \frac{1^k}{k!} e^{-1} = \frac{e^{-1}}{k!}$。
+
+  $$\mathbb{P}[Y=0] = e^{-1} \approx 0.36788$$
+
+  $$\mathbb{P}[Y=k] = \frac{e^{-1}}{k!}$$
+
+##### **第 3 问：求** $Y$ **的期望与方差**
+
+- 因为 $Y \sim \text{Poisson}(1)$，根据泊松分布性质：
+
+  $$\mathbb{E}[Y] = \lambda = 1, \quad \text{Var}(Y) = \lambda = 1$$
+
+### 2. 独立泊松和（再生性）与条件分布
+
+- **对应教材位置**：**Page 56 —— 問題 26：ポアソン分布 II**
+
+#### 📝 【题目背景】
+
+设 $X \sim \text{Poisson}(\lambda)$，$Y \sim \text{Poisson}(\mu)$，且 $X$ 与 $Y$ 相互独立。
+
+1. 求阶乘矩 $\mathbb{E}[X(X-1)(X-2)]$ 以及 $\mathbb{E}[X^3]$、$\mathbb{E}[5^X]$。
+2. 计算条件概率 $\mathbb{P}[X \ge 2 \mid X \ge 1]$。
+3. 计算 $\mathbb{P}[X+Y = k]$。
+4. 对于 $0 \le k \le n$，求条件概率 $\mathbb{P}[X = k \mid X+Y = n]$。
+
+#### ✏️ 【详细推导与答案】
+
+##### **第 1 问：特殊期望计算**
+
+- **① 阶乘矩** $\mathbb{E}[X(X-1)(X-2)]$： $$\begin{aligned} \mathbb{E}[X(X-1)(X-2)] &= \sum_{k=3}^{\infty} k(k-1)(k-2) \frac{\lambda^k}{k!} e^{-\lambda} \ &= e^{-\lambda} \sum_{k=3}^{\infty} \frac{\lambda^k}{(k-3)!} = \lambda^3 e^{-\lambda} \sum_{j=0}^{\infty} \frac{\lambda^j}{j!} = \lambda^3 e^{-\lambda} e^{\lambda} = \lambda^3 \end{aligned}$$
+
+- **② 三阶矩** $\mathbb{E}[X^3]$：
+
+  - 利用多项式恒等变形：$X^3 = X(X-1)(X-2) + 3X(X-1) + X$。
+
+  - 分别代入期望：
+
+    $$\mathbb{E}[X(X-1)] = \lambda^2, \quad \mathbb{E}[X] = \lambda$$
+
+    $$\mathbb{E}[X^3] = \lambda^3 + 3\lambda^2 + \lambda$$
+
+- **③ 矩母函数变形** $\mathbb{E}[5^X]$：
+
+  $$\mathbb{E}[5^X] = \sum_{k=0}^{\infty} 5^k \frac{\lambda^k}{k!} e^{-\lambda} = e^{-\lambda} \sum_{k=0}^{\infty} \frac{(5\lambda)^k}{k!} = e^{-\lambda} e^{5\lambda} = e^{4\lambda}$$
+
+##### **第 2 问：求条件概率** $\mathbb{P}[X \ge 2 \mid X \ge 1]$
+
+- 依据条件概率定义：
+
+  $$\mathbb{P}[X \ge 2 \mid X \ge 1] = \frac{\mathbb{P}[X \ge 2 \text{ 且 } X \ge 1]}{\mathbb{P}[X \ge 1]} = \frac{\mathbb{P}[X \ge 2]}{\mathbb{P}[X \ge 1]} = \frac{1 - \mathbb{P}[X=0] - \mathbb{P}[X=1]}{1 - \mathbb{P}[X=0]}$$
+
+- 代入泊松 PMF 表达式 $\mathbb{P}[X=0] = e^{-\lambda}$，$\mathbb{P}[X=1] = \lambda e^{-\lambda}$：
+
+  $$\mathbb{P}[X \ge 2 \mid X \ge 1] = \frac{1 - e^{-\lambda} - \lambda e^{-\lambda}}{1 - e^{-\lambda}} = 1 - \frac{\lambda e^{-\lambda}}{1 - e^{-\lambda}} = 1 - \frac{\lambda}{e^{\lambda} - 1}$$
+
+##### **第 3 问：证明** $P(X+Y = k)$ **并求其分布**
+
+- 依据我们笔记中的再生性证明（卷积法）：
+
+  $$\mathbb{P}[X+Y = k] = \sum_{j=0}^k \mathbb{P}[X=j]\mathbb{P}[Y=k-j] = \sum_{j=0}^k \frac{\lambda^j}{j!}e^{-\lambda} \frac{\mu^{k-j}}{(k-j)!}e^{-\mu} = \frac{(\lambda+\mu)^k}{k!} e^{-(\lambda+\mu)}$$
+
+- 这说明两独立泊松随机变量之和仍然服从泊松分布：
+
+  $$X+Y \sim \text{Poisson}(\lambda+\mu)$$
+
+##### **第 4 问：求条件概率** $\mathbb{P}[X=k \mid X+Y=n]$
+
+- 依据条件概率公式及 $X, Y$ 独立性： $$\begin{aligned} \mathbb{P}[X=k \mid X+Y = n] &= \frac{\mathbb{P}[X=k, Y=n-k]}{\mathbb{P}[X+Y=n]} \ &= \frac{\mathbb{P}[X=k]\mathbb{P}[Y=n-k]}{\mathbb{P}[X+Y=n]} \ &= \frac{\left( \frac{\lambda^k}{k!} e^{-\lambda} \right) \cdot \left( \frac{\mu^{n-k}}{(n-k)!} e^{-\mu} \right)}{\frac{(\lambda+\mu)^n}{n!} e^{-(\lambda+\mu)}} \ &= \frac{n!}{k!(n-k)!} \cdot \frac{\lambda^k \mu^{n-k}}{(\lambda+\mu)^n} \ &= \binom{n}{k} \left(\frac{\lambda}{\lambda+\mu}\right)^k \left(\frac{\mu}{\lambda+\mu}\right)^{n-k} \end{aligned}$$
+
+- **结论**：在已知两独立泊松随机变量之和为 $n$ 的条件下，$X$ 的条件分布居然是一个**二项分布**：
+
+  $$(X \mid X+Y = n) \sim \text{Binomial}\left(n, \frac{\lambda}{\lambda+\mu}\right)$$
