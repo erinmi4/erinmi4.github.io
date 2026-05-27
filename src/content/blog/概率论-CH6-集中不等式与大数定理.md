@@ -65,7 +65,11 @@ https://www.eecs70.org/assets/pdf/notes/n19.pdf
 
 $$n \ge \frac{1}{4\epsilon^2\delta}$$
 
-> **学习助手提示**：你提到“*我记不住这个公式*”。别担心！这个公式并不是凭空产生的，它是由**切比雪夫不等式**推导出来的。在 [第 4 节](#4-应用估计值偏离的界限-estimating-bias) 中，我们会一步步推导它。理解了它的来龙去脉，你就再也不需要死记硬背了！
+> **学习助手提示**：你提到“*我记不住这个公式*”。别担心！这个公式并不是凭空产生的，
+>
+> 它是由**切比雪夫不等式**推导出来的。在 [第 4 节](#4-应用估计值偏离的界限-estimating-bias) 中，我们会一步步推导它。
+>
+> 理解了它的来龙去脉，你就再也不需要死记硬背了！
 
 ## 2. 马尔可夫不等式 (Markov's Inequality)
 
@@ -322,3 +326,263 @@ $$\mathbb{P}\left[\left|\frac{1}{n}S_n - \mu\right| \ge \epsilon\right] \to 0 \q
    $$\lim_{n\to\infty} \mathbb{P}\left[\left|\frac{1}{n}S_n - \mu\right| \ge \epsilon\right] = 0$$
 
 **定理直观结语**：只要我们取样足够多，样本均值与理论均值产生任何细微偏差（$\epsilon$）的概率，在极限下都将归于零。
+
+
+
+---
+
+
+
+# 集中不等式与大数定律：教材经典习题精析
+
+本学习文件精心挑选了日本概率论教材中与《集中不等式与大数定理》高度匹配的 **3 道核心习题**。每道题均配有**日汉双语对照**、**直观的解题思路**、**严谨的数学推导**以及**方法论总结**，旨在帮助你彻底攻克学习难关。
+
+## 习题一：馬爾可夫与切比雪夫不等式的通用推导 (問題 49)
+
+### 1.1 日语原题 (Original Textbook Text)
+
+> **問題 49 (確率不等式と大数の弱法則)**
+>
+> (1) 確率変数 $X$ の確率密度関数を $f(x)$ とする。任意の非負値関数 $h(x) \ge 0$ と、任意の定数 $a > 0$ に対して、次を示せ。
+>
+> $$\mathbb{P}[h(X) \ge a] \le \frac{\mathbb{E}[h(X)]}{a}$$
+>
+> (2) (1) を用いて、平均 $\mu$、分散 $\sigma^2$ をもつ任意の確率変数 $X$ に対するチェビシェフの不等式：
+>
+> $$\mathbb{P}[|X - \mu| \ge k] \le \frac{\sigma^2}{k^2} \quad (k > 0)$$
+>
+> を証明せよ。
+>
+> (3) 互いに独立に平均 $\mu$、分散 $\sigma^2$ の同一の分布に従う確率変数序列 $X_1, X_2, \dots, X_n$ に対し、大数の弱法則：
+>
+> $$\lim_{n \to \infty} \mathbb{P}\left[\left|\frac{X_1 + X_2 + \dots + X_n}{n} - \mu\right| \ge \epsilon\right] = 0 \quad (\epsilon > 0)$$
+>
+> を示せ。
+
+### 1.2 中文翻译
+
+> **问题 49 (概率不等式与大数弱定律)**
+>
+> (1) 设 $X$ 的概率密度函数为 $f(x)$。对于任意非负函数 $h(x) \ge 0$ 和任意常数 $a > 0$，证明：
+>
+> $$\mathbb{P}[h(X) \ge a] \le \frac{\mathbb{E}[h(X)]}{a}$$
+>
+> (2) 利用 (1) 的结论，证明具有均值 $\mu$、方差 $\sigma^2$ 的任意随机变量 $X$ 均满足切比雪夫不等式：
+>
+> $$\mathbb{P}[|X - \mu| \ge k] \le \frac{\sigma^2}{k^2} \quad (k > 0)$$
+>
+> (3) 设 $X_1, X_2, \dots, X_n$ 是独立同分布（i.i.d.）的随机变量序列，其共同均值为 $\mu$，共同方差为 $\sigma^2$。证明大数弱定律：
+>
+> $$\lim_{n \to \infty} \mathbb{P}\left[\left|\frac{X_1 + X_2 + \dots + X_n}{n} - \mu\right| \ge \epsilon\right] = 0 \quad (\epsilon > 0)$$
+
+### 1.3 详细解答过程 (Step-by-Step Solution)
+
+#### **第一问证明：广义马尔可夫不等式**
+
+由于 $X$ 是连续型随机变量（教材本章主题），我们利用其概率密度函数 $f(x)$ 进行积分推导。 期望 $\mathbb{E}[h(X)]$ 的定义式为：
+
+$$\mathbb{E}[h(X)] = \int_{-\infty}^{\infty} h(x) f(x) dx$$
+
+我们定义实数集上的一个子集 $M = \{x \in \mathbb{R} \mid h(x) \ge a\}$。由于 $h(x) \ge 0$ 且 $f(x) \ge 0$，我们可以将积分区间拆分为 $M$ 和 $M$ 的补集 $M^c$： $$\begin{aligned} \mathbb{E}[h(X)] &= \int_{M} h(x) f(x) dx + \int_{M^c} h(x) f(x) dx \ &\ge \int_{M} h(x) f(x) dx \quad (\text{因为在补集 } M^c \text{ 上 } h(x)f(x) \ge 0) \end{aligned}$$
+
+对于属于集合 $M$ 的所有 $x$，根据定义均有 $h(x) \ge a$。我们将积分中的 $h(x)$ 替换为更小的常数 $a$：
+
+$$\mathbb{E}[h(X)] \ge \int_{M} a \cdot f(x) dx = a \int_{M} f(x) dx$$
+
+根据概率密度的物理意义，在区间 $M$ 上的积分恰好等于事件 $\{h(X) \ge a\}$ 发生的概率：
+
+$$\int_{M} f(x) dx = \mathbb{P}[h(X) \ge a]$$
+
+因此，我们得到：
+
+$$\mathbb{E}[h(X)] \ge a \cdot \mathbb{P}[h(X) \ge a]$$
+
+两边同除以 $a$（因为 $a > 0$），不等式得证：
+
+$$\mathbb{P}[h(X) \ge a] \le \frac{\mathbb{E}[h(X)]}{a} \quad \blacksquare$$
+
+#### **第二问证明：切比雪夫不等式**
+
+我们要证明 $\mathbb{P}[|X - \mu| \ge k] \le \frac{\sigma^2}{k^2}$。
+
+1. **构造辅助函数**：令 $h(X) = (X - \mu)^2$，显然对任意实数，平方值 $h(X) \ge 0$ 恒成立。
+
+2. **设定阈值**：令常数 $a = k^2$（由于 $k > 0$，故 $a > 0$）。
+
+3. **利用第一问结论**：
+
+   $$\mathbb{P}[(X - \mu)^2 \ge k^2] \le \frac{\mathbb{E}[(X - \mu)^2]}{k^2}$$
+
+4. **化简不等式**：
+
+   - 左侧事件：$(X - \mu)^2 \ge k^2 \iff |X - \mu| \ge k$。
+   - 右侧期望：根据方差的定义，$\mathbb{E}[(X - \mu)^2] = Var(X) = \sigma^2$。
+
+   直接代入即得：
+
+   $$\mathbb{P}[|X - \mu| \ge k] \le \frac{\sigma^2}{k^2} \quad \blacksquare$$
+
+#### **第三问证明：大数弱定律 (WLLN)**
+
+1. **构建样本均值变量**： 设样本均值为 $\bar{X}_n = \frac{X_1 + X_2 + \dots + X_n}{n}$。
+
+2. **计算其期望与方差**：
+
+   - 期望的线性性质：
+
+     $$\mathbb{E}[\bar{X}_n] = \mathbb{E}\left[\frac{1}{n}\sum_{i=1}^n X_i\right] = \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i] = \frac{1}{n} (n\mu) = \mu$$
+
+   - 独立变量方差的性质：
+
+     $$Var(\bar{X}_n) = Var\left(\frac{1}{n}\sum_{i=1}^n X_i\right) = \frac{1}{n^2} \sum_{i=1}^n Var(X_i) = \frac{1}{n^2} (n\sigma^2) = \frac{\sigma^2}{n}$$
+
+3. **对** $\bar{X}_n$ **应用切比雪夫不等式**： 对于任意给定的 $\epsilon > 0$，将 $\bar{X}_n$ 的期望 $\mu$ 和方差 $\frac{\sigma^2}{n}$ 代入：
+
+   $$\mathbb{P}[|\bar{X}_n - \mu| \ge \epsilon] \le \frac{Var(\bar{X}_n)}{\epsilon^2} = \frac{\sigma^2}{n\epsilon^2}$$
+
+4. **求极限**： 由于 $\sigma^2$ 和 $\epsilon^2$ 是常数，当 $n \to \infty$ 时：
+
+   $$\lim_{n\to\infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
+
+   因此：
+
+   $$\lim_{n \to \infty} \mathbb{P}\left[\left|\frac{X_1 + X_2 + \dots + X_n}{n} - \mu\right| \ge \epsilon\right] = 0 \quad \blacksquare$$
+
+## 习题二：大数定律的极限定理计算应用 (問題 47)
+
+### 2.1 日语原题 (Original Textbook Text)
+
+> **問題 47 (大数の法則の応用)**
+>
+> $X_1, X_2, \dots$ は互いに独立に、同一の分布に従う確率変数で、その平均は $\mathbb{E}[X_1] = \mu$、二乗の期待値は $\mathbb{E}[X_1^2] = \alpha$（ただし $\alpha > 0$）とする。 このとき、次の極限値を求めよ。
+>
+> $$\lim_{n \to \infty} \frac{X_1 + X_2 + \dots + X_n}{X_1^2 + X_2^2 + \dots + X_n^2}$$
+
+### 2.2 中文翻译
+
+> **问题 47 (大数定律的应用)**
+>
+> 设 $X_1, X_2, \dots$ 是独立同分布的随机变量序列，其共同均值为 $\mathbb{E}[X_1] = \mu$，共同二阶矩（平方的期望）为 $\mathbb{E}[X_1^2] = \alpha$（其中 $\alpha > 0$）。 求以下随机变量序列的极限值：
+>
+> $$\lim_{n \to \infty} \frac{X_1 + X_2 + \dots + X_n}{X_1^2 + X_2^2 + \dots + X_n^2}$$
+
+### 2.3 详细解答过程 (Step-by-Step Solution)
+
+#### **第一步：代数变换（同除以** $n$**）**
+
+由于极限式中的分子和分母都随着 $n \to \infty$ 而发散，我们无法直接求极限。数学上的经典技巧是：**将分子和分母同时除以** $n$，构造出“样本均值”的形式：
+
+$$Y_n = \frac{X_1 + X_2 + \dots + X_n}{X_1^2 + X_2^2 + \dots + X_n^2} = \frac{\frac{1}{n}\sum_{i=1}^n X_i}{\frac{1}{n}\sum_{i=1}^n X_i^2}$$
+
+#### **第二步：分子应用大数定律**
+
+分子部分 $U_n = \frac{1}{n}\sum_{i=1}^n X_i$ 是独立同分布变量 $X_i$ 的样本均值。 根据大数定律（LLN），当 $n \to \infty$ 时，它在概率上收敛于其期望值：
+
+$$U_n \xrightarrow{\mathbb{P}} \mathbb{E}[X_1] = \mu$$
+
+#### **第三步：分母应用大数定律**
+
+分母部分 $V_n = \frac{1}{n}\sum_{i=1}^n X_i^2$ 可以看作是一组新随机变量 $W_i = X_i^2$ 的样本均值。 因为 $X_1, X_2, \dots$ 独立同分布，所以其平方序列 $X_1^2, X_2^2, \dots$ 也必定是独立同分布的。 该新序列的期望值为：
+
+$$\mathbb{E}[W_1] = \mathbb{E}[X_1^2] = \alpha$$
+
+根据大数定律（LLN），分母在概率上收敛于：
+
+$$V_n \xrightarrow{\mathbb{P}} \mathbb{E}[X_1^2] = \alpha$$
+
+#### **第四步：利用连续映射定理（Continuous Mapping Theorem）合并极限**
+
+若 $U_n \xrightarrow{\mathbb{P}} \mu$ 且 $V_n \xrightarrow{\mathbb{P}} \alpha$（其中 $\alpha > 0$），则根据极限的代数性质，它们的商也收敛于极限值的商：
+
+$$\lim_{n \to \infty} Y_n = \frac{\lim_{n \to \infty} U_n}{\lim_{n \to \infty} V_n} = \frac{\mu}{\alpha}$$
+
+### **【本题答案】**
+
+$$\frac{\mu}{\alpha} \quad \left(\text{或 } \frac{\mu}{\sigma^2 + \mu^2}\right)$$
+
+## 习题三：硬币投掷中集中不等式界限的精确对比 (問題 33)
+
+### 3.1 日语原题 (Original Textbook Text)
+
+> **問題 33 (不等式の評価の比較)**
+>
+> 公正なコインを $n = 100$ 回投げるとき、表が出る回数を $X$ とする。
+>
+> (1) マルコフの不等式を用いて、$\mathbb{P}[X \ge 75]$ の上界を求めよ。
+>
+> (2) チェビシェフの不等式を用いて、$\mathbb{P}[|X - 50| \ge 25]$ の上界を求めよ。これを用いて $\mathbb{P}[X \ge 75]$ の上界について何が言えるか。
+>
+> (3) 二項分布の正規近似（ド・モアブル＝ラプラスの定理）を用いて、$\mathbb{P}[X \ge 75]$ の実際の近似確率を求めよ。（必要ならば標準正規分布表より $\Phi(5.0) \approx 0.0000003$ を用いよ）
+
+### 3.2 中文翻译
+
+> **问题 33 (不等式估计的比较)**
+>
+> 抛掷一枚均匀的硬币 $n = 100$ 次，用 $X$ 表示正面朝上的次数。
+>
+> (1) 使用马尔可夫不等式，求概率 $\mathbb{P}[X \ge 75]$ 的上界。
+>
+> (2) 使用切比雪夫不等式，求概率 $\mathbb{P}[|X - 50| \ge 25]$ 的上界。由此，能对 $\mathbb{P}[X \ge 75]$ 的上界做出怎样的推论？
+>
+> (3) 利用二项分布的德莫佛-拉普拉斯定理（即中心极限定理的二项分布特例，用正态分布逼近），求 $\mathbb{P}[X \ge 75]$ 的实际近似概率。对比三者结果。
+
+### 3.3 详细解答过程 (Step-by-Step Solution)
+
+#### **(1) 马尔可夫不等式求解**
+
+$X$ 表示 100 次投掷中正面朝上的次数，服从二项分布 $X \sim \text{Binomial}(100, 0.5)$。 由于硬币是均匀的，期望值为：
+
+$$\mathbb{E}[X] = n \cdot p = 100 \times 0.5 = 50$$
+
+因为 $X \ge 0$ 恒成立，我们直接对 $c = 75$ 使用马尔可夫不等式：
+
+$$\mathbb{P}[X \ge 75] \le \frac{\mathbb{E}[X]}{75} = \frac{50}{75} = \frac{2}{3} \approx 0.6667$$
+
+#### **(2) 切比雪夫不等式求解**
+
+首先计算 $X$ 的方差：
+
+$$Var(X) = n \cdot p \cdot (1-p) = 100 \times 0.5 \times 0.5 = 25$$
+
+均值为 $\mu = 50$。 使用切比雪夫不等式估计偏离均值至少 $25$ 的概率（即 $c = 25$）：
+
+$$\mathbb{P}[|X - 50| \ge 25] \le \frac{Var(X)}{25^2} = \frac{25}{625} = \frac{1}{25} = 0.04$$
+
+**【推论部分】**： 由于事件 $\{X \ge 75\}$ 意味着 $X - 50 \ge 25$。 这显然是双边偏差事件 $\{|X - 50| \ge 25\}$ 的子集。因此其概率一定小于或等于双边概率：
+
+$$\mathbb{P}[X \ge 75] \le \mathbb{P}[|X - 50| \ge 25] \le 0.04$$
+
+**结论**：切比雪夫不等式给出的上界为 $0.04$，比马尔可夫的 $0.6667$ 紧密了整整 **16.6 倍**。
+
+#### **(3) 正态近似（实际概率）求解**
+
+当 $n$ 较大时，二项分布 $X \sim \text{Binomial}(100, 0.5)$ 可由正态分布 $\mathcal{N}(\mu, \sigma^2)$ 近似：
+
+- $\mu = 50$
+- $\sigma = \sqrt{Var(X)} = \sqrt{25} = 5$
+
+为了让离散变量的近似更精确，我们加入**连续性修正（Continuity Correction）**（即把 $X \ge 75$ 修正为 $X \ge 74.5$）：
+
+$$\mathbb{P}[X \ge 75] \approx \mathbb{P}[X_{continuous} \ge 74.5]$$
+
+将其标准化（Standardization）：
+
+$$Z = \frac{X_{continuous} - \mu}{\sigma} = \frac{74.5 - 50}{5} = \frac{24.5}{5} = 4.9$$
+
+因此：
+
+$$\mathbb{P}[X \ge 75] \approx \mathbb{P}[Z \ge 4.9] = 1 - \Phi(4.9)$$
+
+由于 $\Phi(5.0) \approx 1 - 3 \times 10^{-7}$，我们可以得知该概率数量级大约在：
+
+$$\mathbb{P}[X \ge 75] \approx 4.8 \times 10^{-7} = 0.00000048$$
+
+### 3.4 极重要：三者对比分析表 (Methodology Comparison)
+
+| 估计方法           | 概率上界 / 实际值    | 核心使用参数                           | 特点分析                                                     |
+| ------------------ | -------------------- | -------------------------------------- | ------------------------------------------------------------ |
+| **马尔可夫不等式** | $\le 0.6667$         | 仅需期望值 $\mathbb{E}[X]$             | 极易计算，但非常粗糙，无法随 $n$ 增大而收紧。                |
+| **切比雪夫不等式** | $\le 0.0400$         | 期望值 $\mathbb{E}[X]$ + 方差 $Var(X)$ | 引入了二阶矩，能体现出大样本下的数据集中效应。               |
+| **正态分布近似**   | $\approx 0.00000048$ | 完整分布形态信息                       | 最贴近真实概率。说明在真实世界中，极端偏差发生的概率是以**指数级**衰减的（切比雪夫的二次方衰减依然是保守估计）。 |
+
+通过这道题，你可以直观地明白，虽然切比雪夫不等式比马尔可夫不等式优秀得多，但在实际应用中，它依然是一个**非常保守的上界约束**。
