@@ -8,12 +8,23 @@ tags:
   - 信号与系统
   - 修考
 category: 修考
-draft: false	
+draft: false
 ---
 
 【傅里叶级数】 https://www.bilibili.com/video/BV1PE411X7b8/?p=4&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
 【傅里叶级数的应用】 https://www.bilibili.com/video/BV1PE411X7b8/?p=5&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
+
+> # 本章重点
+>
+> ## 傅里叶级数怎么求
+>
+> - 方法1：转化为 **exponential form**, $a_k$ 是 复振幅，只要看前面部分的内容就够了
+>   - 注意，注意要找到基频，也就是$w$ ,不然求出来的会不对。
+> - 方法2：使用傅里叶级数分析的方法，通过**正交化**的形式求出
+>   备注：$a_0$作为直流分量需要单独求出
+> ## 重要结论
+> - 实数信号具有共轭对称性
 
 # 信号与系统：傅里叶级数与分析（Fourier Series & Analysis）
 
@@ -53,9 +64,8 @@ $a_k$ 实质上就是 $k$ **倍频对应的傅里叶系数**（第 $k$ 次谐波
 
 傅里叶变换的世界存在两个对称的互逆过程：**合成（Synthesis）** 与 **分析（Analysis）**。
 
-![image-20260526103750189](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH3.3-%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0.assets/image-20260526103750189.png)
-
-
+> 也可以理解为是两个不同基向量空间的线性变换
+> ![image-20260526103750189](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH3.3-%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0.assets/image-20260526103750189.png)
 
 ### 1. 傅里叶合成（Fourier Synthesis）
 
@@ -79,6 +89,8 @@ $a_k$ 实质上就是 $k$ **倍频对应的傅里叶系数**（第 $k$ 次谐波
 
   $$a_k = \frac{1}{T_0} \int_{T_0} x(t) e^{-j k \omega_0 t} dt$$
 
+  > 这里的证明本质上是通过**正交性**实现的
+
 - **限制条件**：傅里叶级数分析只能应用在周期信号（Periodic Signals）上。对于非周期信号，我们需要使用傅里叶变换（Fourier Transform）。
 
 ## 三、 深入理解 $a_k$ 与 $e^{j k \omega_0 t}$ 的实际物理意义
@@ -92,6 +104,8 @@ $a_k$ 实质上就是 $k$ **倍频对应的傅里叶系数**（第 $k$ 次谐波
 根据欧拉公式，$e^{j \theta} = \cos\theta + j\sin\theta$。因此：
 
 $$e^{j k \omega_0 t} = \cos(k \omega_0 t) + j\sin(k \omega_0 t)$$
+
+> 一个常见的错误理解，就是 认为 $a_k$ 只是一个简单的幅值
 
 - 这在复平面上代表一个**模长为 1 的旋转向量（Phasor）**。
 - 它的旋转速度（频率）是 $k \omega_0$（即基频的 $k$ 倍），正负号代表旋转方向（$k>0$ 逆时针旋转，$k<0$ 顺时针旋转）。
@@ -233,7 +247,7 @@ $$\frac{1}{T_0} \int_{T_0} e^{j n \omega_0 t} \cdot e^{-j k \omega_0 t} dt = \fr
 
 $$x(t) = 3e^{j 22\pi t} + 4e^{j 44\pi t}$$
 
-*(注：由于* $\omega = 2\pi f$*，所以* $22\pi \Rightarrow 11\text{ Hz}$*，* $44\pi \Rightarrow 22\text{ Hz}$*，这里基频* $f_0 = 11\text{ Hz}$*，*$T_0 = 1/11\text{ s}$*)*
+_(注：由于_ $\omega = 2\pi f$_，所以_ $22\pi \Rightarrow 11\text{ Hz}$_，_ $44\pi \Rightarrow 22\text{ Hz}$_，这里基频_ $f_0 = 11\text{ Hz}$_，_$T_0 = 1/11\text{ s}$_)_
 
 现在我们通过乘以 $e^{-j 22\pi t}$（即 $11\text{ Hz}$ 的探测波）并积分：
 
@@ -295,7 +309,7 @@ $$a_0 = \frac{1}{T_0} \int_{0}^{T_0} x(t) dt = \frac{1}{0.04} \int_{0}^{0.02} 1 
 
 > 我确实一直不知道 DC 怎么求，我都是求的平均值
 
-*(直流分量为* $0.5$*，代表这个方波在垂直方向上的平均高度)*
+_(直流分量为_ $0.5$_，代表这个方波在垂直方向上的平均高度)_
 
 #### 2. 求解谐波分量 $a_k$（$k \neq 0$）
 
@@ -319,7 +333,7 @@ $$a_k = \frac{j}{2\pi k} \left[ (-1)^k - 1 \right] = \frac{1 - (-1)^k}{j 2\pi k}
 
   $$(-1)^k = 1 \Rightarrow a_k = \frac{1 - 1}{j 2\pi k} = 0$$
 
-  *(偶数倍频处的谐波分量全部为 0)*
+  _(偶数倍频处的谐波分量全部为 0)_
 
 - **当** $k$ **为奇数时**（$k = \pm 1, \pm 3, \dots$）：
 
