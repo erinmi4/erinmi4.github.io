@@ -68,8 +68,6 @@ $$P[a \le X \le b] = \int_{a}^{b} f(x) dx$$
 
 ### 2. 累积分布函数 (CDF)
 
-![Cumulative Distribution Functions and ...](data:image/png;base64,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)
-
 手写笔记中指出，累积分布函数（Cumulative Distribution Function, CDF）是一个**变上限积分**。 定义 $F(x)$ 为随机变量 $X$ 小于或等于 $x$ 的概率：
 
 $$F(x) = P[X \le x] = \int_{-\infty}^{x} f(z) dz$$
@@ -129,7 +127,7 @@ $$P[a \le X \le b, c \le Y \le d] = \int_{c}^{d} \int_{a}^{b} f_{X,Y}(x, y) dx d
 
 #### 4.1 边缘密度 (Marginal Density)
 
-> ⚠️ *纠正手写笔记：手写笔记中边缘密度的积分限写成了* $a$ *到* $b$*，这在一般情况下是不对的。应当积掉不关心的变量，积分限为* $-\infty$ *到* $+\infty$*。*
+> ⚠️ _纠正手写笔记：手写笔记中边缘密度的积分限写成了_ $a$ _到_ $b$_，这在一般情况下是不对的。应当积掉不关心的变量，积分限为_ $-\infty$ _到_ $+\infty$_。_
 
 - $X$ **的边缘密度**（积掉 $Y$）：
 
@@ -284,7 +282,7 @@ $$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
 >
 > 1. **核心形状**：钟形曲线的核心是负指数高斯核 $e^{-z^2/2}$，代表偏离中心的指数衰减。
 > 2. **标准化偏离度**：将偏离均值的距离标准化为标准差的倍数：$z = \frac{x-\mu}{\sigma}$。代入高斯核得到：$e^{-\frac{(x-\mu)^2}{2\sigma^2}}$。
-> 3. **归一化系数**：为了保证整个实数轴上的积分为 1，前面必须乘以系数 $\frac{1}{\sqrt{2\pi}\sigma}$。 *记作：**一除根号二派西格玛，乘以 e 的负（偏差除以西格玛）平方除以二。***
+> 3. **归一化系数**：为了保证整个实数轴上的积分为 1，前面必须乘以系数 $\frac{1}{\sqrt{2\pi}\sigma}$。 \*记作：**一除根号二派西格玛，乘以 e 的负（偏差除以西格玛）平方除以二。\***
 
 ![image-20260527152854833](./%E6%A6%82%E7%8E%87%E8%AE%BA-CH7-%E8%BF%9E%E7%BB%AD%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83.assets/image-20260527152854833.png)
 
@@ -344,9 +342,7 @@ $$Z_n = \frac{S_n - n\mu}{\sigma \sqrt{n}} \xrightarrow{d} N(0, 1)$$
 > **解答**：手写笔记最后写道：“我不了解的是：为什么 $P(Z_n \le c) \approx \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{c} e^{-x^2/2} dx$”。
 >
 > - **极其简单的原因**：因为中心极限定理指出，当 $n$ 很大时，$Z_n$ **本质上就是一个标准正态分布随机变量**。
->
 > - **定义对应**：根据我们在第四章中介绍的标准正态分布 CDF 的定义，任何标准正态分布变量小于等于 $c$ 的概率，就是标准正态分布的 PDF 在 $-\infty$ 到 $c$ 上的积分。
->
 > - **结论**：这个积分不是新推导出来的公式，它**就是标准正态分布的累积概率** $\Phi(c)$ **的微积分表达式**！由于 $Z_n \approx N(0, 1)$，所以：
 >
 >   $$P[Z_n \le c] \approx \Phi(c) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{c} e^{-x^2/2} dx$$
@@ -370,7 +366,6 @@ $$Z_n = \frac{S_n - n\mu}{\sigma \sqrt{n}} \xrightarrow{d} N(0, 1)$$
 **解答**：
 
 1. **提取元数据**：$\mu = 10, \sigma = 2, n = 100$。
-
    - $E[S_{100}] = n\mu = 100 \times 10 = 1000$ 吨。
    - 标准差为 $\sigma\sqrt{n} = 2 \times \sqrt{100} = 20$。
 
@@ -429,11 +424,7 @@ $$\text{投针相交概率 } P[E] = \frac{2}{\pi}$$
 
 利用大数定律，我们通过大量重复投针试验，统计相交的频率，便可以用 $\pi \approx \frac{2}{\text{相交频率}}$ 来估算圆周率 $\pi$ 的值！这就是著名的蒙特卡洛模拟的鼻祖。
 
-
-
 ---
-
-
 
 # 连续与多维概率分布巩固练习指南 (含全真题翻译与详析)
 
@@ -444,7 +435,7 @@ $$\text{投针相交概率 } P[E] = \frac{2}{\pi}$$
 ### 🎯 对应笔记知识点：
 
 - 连续均匀概率空间（区间长度占比）
-- 概率密度函数（PDF）的非负性与归一化（解答：*PDF为什么能大于1*）
+- 概率密度函数（PDF）的非负性与归一化（解答：_PDF为什么能大于1_）
 - 期望 $E[X]$、方差 $\text{Var}(X)$ 与累积分布函数（CDF）的微积分转换关系
 
 ### 1. 【问题 32】连续概率变量、概率密度函数与分布函数Ⅰ (教材第 70-71 页)
@@ -496,7 +487,7 @@ $$\text{投针相交概率 } P[E] = \frac{2}{\pi}$$
 
   $$c \ln\left(\frac{1}{2}\right) = 1 \implies -c \ln 2 = 1 \implies c = -\frac{1}{\ln 2}$$
 
-  *(考点剖析：因为自变量* $x$ *在区间* $[-8, -4]$ *上均为负数，为了使概率密度* $f_X(x) = \frac{c}{x} \ge 0$ *恒成立，常数* $c$ *必须为负数。求出的* $c = -1/\ln 2 < 0$ *完美符合非负性要求！)*
+  _(考点剖析：因为自变量_ $x$ _在区间_ $[-8, -4]$ _上均为负数，为了使概率密度_ $f_X(x) = \frac{c}{x} \ge 0$ _恒成立，常数_ $c$ _必须为负数。求出的_ $c = -1/\ln 2 < 0$ _完美符合非负性要求！)_
 
 - **(b) 计算期望** $E(X)$：
 
@@ -596,7 +587,6 @@ $$\text{投针相交概率 } P[E] = \frac{2}{\pi}$$
   $$E[X^k] = \int_{0}^{\infty} \left(\frac{u}{\lambda}\right)^k \lambda e^{-u} \frac{1}{\lambda} du = \frac{1}{\lambda^k} \int_{0}^{\infty} u^k e^{-u} du = \frac{\Gamma(k+1)}{\lambda^k} = \frac{k!}{\lambda^k}$$
 
   利用该结论，可以瞬间求出：
-
   - 当 $k=1$ 时：$E(X) = \frac{1!}{\lambda^1} = \frac{1}{\lambda}$
   - 当 $k=2$ 时：$E(X^2) = \frac{2!}{\lambda^2} = \frac{2}{\lambda^2}$
   - 方差：$V(X) = E(X^2) - (E(X))^2 = \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2}$
@@ -784,7 +774,6 @@ $$M_X(\theta) = e^{\mu\theta + \frac{1}{2}\sigma^2\theta^2}$$
   $$P(X+Y < 1) = \int_{0}^{1/2} \int_{y}^{1-y} 2 \, dx \, dy = \int_{0}^{1/2} 2(1-2y) dy = 2 \left[ y - y^2 \right]_{0}^{1/2} = 2 \left(\frac{1}{2} - \frac{1}{4}\right) = \frac{1}{2}$$
 
 - **(c) 求边缘密度函数** $f_X(x)$ **和** $f_Y(y)$：
-
   - $X$ **的边缘密度**（积掉 $Y$， $y$ 取值范围为 $[0, x]$）：
 
     $$f_X(x) = \int_{0}^{x} 2 \, dy = 2x \quad (0 \le x \le 1)$$
@@ -842,7 +831,7 @@ $$f_{(X,Y)}(x, y) = 51 e^{-2x} e^{-3y} \quad (0 < 5x < y < \infty)$$
 
   $$f_X(x) = \int_{5x}^{\infty} 51 e^{-2x} e^{-3y} \, dy = 51 e^{-2x} \left[ -\frac{1}{3} e^{-3y} \right]_{5x}^{\infty} = 17 e^{-17x} \quad (x \ge 0)$$
 
-  *(可以看出* $X$ *服从参数为 17 的指数分布* $\text{Exp}(17)$*！)*
+  _(可以看出_ $X$ _服从参数为 17 的指数分布_ $\text{Exp}(17)$_！)_
 
 - **3. 求条件概率密度** $f_{Y \mid X}(y \mid x)$： 根据定义：
 
@@ -857,14 +846,13 @@ $$f_{(X,Y)}(x, y) = 51 e^{-2x} e^{-3y} \quad (0 < 5x < y < \infty)$$
   $$E[Y \mid X = x] = \int_{0}^{\infty} (u + 5x) \cdot 3 e^{-3u} \, du = \int_{0}^{\infty} u \cdot 3 e^{-3u} \, du + 5x \int_{0}^{\infty} 3 e^{-3u} \, du$$
 
   注意观察这两项积分：
-
   - 第一项 $\int_{0}^{\infty} u \cdot 3 e^{-3u} \, du$ 正是指数分布 $\text{Exp}(3)$ 的期望，其值为 $\frac{1}{3}$；
 
   - 第二项 $\int_{0}^{\infty} 3 e^{-3u} \, du$ 是指数分布 $\text{Exp}(3)$ 的密度函数在定义域上的全积分，其值必为 1。 因此，无需繁琐的分部积分，即可写出：
 
     $$E[Y \mid X = x] = \frac{1}{3} + 5x \cdot 1 = 5x + \frac{1}{3}$$
 
-    *(考点剖析：最终条件期望* $E[Y|X] = 5X + 1/3$*。它说明条件期望在求出具体数值后，仍然是一个包含自变量* $X$ *的随机变量，这也彻底解决了你手写笔记中关于这一概念的疑惑！)*
+    _(考点剖析：最终条件期望_ $E[Y|X] = 5X + 1/3$_。它说明条件期望在求出具体数值后，仍然是一个包含自变量_ $X$ _的随机变量，这也彻底解决了你手写笔记中关于这一概念的疑惑！)_
 
 ## 阶段四：极限与大数定理（CLT 与连续近似）
 
@@ -883,7 +871,7 @@ $$f_{(X,Y)}(x, y) = 51 e^{-2x} e^{-3y} \quad (0 < 5x < y < \infty)$$
 
    证明：当 $n \to \infty$ 时， $Z_n$ 的矩母函数 $M_{Z_n}(\theta)$ 收敛到标准正态分布的矩母函数 $e^{\theta^2/2}$。
 
-2. 某工厂生产的产品的非合格率（不良率）为 0.1。现随机抽取 400 个产品，求其中不良品数量大于或等于 50 个的概率。请使用中心极限定理，分别在**半整数补正（连续修正）\**和\**不进行修正**的两种情况下求出概率估计。 *(已知：* $\Phi(1.67) \approx 0.9525, \,\, \Phi(1.58) \approx 0.9429$*)*
+2. 某工厂生产的产品的非合格率（不良率）为 0.1。现随机抽取 400 个产品，求其中不良品数量大于或等于 50 个的概率。请使用中心极限定理，分别在**半整数补正（连续修正）\*\*和\*\*不进行修正**的两种情况下求出概率估计。 _(已知：_ $\Phi(1.67) \approx 0.9525, \,\, \Phi(1.58) \approx 0.9429$_)_
 
 #### ✍️ 【详细解答过程】
 
@@ -913,14 +901,13 @@ $$M_{Z_n}(\theta) = \left[ 1 + \frac{\left( \frac{\theta}{\sqrt{n}} \right)^2}{2
 
 $$\lim_{n \to \infty} M_{Z_n}(\theta) = e^{\frac{\theta^2}{2}} \quad \text{(得证)}$$
 
-*(标准正态分布的矩母函数唯一确定了标准正态分布，因此中心极限定理得证。)*
+_(标准正态分布的矩母函数唯一确定了标准正态分布，因此中心极限定理得证。)_
 
 ##### **第二小题解答：**
 
 每个产品是否为不良品服从伯努利试验，设不良品总数为 $S_{400} \sim B(400, 0.1)$（二项分布）。
 
 - **提取元数据**：
-
   - 单项期望 $\mu = p = 0.1$，单项方差 $\sigma^2 = p(1-p) = 0.09$。
   - 样本量 $n = 400$。
   - 总期望 $E[S_{400}] = n\mu = 400 \times 0.1 = 40$。
@@ -946,4 +933,4 @@ $$\lim_{n \to \infty} M_{Z_n}(\theta) = e^{\frac{\theta^2}{2}} \quad \text{(得�
 
   $$P(Z \ge 1.58) = 1 - \Phi(1.58) \approx 1 - 0.9429 = 0.0571 \quad (5.71\%)$$
 
-  *(可以看出：进行修正后，由于将 50 到 49.5 的连续过渡区域算入，概率估计提升了大约* $1\%$*，在实际统计工程中半整数修正是不可或缺的。)*
+  _(可以看出：进行修正后，由于将 50 到 49.5 的连续过渡区域算入，概率估计提升了大约_ $1\%$_，在实际统计工程中半整数修正是不可或缺的。)_
