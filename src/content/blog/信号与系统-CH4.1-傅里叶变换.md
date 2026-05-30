@@ -13,7 +13,7 @@ draft: false
 
 【9-1 傅利葉轉換】 https://www.bilibili.com/video/BV1PE411X7b8/?p=20&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
-https://gemini.google.com/app/3db620ccf729f56e	
+https://gemini.google.com/app/3db620ccf729f56e
 
 ![image-20260527160324923](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4.1-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.assets/image-20260527160324923.png)
 
@@ -93,7 +93,6 @@ $$T_0 a_k = \int_{-T_0/2}^{T_0/2} x_{T_0}(t) e^{-j k \omega_0 t} dt$$
    $$x_{T_0}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{+\infty} (T_0 a_k) e^{j k \omega_0 t} \cdot \omega_0$$
 
    当 $T_0 \to \infty$ 时：
-
    - $x_{T_0}(t) \to x(t)$
    - $T_0 a_k \to X(j\omega)$
    - $k\omega_0 \to \omega$
@@ -108,8 +107,6 @@ $$X(j\omega) = \int_{-\infty}^{+\infty} x(t) e^{-j\omega t} dt$$
 ### 逆傅里叶变换 (Inverse Fourier Transform, IFT)
 
 $$x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j\omega) e^{j\omega t} d\omega$$
-
-
 
 ## 三、 经典例题与推导解析
 
@@ -262,13 +259,12 @@ $$\cos(\omega_0 t) \overset{\mathcal{F}}{\longleftrightarrow} \pi \left[ \delta(
 
 ## 四、 补充总结：常用傅里叶变换对速查表
 
-| 信号名称         | 时域信号 $x(t)$                                              | 频域频谱密度 $X(j\omega)$                                    |
-| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **单位冲击信号** | $\delta(t)$                                                  | $1$                                                          |
-| **时移冲击信号** | $\delta(t - t_0)$                                            | $e^{-j\omega t_0}$                                           |
-| **直流恒定信号** | $1$                                                          | $2\pi \delta(\omega)$                                        |
-| **复指数信号**   | $e^{j\omega_0 t}$                                            | $2\pi \delta(\omega - \omega_0)$                             |
-| **余弦脉冲信号** | $\cos(\omega_0 t)$                                           | $\pi [\delta(\omega - \omega_0) + \delta(\omega + \omega_0)]$ |
-| **时域矩形脉冲** | $$g_T(t) = \begin{cases} 1, & |t|< T/2 \\ 0, & |t|> T/2 \end{cases} \quad \xleftrightarrow{\mathcal{F}} \quad T \cdot \text{sa}\left(\frac{\omega T}{2}\right)$$ | $T \cdot \text{sa}\left(\frac{\omega T}{2}\right)$           |
-| **频域矩形脉冲** | $\frac{W_b}{\pi} \text{sa}(W_b t)$                           | $$\frac{W_b}{\pi} \text{sa}(W_b t) \quad \xleftrightarrow{\mathcal{F}} \quad G_{W_b}(\omega) = \begin{cases} 1, & |\omega|< W_b \\ 0, & |\omega|> W_b \end{cases}$$ |
-
+| 信号名称         | 时域信号 $x(t)$                    | 频域频谱密度 $X(j\omega)$                                                                                         |
+| ---------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------- | ------------ | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **单位冲击信号** | $\delta(t)$                        | $1$                                                                                                               |
+| **时移冲击信号** | $\delta(t - t_0)$                  | $e^{-j\omega t_0}$                                                                                                |
+| **直流恒定信号** | $1$                                | $2\pi \delta(\omega)$                                                                                             |
+| **复指数信号**   | $e^{j\omega_0 t}$                  | $2\pi \delta(\omega - \omega_0)$                                                                                  |
+| **余弦脉冲信号** | $\cos(\omega_0 t)$                 | $\pi [\delta(\omega - \omega_0) + \delta(\omega + \omega_0)]$                                                     |
+| **时域矩形脉冲** | $$g_T(t) = \begin{cases} 1, &      | t                                                                                                                 | < T/2 \\ 0, & | t            | > T/2 \end{cases} \quad \xleftrightarrow{\mathcal{F}} \quad T \cdot \text{sa}\left(\frac{\omega T}{2}\right)$$ | $T \cdot \text{sa}\left(\frac{\omega T}{2}\right)$ |
+| **频域矩形脉冲** | $\frac{W_b}{\pi} \text{sa}(W_b t)$ | $$\frac{W*b}{\pi} \text{sa}(W_b t) \quad \xleftrightarrow{\mathcal{F}} \quad G*{W_b}(\omega) = \begin{cases} 1, & | \omega        | < W_b \ 0, & | \omega                                                                                                         | > W_b \end{cases}$$                                |

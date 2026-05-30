@@ -69,6 +69,94 @@ $$\boxed{X(j\omega) = \sum_{k=-\infty}^{+\infty} 2\pi a_k \delta(\omega - k \ome
 
 **【物理意义】** 时域上的周期冲激串在频域上**依然是冲激串**。时域里的脉冲间隔为 $T_s$，而频域里的频谱脉冲间隔为 $\omega_s = \frac{2\pi}{T_s}$。二者的疏密程度呈反比关系。
 
+> 我们可以通过一个最经典的周期信号——**正弦信号** $f(t) = \sin(\omega_0 t)$，来完整走一遍这个从“傅里叶级数（FS）”跨越到“傅里叶变换（FT）”的过程。
+>
+> 通过这个例子，你不仅能看到冲激函数 $\delta(\omega)$ 是如何把周期信号拉进傅里叶变换大门的，还能直观理解为什么**时域的周期信号，在频域一定会变成离散的谱线**。
+>
+> ## 💡 核心思路三步走
+>
+> 1. **写出原信号**：确定我们要处理的周期信号。
+> 2. **傅里叶级数展开**：利用欧拉公式，直接将其拆解为复指数单频分量。
+> 3. **引入 $\delta(\omega)$ 求变换**：利用已知虚指数信号的傅里叶变换性质，逐项求变换并相加。
+>
+> ## 🛠️ 实战演练：以 $f(t) = \sin(\omega_0 t)$ 为例
+>
+> 假设我们要对基频为 $\omega_0$ 的正弦波 $f(t) = \sin(\omega_0 t)$ 进行处理。它的周期为 $T = \frac{2\pi}{\omega_0}$。
+>
+> ### 第一步：展开为复指数单频分量（级数展开）
+>
+> 对于正弦和余弦这种简单的三角函数，我们不需要去硬套复杂的积分公式来求傅里叶系数 $C_n$，直接祭出**欧拉公式**即可：
+>
+> $$\sin(\omega_0 t) = \frac{e^{j\omega_0 t} - e^{-j\omega_0 t}}{2j}$$
+>
+> 为了更符合傅里叶级数 $\sum C_n e^{jn\omega_0 t}$ 的标准形式，我们把它稍微变形一下：
+>
+> $$f(t) = \frac{1}{2j}e^{j\omega_0 t} - \frac{1}{2j}e^{-j\omega_0 t}$$
+>
+> 进一步化简（因为 $\frac{1}{j} = -j$）：
+>
+> $$f(t) = \underbrace{\left(-\frac{j}{2}\right)}_{C_1} e^{j\omega_0 t} + \underbrace{\left(\frac{j}{2}\right)}_{C_{-1}} e^{-j\omega_0 t}$$
+>
+> **此时，我们已经完成了第一步：**
+>
+> 信号被成功拆成了两个**复指数单频分量**：
+>
+> - 分量 1：频率为 $+\omega_0$，振幅（系数）为 $-\frac{j}{2}$
+> - 分量 2：频率为 $-\omega_0$，振幅（系数）为 $\frac{j}{2}$
+>
+> ### 第二步：引入狄拉克冲激函数 $\delta(\omega)$
+>
+> 在普通函数意义上，虚指数信号 $e^{j\omega_0 t}$ 是不满足绝对可积条件的，所以常规的傅里叶变换积分会发散。但引入**广义函数——狄拉克冲激函数**后，我们拥有了一个极其重要的基础变换对：
+>
+> > **核心工具：**
+> >
+> > $$\mathcal{F}[e^{j\omega_0 t}] = 2\pi \delta(\omega - \omega_0)$$
+>
+> 这个公式的物理意义很直观：一个永不衰减、频率为 $\omega_0$ 的纯复指数信号，在频域上的能量完全集中在 $\omega = \omega_0$ 这一幅值无限大、宽度无限窄的“点”上。
+>
+> 同理，对于负频率分量：
+>
+> $$\mathcal{F}[e^{-j\omega_0 t}] = 2\pi \delta(\omega + \omega_0)$$
+>
+> ### 第三步：逐项求傅里叶变换
+>
+> 根据傅里叶变换的**线性性质**（即各项相加的变换等于各自变换后相加），我们直接对第一步得到的两个分量求变换：
+>
+> $$F(\omega) = \mathcal{F}\left[ C_1 e^{j\omega_0 t} + C_{-1} e^{-j\omega_0 t} \right]$$
+>
+> $$F(\omega) = \left(-\frac{j}{2}\right) \cdot \mathcal{F}[e^{j\omega_0 t}] + \left(\frac{j}{2}\right) \cdot \mathcal{F}[e^{-j\omega_0 t}]$$
+>
+> 将第二步的冲激函数公式代入：
+>
+> $$F(\omega) = \left(-\frac{j}{2}\right) \cdot 2\pi \delta(\omega - \omega_0) + \left(\frac{j}{2}\right) \cdot 2\pi \delta(\omega + \omega_0)$$
+>
+> 约掉系数中的 $2$：
+>
+> $$F(\omega) = -j\pi \delta(\omega - \omega_0) + j\pi \delta(\omega + \omega_0)$$
+>
+> 调整一下顺序，最终得到 $\sin(\omega_0 t)$ 的傅里叶变换为：
+>
+> $$F(\omega) = j\pi \delta(\omega + \omega_0) - j\pi \delta(\omega - \omega_0)$$
+>
+> ## 📊 结果的物理意义是什么？
+>
+> 如果我们把最终得到的 $F(\omega)$ 画在频域坐标轴上，你会看到：
+>
+> - 在 $\omega = -\omega_0$ 处，有一个强度为 $j\pi$ 的冲激谱线。
+> - 在 $\omega = +\omega_0$ 处，有一个强度为 $-j\pi$ 的冲激谱线。
+>
+> 这就是完美的**离散线状谱**。
+>
+> ### 💡 举一反三的统一公式
+>
+> 通过这个例题的推导逻辑，我们可以推广到**任意周期信号**：
+>
+> 如果一个周期信号的傅里叶级数展开为 $f(t) = \sum_{-\infty}^{+\infty} C_n e^{jn\omega_0 t}$，那么它的傅里叶变换只需要闭着眼睛套用冲激函数：
+>
+> $$F(\omega) = 2\pi \sum_{n=-\infty}^{+\infty} C_n \delta(\omega - n\omega_0)$$
+>
+> 通过这种方法，傅里叶级数（处理周期信号）**和**傅里叶变换（处理非周期信号）在数学框架上被完美地统一在了一起。
+
 ![image-20260527170512007](./%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F-CH4.2-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E6%80%A7%E8%B4%A8.assets/image-20260527170512007.png)
 
 ## 二、 时移性质 (Delay Property)
@@ -285,7 +373,6 @@ $$\boxed{x(t) * h(t) \longleftrightarrow X(j\omega) \cdot H(j\omega)}$$
   $$Y(j\omega) = X_1(j\omega) \cdot H(j\omega)$$
 
 - **Step 2：求取输入与频响的矩形谱** 根据标准变换对 $\frac{\sin(Wt)}{\pi t} \longleftrightarrow \text{rect}\left(\frac{\omega}{2W}\right)$：
-
   - 对于 $x_1(t)$，基带半带宽为 $W_1 = 100\pi$：
 
     $$X_1(j\omega) = \begin{cases} 1, & |\omega| < 100\pi \\ 0, & |\omega| > 100\pi \end{cases}$$
@@ -295,7 +382,6 @@ $$\boxed{x(t) * h(t) \longleftrightarrow X(j\omega) \cdot H(j\omega)}$$
     $$H(j\omega) = \begin{cases} 1, & |\omega| < 200\pi \\ 0, & |\omega| > 200\pi \end{cases}$$
 
 - **Step 3：频域矩形谱相乘** 在频域中，这是一个“窄矩形”乘以“宽矩形”的过程：
-
   - $X_1(j\omega)$ 的频带在 $[-100\pi, 100\pi]$ 之间，高度为 $1$。
   - $H(j\omega)$ 的频带在 $[-200\pi, 200\pi]$ 之间，高度为 $1$。
 
