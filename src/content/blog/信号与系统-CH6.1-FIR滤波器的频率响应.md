@@ -27,7 +27,7 @@ draft: false
 
 > 这说明复指数信号是信号与系统中的 基本信号
 
-- LTI 系统对输入正弦信号的影响仅体现在**振幅（Amplitude）和相位（Phase）**的改变上，而 **角频率$\hat{\omega}$ **绝不会发生改变。
+- LTI 系统对输入正弦信号的影响仅体现在**振幅（Amplitude）和相位（Phase）**的改变上，而 **角频率$ \hat{\omega}$ **绝不会发生改变。
 
 $$x[n] \xrightarrow{\quad \text{LTI Filter} \quad} y[n]$$
 
@@ -116,9 +116,7 @@ $$H(e^{j \hat{\omega}}) = (2 + 2\cos\hat{\omega}) e^{-j\hat{\omega}}$$
 
 **【题目】** 已知滤波器频率响应为 $H(e^{j\hat{\omega}}) = (2+2\cos\hat{\omega})e^{-j\hat{\omega}}$。若输入信号为复指数正弦信号：
 
-$$x[n] = 2e^{j \pi/4} e^{j \frac{\pi}{3} n}$$
-
-求系统输出 $y[n]$。
+$$x[n] = 2e^{j \pi/4} e^{j \frac{\pi}{3} n}$$ 求系统输出 $y[n]$。
 
 **【解】** 首先识别输入信号的数字角频率为 $\hat{\omega}_0 = \frac{\pi}{3}$。 计算该频率处的频率响应值：
 
