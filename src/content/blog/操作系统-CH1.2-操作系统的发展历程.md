@@ -12,10 +12,4 @@ category: 修考
 draft: false
 ---
 
-## 这篇文章想解决什么问题
-
-先用 2 到 4 句话写清楚这篇文章的核心问题、结论和适用范围。
-
-## 正文
-
-在这里开始写正文。
+- https://tingwu.aliyun.com/doc/transcripts/372e9o2573m4qxb6?sl=1# 《1-2 操作系统的发展历程 720P_enc》
