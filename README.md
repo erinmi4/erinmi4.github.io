@@ -5,14 +5,21 @@
 在仓库根目录运行：
 
 ```bash
-npm run new:post -- "过去问-计算机组成原理-2021"
+npm run new:post -- "修考/计算机组成原理/过去问-计算机组成原理-2021"
+```
+
+也可以把目录单独写出来：
+
+```bash
+npm run new:post -- --dir "修考/线性代数" "线性代数-CH6-特征值"
 ```
 
 说明：
 
 - 不要写成 `npm new post--修考第6天`
 - 文章标题必须放在 `--` 后面，建议始终用引号包住
-- 命令会创建 `src/content/blog/<文章标题>.md`
+- 命令会创建 `src/content/blog/<目录>/<文章标题>.md`
+- 命令也会创建同名的 `<文章标题>.assets/`，图片可放在这里并用相对路径引用
 - 创建后需要补全 `description`、`tags`、`category`，再运行 `npm run check` 或 `npm run build`
 
 这是一个基于 Astro 重建的个人博客源码仓库。
@@ -35,7 +42,7 @@ npm run new:post -- "过去问-计算机组成原理-2021"
 src/
   components/        公共组件
   content/
-    blog/            博客文章 Markdown
+    blog/            博客文章 Markdown，可按主题建立子文件夹
     pages/           关于、项目等单页 Markdown
   layouts/           页面布局
   lib/               工具函数
@@ -89,13 +96,13 @@ npm run preview
 
 每次写文章，推荐按下面的顺序来：
 
-1. 在 `src/content/blog/` 新建一篇 Markdown 文件
+1. 用 `npm run new:post -- "目录/文章标题"` 新建 Markdown 和同名 `.assets/` 文件夹
 2. 填写 frontmatter
 3. 写正文
-4. 如果有图片，把图片放进 `public/` 下合适的目录
+4. 如果是文章内图片，优先放进同名 `.assets/` 文件夹并用相对路径引用
 5. 本地运行 `npm run dev` 预览
-6. 确认无误后运行 `npm run check`
-7. 提交并推送到 GitHub
+6. 确认无误后运行 `npm run check` 或 `npm run build`
+7. 运行 `npm run publish -- "提交说明"` 发布
 
 常用命令：
 
@@ -103,24 +110,19 @@ npm run preview
 npm run dev
 npm run check
 npm run build
-git add .
-git commit -m "Add new post"
-git push origin main
+npm run publish -- "Add new post"
 ```
 
 ## 如何新增博客文章
 
-把文章文件放进：
+把文章文件放进 `src/content/blog/` 下的任意子文件夹，例如：
 
 ```text
-src/content/blog/
+src/content/blog/修考/线性代数/我的新文章.md
+src/content/blog/修考/线性代数/我的新文章.assets/
 ```
 
-例如：
-
-```text
-src/content/blog/我的新文章.md
-```
+只要 frontmatter 里有固定的 `slug`，移动文件夹不会改变文章 URL。
 
 推荐 frontmatter 模板：
 
@@ -251,9 +253,30 @@ heroImage: /images/posts/毕设总结/cover.png
 ### 正常发布流程
 
 ```bash
-git add .
-git commit -m "Add new post"
-git push origin main
+npm run publish -- "Add new post"
+```
+
+默认发布流程会：
+
+- 本地快速检查内容 frontmatter 和 slug
+- 自动 `git add -A`
+- 自动 commit
+- 自动 pull --rebase
+- 自动 push
+- 由 GitHub Actions 执行真正的 Astro build 和部署
+
+如果你想恢复以前“发布前先在本地完整 build”的严格模式：
+
+```bash
+npm run publish:build -- "Add new post"
+# 或
+npm run publish -- --build "Add new post"
+```
+
+如果只是很小的改动、想最快推送，也可以跳过本地检查和 pull：
+
+```bash
+npm run publish:fast -- "Add new post"
 ```
 
 推送后：

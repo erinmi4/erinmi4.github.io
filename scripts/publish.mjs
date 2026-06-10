@@ -1,17 +1,56 @@
 import { spawnSync } from "node:child_process";
 
-const message = process.argv[2] || "post";
 const isWindows = process.platform === "win32";
 const sshOriginUrl = "git@github.com:erinmi4/erinmi4.github.io.git";
 const httpsOriginUrl = "https://github.com/erinmi4/erinmi4.github.io.git";
 
-function run(description, command, args, options = {}) {
+function parseArgs(argv) {
+  const messageParts = [];
+  const options = {
+    build: process.env.PUBLISH_BUILD === "1",
+    verify: process.env.PUBLISH_VERIFY !== "0",
+    pull: process.env.PUBLISH_PULL !== "0"
+  };
+
+  for (const arg of argv) {
+    if (arg === "--build") {
+      options.build = true;
+      continue;
+    }
+
+    if (arg === "--skip-build") {
+      options.build = false;
+      continue;
+    }
+
+    if (arg === "--no-verify") {
+      options.verify = false;
+      continue;
+    }
+
+    if (arg === "--no-pull") {
+      options.pull = false;
+      continue;
+    }
+
+    messageParts.push(arg);
+  }
+
+  return {
+    message: messageParts.join(" ").trim() || "post",
+    options
+  };
+}
+
+const { message, options } = parseArgs(process.argv.slice(2));
+
+function run(description, command, args, runOptions = {}) {
   console.log(`\n==> ${description}`);
 
   const result = spawnSync(command, args, {
     stdio: "inherit",
     shell: false,
-    ...options
+    ...runOptions
   });
 
   if (typeof result.status === "number" && result.status !== 0) {
@@ -21,6 +60,18 @@ function run(description, command, args, options = {}) {
   if (result.error) {
     throw result.error;
   }
+}
+
+function runNpmScript(description, scriptName) {
+  if (isWindows) {
+    run(description, "cmd.exe", ["/d", "/s", "/c", `npm run ${scriptName}`]);
+  } else {
+    run(description, "npm", ["run", scriptName]);
+  }
+}
+
+function runNodeScript(description, scriptPath) {
+  run(description, process.execPath, [scriptPath]);
 }
 
 function capture(command, args) {
@@ -62,10 +113,14 @@ function ensureHttpsOrigin() {
 
 ensureHttpsOrigin();
 
-if (isWindows) {
-  run("Building site", "cmd.exe", ["/d", "/s", "/c", "npm run build"]);
+if (options.build) {
+  runNpmScript("Building site locally", "build");
+} else if (options.verify) {
+  runNodeScript("Validating content without local Astro build", "./scripts/validate-content.mjs");
+  console.log("\n==> Skipping local Astro build; GitHub Actions will build and deploy after push.");
+  console.log("    Use `npm run publish:build -- \"message\"` or `npm run publish -- --build \"message\"` for the old full local build.");
 } else {
-  run("Building site", "npm", ["run", "build"]);
+  console.log("\n==> Skipping local verification and Astro build because --no-verify was passed.");
 }
 
 const branch = capture("git", ["branch", "--show-current"]);
@@ -100,7 +155,12 @@ if (upstreamProbe.error) {
 const upstream = upstreamProbe.status === 0 ? upstreamProbe.stdout.trim() : "";
 
 if (upstream) {
-  run(`Pulling latest changes from ${upstream}`, "git", ["pull", "--rebase"]);
+  if (options.pull) {
+    run(`Pulling latest changes from ${upstream}`, "git", ["pull", "--rebase"]);
+  } else {
+    console.log(`\n==> Skipping pull from ${upstream} because --no-pull was passed.`);
+  }
+
   run(`Pushing to ${upstream}`, "git", ["push"]);
 } else {
   run(`Pushing and setting upstream origin/${branch}`, "git", ["push", "-u", "origin", branch]);

@@ -1,5 +1,6 @@
 ---
 title: "微积分-CH2-微分"
+slug: "微积分-CH2-微分"
 description: "整理导数定义、求导法则、高阶导数、中值定理与函数图形分析。"
 pubDate: 2026-04-25
 updatedDate: 2026-04-29
