@@ -28,6 +28,7 @@ https://gemini.google.com/app/4bbf17d603e8d276
 - [7-1-10二阶常系数齐次微分方程求解_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Lg411A7T9?spm_id_from=333.788.videopod.episodes&vd_source=f6a1c5561b1c1e28133e4465302990f3&p=10)
 - [7-1-11二阶常系数线性微分方程—类型一_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Lg411A7T9?spm_id_from=333.788.videopod.episodes&vd_source=f6a1c5561b1c1e28133e4465302990f3&p=11)
 - [7-1-12二阶常系数非齐次方程求解—类型二_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Lg411A7T9?spm_id_from=333.788.videopod.episodes&vd_source=f6a1c5561b1c1e28133e4465302990f3&p=12)
+- 【3.可化为变量分离方程的变量替换法（齐次方程）】 https://www.bilibili.com/video/BV1QqXTYLEmH/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
 ![image-20260608141725110](./%E5%BE%AE%E7%A7%AF%E5%88%86-CH7-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B.assets/image-20260608141725110.png)
 
@@ -180,7 +181,9 @@ $$\frac{dy}{dx} = f(x)g(y)$$
 
   $$y = 2 \left( \frac{2+x}{6-3x} \right)^{\frac{1}{4}}$$
 
-### 2.2 齐次微分方程 (Homogeneous ODEs)
+### 2.2可化为变量分离方程
+
+### 2.2.1 齐次微分方程 (Homogeneous ODEs)
 
 #### 1) 标准形式
 
@@ -259,6 +262,206 @@ $$\frac{dy}{dx} = \varphi\left(\frac{y}{x}\right)$$
 - **最终特解**：
 
   $$y = x\sqrt{2\ln|x| + 4} \quad (x > 0)$$
+
+### 2.2.2 分式方程的变量替换法
+
+在常微分方程中，形如：
+
+$$\frac{dy}{dx} = \frac{a_1 x + b_1 y + c_1}{a_2 x + b_2 y + c_2}$$
+
+的方程称为**分式方程**（或一阶线性组合分式方程）。这类方程通常无法直接分离变量，但可以通过巧妙的**变量替换法**，将其转化为**可分离变量方程**或**齐次方程**来求解。
+
+根据分子分母中两条直线 $a_1 x + b_1 y + c_1 = 0$ 与 $a_2 x + b_2 y + c_2 = 0$ 的几何关系（是否过原点、是否平行、是否相交），解法可分为以下**三种情况**：
+
+#### 核心推导基础：复合函数求导
+
+在进行齐次替换时，我们常令 $u = \frac{y}{x}$（即 $y = ux$）。 根据复合函数求导法则（前导后不导 + 后导前不导），对 $x$ 求导得：
+
+$$\frac{dy}{dx} = \frac{d(ux)}{dx} = x \frac{du}{dx} + u$$
+
+> **记忆口诀**：$\frac{dy}{dx} = x u' + u$。这是解决齐次方程的关键桥梁。
+
+#### 第一类情况：$c_1 = c_2 = 0$（齐次方程）
+
+##### 1. 理论说明
+
+当常数项 $c_1$ 和 $c_2$ 均为 $0$ 时，方程退化为经典的**齐次微分方程**：
+
+$$\frac{dy}{dx} = \frac{a_1 x + b_1 y}{a_2 x + b_2 y}$$
+
+此时，分子分母同除以 $x$，即可化为关于 $\frac{y}{x}$ 的函数，进而通过令 $u = \frac{y}{x}$ 实现变量分离。
+
+##### 2. 经典例题
+
+**【例1】** 求解微分方程：
+
+$$\frac{dy}{dx} = \frac{x - y}{x + y}$$
+
+**【解析】**
+
+- **Step 1：化为齐次式** 分子、分母同时除以 $x$：
+
+  $$\frac{dy}{dx} = \frac{1 - \frac{y}{x}}{1 + \frac{y}{x}}$$
+
+- **Step 2：变量代换** 令 $u = \frac{y}{x}$，则 $y = ux$，代入 $\frac{dy}{dx} = x \frac{du}{dx} + u$：
+
+  $$x \frac{du}{dx} + u = \frac{1 - u}{1 + u}$$
+
+  移项整理得：
+
+  $$x \frac{du}{dx} = \frac{1 - u}{1 + u} - u = \frac{1 - 2u - u^2}{1 + u}$$
+
+- **Step 3：变量分离与积分** 将变量分离：
+
+  $$\frac{1 + u}{1 - 2u - u^2} du = \frac{1}{x} dx$$
+
+  两边同时积分：
+
+  $$\int \frac{1 + u}{1 - 2u - u^2} du = \int \frac{1}{x} dx$$
+
+  注意到分母求导有 $d(1 - 2u - u^2) = (-2 - 2u)du = -2(1+u)du$，故左边凑微分：
+
+  $$-\frac{1}{2} \int \frac{d(1 - 2u - u^2)}{1 - 2u - u^2} = \int \frac{1}{x} dx$$
+
+  $$-\frac{1}{2} \ln|1 - 2u - u^2| = \ln|x| + \ln|C_1| \quad (C_1 > 0)$$
+
+  两边同乘 $-2$，并利用对数性质化简：
+
+  $$\ln|1 - 2u - u^2| = -2\ln|x| + \ln|C| = \ln\left|\frac{C}{x^2}\right|$$
+
+  去对数得：
+
+  $$1 - 2u - u^2 = \frac{C}{x^2}$$
+
+  即：
+
+  $$x^2 (1 - 2u - u^2) = C$$
+
+- **Step 4：变量还原** 将 $u = \frac{y}{x}$ 代回上式：
+
+  $$x^2 \left( 1 - 2\frac{y}{x} - \frac{y^2}{x^2} \right) = C$$
+
+  展开整理，得到通解：
+
+  $$x^2 - 2xy - y^2 = C$$
+
+#### 第二类情况：$c_1, c_2$ 不全为 $0$，且 $\frac{a_1}{a_2} = \frac{b_1}{b_2}$（平行线情况）
+
+##### 1. 理论说明
+
+当 $\frac{a_1}{a_2} = \frac{b_1}{b_2}$ 时，说明分子与分母中的未知数线性部分成比例（几何上对应两条平行线）。 此时，我们可以把这个**共同的线性组合**整体设为新变量 $u$，从而直接化为可分离变量方程。
+
+##### 2. 经典例题
+
+**【例2】** 求解微分方程：
+
+$$\frac{dy}{dx} = \frac{y - x + 1}{y - x + 5}$$
+
+**【解析】**
+
+- **Step 1：变量代换** 观察到分子分母中均含有共同的组合 $y - x$，故令：
+
+  $$u = y - x \implies y = u + x$$
+
+  两边对 $x$ 求导：
+
+  $$\frac{dy}{dx} = \frac{du}{dx} + 1$$
+
+- **Step 2：代入原方程并分离变量** 将代换关系代入原方程：
+
+  $$\frac{du}{dx} + 1 = \frac{u + 1}{u + 5}$$
+
+  移项得：
+
+  $$\frac{du}{dx} = \frac{u + 1}{u + 5} - 1 = \frac{-4}{u + 5}$$
+
+  分离变量：
+
+  $$(u + 5) du = -4 dx$$
+
+- **Step 3：积分求解** 两边积分：
+
+  $$\int (u + 5) du = \int -4 dx$$
+
+  $$\frac{1}{2} u^2 + 5u = -4x + C_1$$
+
+  两边同乘 $2$，整理常数项（令 $C = 2C_1$）：
+
+  $$u^2 + 10u = -8x + C$$
+
+- **Step 4：还原变量** 将 $u = y - x$ 代回：
+
+  $$(y - x)^2 + 10(y - x) = -8x + C$$
+
+  展开并整理移项：
+
+  $$(y - x)^2 + 10y - 2x = C$$
+
+#### 第三类情况：$c_1, c_2$ 不全为 $0$，且 $\frac{a_1}{a_2} \neq \frac{b_1}{b_2}$（相交线情况）
+
+##### 1. 理论说明与标准求解步骤（SOP）
+
+当 $\frac{a_1}{a_2} \neq \frac{b_1}{b_2}$ 时，对应平面上两条相交直线。 我们的核心思想是：**通过平移坐标轴，将坐标原点移动到这两条直线的交点** $(\alpha, \beta)$ **处，从而消去常数项** $c_1, c_2$**，将其转化为第一类（齐次方程）求解。**
+
+##### 标准操作步骤（SOP）：
+
+1. **求交点**：联立方程组，求出交点 $(\alpha, \beta)$：
+
+   $$\begin{cases} a_1 x + b_1 y + c_1 = 0 \\ a_2 x + b_2 y + c_2 = 0 \end{cases} \implies \begin{cases} x = \alpha \\ y = \beta \end{cases}$$
+
+2. **坐标平移变换**：令
+
+   $$\begin{cases} x = X + \alpha \\ y = Y + \beta \end{cases} \implies \begin{cases} dX = dx \\ dY = dy \end{cases}$$
+
+3. **代入原方程**：消去常数项，化为关于 $X, Y$ 的齐次方程：
+
+   $$\frac{dY}{dX} = \frac{a_1 X + b_1 Y}{a_2 X + b_2 Y}$$
+
+   按照**第一类情况**求出关于 $X, Y$ 的通解后，再将 $X = x - \alpha, Y = y - \beta$ 代回还原。
+
+##### 2. 经典例题
+
+**【例3】** 求解微分方程：
+
+$$\frac{dy}{dx} = \frac{x - y + 1}{x + y - 3}$$
+
+**【解析】**
+
+- **Step 1：求交点** $(\alpha, \beta)$ 联立分子与分母对应的直线方程：
+
+  $$\begin{cases} x - y + 1 = 0 \\ x + y - 3 = 0 \end{cases}$$
+
+  两式相加得：$2x - 2 = 0 \implies x = 1$。 将 $x = 1$ 代入任意一式得：$y = 2$。 故交点为：
+
+  $$(\alpha, \beta) = (1, 2)$$
+
+- **Step 2：坐标变换** 引入新坐标系 $(X, Y)$，令：
+
+  $$\begin{cases} x = X + 1 \\ y = Y + 2 \end{cases} \implies \begin{cases} dX = dx \\ dY = dy \end{cases}$$
+
+- **Step 3：代入原方程化简** 由于常数项在交点变换下必然被消去，原方程化为：
+
+  $$\frac{dY}{dX} = \frac{(X + 1) - (Y + 2) + 1}{(X + 1) + (Y + 2) - 3} = \frac{X - Y}{X + Y}$$
+
+  观察发现，这与【例1】在形式上完全一致。
+
+- **Step 4：借用齐次方程求解结果** 由【例1】的推导可知，方程 $\frac{dY}{dX} = \frac{X - Y}{X + Y}$ 的通解为：
+
+  $$X^2 - 2XY - Y^2 = C$$
+
+- **Step 5：还原为原变量** $x, y$ 将 $X = x - 1$，$Y = y - 2$ 代回通解公式中：
+
+  $$(x - 1)^2 - 2(x - 1)(y - 2) - (y - 2)^2 = C$$
+
+  *(此即为原微分方程的隐式通解)*
+
+##### 💡 总结复习心法
+
+| 类型         | 条件特征                               | 几何直观     | 变换秘籍                                                     | 变换后方程类型             |
+| ------------ | -------------------------------------- | ------------ | ------------------------------------------------------------ | -------------------------- |
+| **Type I**   | $c_1 = c_2 = 0$                        | 两线交于原点 | 令 $u = \frac{y}{x}$                                         | 可分离变量方程             |
+| **Type II**  | $\frac{a_1}{a_2} = \frac{b_1}{b_2}$    | 两线平行     | 令 $u = a_1 x + b_1 y$                                       | 可分离变量方程             |
+| **Type III** | $\frac{a_1}{a_2} \neq \frac{b_1}{b_2}$ | 两线相交     | 平移坐标 $\begin{cases} x = X + \alpha \\ y = Y + \beta \end{cases}$ | 先化为 **Type I** 齐次方程 |
 
 ### 2.3 一阶线性微分方程 (First-Order Linear ODEs)
 
