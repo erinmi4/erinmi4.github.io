@@ -83,7 +83,7 @@ draft: false
 
 ### 四、 核心高频考点演练：单道 vs 多道对比计算
 
-> **【考研 408 经典真题变式例题】** 现有两个作业 Job A 和 Job B 同时提交并进入系统，它们所需的 CPU 计算时间和 I/O 操作时间如下（假设系统只有 1 个 CPU 和 1 个主 I/O 通道，作业 A 的优先级高于作业 B）：
+> 现有两个作业 Job A 和 Job B 同时提交并进入系统，它们所需的 CPU 计算时间和 I/O 操作时间如下（假设系统只有 1 个 CPU 和 1 个主 I/O 通道，作业 A 的优先级高于作业 B）：
 >
 > - **Job A**：CPU 计算 $10\text{ ms}$ $\rightarrow$ I/O 操作 $20\text{ ms}$ $\rightarrow$ CPU 计算 $10\text{ ms}$
 > - **Job B**：CPU 计算 $15\text{ ms}$ $\rightarrow$ I/O 操作 $15\text{ ms}$ $\rightarrow$ CPU 计算 $5\text{ ms}$

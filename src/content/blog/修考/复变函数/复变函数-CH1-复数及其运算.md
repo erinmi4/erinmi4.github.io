@@ -319,12 +319,6 @@ $$z \cdot \bar{z} = (a+bi)(a-bi) = a^2 + b^2 = |z|^2$$
 - $\overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar{z}_1}{\bar{z}_2}$
 - $\overline{(\bar{z})} = z$（双重共轭等于其自身）
 
-
-
-
-
-
-
 # 复变函数及其极限与连续
 
 ## 第一章：复变函数及其极限与连续
