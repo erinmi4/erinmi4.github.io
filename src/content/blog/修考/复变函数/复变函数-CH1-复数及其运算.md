@@ -15,6 +15,8 @@ draft: false
 - 【第一讲 复数及其运算】 https://www.bilibili.com/video/BV13K4y1h7wC/?share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 - 【复数的幂和根、棣莫弗公式、】 https://www.bilibili.com/video/BV13K4y1h7wC/?p=2&share_source=copy_web&vd_source=27abef6992749c2b76e3f7b2a2c835b5
 
+# 复数及其运算
+
 ## 第一阶段：复数及其运算
 
 ### 一、 复数的引入与代数形式（Algebraic Form）
@@ -323,7 +325,7 @@ $$z \cdot \bar{z} = (a+bi)(a-bi) = a^2 + b^2 = |z|^2$$
 
 
 
-# 复变函数与积分变换·学习笔记
+# 复变函数及其极限与连续
 
 ## 第一章：复变函数及其极限与连续
 
