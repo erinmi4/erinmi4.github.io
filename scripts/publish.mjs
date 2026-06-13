@@ -174,7 +174,7 @@ const upstream = upstreamProbe.status === 0 ? upstreamProbe.stdout.trim() : "";
 
 if (upstream) {
   if (options.pull) {
-    run(`Pulling latest changes from ${upstream}`, "git", ["pull", "--rebase"]);
+    run(`Pulling latest changes from ${upstream}`, "git", ["pull", "--rebase", "--autostash"]);
   } else {
     console.log(`\n==> Skipping pull from ${upstream} because --no-pull was passed.`);
   }
