@@ -88,5 +88,13 @@
       ],
       "key": "M"
     }
+  ],
+  "open-with-default-app:show": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "X"
+    }
   ]
 }
