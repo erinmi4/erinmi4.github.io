@@ -68,6 +68,94 @@ function toFileStem(value) {
     .replace(/^-|-$/g, "");
 }
 
+function isValidDate(value) {
+  return value && !Number.isNaN(new Date(value).getTime());
+}
+
+function validateYamlListShape(frontmatter, relativePath, errors) {
+  const lines = frontmatter.split(/\r?\n/);
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+
+    if (!/^\s+-\s+/.test(line)) {
+      continue;
+    }
+
+    let previousIndex = index - 1;
+    while (previousIndex >= 0 && lines[previousIndex].trim() === "") {
+      previousIndex -= 1;
+    }
+
+    const previousLine = lines[previousIndex] ?? "";
+    const continuesList = /^\s+-\s+/.test(previousLine);
+    const startsList = /^\s*[A-Za-z][\w-]*:\s*$/.test(previousLine);
+
+    if (!continuesList && !startsList) {
+      errors.push(
+        `${relativePath}: frontmatter list item on line ${index + 2} is not under a list key; did you forget "tags:"?`
+      );
+    }
+  }
+}
+
+async function pathExists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function cleanLocalUrl(value) {
+  const withoutHash = value.split("#")[0].split("?")[0].trim();
+
+  try {
+    return decodeURI(withoutHash);
+  } catch {
+    return withoutHash;
+  }
+}
+
+async function validateLocalAssetLinks(raw, filePath, relativePath, errors) {
+  const imageExtensions = new Set([".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"]);
+  const links = [];
+  const markdownImagePattern = /!\[[^\]]*\]\(([^)\s]+)(?:\s+[^)]*)?\)/g;
+  const htmlImagePattern = /<(?:img|source)\b[^>]*(?:src|srcset)=["']([^"']+)["']/gi;
+
+  for (const pattern of [markdownImagePattern, htmlImagePattern]) {
+    let match;
+
+    while ((match = pattern.exec(raw))) {
+      links.push(match[1]);
+    }
+  }
+
+  for (const link of links) {
+    const cleanLink = cleanLocalUrl(link);
+
+    if (
+      !cleanLink ||
+      cleanLink.startsWith("/") ||
+      cleanLink.startsWith("#") ||
+      /^[a-z]+:/i.test(cleanLink)
+    ) {
+      continue;
+    }
+
+    if (!imageExtensions.has(path.extname(cleanLink).toLowerCase())) {
+      continue;
+    }
+
+    const targetPath = path.resolve(path.dirname(filePath), cleanLink);
+
+    if (!(await pathExists(targetPath))) {
+      errors.push(`${relativePath}: local image not found: ${link}`);
+    }
+  }
+}
+
 const files = await collectMarkdownFiles(blogDir);
 const errors = [];
 const slugMap = new Map();
@@ -84,11 +172,22 @@ for (const filePath of files) {
     continue;
   }
 
+  await validateLocalAssetLinks(raw, filePath, relativePath, errors);
+  validateYamlListShape(frontmatter, relativePath, errors);
+
   for (const key of ["title", "description", "pubDate", "category"]) {
     const value = getField(frontmatter, key);
 
     if (!value || value.toLowerCase?.() === "null") {
       errors.push(`${relativePath}: "${key}" must be present and non-empty.`);
+    }
+  }
+
+  for (const key of ["pubDate", "updatedDate"]) {
+    const value = getField(frontmatter, key);
+
+    if (value && !isValidDate(value)) {
+      errors.push(`${relativePath}: "${key}" must be a valid date.`);
     }
   }
 

@@ -19,7 +19,7 @@ npm run new:post -- --dir "修考/线性代数" "线性代数-CH6-特征值"
 - 不要写成 `npm new post--修考第6天`
 - 文章标题必须放在 `--` 后面，建议始终用引号包住
 - 命令会创建 `src/content/blog/<目录>/<文章标题>.md`
-- 命令也会创建同名的 `<文章标题>.assets/`，图片可放在这里并用相对路径引用
+- 如果这篇文章需要图片，再手动创建同名的 `<文章标题>.assets/` 文件夹
 - 创建后需要补全 `description`、`tags`、`category`，再运行 `npm run check` 或 `npm run build`
 
 这是一个基于 Astro 重建的个人博客源码仓库。
@@ -96,7 +96,7 @@ npm run preview
 
 每次写文章，推荐按下面的顺序来：
 
-1. 用 `npm run new:post -- "目录/文章标题"` 新建 Markdown 和同名 `.assets/` 文件夹
+1. 用 `npm run new:post -- "目录/文章标题"` 新建 Markdown
 2. 填写 frontmatter
 3. 写正文
 4. 如果是文章内图片，优先放进同名 `.assets/` 文件夹并用相对路径引用
@@ -119,6 +119,11 @@ npm run publish -- "Add new post"
 
 ```text
 src/content/blog/修考/线性代数/我的新文章.md
+```
+
+如果文章需要图片，可以再手动创建：
+
+```text
 src/content/blog/修考/线性代数/我的新文章.assets/
 ```
 
@@ -258,7 +263,7 @@ npm run publish -- "Add new post"
 
 默认发布流程会：
 
-- 本地快速检查内容 frontmatter 和 slug
+- 本地检查 frontmatter、slug、本地图片链接，并运行 `npm run check`
 - 自动 `git add -A`
 - 自动 commit
 - 自动 pull --rebase

@@ -100,7 +100,6 @@ if (!fileStem) {
 
 const targetDir = path.join(blogDir, ...dirSegments);
 const filePath = path.join(targetDir, `${fileStem}.md`);
-const assetsDir = path.join(targetDir, `${fileStem}.assets`);
 
 try {
   await fs.access(filePath);
@@ -134,8 +133,6 @@ draft: true
 `;
 
 await fs.mkdir(targetDir, { recursive: true });
-await fs.mkdir(assetsDir, { recursive: true });
 await fs.writeFile(filePath, content, "utf8");
 
 console.log(`Created ${path.relative(repoRoot, filePath)}`);
-console.log(`Created ${path.relative(repoRoot, assetsDir)}`);

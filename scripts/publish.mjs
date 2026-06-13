@@ -3,6 +3,11 @@ import { spawnSync } from "node:child_process";
 const isWindows = process.platform === "win32";
 const sshOriginUrl = "git@github.com:erinmi4/erinmi4.github.io.git";
 const httpsOriginUrl = "https://github.com/erinmi4/erinmi4.github.io.git";
+const publishIgnoredPaths = [
+  "src/content/.obsidian/workspace.json",
+  "src/content/.obsidian/plugins/recent-files-obsidian/data.json",
+  "src/content/.obsidian/plugins/editing-toolbar/data.json"
+];
 
 function parseArgs(argv) {
   const messageParts = [];
@@ -96,6 +101,17 @@ function captureLines(command, args) {
   return output ? output.split(/\r?\n/).filter(Boolean) : [];
 }
 
+function unstagePublishIgnoredPaths() {
+  const result = spawnSync("git", ["restore", "--staged", "--", ...publishIgnoredPaths], {
+    stdio: "ignore",
+    shell: false
+  });
+
+  if (result.status === 0) {
+    console.log("\n==> Leaving local Obsidian workspace noise unstaged");
+  }
+}
+
 function ensureHttpsOrigin() {
   const originUrl = capture("git", ["remote", "get-url", "origin"]);
 
@@ -116,7 +132,8 @@ ensureHttpsOrigin();
 if (options.build) {
   runNpmScript("Building site locally", "build");
 } else if (options.verify) {
-  runNodeScript("Validating content without local Astro build", "./scripts/validate-content.mjs");
+  runNodeScript("Validating frontmatter, slugs, and local image links", "./scripts/validate-content.mjs");
+  runNpmScript("Checking Astro and TypeScript without local build", "check");
   console.log("\n==> Skipping local Astro build; GitHub Actions will build and deploy after push.");
   console.log("    Use `npm run publish:build -- \"message\"` or `npm run publish -- --build \"message\"` for the old full local build.");
 } else {
@@ -132,6 +149,7 @@ const statusOutput = captureLines("git", ["status", "--porcelain"]);
 
 if (statusOutput.length > 0) {
   run("Staging changes", "git", ["add", "-A"]);
+  unstagePublishIgnoredPaths();
 
   const stagedFiles = captureLines("git", ["diff", "--cached", "--name-only"]);
   if (stagedFiles.length > 0) {
