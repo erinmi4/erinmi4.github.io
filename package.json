@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
     "new:post": "node ./scripts/new-post.mjs",
-    "publish": "node ./scripts/publish.mjs",
+    "publish": "node ./scripts/publish.mjs --build",
     "publish:build": "node ./scripts/publish.mjs --build",
     "publish:fast": "node ./scripts/publish.mjs --no-verify --no-pull"
   },
