@@ -1,0 +1,9 @@
+{
+  "newFileLocation": "root",
+  "attachmentFolderPath": "./assets",
+  "alwaysUpdateLinks": true,
+  "deleteUnlinkedAttachments": "never",
+  "showLineNumber": true,
+  "useMarkdownLinks": true,
+  "readableLineLength": false
+}

@@ -1,0 +1,343 @@
+{
+  "main": {
+    "id": "c5beb9e9500e0f5e",
+    "type": "split",
+    "children": [
+      {
+        "id": "bea502b76263b4f6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f8f13b5d41980743",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "blog/修考/复变函数/复变函数-CH30-复变函数的积分.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "复变函数-CH30-复变函数的积分"
+            }
+          },
+          {
+            "id": "11ccaf9a38516d50",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "blog/修考/复变函数/复变函数-CH2.3-初等函数.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "复变函数-CH2.3-初等函数"
+            }
+          },
+          {
+            "id": "d9d14869009faca4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "微积分-CH8.1-曲线积分和曲面积分"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "be75b74f189c86a3",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ff13941093a692e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd0dfe70d4934da8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "37c63b3369354b90",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "并发",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "3fb0e96052818ece",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      },
+      {
+        "id": "397dc3471c08a611",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "758a4652a6712edb",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "clock",
+              "title": "Recent files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 367.5
+  },
+  "right": {
+    "id": "f8c03dd81bbe2878",
+    "type": "split",
+    "children": [
+      {
+        "id": "ea176c0b5fce183c",
+        "type": "tabs",
+        "dimension": 61.324376199616125,
+        "children": [
+          {
+            "id": "ca299d9df7b5874a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "微积分-CH8.1-曲线积分和曲面积分 的大纲"
+            }
+          },
+          {
+            "id": "f079f5f93023314a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "微积分-CH8.1-曲线积分和曲面积分 的反向链接列表"
+            }
+          },
+          {
+            "id": "283a1658f8d1eb33",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "微积分-CH8.1-曲线积分和曲面积分 的出链列表"
+            }
+          },
+          {
+            "id": "c5d6a8ec09f4d48f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "4982c8bc0be87d94",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e57f074467200694",
+        "type": "tabs",
+        "dimension": 38.67562380038388,
+        "children": [
+          {
+            "id": "dd8ae31383ef613e",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.md",
+                "options": {
+                  "collapse-filter": false,
+                  "search": "",
+                  "localJumps": 3,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": true,
+                  "showTags": true,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": false,
+                  "colorGroups": [],
+                  "collapse-display": false,
+                  "showArrow": true,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 0.922318339100346,
+                  "lineSizeMultiplier": 2.31262975778547,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              },
+              "icon": "lucide-git-fork",
+              "title": "微积分-CH8.1-曲线积分和曲面积分 的关系图"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 420.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "terminal:Open terminal": false
+    }
+  },
+  "active": "d9d14869009faca4",
+  "lastOpenFiles": [
+    "blog/修考/复变函数/复变函数-CH30-复变函数的积分.md",
+    "blog/修考/复变函数/复变函数-CH2.3-初等函数.md",
+    "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.md",
+    "blog/修考/微积分/微积分-CH8多元函数微分学.md",
+    "blog/修考/微积分/微积分-CH9-重积分.md",
+    "blog/修考/微积分/微积分-CH8.1-曲线积分和曲面积分.assets",
+    "blog/修考/微积分/微积分-CH7.2-包络与奇解，克莱罗方程.md",
+    "blog/修考/复变函数/复变函数-CH2.2-调和函数.md",
+    "blog/修考/微积分/微积分-CH7.1-高阶微分方程.md",
+    "blog/修考/复变函数/复变函数-CH30-复变函数的积分.assets",
+    "blog/修考/电路分析/电路分析-CH30/Responses-of-RL,-RC,-and-RLC-Circuits.md",
+    "blog/修考/微积分/微积分-CH7-微分方程.md",
+    "blog/修考/电路分析/电路分析CH2交流分析.md",
+    "blog/修考/电路分析/过去问-电路分析-东京大学-2021.md",
+    "blog/修考/电路分析/电路分析-等效电源.md",
+    "blog/修考/电路分析/电路分析CH1直流分析.md",
+    "blog/修考/电路分析/电路分析-CH30/Responses-of-RL,-RC,-and-RLC-Circuits.assets",
+    "blog/修考/电路分析/电路分析-CH30",
+    "blog/修考/操作系统/操作系统-CH22-线程.md",
+    "blog/修考/操作系统/操作系统-CH21-进程.md",
+    "blog/修考/操作系统/操作系统-CH22-线程.assets",
+    "blog/修考/操作系统/操作系统-CH1.1-操作系统的基本概念.md",
+    "未命名.md",
+    "blog/修考/操作系统/assets/理想情况.png",
+    "blog/修考/操作系统/assets/进程的内存映像.png",
+    "blog/修考/操作系统/assets/进程状态图.png",
+    "blog/修考/操作系统/assets/Pasted image 20260612124117.png",
+    "blog/修考/操作系统/assets",
+    "blog/修考/操作系统/操作系统-CH1.6-过程调用和系统调用.md",
+    "blog/修考/离散数学/离散数学-CH1-数理逻辑.md",
+    "blog/修考/操作系统/操作系统-CH21-进程.assets",
+    "blog/修考/复变函数/复变函数-CH1-复数及其运算.md",
+    "blog/修考/复变函数/复变函数-CH2.1-解析函数.md",
+    "欢迎.md"
+  ]
+}

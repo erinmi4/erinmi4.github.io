@@ -162,11 +162,8 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 ### 5. 今天晚上小丽看书或者打球。
 
 - **分析**：因为一个人在同一时间段通常只能做一件事，此处的“或者”属于**不兼容或（异或）**。
-
 - **符号化**：
-
   令 $p: \text{今晚小丽看书}$，$q: \text{今晚小丽打球}$。
-
   则符号化为：$(p \wedge \neg q) \vee (\neg p \wedge q)$
 
 ### 6. 条件语句的四种常见句型变形
@@ -214,23 +211,20 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 
 在右上角手写板书中，定义了命题公式的三种基本类型：
 
-- **重言式**：公式真值**恒为 $1$**。（又称**永真式**）
-- **矛盾式**：公式真值**恒为 $0$**。（又称**永假式**）
-- **可满足式**：**不是矛盾式**的公式（即真值表中至少有一组赋值使公式为 $1$。注：重言式属于可满足式的特例）。
+- **Tautology**：公式真值**恒为 $1$**。（又称**Tautology**）
+- **Contradiction**：公式真值**恒为 $0$**。（又称**永假式**）
+- **Contingency**：**不是Contradiction**的公式（即真值表中至少有一组赋值使公式为 $1$。注：Tautology属于Contingency的特例）。
 
 ## 二、 典型例题解析
 
 ### 例三：判断公式的类型
 
 #### ① 公式：$p \wedge r \wedge \neg(q \rightarrow p)$
-
 - **分析方法**：真值表法（涉及 $p, q, r$ 三个变元，共 $2^3 = 8$ 种赋值组合）。
-
 - **真值表递推过程**：
-
-  $$\begin{array}{ccc|c|c|c|c} p & q & r & p \wedge r & q \rightarrow p & \neg(q \rightarrow p) & p \wedge r \wedge \neg(q \rightarrow p) \\ \hline 0 & 0 & 0 & 0 & 1 & 0 & \mathbf{0} \\ 0 & 0 & 1 & 0 & 1 & 0 & \mathbf{0} \\ 0 & 1 & 0 & 0 & 0 & 1 & \mathbf{0} \\ 0 & 1 & 1 & 0 & 0 & 1 & \mathbf{0} \\ 1 & 0 & 0 & 0 & 1 & 0 & \mathbf{0} \\ 1 & 0 & 1 & 1 & 1 & 0 & \mathbf{0} \\ 1 & 1 & 0 & 0 & 1 & 0 & \mathbf{0} \\ 1 & 1 & 1 & 1 & 1 & 0 & \mathbf{0} \end{array}$$
-
-- **结论**：$\because$ 最后一列真值全为 $0$，$\therefore$ **公式为矛盾式**。
+$$\begin{array}{ccc|c|c|c|c} p & q & r & p \wedge r & q \rightarrow p & \neg(q \rightarrow p) & p \wedge r \wedge \neg(q \rightarrow p) \\ \hline 0 & 0 & 0 & 0 & 1 & 0 & \mathbf{0} \\ 0 & 0 & 1 & 0 & 1 & 0 & \mathbf{0} \\ 0 & 1 & 0 & 0 & 0 & 1 & \mathbf{0} \\ 0 & 1 & 1 & 0 & 0 & 1 & \mathbf{0} \\ 1 & 0 & 0 & 0 & 1 & 0 & \mathbf{0} \\ 1 & 0 & 1 & 1 & 1 & 0 & \mathbf{0} \\ 1 & 1 & 0 & 0 & 1 & 0 & \mathbf{0} \\ 1 & 1 & 1 & 1 & 1 & 0 & \mathbf{0} \end{array}$$
+- **结论**：$\because$ 最后一列真值全为 $0$，
+- $\therefore$ **公式为Contradiction**。
 
 #### ② 公式：$(p \rightarrow q) \rightarrow (\neg q \rightarrow \neg p)$
 
@@ -240,7 +234,7 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 
   $$\begin{array}{cc|c|c|c} p & q & p \rightarrow q & \neg q \rightarrow \neg p & (p \rightarrow q) \rightarrow (\neg q \rightarrow \neg p) \\ \hline 0 & 0 & 1 & 1 & \mathbf{1} \\ 0 & 1 & 1 & 1 & \mathbf{1} \\ 1 & 0 & 0 & 0 & \mathbf{1} \\ 1 & 1 & 1 & 1 & \mathbf{1} \end{array}$$
 
-- **结论**：$\because$ 最后一列真值全为 $1$，$\therefore$ **公式为重言式**。
+- **结论**：$\because$ 最后一列真值全为 $1$，$\therefore$ **公式为Tautology**。
 
 #### ③ 公式：$(\neg p \wedge q) \rightarrow \neg r$
 
@@ -248,7 +242,7 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 
   $$\begin{array}{ccc|c|c|c} p & q & r & \neg p \wedge q & \neg r & (\neg p \wedge q) \rightarrow \neg r \\ \hline 0 & 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 1 & 1 \\ 0 & 1 & 1 & 1 & 0 & \mathbf{0} \quad \leftarrow (1 \rightarrow 0 \Rightarrow 0) \\ 1 & 0 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 0 & 1 & 1 \\ 1 & 1 & 1 & 0 & 0 & 1 \end{array}$$
 
-- **结论**：最后一列真值有 $1$ 也有 $0$，$\dots$ **公式为可满足式，非重言式**。
+- **结论**：最后一列真值有 $1$ 也有 $0$，$\dots$ **公式为Contingency，非Tautology**。
 
 ### 例四：求公式 $(\neg p \wedge q) \rightarrow \neg r$ 的成真赋值和成假赋值
 
@@ -269,7 +263,7 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 
 ### 1. 定义
 
-- **等值式**：若 $A \leftrightarrow B$ 为永真式，则称 $A, B$ 是等值的。记作 $A \Leftrightarrow B$，称 $A \Leftrightarrow B$ 为等值式。
+- **等值式**：若 $A \leftrightarrow B$ 为Tautology，则称 $A, B$ 是等值的。记作 $A \Leftrightarrow B$，称 $A \Leftrightarrow B$ 为等值式。
 - **手写补充笔记**：
   - “$\Leftrightarrow$” 不是联结词。
   - $A \Leftrightarrow B$ 也可以记作 $A = B$ 或 $A \models \!\mid B$。
@@ -293,10 +287,10 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 11. **矛盾律**：$A \wedge \neg A \Leftrightarrow 0$
 12. **蕴含等值式**（重点标记 $\star$）：$A \rightarrow B \Leftrightarrow \neg A \vee B$
 13. **等价等值式**：$A \leftrightarrow B \Leftrightarrow (A \rightarrow B) \wedge (B \rightarrow A)$
-14. **假言易位**：$A \rightarrow B \Leftrightarrow \neg B \rightarrow \neg A$
+14. **[[Proof by contraposition]]**：$A \rightarrow B \Leftrightarrow \neg B \rightarrow \neg A$
 15. **等价否定**：$A \leftrightarrow B \Leftrightarrow \neg A \leftrightarrow \neg B$
 16. **归谬论**：$(A \rightarrow B) \wedge (A \rightarrow \neg B) \Leftrightarrow \neg A$
-
+	> 这是通过[[反证法]]证明A错误的一种技巧
 ## 二、 经典例题与等值演算法
 
 ### 例一：判断公式类型
@@ -307,7 +301,7 @@ $$\neg \quad \succ \quad \wedge \quad \succ \quad \vee \quad \succ \quad \righta
 
 $$\begin{aligned} & \Leftrightarrow p \wedge r \wedge \neg(\neg q \vee p) \\ & \Leftrightarrow p \wedge r \wedge (q \wedge \neg p) \\ & \Leftrightarrow p \wedge \neg p \wedge q \wedge r \\ & \Leftrightarrow 0 \end{aligned}$$
 
-- **结论**：$\therefore$ 公式为**矛盾式**。
+- **结论**：$\therefore$ 公式为**Contradiction**。
 
 #### 题 ②：$(\neg p \wedge q) \rightarrow \neg r$
 
@@ -315,7 +309,7 @@ $$\begin{aligned} & \Leftrightarrow \neg(\neg p \wedge q) \vee \neg r \\ & \Left
 
 - **成真赋值**：$100, \quad 111$
 - **成假赋值**：$011$
-- **结论**：$\therefore$ 公式为**可满足式**。
+- **结论**：$\therefore$ 公式为**Contingency**。
 
 ### 例二：证明 $q \rightarrow (p \rightarrow r) \Leftrightarrow (p \wedge q) \rightarrow r$
 
