@@ -18,6 +18,9 @@ draft: false
 
 本章核心探讨复数域上的初等函数。与实变函数相比，复初等函数既保留了原有的运算性质，又展现出复域特有的多值性、周期性与相互转化的奇妙联系。
 
+> [!NOTE] Title
+> **整函数（处处解析）**：多项式、$e^z$、az (a>0)a^z\ (a>0)az (a>0)、sin⁡z\sin zsinz、cos⁡z\cos zcosz、sinh⁡z\sinh zsinhz、cosh⁡z\cosh zcoshz。
+
 ## 一、指数函数 (Exponential Function)
 
 ### 1. 定义与欧拉公式
@@ -103,6 +106,7 @@ e^u=r,\qquad v=\theta+2k\pi \\
 u=\ln r,\qquad v=\theta+2k\pi.
 \end{aligned}
 }$$
+> 其实就是[Logarithmic Function](https://www.remnote.com/doc/0r5h9akDqWZzXwqub?isPin=false)和[Exponential Function](https://www.remnote.com/doc/Jxqii5Jygnm4wl7aW?isPin=false)之间的形式切换
 
 设 $w = u + iv$ 是 $z = r e^{i\theta}$ 的对数，即：
 
@@ -215,6 +219,10 @@ $$z^b = e^{b \text{Ln } z} \quad (z \neq 0, \, b \in \mathbb{C})$$
 
 **题目**：求 $3^i$ 的所有值。
 
+> [!NOTE] Title
+> 注意，如果是求单个值，那么使用$ln$ 就好
+> 但是这道题是求**所有值**，那么就必须使用$\text{Ln }$
+
 **解**： 根据幂函数的定义，将底数 $3$ 写为对数形式：
 
 $$3^i = e^{i \text{Ln } 3}$$
@@ -241,7 +249,7 @@ $$3^i = e^{-2k\pi} \left[ \cos(\ln 3) + i \sin(\ln 3) \right] \quad (k \in \math
 _注：由于_ $k$ _可以取全体整数，所以_ $3^i$ _有无穷多个值。每个值的模长为_ $e^{-2k\pi}$_，幅角主值为_ $\ln 3$_。_
 
 ## 四、三角函数与双曲函数 (Trigonometric & Hyperbolic Functions)
-
+[复变函数-CH00-双曲函数（补充内容1）](复变函数-CH00-双曲函数（补充内容1）.md)
 通过欧拉公式，复域下的三角函数与双曲函数可以通过指数函数直接定义。
 
 ### 1. 核心定义公式
@@ -307,17 +315,13 @@ $$\cos(5i) = \cosh 5 \implies \cos(\pi + 5i) = -\cosh 5$$
 
 反三角函数与反双曲函数在复平面上均通过**多值对数函数** $\text{Ln}$ 来定义。
 
-### 🚨 纠错与防坑特别提示（课件 Typo 修正）
-
-在学校课件/PPT中，反三角函数部分的公式存在严重的印刷错误。课件上把反正切函数 $\text{Arctan } z$ 和反双曲正切函数 $\text{Artanh } z$ 混淆了。请务必参照以下修正后的正确公式进行复习：
-
 1. **反正弦**：$\text{Arcsin } z = -i \text{Ln}\left(iz + \sqrt{1 - z^2}\right)$
     
-2. **反余弦**：$\text{Arccos } z = -i \text{Ln}\left(z + \sqrt{z^2 - 1}\right)$ _(课件中错写为了_ $iz$_，应修正为_ $z$_)_
+2. **反余弦**：$\text{Arccos } z = -i \text{Ln}\left(z + \sqrt{z^2 - 1}\right)$
     
 3. **反正切**：$\text{Arctan } z = -\frac{i}{2} \text{Ln}\left(\frac{1 + iz}{1 - iz}\right)$
     
-4. **反双曲正切**（手写记作 $\text{Artanh } z$ 或 $\text{Arth } z$）：$\text{Artanh } z = \frac{1}{2} \text{Ln}\left(\frac{1 + z}{1 - z}\right)$ _(课件将此处错误地标注成了_ $\text{Arctan } z$_)_
+4. **反双曲正切**（手写记作 $\text{Artanh } z$ 或 $\text{Arth } z$）：$\text{Artanh } z = \frac{1}{2} \text{Ln}\left(\frac{1 + z}{1 - z}\right)$ 
     
 
 ### 【核心推导】以反正弦 $\text{Arcsin } z$ 为例

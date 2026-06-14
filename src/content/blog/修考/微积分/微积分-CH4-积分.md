@@ -257,7 +257,7 @@ $$\text{原式} = \frac{1}{6} \int (1 - 3t^2)^{-1/2} d(1 - 3t^2) = \frac{1}{6} \
 
 $$\text{原式} = \frac{1}{3}\sqrt{1 - \frac{3}{x^2}} + C = \frac{\sqrt{x^2 - 3}}{3x} + C$$
 
-## 第四板块：部分积分法（Integration by Parts）与“表格法”秒杀
+## 第四板块：分部积分法（Integration by Parts）与“表格法”秒杀
 
 部分积分法公式源于乘积求导法则： $\int u dv = uv - \int v du$。
 

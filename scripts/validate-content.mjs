@@ -118,10 +118,35 @@ function cleanLocalUrl(value) {
   }
 }
 
+async function resolveLocalAssetPath(cleanLink, filePath) {
+  const decodedLink = cleanLocalUrl(cleanLink);
+  const noteDir = path.dirname(filePath);
+  const directPath = path.resolve(noteDir, decodedLink);
+
+  if (await pathExists(directPath)) {
+    return directPath;
+  }
+
+  const isBareFilename = !decodedLink.includes("/") && !decodedLink.includes("\\");
+
+  if (!isBareFilename) {
+    return null;
+  }
+
+  const obsidianAssetPath = path.resolve(noteDir, "assets", decodedLink);
+
+  if (await pathExists(obsidianAssetPath)) {
+    return obsidianAssetPath;
+  }
+
+  return null;
+}
+
 async function validateLocalAssetLinks(raw, filePath, relativePath, errors) {
   const imageExtensions = new Set([".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"]);
   const links = [];
   const markdownImagePattern = /!\[[^\]]*\]\(([^)\s]+)(?:\s+[^)]*)?\)/g;
+  const obsidianImagePattern = /!\[\[([^\]\n]+?)\]\]/g;
   const htmlImagePattern = /<(?:img|source)\b[^>]*(?:src|srcset)=["']([^"']+)["']/gi;
 
   for (const pattern of [markdownImagePattern, htmlImagePattern]) {
@@ -130,6 +155,12 @@ async function validateLocalAssetLinks(raw, filePath, relativePath, errors) {
     while ((match = pattern.exec(raw))) {
       links.push(match[1]);
     }
+  }
+
+  let obsidianMatch;
+
+  while ((obsidianMatch = obsidianImagePattern.exec(raw))) {
+    links.push(obsidianMatch[1].split("|")[0].trim());
   }
 
   for (const link of links) {
@@ -148,9 +179,7 @@ async function validateLocalAssetLinks(raw, filePath, relativePath, errors) {
       continue;
     }
 
-    const targetPath = path.resolve(path.dirname(filePath), cleanLink);
-
-    if (!(await pathExists(targetPath))) {
+    if (!(await resolveLocalAssetPath(cleanLink, filePath))) {
       errors.push(`${relativePath}: local image not found: ${link}`);
     }
   }

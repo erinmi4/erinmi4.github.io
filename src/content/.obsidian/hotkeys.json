@@ -78,9 +78,23 @@
   "workspace:goto-tab-4": [],
   "workspace:goto-tab-5": [],
   "workspace:goto-tab-6": [],
-  "workspace:next-tab": [],
+  "workspace:next-tab": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Tab"
+    }
+  ],
   "workspace:goto-last-tab": [],
-  "workspace:previous-tab": [],
+  "workspace:previous-tab": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ],
   "open-with-default-app:open": [
     {
       "modifiers": [
@@ -95,6 +109,22 @@
         "Alt"
       ],
       "key": "X"
+    }
+  ],
+  "editing-toolbar:editor:insert-callout": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "C"
+    }
+  ],
+  "omnisearch:show-modal": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "O"
     }
   ]
 }
