@@ -153,7 +153,7 @@ if (statusOutput.length > 0) {
 
   const stagedFiles = captureLines("git", ["diff", "--cached", "--name-only"]);
   if (stagedFiles.length > 0) {
-    run(`Creating commit '${message}'`, "git", ["commit", "-m", message]);
+    run(`Creating commit '${message}'`, "git", ["commit", "--quiet", "-m", message]);
   } else {
     console.log("\n==> No staged changes to commit");
   }
