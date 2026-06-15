@@ -111,20 +111,20 @@
       "key": "X"
     }
   ],
-  "editing-toolbar:editor:insert-callout": [
-    {
-      "modifiers": [
-        "Alt"
-      ],
-      "key": "C"
-    }
-  ],
   "omnisearch:show-modal": [
     {
       "modifiers": [
         "Mod"
       ],
       "key": "O"
+    }
+  ],
+  "editing-toolbar:insert-callout": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "C"
     }
   ]
 }

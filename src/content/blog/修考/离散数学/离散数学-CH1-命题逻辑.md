@@ -249,18 +249,18 @@ $$\neg(P \vee Q) \equiv \neg P \wedge \neg Q$$
 
 #### 📝 概念检查 (Concept Check)
 
-> **题目**：利用真值表证明德·摩根第一定律 $\neg(P \wedge Q) \equiv \neg P \vee \neg Q$。
->
-> **证明**：
->
-> | $P$        | $Q$        | $P \wedge Q$ | $\neg(P \wedge Q)$ | $\neg P$   | $\neg Q$   | $\neg P \vee \neg Q$ |
-> | ---------- | ---------- | ------------ | ------------------ | ---------- | ---------- | -------------------- |
-> | $\text{T}$ | $\text{T}$ | $\text{T}$   | $\text{F}$         | $\text{F}$ | $\text{F}$ | $\text{F}$           |
-> | $\text{T}$ | $\text{F}$ | $\text{F}$   | $\text{T}$         | $\text{F}$ | $\text{T}$ | $\text{T}$           |
-> | $\text{F}$ | $\text{T}$ | $\text{F}$   | $\text{T}$         | $\text{T}$ | $\text{F}$ | $\text{T}$           |
-> | $\text{F}$ | $\text{F}$ | $\text{F}$   | $\text{T}$         | $\text{T}$ | $\text{T}$ | $\text{T}$           |
->
-> 比对第4列与第7列，真值完全相同，定理证毕。
+**题目**：利用真值表证明德·摩根第一定律 $\neg(P \wedge Q) \equiv \neg P \vee \neg Q$。
+
+**证明**：
+
+| $P$        | $Q$        | $P \wedge Q$ | $\neg(P \wedge Q)$ | $\neg P$   | $\neg Q$   | $\neg P \vee \neg Q$ |
+| ---------- | ---------- | ------------ | ------------------ | ---------- | ---------- | -------------------- |
+| $\text{T}$ | $\text{T}$ | $\text{T}$   | $\text{F}$         | $\text{F}$ | $\text{F}$ | $\text{F}$           |
+| $\text{T}$ | $\text{F}$ | $\text{F}$   | $\text{T}$         | $\text{F}$ | $\text{T}$ | $\text{T}$           |
+| $\text{F}$ | $\text{T}$ | $\text{F}$   | $\text{T}$         | $\text{T}$ | $\text{F}$ | $\text{T}$           |
+| $\text{F}$ | $\text{F}$ | $\text{F}$   | $\text{T}$         | $\text{T}$ | $\text{T}$ | $\text{T}$           |
+
+比对第4列与第7列，真值完全相同，定理证毕。
 
 #### 2. 量词的否定 (Negating Quantifiers)
 
