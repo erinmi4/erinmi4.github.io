@@ -1,14 +1,18 @@
 ---
-title: "计算理论-CH06-CFG上下文无关文法"
-slug: "计算理论-CH06-CFG上下文无关文法"
-description: "计算理论-CH06-CFG上下文无关文法，待补充摘要。"
+title: 计算理论-CH06-CFG上下文无关文法
+slug: 计算理论-CH06-CFG上下文无关文法
+description: 计算理论-CH06-CFG上下文无关文法，待补充摘要。
 pubDate: 2026-06-15
 updatedDate: 2026-06-15
 tags:
   - 大阪大学
   - 计算理论
-category: "修考"
+category: 修考
 draft: false
+aliases:
+  - CFG
+  - 上下文无关文法
+  - Context-Free Grammar
 ---
 > [!note]
 > CFG 几乎每年都会考察，常见题型包括：
@@ -42,9 +46,9 @@ draft: false
     
 5. **满足特定要求的 CFG 构造**。
     
-6. **乔姆斯基范式 (CNF)** 的转换（进阶考点）。
+6. **乔姆斯基范式 (CNF)** 的转换（进阶考点）。[计算理论-CH07-CNF乔姆斯基范式](计算理论-CH07-CNF乔姆斯基范式.md)
     
-7. **CYK 算法** 的应用（进阶考点）。
+7. **CYK 算法** 的应用（进阶考点）。[计算理论-CH08-CYK-算法](计算理论-CH08-CYK-算法.md)
     
 
 ## 第一部分：初识 CFG —— 从“读”到“造”

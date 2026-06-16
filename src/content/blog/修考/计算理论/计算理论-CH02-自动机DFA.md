@@ -1,14 +1,18 @@
 ---
-title: "计算理论-CH02-自动机DFA"
-slug: "计算理论-CH02-自动机DFA"
-description: "计算理论-CH02-自动机DFA，待补充摘要。"
+title: 计算理论-CH02-自动机DFA
+slug: 计算理论-CH02-自动机DFA
+description: 计算理论-CH02-自动机DFA，待补充摘要。
 pubDate: 2026-06-15
 updatedDate: 2026-06-15
 tags:
   - 大阪大学
   - 计算理论
-category: "修考"
+category: 修考
 draft: false
+aliases:
+  - Deterministic Finite Automaton
+  - 确定性有限自动机
+  - DFA
 ---
 - [Introduction to Deterministic Finite Automata (DFA) - YouTube](https://www.youtube.com/watch?v=19ygGQqolGI)
 - [Practice problems on finite automata - GeeksforGeeks](https://www.geeksforgeeks.org/theory-of-computation/practice-problems-finite-automata/)
@@ -83,7 +87,7 @@ F      = 通关房间（Accepting States）
 
 ### 1. 什么是 DFA？
 
-**DFA** 全称为 **[[Deterministic Finite Automaton]]**（确定性有限自动机）。我们可以把它想象成一个简单的控制芯片或机器人：
+**DFA** 全称为 **Deterministic Finite Automaton**（确定性有限自动机）。我们可以把它想象成一个简单的控制芯片或机器人：
 
 - 它在任意时刻都处于某个特定的**状态 (State)** 之中。
     
